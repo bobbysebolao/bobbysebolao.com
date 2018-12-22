@@ -1,22 +1,77 @@
-/*---------MAIN CONTENT STYLING-----------*/
-/*RESOURCES THAT HELPED ME
-1. https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/
-2. https://stackoverflow.com/questions/4502633/how-to-affect-other-elements-when-a-div-is-hovered
-(top answer about selecting multiple elements with CSS)
-*/
 
+/* HELPFUL RESOURCES */
+/* 1. https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/ */
+/* 2. https://stackoverflow.com/questions/4502633/how-to-affect-other-elements-when-a-div-is-hovered
+(top answer about selecting multiple elements with CSS) */
+/* 3. https://www.sitepoint.com/set-css-margins-padding-cool-layout-tricks/
+(explains how to set the 'box-sizing' attr so that padding is included in the
+width of an element) */
+
+/* ======================= TOP LEVEL STYLING======================= */
+
+/* 1. Set font. */
+/* 2. Make 'Return to top' scrolling smooth */
 html {
+  /* 1. */
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  /* 2. */
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/**
+ * 1. Center margin for main content in all browsers.
+ * 2. Centre align text
+ * 3. Define min and max page display widths.
+ * 4. Apply background colour and viewport padding.
+ */
+
 body {
-  font-family: 'Open Sans', sans-serif;
+  /* 1. */
   margin: auto;
+  /* 2. */
   text-align: center;
+  /* 3. */
   min-width: 100px;
   max-width: 800px;
-  background: #000000;
+  /* 4. */
+  background: #2f2f2f;
   padding: 20px;
+}
+
+p {
+  margin-bottom: 1.3em;
+}
+
+h1, h2, h3, h4 {
+  margin: 1.414em 0 0.5em;
+  line-height: 1.35;
+  color: #111;
+  font-weight: 400;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2em;
+}
+
+h2 {
+  /* font-size: 1.728em; */
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
+h4 {
+  font-size: 1.2em;
 }
 
 hr {
@@ -24,7 +79,9 @@ hr {
   border: 1px solid #5d5d60;
 }
 
-.main {
+/* =======================MAIN CONTENT STYLING======================= */
+
+.page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -37,24 +94,10 @@ hr {
   z-index: 0;
 }
 
-.pageBreak:hover .rippedPaperBottom, .pageBreak:hover .rippedPaperTop {
-  transition: all 0.25s ease;
-  fill: white;
-  animation-name: none;
-  /* animation-play-state: paused; */
-}
-
-.pageBreak:hover .fillGap {
-  animation-name: none;
-}
-
-div.rippedEdge {
+.rippedEdge {
   position: relative;
   background: transparent;
-  /* width: 100%; */
-  /* height: 20px; */
-  /* overflow: hidden; */
-  /* opacity: 0; */
+  /*===THIS Z-INDEX IS IMPORTANT===*/
   z-index: 1;
 }
 
@@ -65,27 +108,22 @@ div.rippedEdge {
 .rippedPaperTop {
   preserveAspectRatio: none
   position: relative;
-  margin-top: 0px;
   margin-bottom: -11px;
   /* display: block; */
   width: 100%;
   height: 25px;
   fill: #ffffff;
   transform: scaleY(1);
-  /* background: blue; */
-  /* background-size: 100%; */
-  /* outline: 1px white solid; */
   transition: all 0.25s ease;
   cursor: pointer;
   animation: pulseSVG 3s infinite;
-  z-index: -1;
+  z-index: 3;
 }
 
 .rippedPaperBottom {
   preserveAspectRatio: none
   position: relative;
   margin-top: -7px;
-  margin-bottom: 0px;
   top: 0;
   left: 0;
   /* display: block; */
@@ -93,48 +131,75 @@ div.rippedEdge {
   height: 25px;
   fill: #ffffff;
   transform: scaleY(1);
-  /* background: blue; */
-  /* outline: 1px pink solid; */
   transition: all 0.25s ease;
   cursor: pointer;
   animation: pulseSVG 3s infinite;
-  z-index: -2;
+  z-index: 2;
 }
 
 @keyframes pulseSVG {
   0% {
-    fill: #ffffff;
+    fill: #fdfdfd;
   }
   50% {
     fill: #ccc;
   }
   100% {
-    fill: #ffffff;
+    fill: #fdfdfd;
   }
 }
 
-.open {
-  fill: #ccc;
-  /* animation-play-state: paused; */
+.pageBreak:hover .rippedPaperBottom, .pageBreak:hover .rippedPaperTop {
+  /* transition: all 0.25s ease; */
+  fill: #fdfdfd;
+  animation-name: none;
 }
+
+.fillGap {
+  position: absolute;
+  display: block;
+  background: #fdfdfd;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  box-shadow: 5px 10px 10px 0px #000000;
+  animation: pulseFillGap 3s infinite;
+}
+
+@keyframes pulseFillGap {
+  0% {
+    background: #fdfdfd;
+  }
+  50% {
+    background: #ccc;
+  }
+  100% {
+    background: #fdfdfd;
+  }
+}
+
+.pageBreak:hover .fillGap {
+  animation-name: none;
+}
+
+/* .open {
+  fill: #ccc;
+  animation-play-state: paused;
+} */
 
 .tearLine {
   preserveAspectRatio: none
   position: relative;
-  background: transparent;
   margin-top: -25px;
   margin-bottom: 0px;
   top: 0px;
   left: 0px;
-  /* display: block; */
   width: 100%;
   height: 25px;
   transform: scaleY(1);
-  /* background: blue; */
-  /* outline: 1px pink solid; */
-  transition: all 0.25s ease;
   cursor: pointer;
-  z-index: -2;
+  z-index: -1;
 }
 
 .hidden {
@@ -144,49 +209,38 @@ div.rippedEdge {
 .rippedPaperEdge {
   preserveAspectRatio: none
   position: relative;
-  /* stroke: #5d5d60;
-  stroke-width: 5; */
   fill: none;
   margin-top: -4px;
   margin-bottom: 0px;
-  /* display: block; */
   width:100%;
   height: 25px;
   transform: scaleY(1);
-  /* background: blue; */
-  /* outline: 1px pink solid; */
-  transition: all 0.25s ease;
   cursor: pointer;
-  z-index: 3;
+  z-index: 4;
 }
 
 .rippedPaperEdgePath {
   preserveAspectRatio: none
   position: relative;
-  /* stroke: #5d5d60; */
-  /* stroke-width: 5; */
   fill: none;
   margin-top: -4px;
   margin-bottom: 0px;
-  /* display: block; */
   width:100%;
   height: 25px;
   transform: scaleY(1);
-  /* background: blue; */
-  /* outline: 1px pink solid; */
   transition: all 0.25s ease;
   cursor: pointer;
-  z-index: 3;
+  z-index: 5;
 }
 
 .pageBreak:hover .rippedPaperEdgePath {
-  stroke: #000000;
+  stroke: #2f2f2f;
   stroke-width: 2;
   fill: none;
   stroke-dasharray: 870;
   stroke-dashoffset: 870;
-  animation: dash 3s forwards linear;
-  z-index: 4;
+  animation: dash 1.5s forwards linear;
+  z-index: 6;
 }
 
 @keyframes dash {
@@ -200,75 +254,18 @@ div.rippedEdge {
 
 .active svg {
   fill: #ccc;
+  animation-name: none;
 }
 
-.fillGap {
-  position: absolute;
-  display: block;
-  background: white;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 25px;
-  animation: pulseFillGap 3s infinite;
-}
-
-@keyframes pulseFillGap {
-  0% {
-    background: #ffffff;
-  }
-  50% {
-    background: #ccc;
-  }
-  100% {
-    background: #ffffff;
-  }
-}
-
-/* .rippedPaperTop:hover {
-  fill: #ccc;
-}
-
-.rippedPaperBottom:hover {
-  fill: #ccc;
-} */
-
-/* .pageBreakOne .headerRippedBottom:hover ~ .educationRippedTop .rippedPaperTop {
-  fill: purple;
-}
-
-
-.pageBreakOne .educationRippedTop:hover .rippedPaperTop {
-  fill: purple;
-}
-
-.pageBreakOne .educationRippedTop:hover  */
-
-/* .educationRippedTop:hover ~ .headerRippedBottom > .rippedPaperBottom {
-  fill: purple;
-} */
-
-/* .headerRippedBottom:hover ~ .educationRippedTop:hover {
-  fill: #ccc;
-} */
-
-div.header {
+.header {
   width: 100%;
   position: relative;
-  background: white;
-  /* outline: 1px solid red; */
-  /* margin-bottom: 50px; */
+  background: #fdfdfd;
+  padding: 3.5em 3.5em 0em 3.5em;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
-/* .header:hover {
-  background-color: red;
-} */
-
-/* div.header:hover::after {
-  background-color: #ccc;
-} */
-
-div.hiddenHeader {
+.hiddenHeader {
   display: none;
   position: relative;
   background: orange;
@@ -280,50 +277,17 @@ div.hiddenHeader {
   transition: max-height 0.2s ease-out;
 }
 
-/* div.education::before {
-  content: "";
-  margin-bottom: 20px;
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 0%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  background-size: 100%;
-  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
-  outline: 1px solid green;
-  : 3;
-} */
-
-div.education {
+.education {
+  text-align: left;
   position: relative;
-  /* padding-top: 20px; */
   width: 100%;
-  background: white;
-  /* outline: 1px solid black; */
+  padding: 0em 3.5em 0em 3.5em;
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
 
 }
 
-/* div.education::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 80%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  transform: scaleY(-1);
-  background-size: 100%;
-  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
-  outline: 1px solid blue;
-  : 5;
-} */
-
-/* .education:hover {
-  background-color: green;
-} */
-
-div.hiddenEducation {
+.hiddenEducation {
   display: none;
   position: relative;
   background: orange;
@@ -335,57 +299,14 @@ div.hiddenEducation {
   transition: max-height 0.2s ease-out;
 }
 
-/* #rippedPaperTop {
+.higherEducation {
   position: relative;
-  width:100%;
-  fill: yellow;
-  : 100;
-  transform: scaleY(-1);
-  background: ;
-  outline: 1px white solid;
-} */
-
-/* #rippedPaperBottom {
-  position: relative;
-  width:100%;
-  fill: yellow;
-  : 100;
-  transform: scaleY(1);
-  background: ;
-} */
-
-div.higherEducation {
-  position: relative;
-  /* padding-top: 20px; */
   width: 100%;
-  background: white;
-  /* outline: 1px solid green; */
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
-/* div.higherEducation::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 80%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  transform: scaleY(-1);
-  background-size: 100%;
-  filter: brightness(0) sepia(1) hue-rotate(-70deg) saturate(5);
-  outline: 1px solid blue;
-  : 5;
-} */
-
-/* .higherEducation:hover {
-  background-color: red;
-} */
-
-/* .higherEducation:hover::before {
-  filter: grayscale(1) brightness(2);
-} */
-
-div.hiddenHigherEducation {
+.hiddenHigherEducation {
   display: none;
   position: relative;
   background: orange;
@@ -397,49 +318,14 @@ div.hiddenHigherEducation {
   transition: max-height 0.2s ease-out;
 }
 
-/* div.teaching::before {
-  content: "";
-  margin-bottom: 20px;
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 0%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  background-size: 100%;
-  filter: brightness(0);
-  outline: 1px solid green;
-  : 11;
-} */
-
-div.teaching {
+.teaching {
   position: relative;
-  /* padding-top: 20px; */
   width: 100%;
-  background: white;
-  /* outline: 1px solid black; */
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
-/* .teaching:hover {
-  background-color: red;
-} */
-
-/* div.teaching::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 80%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  transform: scaleY(-1);
-  background-size: 100%;
-  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
-  outline: 1px solid blue;
-  : 5;
-} */
-
-div.hiddenTeaching {
+.hiddenTeaching {
   display: none;
   position: relative;
   background: orange;
@@ -451,49 +337,14 @@ div.hiddenTeaching {
   transition: max-height 0.2s ease-out;
 }
 
-/* div.marketing::before {
-  content: "";
-  margin-bottom: 20px;
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 0%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  background-size: 100%;
-  filter: brightness(0);
-  outline: 1px solid green;
-  : 15;
-} */
-
-div.marketing {
+.marketing {
   position: relative;
-  /* padding-top: 20px; */
   width: 100%;
-  background: white;
-  /* outline: 1px solid black; */
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
-/* .marketing:hover {
-  background-color: red;
-} */
-
-/* div.marketing::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 80%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  transform: scaleY(-1);
-  background-size: 100%;
-  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
-  outline: 1px solid blue;
-  : 5;
-} */
-
-div.hiddenMarketing {
+.hiddenMarketing {
   display: none;
   position: relative;
   background: orange;
@@ -505,47 +356,15 @@ div.hiddenMarketing {
   transition: max-height 0.2s ease-out;
 }
 
-/* div.hobbies::before {
-  content: "";
-  margin-bottom: 20px;
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 0%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  background-size: 100%;
-  filter: brightness(0);
-  outline: 1px solid green;
-  : 19;
-} */
-
-div.hobbies {
+.hobbies {
   position: relative;
   padding-top: 20px;
   width: 100%;
-  background: white;
-  /* outline: 1px solid black; */
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
-/* .hobbies:hover {
-  background-color: red;
-} */
-
-/* div.hobbies::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 100%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  background-size: 100%;
-  outline: 1px solid blue;
-  : 21;
-} */
-
-div.hiddenHobbies {
+.hiddenHobbies {
   display: none;
   position: relative;
   background: orange;
@@ -557,41 +376,22 @@ div.hiddenHobbies {
   transition: max-height 0.2s ease-out;
 }
 
-/* div.footer::before {
-  content: "";
-  margin-bottom: 20px;
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  top: 0%;
-  left: 0;
-  background: url(ripped_paper.svg) bottom center;
-  background-size: 100%;
-  filter: brightness(0);
-  outline: 1px solid green;
-  : 11;
-} */
-
-div.footer {
+.footer {
   width: 100%;
   position: relative;
-  background: white;
-  /* outline: 1px solid red; */
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
-
-/* .footer:hover {
-  background-color: red;
-} */
 
 div.allScenes {
   display: flex;
   flex-direction: row;
   width: 100%;
-  /* padding-top: 50px; */
 }
 
+/*====================== SVG ADVENTURE ANIMATIONS ================*/
 
-/* ------------------------ SCENE ONE ANIMATIONS ------------------------- */
+/*====================== SCENE ONE ANIMATIONS ================*/
 
 g.sceneOne .bobbyBike .frontWheel {
   animation: DoRotate 1.5s infinite linear;
@@ -625,7 +425,7 @@ g.sceneOne .scenery2{
   }
 }
 
-/* ------------------------ SCENE TWO ANIMATIONS ------------------------- */
+/* ============== SCENE TWO ANIMATIONS ================== */
 
 g.sceneTwo .tubeInterior .tubeCarriage .tubeDoors .leftDoor {
   animation: closeLeftDoor 0.5s ease-out;
@@ -743,7 +543,7 @@ g.sceneTwo .tubeInterior .mouth {
   transform-origin: center center;
 }
 
-/*-------SCENE THREE ANIMATIONS-------*/
+/* ================== SCENE THREE ANIMATIONS =================== */
 .headLeftHidden {
   visibility: hidden;
 }
