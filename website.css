@@ -1,0 +1,757 @@
+/*---------MAIN CONTENT STYLING-----------*/
+/*RESOURCES THAT HELPED ME
+1. https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/
+2. https://stackoverflow.com/questions/4502633/how-to-affect-other-elements-when-a-div-is-hovered
+(top answer about selecting multiple elements with CSS)
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: auto;
+  text-align: center;
+  min-width: 100px;
+  max-width: 800px;
+  background: #000000;
+  padding: 20px;
+}
+
+hr {
+  width: 80%;
+  border: 1px solid #5d5d60;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pageBreak {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+}
+
+.pageBreak:hover .rippedPaperBottom, .pageBreak:hover .rippedPaperTop {
+  transition: all 0.25s ease;
+  fill: white;
+  animation-name: none;
+  /* animation-play-state: paused; */
+}
+
+.pageBreak:hover .fillGap {
+  animation-name: none;
+}
+
+div.rippedEdge {
+  position: relative;
+  background: transparent;
+  /* width: 100%; */
+  /* height: 20px; */
+  /* overflow: hidden; */
+  /* opacity: 0; */
+  z-index: 1;
+}
+
+.rippedBottomMargin {
+  margin-bottom: -22px;
+}
+
+.rippedPaperTop {
+  preserveAspectRatio: none
+  position: relative;
+  margin-top: 0px;
+  margin-bottom: -11px;
+  /* display: block; */
+  width: 100%;
+  height: 25px;
+  fill: #ffffff;
+  transform: scaleY(1);
+  /* background: blue; */
+  /* background-size: 100%; */
+  /* outline: 1px white solid; */
+  transition: all 0.25s ease;
+  cursor: pointer;
+  animation: pulseSVG 3s infinite;
+  z-index: -1;
+}
+
+.rippedPaperBottom {
+  preserveAspectRatio: none
+  position: relative;
+  margin-top: -7px;
+  margin-bottom: 0px;
+  top: 0;
+  left: 0;
+  /* display: block; */
+  width:100%;
+  height: 25px;
+  fill: #ffffff;
+  transform: scaleY(1);
+  /* background: blue; */
+  /* outline: 1px pink solid; */
+  transition: all 0.25s ease;
+  cursor: pointer;
+  animation: pulseSVG 3s infinite;
+  z-index: -2;
+}
+
+@keyframes pulseSVG {
+  0% {
+    fill: #ffffff;
+  }
+  50% {
+    fill: #ccc;
+  }
+  100% {
+    fill: #ffffff;
+  }
+}
+
+.open {
+  fill: #ccc;
+  /* animation-play-state: paused; */
+}
+
+.tearLine {
+  preserveAspectRatio: none
+  position: relative;
+  background: transparent;
+  margin-top: -25px;
+  margin-bottom: 0px;
+  top: 0px;
+  left: 0px;
+  /* display: block; */
+  width: 100%;
+  height: 25px;
+  transform: scaleY(1);
+  /* background: blue; */
+  /* outline: 1px pink solid; */
+  transition: all 0.25s ease;
+  cursor: pointer;
+  z-index: -2;
+}
+
+.hidden {
+  display: none;
+}
+
+.rippedPaperEdge {
+  preserveAspectRatio: none
+  position: relative;
+  /* stroke: #5d5d60;
+  stroke-width: 5; */
+  fill: none;
+  margin-top: -4px;
+  margin-bottom: 0px;
+  /* display: block; */
+  width:100%;
+  height: 25px;
+  transform: scaleY(1);
+  /* background: blue; */
+  /* outline: 1px pink solid; */
+  transition: all 0.25s ease;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.rippedPaperEdgePath {
+  preserveAspectRatio: none
+  position: relative;
+  /* stroke: #5d5d60; */
+  /* stroke-width: 5; */
+  fill: none;
+  margin-top: -4px;
+  margin-bottom: 0px;
+  /* display: block; */
+  width:100%;
+  height: 25px;
+  transform: scaleY(1);
+  /* background: blue; */
+  /* outline: 1px pink solid; */
+  transition: all 0.25s ease;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.pageBreak:hover .rippedPaperEdgePath {
+  stroke: #000000;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 870;
+  stroke-dashoffset: 870;
+  animation: dash 3s forwards linear;
+  z-index: 4;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 870;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.active svg {
+  fill: #ccc;
+}
+
+.fillGap {
+  position: absolute;
+  display: block;
+  background: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  animation: pulseFillGap 3s infinite;
+}
+
+@keyframes pulseFillGap {
+  0% {
+    background: #ffffff;
+  }
+  50% {
+    background: #ccc;
+  }
+  100% {
+    background: #ffffff;
+  }
+}
+
+/* .rippedPaperTop:hover {
+  fill: #ccc;
+}
+
+.rippedPaperBottom:hover {
+  fill: #ccc;
+} */
+
+/* .pageBreakOne .headerRippedBottom:hover ~ .educationRippedTop .rippedPaperTop {
+  fill: purple;
+}
+
+
+.pageBreakOne .educationRippedTop:hover .rippedPaperTop {
+  fill: purple;
+}
+
+.pageBreakOne .educationRippedTop:hover  */
+
+/* .educationRippedTop:hover ~ .headerRippedBottom > .rippedPaperBottom {
+  fill: purple;
+} */
+
+/* .headerRippedBottom:hover ~ .educationRippedTop:hover {
+  fill: #ccc;
+} */
+
+div.header {
+  width: 100%;
+  position: relative;
+  background: white;
+  /* outline: 1px solid red; */
+  /* margin-bottom: 50px; */
+}
+
+/* .header:hover {
+  background-color: red;
+} */
+
+/* div.header:hover::after {
+  background-color: #ccc;
+} */
+
+div.hiddenHeader {
+  display: none;
+  position: relative;
+  background: orange;
+  margin-top: 22px;
+  width: 100%;
+  outline: 1px solid yellow;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* div.education::before {
+  content: "";
+  margin-bottom: 20px;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 0%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  background-size: 100%;
+  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+  outline: 1px solid green;
+  : 3;
+} */
+
+div.education {
+  position: relative;
+  /* padding-top: 20px; */
+  width: 100%;
+  background: white;
+  /* outline: 1px solid black; */
+
+}
+
+/* div.education::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 80%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  transform: scaleY(-1);
+  background-size: 100%;
+  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+  outline: 1px solid blue;
+  : 5;
+} */
+
+/* .education:hover {
+  background-color: green;
+} */
+
+div.hiddenEducation {
+  display: none;
+  position: relative;
+  background: orange;
+  margin-top: 22px;
+  width: 100%;
+  outline: 1px solid yellow;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* #rippedPaperTop {
+  position: relative;
+  width:100%;
+  fill: yellow;
+  : 100;
+  transform: scaleY(-1);
+  background: ;
+  outline: 1px white solid;
+} */
+
+/* #rippedPaperBottom {
+  position: relative;
+  width:100%;
+  fill: yellow;
+  : 100;
+  transform: scaleY(1);
+  background: ;
+} */
+
+div.higherEducation {
+  position: relative;
+  /* padding-top: 20px; */
+  width: 100%;
+  background: white;
+  /* outline: 1px solid green; */
+}
+
+/* div.higherEducation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 80%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  transform: scaleY(-1);
+  background-size: 100%;
+  filter: brightness(0) sepia(1) hue-rotate(-70deg) saturate(5);
+  outline: 1px solid blue;
+  : 5;
+} */
+
+/* .higherEducation:hover {
+  background-color: red;
+} */
+
+/* .higherEducation:hover::before {
+  filter: grayscale(1) brightness(2);
+} */
+
+div.hiddenHigherEducation {
+  display: none;
+  position: relative;
+  background: orange;
+  margin-top: 22px;
+  width: 100%;
+  outline: 1px solid yellow;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* div.teaching::before {
+  content: "";
+  margin-bottom: 20px;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 0%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  background-size: 100%;
+  filter: brightness(0);
+  outline: 1px solid green;
+  : 11;
+} */
+
+div.teaching {
+  position: relative;
+  /* padding-top: 20px; */
+  width: 100%;
+  background: white;
+  /* outline: 1px solid black; */
+}
+
+/* .teaching:hover {
+  background-color: red;
+} */
+
+/* div.teaching::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 80%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  transform: scaleY(-1);
+  background-size: 100%;
+  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+  outline: 1px solid blue;
+  : 5;
+} */
+
+div.hiddenTeaching {
+  display: none;
+  position: relative;
+  background: orange;
+  margin-top: 22px;
+  width: 100%;
+  outline: 1px solid yellow;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* div.marketing::before {
+  content: "";
+  margin-bottom: 20px;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 0%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  background-size: 100%;
+  filter: brightness(0);
+  outline: 1px solid green;
+  : 15;
+} */
+
+div.marketing {
+  position: relative;
+  /* padding-top: 20px; */
+  width: 100%;
+  background: white;
+  /* outline: 1px solid black; */
+}
+
+/* .marketing:hover {
+  background-color: red;
+} */
+
+/* div.marketing::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 80%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  transform: scaleY(-1);
+  background-size: 100%;
+  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+  outline: 1px solid blue;
+  : 5;
+} */
+
+div.hiddenMarketing {
+  display: none;
+  position: relative;
+  background: orange;
+  margin-top: 22px;
+  width: 100%;
+  outline: 1px solid yellow;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* div.hobbies::before {
+  content: "";
+  margin-bottom: 20px;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 0%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  background-size: 100%;
+  filter: brightness(0);
+  outline: 1px solid green;
+  : 19;
+} */
+
+div.hobbies {
+  position: relative;
+  padding-top: 20px;
+  width: 100%;
+  background: white;
+  /* outline: 1px solid black; */
+}
+
+/* .hobbies:hover {
+  background-color: red;
+} */
+
+/* div.hobbies::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 100%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  background-size: 100%;
+  outline: 1px solid blue;
+  : 21;
+} */
+
+div.hiddenHobbies {
+  display: none;
+  position: relative;
+  background: orange;
+  margin-top: 22px;
+  width: 100%;
+  outline: 1px solid yellow;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* div.footer::before {
+  content: "";
+  margin-bottom: 20px;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 0%;
+  left: 0;
+  background: url(ripped_paper.svg) bottom center;
+  background-size: 100%;
+  filter: brightness(0);
+  outline: 1px solid green;
+  : 11;
+} */
+
+div.footer {
+  width: 100%;
+  position: relative;
+  background: white;
+  /* outline: 1px solid red; */
+}
+
+/* .footer:hover {
+  background-color: red;
+} */
+
+div.allScenes {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* padding-top: 50px; */
+}
+
+
+/* ------------------------ SCENE ONE ANIMATIONS ------------------------- */
+
+g.sceneOne .bobbyBike .frontWheel {
+  animation: DoRotate 1.5s infinite linear;
+  transform-origin: 55.05% 86.45%;
+  /* background: red; */
+}
+
+g.sceneOne .bobbyBike .backWheel {
+  animation: DoRotate 1s infinite linear;
+  transform-origin: 40.09% 86.45%;
+}
+
+@keyframes DoRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+g.sceneOne .scenery{
+  animation: moveSceneOneBackground 2s linear infinite;
+}
+
+g.sceneOne .scenery2{
+  animation: moveSceneOneBackground 2s linear infinite;
+  /* animation-delay: 2s; */
+}
+
+@keyframes moveSceneOneBackground {
+  to {
+    transform: translateX(-589px);
+  }
+}
+
+/* ------------------------ SCENE TWO ANIMATIONS ------------------------- */
+
+g.sceneTwo .tubeInterior .tubeCarriage .tubeDoors .leftDoor {
+  animation: closeLeftDoor 0.5s ease-out;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+g.sceneTwo .tubeInterior .tubeCarriage .tubeDoors .rightDoor {
+  animation: closeRightDoor 0.5s ease-out;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes closeLeftDoor {
+  to {
+    transform: translateX(85px);
+  }
+
+}
+
+@keyframes closeRightDoor {
+  to {
+    transform: translateX(-85px);
+  }
+}
+
+g.sceneTwo .tubeExterior {
+  animation: moveTubeStation 8s cubic-bezier(0.5,0.00,1,0.5);
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveTubeStation {
+  to {
+    transform: translateX(-3000px);
+  }
+}
+
+g.sceneTwo .tunnelWallOne {
+  animation: moveTubeTunnel 4.8s linear infinite;
+  /* animation-delay: 4s; */
+}
+
+g.sceneTwo .tunnelWallTwo {
+  animation: moveTubeTunnel 4.8s linear infinite;
+  animation-delay: 2.4s;
+}
+
+@keyframes moveTubeTunnel {
+  to {
+    transform: translateX(-1190.558px);
+  }
+}
+
+@keyframes hideSnoring {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+
+  90% {
+    transform: scale(1.0);
+    transform: translateX(50px);
+  }
+
+  100% {
+    transform: scale(1.0);
+    opacity: 0;
+
+  }
+}
+
+g.sceneTwo .snoring .z1 {
+  animation: hideSnoring 3s ease infinite;
+}
+
+g.sceneTwo .snoring .z2 {
+  animation: hideSnoring 3s ease infinite;
+  animation-delay: 0.1s;
+}
+
+g.sceneTwo .snoring .z3 {
+  animation: hideSnoring 3s ease infinite;
+  animation-delay: 0.2s;
+}
+
+g.sceneTwo .snoring .z4 {
+  animation: hideSnoring 3s ease infinite;
+  animation-delay: 0.3s;
+}
+
+g.sceneTwo .snoring .z5 {
+  animation: hideSnoring 3s ease infinite;
+  animation-delay: 0.4s;
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+  transform: scale(1.1);
+}
+100% {
+  transform: scale(0.9);
+}
+}
+
+g.sceneTwo .tubeInterior .mouth {
+  animation: breathing 3s ease infinite;
+  transform-origin: center center;
+}
+
+/*-------SCENE THREE ANIMATIONS-------*/
+.headLeftHidden {
+  visibility: hidden;
+}
+
+.headRightHidden {
+  visibility: hidden;
+}
+
+.headTurnedHidden {
+  visibility: hidden;
+}

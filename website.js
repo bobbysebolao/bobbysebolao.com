@@ -1,5 +1,172 @@
 // alert("Hello")
 
+//ACCORDION FUNCTIONALITY
+
+// RESOURCES THAT HELPED ME
+// 1. https://www.w3schools.com/howto/howto_js_accordion.asp
+
+let accOne = document.getElementsByClassName("accordionOne");
+let accTwo = document.getElementsByClassName("accordionTwo");
+let accThree = document.getElementsByClassName("accordionThree");
+let accFour = document.getElementsByClassName("accordionFour");
+let accFive = document.getElementsByClassName("accordionFive");
+let accSix = document.getElementsByClassName("accordionSix");
+
+let rippedPaperBottom = document.getElementsByClassName("rippedPaperBottom");
+
+let rippedPaperTop = document.getElementsByClassName("rippedPaperTop");
+
+let tearLine = document.getElementsByClassName("tearLine");
+
+let fillGap = document.getElementsByClassName("fillGap");
+
+for (let i = 0; i < accOne.length; i++) {
+
+    accOne[i].addEventListener("click", function() {
+        accOne[0].classList.toggle("active");
+        accOne[1].classList.toggle("active");
+        rippedPaperBottom[0].classList.toggle("open");
+        rippedPaperTop[0].classList.toggle("open");
+        tearLine[0].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenHeader");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            fillGap[0].style.display = "block";
+        } else {
+            panel.style.display = "block";
+            fillGap[0].style.display = "none";
+        }
+        if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+}
+
+for (let i = 0; i < accTwo.length; i++) {
+
+    accTwo[i].addEventListener("click", function() {
+      accTwo[0].classList.toggle("active");
+      accTwo[1].classList.toggle("active");
+      rippedPaperBottom[1].classList.toggle("open");
+      rippedPaperTop[1].classList.toggle("open");
+      tearLine[1].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenEducation");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            fillGap[1].style.display = "block";
+        } else {
+            panel.style.display = "block";
+            fillGap[1].style.display = "none";
+        }
+        if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+}
+
+for (let i = 0; i < accThree.length; i++) {
+
+    accThree[i].addEventListener("click", function() {
+      accThree[0].classList.toggle("active");
+      accThree[1].classList.toggle("active");
+      rippedPaperBottom[2].classList.toggle("open");
+      rippedPaperTop[2].classList.toggle("open");
+      tearLine[2].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenHigherEducation");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            fillGap[2].style.display = "block";
+        } else {
+            panel.style.display = "block";
+            fillGap[2].style.display = "none";
+        }
+        if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+}
+
+for (let i = 0; i < accFour.length; i++) {
+
+    accFour[i].addEventListener("click", function() {
+      accFour[0].classList.toggle("active");
+      accFour[1].classList.toggle("active");
+      rippedPaperBottom[3].classList.toggle("open");
+      rippedPaperTop[3].classList.toggle("open");
+      tearLine[3].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenTeaching");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            fillGap[3].style.display = "block";
+        } else {
+            panel.style.display = "block";
+            fillGap[3].style.display = "none";
+        }
+        if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+}
+
+for (let i = 0; i < accFive.length; i++) {
+
+    accFive[i].addEventListener("click", function() {
+      accFive[0].classList.toggle("active");
+      accFive[1].classList.toggle("active");
+      rippedPaperBottom[4].classList.toggle("open");
+      rippedPaperTop[4].classList.toggle("open");
+      tearLine[4].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenMarketing");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            fillGap[4].style.display = "block";
+        } else {
+            panel.style.display = "block";
+            fillGap[4].style.display = "none";
+        }
+        if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+}
+
+for (let i = 0; i < accSix.length; i++) {
+
+    accSix[i].addEventListener("click", function() {
+      accSix[0].classList.toggle("active");
+      accSix[1].classList.toggle("active");
+      rippedPaperBottom[5].classList.toggle("open");
+      rippedPaperTop[5].classList.toggle("open");
+      tearLine[5].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenHobbies");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            fillGap[5].style.display = "block";
+        } else {
+            panel.style.display = "block";
+            fillGap[5].style.display = "none";
+        }
+        if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+}
+
+
+//SCENE THREE JS ANIMATIONS
+
 let headLeft = document.querySelector('.headLeft');
 
 let headRight = document.querySelector('.headRight');
