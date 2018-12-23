@@ -79,6 +79,14 @@ hr {
   border: 1px solid #5d5d60;
 }
 
+span.italic {
+  font-style: italic;
+}
+
+li {
+  line-height: 1.5em;
+}
+
 /* =======================MAIN CONTENT STYLING======================= */
 
 .page {
@@ -92,13 +100,45 @@ hr {
   position: relative;
   width: 100%;
   z-index: 0;
+  text-align: center;
+}
+
+.instruction {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.7em;
+  font-weight: 800;
+  color: #2f2f2f;
+  position: absolute;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+  z-index: 5;
+  pointer-events: none;
+  animation: pulseInstruction 3s infinite;
+}
+
+@keyframes pulseInstruction {
+  0% {
+    color: #fdfdfd;
+  }
+  50% {
+    color: #2f2f2f;
+  }
+  100% {
+    color: #fdfdfd;
+  }
+}
+
+.pageBreak:hover .instruction {
+  animation-name: none;
+  display: none;
 }
 
 .rippedEdge {
   position: relative;
   background: transparent;
   /*===THIS Z-INDEX IS IMPORTANT===*/
-  z-index: 1;
+  z-index: 2;
 }
 
 .rippedBottomMargin {
@@ -117,7 +157,7 @@ hr {
   transition: all 0.25s ease;
   cursor: pointer;
   animation: pulseSVG 3s infinite;
-  z-index: 3;
+  z-index: 4;
 }
 
 .rippedPaperBottom {
@@ -134,7 +174,7 @@ hr {
   transition: all 0.25s ease;
   cursor: pointer;
   animation: pulseSVG 3s infinite;
-  z-index: 2;
+  z-index: 3;
 }
 
 @keyframes pulseSVG {
@@ -279,6 +319,7 @@ hr {
 
 .education {
   text-align: left;
+  line-height: 0.5em;
   position: relative;
   width: 100%;
   padding: 0em 3.5em 0em 3.5em;

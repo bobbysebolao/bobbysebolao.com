@@ -13,12 +13,10 @@ let accFive = document.getElementsByClassName("accordionFive");
 let accSix = document.getElementsByClassName("accordionSix");
 
 let rippedPaperBottom = document.getElementsByClassName("rippedPaperBottom");
-
 let rippedPaperTop = document.getElementsByClassName("rippedPaperTop");
-
 let tearLine = document.getElementsByClassName("tearLine");
-
 let fillGap = document.getElementsByClassName("fillGap");
+let instruction = document.getElementsByClassName("instruction");
 
 for (let i = 0; i < accOne.length; i++) {
 
@@ -32,9 +30,13 @@ for (let i = 0; i < accOne.length; i++) {
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[0].style.display = "block";
+            instruction[0].style.display = "block";
+            // instruction[0].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[0].style.display = "none";
+            instruction[0].style.display = "none";
+            // instruction[0].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
@@ -56,9 +58,13 @@ for (let i = 0; i < accTwo.length; i++) {
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[1].style.display = "block";
+            instruction[1].style.display = "block";
+            // instruction[1].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[1].style.display = "none";
+            instruction[1].style.display = "none";
+            // instruction[1].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -80,9 +86,13 @@ for (let i = 0; i < accThree.length; i++) {
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[2].style.display = "block";
+            instruction[2].style.display = "block";
+            // instruction[2].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[2].style.display = "none";
+            instruction[2].style.display = "none";
+            // instruction[2].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -104,9 +114,13 @@ for (let i = 0; i < accFour.length; i++) {
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[3].style.display = "block";
+            instruction[3].style.display = "block";
+            // instruction[3].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[3].style.display = "none";
+            instruction[3].style.display = "none";
+            // instruction[3].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -128,9 +142,13 @@ for (let i = 0; i < accFive.length; i++) {
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[4].style.display = "block";
+            instruction[4].style.display = "block";
+            // instruction[4].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[4].style.display = "none";
+            instruction[4].style.display = "none";
+            // instruction[4].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -152,9 +170,13 @@ for (let i = 0; i < accSix.length; i++) {
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[5].style.display = "block";
+            instruction[5].style.display = "block";
+            // instruction[5].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[5].style.display = "none";
+            instruction[5].style.display = "none";
+            // instruction[5].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
