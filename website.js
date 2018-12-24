@@ -17,6 +17,7 @@ let rippedPaperTop = document.getElementsByClassName("rippedPaperTop");
 let tearLine = document.getElementsByClassName("tearLine");
 let fillGap = document.getElementsByClassName("fillGap");
 let instruction = document.getElementsByClassName("instruction");
+let mobileInstruction = document.getElementsByClassName("mobileInstruction");
 
 for (let i = 0; i < accOne.length; i++) {
 
@@ -82,7 +83,7 @@ for (let i = 0; i < accThree.length; i++) {
       rippedPaperBottom[2].classList.toggle("open");
       rippedPaperTop[2].classList.toggle("open");
       tearLine[2].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenHigherEducation");
+        let panel = document.querySelector(".hiddenExperience");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[2].style.display = "block";
@@ -184,6 +185,17 @@ for (let i = 0; i < accSix.length; i++) {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
     });
+}
+
+//MOBILE RESPONSIVE CHANGES//
+
+if (navigator.userAgent.match(/Mobile/)) {
+mobileInstruction[0].innerHTML = "TAP";
+mobileInstruction[1].innerHTML = "TAP";
+mobileInstruction[2].innerHTML = "TAP";
+mobileInstruction[3].innerHTML = "TAP";
+mobileInstruction[4].innerHTML = "TAP";
+mobileInstruction[5].innerHTML = "TAP";
 }
 
 

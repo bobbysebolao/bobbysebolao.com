@@ -6,6 +6,8 @@
 /* 3. https://www.sitepoint.com/set-css-margins-padding-cool-layout-tricks/
 (explains how to set the 'box-sizing' attr so that padding is included in the
 width of an element) */
+/* 4. https://stackoverflow.com/questions/9576924/keep-background-image-centered-when-resizing-browser-window
+(how to keep background image centered while resizing browser window)
 
 /* ======================= TOP LEVEL STYLING======================= */
 
@@ -41,12 +43,19 @@ body {
   min-width: 100px;
   max-width: 800px;
   /* 4. */
-  background: #2f2f2f;
+  /* background: #2f2f2f; */
+  /* background: rgb(34,193,195);
+  background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+  background: url(desk_background.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  /* background-size: cover; */
   padding: 20px;
 }
 
 p {
-  margin-bottom: 1.3em;
+  margin-bottom: 1em;
 }
 
 h1, h2, h3, h4 {
@@ -83,8 +92,13 @@ span.italic {
   font-style: italic;
 }
 
+ul {
+  margin-top: 0em;
+  margin-bottom: 1.3em;
+}
+
 li {
-  line-height: 1.5em;
+  line-height: normal;
 }
 
 /* =======================MAIN CONTENT STYLING======================= */
@@ -131,7 +145,8 @@ li {
 
 .pageBreak:hover .instruction {
   animation-name: none;
-  display: none;
+  /* display: none; */
+  visibility: hidden;
 }
 
 .rippedEdge {
@@ -202,7 +217,7 @@ li {
   top: 0;
   left: 0;
   width: 100%;
-  height: 25px;
+  height: 55px;
   box-shadow: 5px 10px 10px 0px #000000;
   animation: pulseFillGap 3s infinite;
 }
@@ -301,7 +316,7 @@ li {
   width: 100%;
   position: relative;
   background: #fdfdfd;
-  padding: 3.5em 3.5em 0em 3.5em;
+  padding: 5em 5em 0em 5em;
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
@@ -322,7 +337,7 @@ li {
   line-height: 0.5em;
   position: relative;
   width: 100%;
-  padding: 0em 3.5em 0em 3.5em;
+  padding: 0em 5em 0em 5em;
   background: #fdfdfd;
   box-shadow: 5px 10px 10px 0px #000000;
 
@@ -331,29 +346,34 @@ li {
 .hiddenEducation {
   display: none;
   position: relative;
-  background: orange;
+  /* background: orange; */
+  /* background: rgb(34,193,195);
+  background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
   margin-top: 22px;
   width: 100%;
-  outline: 1px solid yellow;
   max-height: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: max-height 0.2s ease-out;
 }
 
-.higherEducation {
+.experience {
+  text-align: left;
+  line-height: 0.5em;
   position: relative;
   width: 100%;
+  padding: 0em 5em 0em 5em;
   background: #fdfdfd;
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
-.hiddenHigherEducation {
+.hiddenExperience {
   display: none;
   position: relative;
-  background: orange;
+  /* background: orange; */
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   margin-top: 22px;
   width: 100%;
-  outline: 1px solid yellow;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
@@ -424,14 +444,97 @@ li {
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
-div.allScenes {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
+/*=====================MOBILE-SPECIFIC STYLINGS====================*/
+
+
+/* @media only screen and (max-device-width: 480px) {
+
+} */
 
 /*====================== SVG ADVENTURE ANIMATIONS ================*/
 
+.storyContent {
+  display: flex;
+  flex-direction: row;
+}
+
+#sceneOne {
+  preserveAspectRatio: xMidYMid meet
+  max-width: 390px;
+  max-height: 285px;
+  /* width: 297.640px;
+  height: 223.289px; */
+}
+
+.panelOne {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  outline-color: 1px solid red;
+  order: 1;
+}
+
+.storyOne {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  padding: 0px 20px 0px 20px;
+  /* outline: 8px solid red; */
+  background: url(green_postit.svg);
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: top center;
+  background-size: cover;
+  order: 2;
+  margin-left: -10px;
+  transform: rotate(-2deg);
+  /* preserveAspectRatio: none */
+}
+
+#sceneTwo {
+  preserveAspectRatio: xMidYMid meet
+  max-width: 390px;
+  max-height: 285px;
+  /* width: 297.640px;
+  height: 223.289px; */
+}
+
+.panelTwo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  outline-color: 1px solid red;
+  order: 2;
+}
+
+.storyTwo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  padding: 0px 20px 0px 20px;
+  /* outline: 8px solid red; */
+  order: 1;
+}
+
+#sceneThree {
+  preserveAspectRatio: xMidYMid meet
+  max-width: 390px;
+  max-height: 285px;
+  /* width: 297.640px;
+  height: 223.289px; */
+}
+
+#sceneFour {
+  preserveAspectRatio: xMidYMid meet
+  max-width: 390px;
+  max-height: 285px;
+  /* width: 297.640px;
+  height: 223.289px; */
+}
 /*====================== SCENE ONE ANIMATIONS ================*/
 
 g.sceneOne .bobbyBike .frontWheel {
@@ -585,6 +688,7 @@ g.sceneTwo .tubeInterior .mouth {
 }
 
 /* ================== SCENE THREE ANIMATIONS =================== */
+
 .headLeftHidden {
   visibility: hidden;
 }
