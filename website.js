@@ -111,7 +111,7 @@ for (let i = 0; i < accFour.length; i++) {
       rippedPaperBottom[3].classList.toggle("open");
       rippedPaperTop[3].classList.toggle("open");
       tearLine[3].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenTeaching");
+        let panel = document.querySelector(".hiddenSkills");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[3].style.display = "block";
@@ -139,7 +139,7 @@ for (let i = 0; i < accFive.length; i++) {
       rippedPaperBottom[4].classList.toggle("open");
       rippedPaperTop[4].classList.toggle("open");
       tearLine[4].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenMarketing");
+        let panel = document.querySelector(".hiddenInterests");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[4].style.display = "block";
@@ -167,7 +167,7 @@ for (let i = 0; i < accSix.length; i++) {
       rippedPaperBottom[5].classList.toggle("open");
       rippedPaperTop[5].classList.toggle("open");
       tearLine[5].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenHobbies");
+        let panel = document.querySelector(".hiddenContact");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[5].style.display = "block";
