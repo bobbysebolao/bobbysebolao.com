@@ -434,12 +434,17 @@ li {
 
 .hiddenInterests {
   display: none;
-  position: relative;
-  background: orange;
-  margin-top: 22px;
-  width: 100%;
-  outline: 1px solid yellow;
+  /* position: relative; */
+  /* background: orange; */
+  /* background: url(paper_snippet.svg);
+  background-repeat: no-repeat;
+  preserveAspectRatio: none
+  background-size: cover;
+  background-position: top left; */
+  margin-top: 30px;
+  /* width: 100%; */
   max-height: 0;
+  /* outline: 8px solid red; */
   /* overflow: hidden; */
   transition: max-height 0.2s ease-out;
 }
@@ -491,7 +496,7 @@ li {
   align-items: center;
   /* margin-bottom: 50px; */
   margin-top: 20px;
-  height; 100%;
+  height: 100%;
   /* margin-bottom: 20px; */
   z-index: 2;
 }
@@ -862,4 +867,247 @@ g.sceneTwo .tubeInterior .mouth {
 
 .headTurnedHidden {
   visibility: hidden;
+}
+
+/*============== IMAGE CAROUSEL ===============*/
+.image-carousel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 750px;
+}
+
+#carousel-container {
+/*   perspective: 1000px; */
+  /* border: 2px solid red; */
+  position: relative;
+  width: 100%;
+  /* top: 50%;
+  left: 100px; */
+  /* height: 400px; */
+  /* width: 80%; */
+  /* padding-top: 150px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+/*   padding: 5px; */
+  }
+
+#carouselImages {
+/*   transform: rotateY(-50deg); */
+  /* border: 2px solid yellow; */
+  /* height: 400px; */
+  width: 100%;
+  /* order:2; */
+  /* flex-grow: 1; */
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  /*   margin: 5px; */
+  }
+
+.position1 {
+  position: relative;
+  order: 1;
+}
+
+.position2 {
+  position: relative;
+  order: 2;
+}
+
+.position3 {
+  position: relative;
+  order: 3;
+}
+
+.positionMinus1 {
+  position: relative;
+  order: -1;
+}
+
+.positionMinus1Offset {
+  position: relative;
+  left: -750px;
+  order: -1;
+}
+
+.position1Offset {
+  position: relative;
+  left: -750px;
+  order: 1;
+}
+
+.position1DoubleOffset {
+  position: relative;
+  left: -1500px;
+  order: 1;
+}
+
+.animate {
+  animation: moveImageLeft1 0.5s linear;
+  animation-fill-mode: forwards;
+}
+
+.animate2 {
+  animation: moveImageLeft2 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+
+.animate3 {
+  animation: moveImageLeft3 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveImageLeft1 {
+  to {
+    transform: translateX(-750px);
+  }
+}
+
+@keyframes moveImageLeft2 {
+  to {
+    transform: translateX(-750px);
+  }
+}
+
+@keyframes moveImageLeft3 {
+  to {
+    transform: translateX(-750px);
+  }
+}
+
+.animateRight {
+  animation: moveImageRight1 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+
+.animateRight2 {
+  animation: moveImageRight2 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+
+.animateRight3 {
+  animation: moveImageRight3 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveImageRight1 {
+  to {
+    transform: translateX(750px);
+  }
+}
+
+@keyframes moveImageRight2 {
+  to {
+    transform: translateX(750px);
+  }
+}
+
+@keyframes moveImageRight3 {
+  to {
+    transform: translateX(750px);
+  }
+}
+
+/*CAROUSEL 'SKIP TO' BUTTONS*/
+
+#carouselButtons {
+  /* border: 2px solid pink; */
+  /* height: 20px;
+  width: 750px; */
+  /* width: 80%; */
+  /* margin-top: 5px; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  }
+
+#arrL-carousel {
+  width: 40%;
+  order: 1;
+  /* flex-shrink: 1;
+  flex-grow: 9; */
+  }
+
+#shuffleButtons {
+  width: 20%;
+  order: 2;
+  /* flex-shrink: 9;
+  flex-grow: 1; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fdfdfd;
+  opacity: 0.8;
+  transition: all 0.25s ease;
+}
+
+#shuffleButtons:hover {
+  opacity: 1;
+}
+
+#shuffleButtons.active {
+  opacity: 1;
+}
+
+#arrR-carousel {
+  width: 40%;
+  order: 3;
+  /* flex-shrink: 1;
+  flex-grow: 9; */
+  }
+
+  #leftButton, #rightButton {
+    background-color: #fdfdfd;
+    font-size: 2em;
+    color: #2f2f2f;
+    width: 100%;
+    height: 3em;
+    opacity: 0.5;
+    border: none;
+    transition: all 0.25s ease;
+  }
+
+  #leftButton:hover, #rightButton:hover {
+    background-color: #2f2f2f;
+    color: white;
+    cursor: pointer;
+  }
+
+  #leftButton:focus, #rightButton:focus {
+    outline:0;
+  }
+
+  #autoplay
+{
+    display: none;
+}
+
+#autoplay + label {
+    width: 100%;
+    height: 100%;
+    background: url(play.svg);
+    background-repeat: no-repeat;
+    background-attachment: cover;
+    background-position: center center;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#autoplay:checked + label {
+    width: 100%;
+    height: 100%;
+    background: url(pause.svg);
+    background-repeat: no-repeat;
+    background-attachment: cover;
+    background-position: center center;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.active #autoplay {
+  opacity: 1;
 }
