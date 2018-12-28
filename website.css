@@ -10,6 +10,19 @@ width of an element) */
 (how to keep background image centered while resizing browser window)
 
 /* ======================= TOP LEVEL STYLING======================= */
+@font-face {
+  font-family: 'unifont';
+  src: url('unifont.ttf') format('truetype');
+}
+
+.unifont {
+  position: absolute;
+  width: 100%;
+  font-family: 'unifont', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+}
+
 
 /* 1. Set font. */
 /* 2. Make 'Return to top' scrolling smooth */
@@ -449,7 +462,7 @@ li {
   transition: max-height 0.2s ease-out;
 }
 
-.contact {
+.whyFAC {
   position: relative;
   text-align: left;
   line-height: 0.5em;
@@ -460,13 +473,14 @@ li {
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
-.hiddenContact {
+.hiddenWhyFAC {
   display: none;
   position: relative;
-  background: orange;
+  /* background: orange; */
   margin-top: 22px;
   width: 100%;
-  outline: 1px solid yellow;
+  height: 300px;
+  /* outline: 1px solid yellow; */
   max-height: 0;
   /* overflow: hidden; */
   transition: max-height 0.2s ease-out;
@@ -665,7 +679,7 @@ li {
 
 #sceneFour {
   preserveAspectRatio: xMidYMid meet
-  max-width: 390px;
+  max-width: 380px;
   max-height: 285px;
   border-top: 25px solid white;
   border-left: 15px solid white;
@@ -875,21 +889,23 @@ g.sceneTwo .tubeInterior .mouth {
   flex-direction: column;
   width: 100%;
   max-width: 750px;
+  height: auto;
 }
 
 #carousel-container {
 /*   perspective: 1000px; */
   /* border: 2px solid red; */
-  position: relative;
+  /* position: relative; */
   width: 100%;
+  /* height: auto; */
   /* top: 50%;
   left: 100px; */
   /* height: 400px; */
   /* width: 80%; */
   /* padding-top: 150px; */
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center; */
 /*   padding: 5px; */
   }
 
@@ -898,12 +914,22 @@ g.sceneTwo .tubeInterior .mouth {
   /* border: 2px solid yellow; */
   /* height: 400px; */
   width: 100%;
+  /* height: auto; */
   /* order:2; */
   /* flex-grow: 1; */
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  /* justify-content: space-between; */
   overflow: hidden;
   /*   margin: 5px; */
+  }
+
+  .img1, .img2, .img3 {
+    object-fit: contain;
+    object-position: center center;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 100%;
   }
 
 .position1 {
@@ -928,19 +954,19 @@ g.sceneTwo .tubeInterior .mouth {
 
 .positionMinus1Offset {
   position: relative;
-  left: -750px;
+  left: -100%;
   order: -1;
 }
 
 .position1Offset {
   position: relative;
-  left: -750px;
+  left: -100%;
   order: 1;
 }
 
 .position1DoubleOffset {
   position: relative;
-  left: -1500px;
+  left: -200%;
   order: 1;
 }
 
@@ -961,19 +987,19 @@ g.sceneTwo .tubeInterior .mouth {
 
 @keyframes moveImageLeft1 {
   to {
-    transform: translateX(-750px);
+    transform: translateX(-100%);
   }
 }
 
 @keyframes moveImageLeft2 {
   to {
-    transform: translateX(-750px);
+    transform: translateX(-100%);
   }
 }
 
 @keyframes moveImageLeft3 {
   to {
-    transform: translateX(-750px);
+    transform: translateX(-100%);
   }
 }
 
@@ -994,19 +1020,19 @@ g.sceneTwo .tubeInterior .mouth {
 
 @keyframes moveImageRight1 {
   to {
-    transform: translateX(750px);
+    transform: translateX(100%);
   }
 }
 
 @keyframes moveImageRight2 {
   to {
-    transform: translateX(750px);
+    transform: translateX(100%);
   }
 }
 
 @keyframes moveImageRight3 {
   to {
-    transform: translateX(750px);
+    transform: translateX(100%);
   }
 }
 
@@ -1111,3 +1137,38 @@ g.sceneTwo .tubeInterior .mouth {
 .active #autoplay {
   opacity: 1;
 }
+
+/*============== THOUGHT CAROUSEL (SCENE FOUR) ===============*/
+
+.thought-carousel {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  display: flex;
+  flex-direction: column;
+  max-width: 14%;
+  max-height: 14%;
+}
+
+#thought-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  }
+
+  #thoughtImages {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+    }
+
+    .thought1, .thought2, .thought3 {
+      object-fit: contain;
+      object-position: center center;
+      background-color: rgba(255, 255, 255, 0.3);
+      width: 100%;
+    }

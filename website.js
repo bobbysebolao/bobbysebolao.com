@@ -167,7 +167,7 @@ for (let i = 0; i < accSix.length; i++) {
       rippedPaperBottom[5].classList.toggle("open");
       rippedPaperTop[5].classList.toggle("open");
       tearLine[5].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenContact");
+        let panel = document.querySelector(".hiddenWhyFAC");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[5].style.display = "block";
@@ -246,6 +246,7 @@ headTurnedShow();
 setInterval(headTurnedShow, 3000);
 
 // IMAGE CAROUSEL ANIMATIONS
+//Helpful resource: https://css-tricks.com/on-object-fit-and-object-position/
 
 //PART 1: DEFINING VARIABLES FOR DOM MANIPULATION
 
@@ -377,4 +378,57 @@ function toggleSlideshow() {
 
 autoplay.addEventListener("click", function() {toggleSlideshow();})
 
-//PART 5: MOBILE RESPONSIVENESS CHECKS
+//PART 5: MINI CAROUSEL FOR SCENE FOUR
+
+let count2 = 0;
+
+let thought1 = document.querySelector(".thought1");
+let thought2 = document.querySelector(".thought2");
+let thought3 = document.querySelector(".thought3");
+
+function playThoughts() {
+
+  if (count2 == 0) {
+
+  thought1.classList.remove("position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3");
+  thought1.classList.add("animate", "position1");
+  thought2.classList.remove("position1", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3");
+  thought2.classList.add("animate", "position2");
+  thought3.classList.remove("position1", "position2", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3");
+  thought3.classList.add("animate", "position3");
+  count2 = 1;
+  }
+
+  else if (count2 == 1 || count2 == -2) {
+
+  thought1.classList.remove("position1", "position2", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3");
+  thought1.classList.add("animate2", "position3");
+  thought2.classList.remove("position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3");
+  thought2.classList.add("animate2", "position1");
+  thought3.classList.remove("position1", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3");
+  thought3.classList.add("animate2", "position2");
+  count2 = 2;
+  }
+
+  else if (count2 == 2 || count2 == -1) {
+
+  thought1.classList.remove("position1", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3");
+  thought1.classList.add("animate3", "position2");
+  thought2.classList.remove("position1", "position2", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3");
+  thought2.classList.add("animate3", "position3");
+  thought3.classList.remove("position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3");
+  thought3.classList.add("animate3", "position1");
+  count2 = 0;
+  }
+
+}
+
+let hiddenExperience = document.querySelector(".hiddenExperience");
+
+function startThoughtshow() {
+  nIntervID = window.setInterval(playThoughts, 3000);
+}
+
+if (hiddenExperience.style.display != "none") {
+    startThoughtshow();
+  }
