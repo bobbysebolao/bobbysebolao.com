@@ -1232,10 +1232,11 @@ g.sceneTwo .tubeInterior .mouth {
     body {
       margin: auto;
       text-align: center;
-      background: url(desk_background.svg);
+      background: #c18e67;
+      /* background: url(desk_background.svg);
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-position: center center;
+      background-position: center center; */
       padding: 0px;
     }
 
