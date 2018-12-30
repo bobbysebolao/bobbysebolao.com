@@ -23,7 +23,7 @@ width of an element) */
   line-height: 1em;
   text-align: center;
   font-family: 'unifont', sans-serif;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 400;
 }
 
@@ -505,12 +505,12 @@ li {
 }
 
 .calculator {
-  width: 100%;
+  max-width: 100%;
   height: 500px;
   background: url(calculator.svg);
   background-repeat: no-repeat;
   background-attachment: cover;
-  background-position: center center;
+  background-position: top center;
 }
 
 .hiddenWhyCoding {
@@ -581,14 +581,22 @@ li {
   flex-wrap: wrap;
 }
 
+.socialIcons a {
+  width: calc(20% - 1em);
+  height: 45px;
+  margin-right: 1em;
+}
+
 .githubIcon, .twitterIcon, .linkedinIcon, .freecodecampIcon {
   fill: #111;
   opacity: 0.5;
   transition: all 0.25s ease;
   cursor: pointer;
   margin-right: 1em;
-  width: calc(20% - 1em);
-  height: 45px;
+  width: 100%;
+  height: 100%;
+  /* width: calc(20% - 1em);
+  height: 45px; */
 }
 
 .codewarsIcon {
@@ -596,8 +604,8 @@ li {
   opacity: 0.5;
   transition: all 0.25s ease;
   cursor: pointer;
-  width: calc(20% - 1em);
-  height: 45px;
+  width: 100%;
+  height: 100%;
 }
 
 .githubIcon:hover, .twitterIcon:hover, .linkedinIcon:hover, .freecodecampIcon:hover, .codewarsIcon:hover {
