@@ -63,7 +63,8 @@ body {
   /* background: #2f2f2f; */
   /* background: rgb(34,193,195);
   background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
-  background: url(desk_background.svg);
+  background-color: #c18e67;
+  background-image: url(desk_background.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -1232,11 +1233,11 @@ g.sceneTwo .tubeInterior .mouth {
     body {
       margin: auto;
       text-align: center;
-      background: #c18e67;
-      /* background: url(desk_background.svg);
+      background-color: #c18e67;
+      background-image: url(desk_background.svg);
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-position: center center; */
+      background-position: center center;
       padding: 0px;
     }
 
