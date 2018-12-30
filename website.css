@@ -436,7 +436,7 @@ li {
   order: 1;
 }
 
-.education, .experience, .skills, .interests, .whyFAC {
+.education, .experience, .skills, .interests, .whyCoding, .whyFAC {
   text-align: left;
   line-height: 0.5em;
   position: relative;
@@ -497,7 +497,7 @@ li {
   display: none;
   position: relative;
   margin-top: 30px;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   width: 100%;
   height: auto;
   max-height: 0;
@@ -511,8 +511,57 @@ li {
   background-repeat: no-repeat;
   background-attachment: cover;
   background-position: center center;
-
 }
+
+.hiddenWhyCoding {
+  display: none;
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 100%;
+  /* height: auto; */
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+.firstCode {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  /* margin-top: 1em; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
+}
+
+.helloWorldScreengrab {
+  width: 23%;
+  height: auto;
+  /* margin-right: 5%; */
+}
+
+#helloWorld {
+  width: 100%;
+}
+
+.helloWorldReaction {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* object-fit: contain; */
+}
+
+#wizardGIF, #whatGIF {
+  width: 100%;
+  max-height: 171px;
+}
+
+/* #helloWorld {
+  width: 25%;
+} */
 
 .footer {
   width: 100%;
@@ -1255,7 +1304,7 @@ g.sceneTwo .tubeInterior .mouth {
       padding: 2.5em 2.5em 0em 2.5em;
     }
 
-    .education, .experience, .skills, .interests, .whyFAC {
+    .education, .experience, .skills, .interests, .whyCoding, .whyFAC {
       text-align: left;
       line-height: 0.5em;
       position: relative;
@@ -1456,5 +1505,14 @@ g.sceneTwo .tubeInterior .mouth {
       background-repeat: no-repeat;
       background-size: 100% auto;
     }
+
+    /* .firstCode {
+      width: 95%;
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    } */
 
 }

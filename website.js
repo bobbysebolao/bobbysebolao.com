@@ -11,6 +11,7 @@ let accThree = document.getElementsByClassName("accordionThree");
 let accFour = document.getElementsByClassName("accordionFour");
 let accFive = document.getElementsByClassName("accordionFive");
 let accSix = document.getElementsByClassName("accordionSix");
+let accSeven = document.getElementsByClassName("accordionSeven");
 
 let rippedPaperBottom = document.getElementsByClassName("rippedPaperBottom");
 let rippedPaperTop = document.getElementsByClassName("rippedPaperTop");
@@ -167,7 +168,7 @@ for (let i = 0; i < accSix.length; i++) {
       rippedPaperBottom[5].classList.toggle("open");
       rippedPaperTop[5].classList.toggle("open");
       tearLine[5].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenWhyFAC");
+        let panel = document.querySelector(".hiddenWhyCoding");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[5].style.display = "block";
@@ -187,6 +188,34 @@ for (let i = 0; i < accSix.length; i++) {
     });
 }
 
+for (let i = 0; i < accSeven.length; i++) {
+
+    accSeven[i].addEventListener("click", function() {
+        accSeven[0].classList.toggle("active");
+        accSeven[1].classList.toggle("active");
+        rippedPaperBottom[6].classList.toggle("open");
+        rippedPaperTop[6].classList.toggle("open");
+        tearLine[6].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenWhyFAC");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            fillGap[6].style.display = "block";
+            instruction[6].style.display = "block";
+            // instruction[0].innerHTML = "CLICK TO TEAR";
+        } else {
+            panel.style.display = "block";
+            fillGap[6].style.display = "none";
+            instruction[6].style.display = "none";
+            // instruction[0].innerHTML = "CLICK TO FIX";
+        }
+        if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+}
+
 //MOBILE RESPONSIVE CHANGES//
 
 if (navigator.userAgent.match(/Mobile/)) {
@@ -196,6 +225,7 @@ mobileInstruction[2].innerHTML = "TAP";
 mobileInstruction[3].innerHTML = "TAP";
 mobileInstruction[4].innerHTML = "TAP";
 mobileInstruction[5].innerHTML = "TAP";
+mobileInstruction[6].innerHTML = "TAP";
 }
 
 
