@@ -587,6 +587,10 @@ li {
   margin-right: 1em;
 }
 
+.socialIcons a:nth-of-type(5n) {
+  margin-right: 0em;
+}
+
 .githubIcon, .twitterIcon, .linkedinIcon, .freecodecampIcon {
   fill: #111;
   opacity: 0.5;
