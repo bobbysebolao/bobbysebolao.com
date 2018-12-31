@@ -243,7 +243,7 @@ function headLeftShow(){
 headLeft.classList.toggle('headLeftHidden');
 setTimeout(function() {
 headLeft.classList.toggle('headLeftHidden');
-}, 1000);
+}, 2000);
 
 }
 
@@ -251,7 +251,7 @@ function headRightShow(){
 headRight.classList.toggle('headRightHidden');
 setTimeout(function() {
 headRight.classList.toggle('headRightHidden');
-}, 1000);
+}, 2000);
 
 }
 
@@ -259,21 +259,29 @@ function headTurnedShow(){
 headTurned.classList.toggle('headTurnedHidden');
 setTimeout(function() {
 headTurned.classList.toggle('headTurnedHidden');
-}, 1000);
+}, 6000);
 
 }
 
-// // headLeftShow();
-// setTimeout(headLeftShow, 1000);
-setInterval(headLeftShow, 3000);
 
-// headRightShow();
-// setTimeout(headRightShow, 1000);
-setInterval(headRightShow, 2000);
+let headAnimationOneInitial = headTurnedShow();
 
-setTimeout(headTurnedShow, 3000);
-headTurnedShow();
-setInterval(headTurnedShow, 3000);
+let headAnimationThreeInitial = setTimeout(headRightShow, 6000);
+
+let headAnimationTwoInitial = setTimeout(headLeftShow, 8000);
+
+let headAnimationOne = setTimeout(function () {setInterval(headTurnedShow, 10000)}, 0);
+
+let headAnimationTwo = setTimeout(function () {setInterval(headLeftShow, 10000)}, 8000);
+
+let headAnimationThree = setTimeout(function () {setInterval(headRightShow, 10000)}, 6000);
+
+headAnimationOneInitial;
+headAnimationThreeInitial;
+headAnimationTwoInitial;
+headAnimationOne;
+headAnimationTwo;
+headAnimationThree;
 
 // IMAGE CAROUSEL ANIMATIONS
 //Helpful resource: https://css-tricks.com/on-object-fit-and-object-position/
