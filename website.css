@@ -47,11 +47,13 @@ body {
   /* background: #2f2f2f; */
   /* background: rgb(34,193,195);
   background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+
   background-color: #c18e67;
   background-image: url(desk_background.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
+
   /* background-size: cover; */
   padding: 20px;
 }
@@ -112,7 +114,6 @@ li {
 }
 
 /* =======================MAIN CONTENT STYLING======================= */
-
 .page {
   display: flex;
   flex-direction: column;
@@ -163,7 +164,7 @@ li {
   position: relative;
   background: transparent;
   /*===THIS Z-INDEX IS IMPORTANT===*/
-  z-index: 2;
+  z-index: 0;
 }
 
 .rippedBottomMargin {
@@ -181,7 +182,7 @@ li {
   transition: all 0.25s ease;
   cursor: pointer;
   animation: pulseSVG 3s infinite;
-  z-index: 4;
+  z-index: -1;
 }
 
 .rippedPaperBottom {
@@ -197,7 +198,7 @@ li {
   transition: all 0.25s ease;
   cursor: pointer;
   animation: pulseSVG 3s infinite;
-  z-index: 3;
+  z-index: 0;
 }
 
 @keyframes pulseSVG {
@@ -227,6 +228,7 @@ li {
   height: 55px;
   box-shadow: 5px 10px 10px 0px #000000;
   animation: pulseFillGap 3s infinite;
+  z-index: -1;
 }
 
 @keyframes pulseFillGap {
@@ -256,7 +258,7 @@ li {
   height: 25px;
   transform: scaleY(1);
   cursor: pointer;
-  z-index: -1;
+  z-index: 1;
 }
 
 .hidden {
@@ -273,7 +275,7 @@ li {
   height: 25px;
   transform: scaleY(1);
   cursor: pointer;
-  z-index: 4;
+  z-index: 2;
 }
 
 .rippedPaperEdgePath {
@@ -287,7 +289,7 @@ li {
   transform: scaleY(1);
   transition: all 0.25s ease;
   cursor: pointer;
-  z-index: 5;
+  z-index: 3;
 }
 
 .pageBreak:hover .rippedPaperEdgePath {
@@ -297,7 +299,7 @@ li {
   stroke-dasharray: 870;
   stroke-dashoffset: 870;
   animation: dash 1.5s forwards linear;
-  z-index: 6;
+  z-index: 4;
 }
 
 @keyframes dash {
@@ -312,6 +314,11 @@ li {
 .active svg {
   fill: #ccc;
   animation-name: none;
+}
+
+.active {
+  z-index: 999;
+  cursor: pointer;
 }
 
 .header {
@@ -428,7 +435,6 @@ li {
   padding: 0em 5em 0em 5em;
   background: #fdfdfd;
   box-shadow: 5px 10px 10px 0px #000000;
-
 }
 
 .hiddenEducation {
@@ -1069,8 +1075,8 @@ g.boardroom .audience .clackTwo {
 }
 
 #carousel-container {
-/*   perspective: 1000px; */
-  /* position: relative; */
+  /* perspective: 50em; */
+  position: relative;
   width: 100%;
   /* height: auto; */
   /* top: 50%;
@@ -1085,7 +1091,7 @@ g.boardroom .audience .clackTwo {
   }
 
 #carouselImages {
-/*   transform: rotateY(-50deg); */
+  /* transform: rotateY(-50deg); */
   /* height: 400px; */
   width: 100%;
   /* height: auto; */
@@ -1099,7 +1105,7 @@ g.boardroom .audience .clackTwo {
   /*   margin: 5px; */
   }
 
-  .img1, .img2, .img3 {
+  .img1, .img2, .img3, .img4 {
     object-fit: contain;
     object-position: center center;
     background-color: rgba(47, 47, 47, 0.3);
@@ -1121,9 +1127,20 @@ g.boardroom .audience .clackTwo {
   order: 3;
 }
 
+.position4 {
+  position: relative;
+  order: 4;
+}
+
 .positionMinus1 {
   position: relative;
   order: -1;
+}
+
+.positionMinus2Offset {
+  position: relative;
+  left: -100%;
+  order: -2;
 }
 
 .positionMinus1Offset {
@@ -1159,6 +1176,11 @@ g.boardroom .audience .clackTwo {
   animation-fill-mode: forwards;
 }
 
+.animate4 {
+  animation: moveImageLeft4 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+
 @keyframes moveImageLeft1 {
   to {
     transform: translateX(-100%);
@@ -1172,6 +1194,12 @@ g.boardroom .audience .clackTwo {
 }
 
 @keyframes moveImageLeft3 {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moveImageLeft4 {
   to {
     transform: translateX(-100%);
   }
@@ -1192,6 +1220,11 @@ g.boardroom .audience .clackTwo {
   animation-fill-mode: forwards;
 }
 
+.animateRight4 {
+  animation: moveImageRight4 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+
 @keyframes moveImageRight1 {
   to {
     transform: translateX(100%);
@@ -1205,6 +1238,12 @@ g.boardroom .audience .clackTwo {
 }
 
 @keyframes moveImageRight3 {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes moveImageRight4 {
   to {
     transform: translateX(100%);
   }

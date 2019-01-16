@@ -291,6 +291,8 @@ headAnimationThree;
 let img1 = document.querySelector(".img1");
 let img2 = document.querySelector(".img2");
 let img3 = document.querySelector(".img3");
+let img4 = document.querySelector(".img4");
+
 let rightButton = document.querySelector("#rightButton");
 
 let leftButton = document.querySelector("#leftButton");
@@ -303,34 +305,53 @@ function playForwards() {
 
   if (count == 0) {
 
-  img1.classList.remove("position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3");
+  img1.classList.remove("position2", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3", "animateRight4");
   img1.classList.add("animate", "position1");
-  img2.classList.remove("position1", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3");
+  img2.classList.remove("position1", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3", "animateRight4");
   img2.classList.add("animate", "position2");
-  img3.classList.remove("position1", "position2", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3");
+  img3.classList.remove("position1", "position2", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3", "animateRight4");
   img3.classList.add("animate", "position3");
+  img4.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img4.classList.add("animate", "position4");
   count = 1;
   }
 
-  else if (count == 1 || count == -2) {
+  else if (count == 1 || count == -3) {
 
-  img1.classList.remove("position1", "position2", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3");
-  img1.classList.add("animate2", "position3");
-  img2.classList.remove("position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3");
+  img1.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img1.classList.add("animate2", "position4");
+  img2.classList.remove("position2", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
   img2.classList.add("animate2", "position1");
-  img3.classList.remove("position1", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3");
+  img3.classList.remove("position1", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
   img3.classList.add("animate2", "position2");
+  img4.classList.remove("position1", "position2", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img4.classList.add("animate2", "position3");
   count = 2;
   }
 
-  else if (count == 2 || count == -1) {
+  else if (count == 2 || count == -2) {
 
-  img1.classList.remove("position1", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3");
-  img1.classList.add("animate3", "position2");
-  img2.classList.remove("position1", "position2", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3");
-  img2.classList.add("animate3", "position3");
-  img3.classList.remove("position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3");
+  img1.classList.remove("position1", "position2", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img1.classList.add("animate3", "position3");
+  img2.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img2.classList.add("animate3", "position4");
+  img3.classList.remove("position2", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3", "animateRight4");
   img3.classList.add("animate3", "position1");
+  img4.classList.remove("position1", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img4.classList.add("animate3", "position2");
+  count = 3;
+  }
+
+  else if (count == 3 || count == -1) {
+
+  img1.classList.remove("position1", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img1.classList.add("animate4", "position2");
+  img2.classList.remove("position1", "position2", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img2.classList.add("animate4", "position3");
+  img3.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img3.classList.add("animate4", "position4");
+  img4.classList.remove("position2", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img4.classList.add("animate4", "position1");
   count = 0;
   }
 
@@ -339,32 +360,46 @@ function playForwards() {
   function playBackwards() {
 
   if (count == 0) {
-
-  img1.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight2", "animateRight3");
+  img2.classList.remove("position1", "position3", "position4", "positionMinus1", "position1Offset", "positionMinus1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img3.classList.remove("position1", "position2", "position4", "positionMinus1", "position1Offset", "positionMinus1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3", "animateRight4");
+  img2.classList.add("position2");
+  img3.classList.add("position3");
+  img1.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight2", "animateRight3", "animateRight4");
   img1.classList.add("animateRight", "position1Offset");
-  img3.classList.remove("position1", "position2", "position3", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight2", "animateRight3");
-  img3.classList.add("animateRight", "positionMinus1Offset");
+  img4.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight2", "animateRight3", "animateRight4");
+  img4.classList.add("animateRight", "positionMinus1Offset");
   count = -1;
   }
 
-  else if (count == -1 || count == 2) {
-
-  img2.classList.remove("position1", "position2", "position3", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight2", "animateRight3");
-  img2.classList.add("animateRight", "positionMinus1Offset");
-  img3.classList.remove("position1", "position2", "position3", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight3");
+  else if (count == -1 || count == 3) {
+  img4.classList.remove("position2", "position3", "position4", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight3");
+  img4.classList.add("animateRight2", "positionMinus1Offset");
+  img3.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight", "animateRight3");
   img3.classList.add("animateRight2", "positionMinus1Offset");
   count = -2;
   }
 
-  else if (count == -2 || count == 1) {
+  else if (count == -2 || count == 2) {
+  img1.classList.remove("position1", "position4", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight2", "animateRight3");
+  img4.classList.remove("position1", "position4", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight2", "animateRight3");
+  img3.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animat4", "animateRight", "animateRight2");
+  img3.classList.add("animateRight3", "positionMinus1Offset");
+  img2.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animat4", "animateRight", "animateRight2");
+  img2.classList.add("animateRight3", "positionMinus1Offset");
+  // img3.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2");
+  count = -3;
+  }
 
-  img1.classList.remove("position1", "position2", "position3", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2");
-  img1.classList.add("animateRight3", "positionMinus1Offset");
-  img2.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "animate", "animate2", "animate3", "animateRight", "animateRight2");
-  img2.classList.add("animateRight3", "position1DoubleOffset");
-  img3.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2");
+  else if (count == -3 || count == 1) {
+  img3.classList.remove("position1", "position4", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3");
+  img4.classList.remove("position1", "position4", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3");
+  img2.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "position1Offset", "animate", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3");
+  img2.classList.add("animateRight4", "positionMinus1Offset");
+  img1.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animate4", "animateRight", "animateRight2", "animateRight3");
+  img1.classList.add("animateRight4", "positionMinus1Offset");
   count = 0;
   }
+
   }
 
 //PART 3: TRIGGERING THE FUNCTIONS WITH THE CAROUSEL BUTTONS USING ONCLICK AND ONKEYPRESS EVENT LISTENERS
