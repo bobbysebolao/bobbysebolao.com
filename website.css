@@ -47,7 +47,8 @@ body {
   /* background: #2f2f2f; */
   /* background: rgb(34,193,195);
   background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
-
+  display: flex;
+  flex-direction: column;
   background-color: #c18e67;
   background-image: url(desk_background.svg);
   background-repeat: no-repeat;
@@ -114,6 +115,227 @@ li {
 }
 
 /* =======================MAIN CONTENT STYLING======================= */
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tabRow, .menuTabs {
+  position: relative;
+  display: flex;
+  color: #111;
+  padding: 0;
+  margin: 0 10px;
+  list-style: none;
+  font-size: 1.4em;
+}
+
+.tabRow:before, .menuTabs:before {
+  z-index: 1;
+}
+
+.tabRow:after .menuTabs:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  /* border-bottom: 1px solid blue; */
+  z-index: 1;
+}
+
+.tabRow li {
+  display: inline;
+  vertical-align: middle;
+  position: relative;
+  top: 3px;
+  margin: 0 2px;
+  padding: 0 0 0 0;
+  background: #ffffff;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  z-index: 0;
+}
+
+.tabRow li:before,
+.tabRow li:after,
+.menuTabs li:before,
+.menuTabs li:after {
+  position: absolute;
+  bottom: 2px;
+  width: 6px;
+  height: 6px;
+  content: " ";
+  /* border: 1px solid #AAA; */
+}
+
+.tabRow li:before, .menuTabs li:before {
+  left: -5.5px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 2px 2px 0 #ffffff;
+  /* transform: translateY(-3px); */
+}
+.tabRow li:after, .menuTabs li:after {
+  right: -5.7px;
+  border-bottom-left-radius: 6px;
+  box-shadow: -2px 2px 0 #ffffff;
+  /* transform: translateY(-3px); */
+}
+
+.tabRow li:hover, .menuTabs li:hover {
+  transform: translateY(-3px);
+}
+
+.tabRow li:hover:before, .menuTabs li:hover:before {
+  box-shadow: 2px 2px 0;
+  transform: translateY(3px);
+}
+
+.tabRow li:hover:after, .menuTabs li:hover:after {
+  box-shadow: -2px 2px 0;
+  transform: translateY(3px);
+}
+
+.tabRow li:nth-child(1) {
+  background: #c6dc6e;
+}
+
+.tabRow li:nth-child(1):before {
+  box-shadow: 2px 2px 0 #c6dc6e;
+}
+
+.tabRow li:nth-child(1):after {
+  box-shadow: -2px 2px 0 #c6dc6e;
+}
+
+.tabRow li:nth-child(2) {
+  background: #faf557;
+}
+
+.tabRow li:nth-child(2):before {
+  box-shadow: 2px 2px 0 #faf557;
+}
+
+.tabRow li:nth-child(2):after {
+  box-shadow: -2px 2px 0 #faf557;
+}
+
+.tabRow li:nth-child(3) {
+  background: #7fd9cf;
+}
+
+.tabRow li:nth-child(3):before {
+  box-shadow: 2px 2px 0 #7fd9cf;
+}
+
+.tabRow li:nth-child(3):after {
+  box-shadow: -2px 2px 0 #7fd9cf;
+}
+
+.tabRow li:nth-child(4) {
+  background: #fe9bba;
+  margin-right: 15px;
+}
+
+.tabRow li:nth-child(4):before {
+  box-shadow: 2px 2px 0 #fe9bba;
+}
+
+.tabRow li:nth-child(4):after {
+  box-shadow: -2px 2px 0 #fe9bba;
+}
+
+.tabRow a {
+  display: block;
+  color: #111;
+  text-decoration: none;
+  padding: 15px 10px 15px 10px;
+  line-height: inherit;
+}
+
+.menuTabs li {
+  display: block;
+  position: relative;
+  top: 3px;
+  margin: 0 2px;
+  padding: 10px 0 10px 0;
+  background: #faf557;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  z-index: 0;
+}
+
+/* .menuTabs li:nth-child(1) {
+  background: red;
+}
+
+.menuTabs li:nth-child(1):before {
+  box-shadow: 2px 2px 0 red;
+}
+
+.menuTabs li:nth-child(1):after {
+  box-shadow: -2px 2px 0 red;
+} */
+
+.menuTabs a {
+  text-decoration: none;
+  padding: 20px 10px 15px 10px;
+}
+
+.menuTabs svg {
+  width: 30px;
+  height: 30px;
+}
+
+.moonIcon:hover, .menuTabs li:nth-child(1):hover {
+  fill: #fff197;
+}
+
+.menuTabs li:nth-child(1):before {
+  box-shadow: 2px 2px 0 #c6dc6e;
+}
+
+.menuTabs li:nth-child(1):after {
+  box-shadow: -2px 2px 0 #c6dc6e;
+}
+
+.knightIcon:hover, .menuTabs li:nth-child(2):hover {
+  fill: #a24500;
+}
+
+.menuTabs li:nth-child(2):before {
+  box-shadow: 2px 2px 0 #c6dc6e;
+}
+
+.menuTabs li:nth-child(2):after {
+  box-shadow: -2px 2px 0 #c6dc6e;
+}
+
+.tetrisSprite:hover, .menuTabs li:nth-child(3):hover {
+  fill: #ff0000;
+}
+
+.menuTabs li:nth-child(3):before {
+  box-shadow: 2px 2px 0 #c6dc6e;
+}
+
+.menuTabs li:nth-child(3):after {
+  box-shadow: -2px 2px 0 #c6dc6e;
+}
+
+.fileDivider {
+  background: #faf557;
+  border-radius: 5px 5px 0 0;
+  height: 10px;
+  z-index: 5;
+}
+
 .page {
   display: flex;
   flex-direction: column;
