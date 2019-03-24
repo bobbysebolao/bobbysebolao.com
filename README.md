@@ -1,7 +1,7 @@
-# FAC-website
-My one-page portfolio website for my Founders and Coders application. Includes:
+# portfolio-website
+My one-page portfolio website. Includes:
 
-- HTML, CSS and Javascript - no frameworks or libraries used
+- HTML, CSS and vanilla Javascript - no frameworks or libraries used
 - Links to my Github repo, FreeCodeCamp and Codewars profiles, and Twitter and LinkedIn pages
 - An embedded version of my responsive image carousel, and links to the standalone Github Page
 - Links to external webpages that are relevant to my application
