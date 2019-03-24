@@ -203,11 +203,11 @@ nav {
 }
 
 .tabRow li:nth-child(1) {
-  background: #c6dc6e;
+  background: #afec6a;
 }
 
 .tabRow li:nth-child(1):before {
-  box-shadow: 2px 2px 0 #c6dc6e;
+  box-shadow: 2px 2px 0 #afec6a;
 }
 
 .tabRow li:nth-child(1):after {
@@ -318,7 +318,7 @@ nav {
 }
 
 .tetrisSprite:hover, .menuTabs li:nth-child(3):hover {
-  fill: #ff0000;
+  fill: #b500fa;
 }
 
 .menuTabs li:nth-child(3):before {
