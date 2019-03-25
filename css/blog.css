@@ -265,7 +265,7 @@ nav {
   top: 3px;
   margin: 0 2px;
   padding: 10px 0 10px 0;
-  background: #faf557;
+  background: #fe9bba;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   z-index: 0;
@@ -298,11 +298,11 @@ nav {
 }
 
 .menuTabs li:nth-child(1):before {
-  box-shadow: 2px 2px 0 #c6dc6e;
+  box-shadow: 2px 2px 0 #fe9bba;
 }
 
 .menuTabs li:nth-child(1):after {
-  box-shadow: -2px 2px 0 #c6dc6e;
+  box-shadow: -2px 2px 0 #fe9bba;
 }
 
 .knightIcon:hover, .menuTabs li:nth-child(2):hover {
@@ -310,11 +310,11 @@ nav {
 }
 
 .menuTabs li:nth-child(2):before {
-  box-shadow: 2px 2px 0 #c6dc6e;
+  box-shadow: 2px 2px 0 #fe9bba;
 }
 
 .menuTabs li:nth-child(2):after {
-  box-shadow: -2px 2px 0 #c6dc6e;
+  box-shadow: -2px 2px 0 #fe9bba;
 }
 
 .tetrisSprite:hover, .menuTabs li:nth-child(3):hover {
@@ -322,15 +322,15 @@ nav {
 }
 
 .menuTabs li:nth-child(3):before {
-  box-shadow: 2px 2px 0 #c6dc6e;
+  box-shadow: 2px 2px 0 #fe9bba;
 }
 
 .menuTabs li:nth-child(3):after {
-  box-shadow: -2px 2px 0 #c6dc6e;
+  box-shadow: -2px 2px 0 #fe9bba;
 }
 
 .fileDivider {
-  background: #faf557;
+  background: #fe9bba;
   border-radius: 5px 5px 0 0;
   height: 10px;
   z-index: 5;
