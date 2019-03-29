@@ -1,0 +1,27 @@
+{
+  "name": "bobbysebolao.github.io",
+  "version": "1.0.0",
+  "description": "My one-page portfolio website. Includes:",
+  "main": "server.js",
+  "scripts": {
+    "test": "tape /server.js | tap-spec",
+    "start": "nodemon /server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbysebolao/bobbysebolao.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bobbysebolao/bobbysebolao.github.io/issues"
+  },
+  "homepage": "https://github.com/bobbysebolao/bobbysebolao.github.io#readme",
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.18.10",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
+  }
+}

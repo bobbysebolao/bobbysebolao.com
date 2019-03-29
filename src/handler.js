@@ -8,18 +8,21 @@ const extensionType = {
   js: "application/javascript",
   jpg: "image/jpeg",
   png: "image/png",
-  ico: "image/x-icon"
+  ico: "image/x-icon",
+  svg: "image/svg+xml",
+  gif: "image/gif"
 };
 
 function handler(request, response) {
   const endpoint = request.url;
-  // console.log("ENDPOINT:", endpoint);
+  console.log("ENDPOINT:", endpoint);
+  const extension = endpoint.split(".")[1];
   const method = request.method;
   // console.log("METHOD:", method);
 
   if (method === "GET") {
-    if (endpoint === "/") {
-      fs.readFile(__dirname + "/../public/index.html", function(error, file) {
+    if (endpoint === "/" || endpoint === "/index.html") {
+      fs.readFile(__dirname + "/../index.html", function(error, file) {
         if (error) {
           console.log("error");
           return;
@@ -29,36 +32,47 @@ function handler(request, response) {
       });
     }
 
-    else if (endpoint === "/node") {
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.write("You're on the home page"); //response body
-      // console.log(path.join(__dirname, "/../public/", "/public"));
-      response.end(); // finish response
-    }
+    // else if (endpoint === "/node") {
+    //   response.writeHead(200, { "Content-Type": "text/html" });
+    //   response.write("You're on the home page"); //response body
+    //   // console.log(path.join(__dirname, "/../public/", "/public"));
+    //   response.end(); // finish response
+    // }
 
-    else if (endpoint === "/girls") {
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.write("You're on the about Node Girls page"); //response body
-      response.end(); // finish response
-    }
+    // else if (endpoint === "/girls") {
+    //   response.writeHead(200, { "Content-Type": "text/html" });
+    //   response.write("You're on the about Node Girls page"); //response body
+    //   response.end(); // finish response
+    // }
 
-    else if (endpoint === "/posts") {
-      fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
+    // else if (endpoint === "/posts") {
+    //   fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
+    //     if (error) {
+    //       console.log(error);
+    //       return;
+    //     }
+    //     response.writeHead(200, {"Content-Type": "application/json"});
+    //     // response.write("You're on the posts page");
+    //     // console.log(JSON.parse(file));
+    //     const blogPosts = JSON.parse(file);
+    //     console.log("BLOG POSTS:", blogPosts['1456059074613']);
+    //     response.end(file);
+    //   });
+    // }
+
+    else if (endpoint.includes("/scripts")) {
+      fs.readFile(__dirname + "/../" + endpoint, (error, file) => {
         if (error) {
           console.log(error);
           return;
         }
-        response.writeHead(200, {"Content-Type": "application/json"});
-        // response.write("You're on the posts page");
-        // console.log(JSON.parse(file));
-        const blogPosts = JSON.parse(file);
-        console.log("BLOG POSTS:", blogPosts['1456059074613']);
+        response.writeHead(200, {"Content-Type": extensionType[extension]});
         response.end(file);
       });
     }
 
     else {
-      const extension = endpoint.split(".")[1];
+      // const extension = endpoint.split(".")[1];
       // console.log(extension);
 
       fs.readFile(__dirname + "/../public/" + endpoint, function(error, file) {
