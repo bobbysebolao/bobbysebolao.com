@@ -21,6 +21,7 @@ function handler(request, response) {
   // console.log("METHOD:", method);
 
   if (method === "GET") {
+
     if (endpoint === "/" || endpoint === "/index.html") {
       fs.readFile(__dirname + "/../index.html", function(error, file) {
         if (error) {
@@ -122,7 +123,7 @@ function handler(request, response) {
         });
       });
 
-      response.writeHead(302, { Location: "/" });
+      response.writeHead(302, { Location: "/blog/blog.html" });
       response.end();
     });
   }
