@@ -4,8 +4,8 @@ document.onreadystatechange = function() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
-          // console.log("This is your post", data);
-          for (var blogPost in data) {
+          console.log("This is your post", data);
+          for (let blogPost in data) {
             var postDiv = document.createElement("div");
             var postText = document.createElement("p");
             var thumbnail = document.createElement("img");

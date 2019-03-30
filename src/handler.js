@@ -33,33 +33,20 @@ function handler(request, response) {
       });
     }
 
-    // else if (endpoint === "/node") {
-    //   response.writeHead(200, { "Content-Type": "text/html" });
-    //   response.write("You're on the home page"); //response body
-    //   // console.log(path.join(__dirname, "/../public/", "/public"));
-    //   response.end(); // finish response
-    // }
-
-    // else if (endpoint === "/girls") {
-    //   response.writeHead(200, { "Content-Type": "text/html" });
-    //   response.write("You're on the about Node Girls page"); //response body
-    //   response.end(); // finish response
-    // }
-
-    // else if (endpoint === "/posts") {
-    //   fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
-    //     if (error) {
-    //       console.log(error);
-    //       return;
-    //     }
-    //     response.writeHead(200, {"Content-Type": "application/json"});
-    //     // response.write("You're on the posts page");
-    //     // console.log(JSON.parse(file));
-    //     const blogPosts = JSON.parse(file);
-    //     console.log("BLOG POSTS:", blogPosts['1456059074613']);
-    //     response.end(file);
-    //   });
-    // }
+    else if (endpoint === "/posts") {
+      fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
+        if (error) {
+          console.log(error);
+          return;
+        }
+        response.writeHead(200, {"Content-Type": "application/json"});
+        // response.write("You're on the posts page");
+        // console.log(JSON.parse(file));
+        const blogPosts = JSON.parse(file);
+        // console.log("BLOG POSTS:", blogPosts['1456059074613']);
+        response.end(file);
+      });
+    }
 
     else if (endpoint.includes("/scripts")) {
       fs.readFile(__dirname + "/../" + endpoint, (error, file) => {
@@ -76,12 +63,12 @@ function handler(request, response) {
       // const extension = endpoint.split(".")[1];
       // console.log(extension);
 
-      fs.readFile(__dirname + "/../public/" + endpoint, function(error, file) {
+      fs.readFile(__dirname + "/../public" + endpoint, function(error, file) {
         if (error) {
           console.log("Error");
-          return ;
+          return;
         }
-        // console.log(__dirname + "/../public/" + endpoint);
+        console.log(__dirname + "/../public" + endpoint);
         response.writeHead(200, { "Content-Type": extensionType[extension] });
         response.end(file);
       });

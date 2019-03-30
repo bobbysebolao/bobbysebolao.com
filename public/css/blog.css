@@ -50,7 +50,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #c18e67;
-  background-image: url(desk_background.svg);
+  background-image: url(/assets/desk_background.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -1608,7 +1608,9 @@ g.boardroom .audience .clackTwo {
 
     /*BLOG POST SECTION*/
 
-    .post {
+    .post-container {
+      width: 100px;
+      height: 100px;
       background: red;
     }
 
@@ -1623,7 +1625,7 @@ g.boardroom .audience .clackTwo {
       margin: auto;
       text-align: center;
       background-color: #c18e67;
-      background-image: url(desk_background.svg);
+      background-image: url(/assets/desk_background.svg);
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center center;
