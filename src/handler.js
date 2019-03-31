@@ -1,9 +1,9 @@
 const fs = require("fs");
 const querystring = require("querystring");
 const path = require("path");
-// const formidable = require('formidable');
-// const mime = require("mime");
-// const util = require('util');
+const formidable = require('formidable');
+const mime = require("mime");
+const util = require('util');
 
 const extensionType = {
   html: "text/html",
@@ -84,6 +84,47 @@ function handler(request, response) {
     if (endpoint === "/create/post") {
       console.log("POST request received");
 
+      let form = new formidable.IncomingForm();
+
+      form.uploadDir = __dirname + "/../public/assets/images/blog";
+      form.keepExtensions = true;
+      form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
+
+      form.on('fileBegin', function(name, file) {
+        file.path = path.join(__dirname, "../public/assets/images/blog", file.name);
+      });
+
+      let formData = "";
+
+      form.parse(request, function(error, fields, files) {
+        if (error) {
+          console.log(`Cannot upload images. Error is ${error}`);
+        }
+        else {
+          // console.log("LOOK HERE", files);
+          // return;
+        let mainImage = {
+          name: files["mainImage"]["name"],
+          size: files["mainImage"]["size"],
+          path: files["mainImage"]["path"],
+          type: files["mainImage"]["type"]
+        }
+
+        let thumbnail = {
+          name: files["thumbnail"]["name"],
+          size: files["thumbnail"]["size"],
+          path: files["thumbnail"]["path"],
+          type: files["thumbnail"]["type"]
+        }
+
+        fields["mainImage"] = mainImage;
+        fields["thumbnail"] = thumbnail;
+        // console.log(fields);
+        console.log("Uploaded images successfully");
+        formData = fields;
+      }
+      });
+
       // STEP 6: Sending blog post to the Server
       // This stackoverflow answer helped me find out how to pass the image data
       // to the server: https://stackoverflow.com/questions/21745432/image-upload-to-server-in-node-js-without-using-express
@@ -95,8 +136,11 @@ function handler(request, response) {
       });
 
       request.on("end", function() {
+        // let convertedData = formResponse;
         const convertedData = querystring.parse(allTheData);
-        console.log(convertedData.post);
+        // console.log(convertedData.post);
+        // console.log(convertedData);
+        // return;
 
         fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
           if (error) {
@@ -106,16 +150,9 @@ function handler(request, response) {
           console.log(file);
           const blogPosts = JSON.parse(file);
           console.log(blogPosts);
-          blogPosts[Date.now()] = {
-            "Title": convertedData.title,
-            "Content": convertedData.post,
-            "Main Image": convertedData.mainImage,
-            "Thumbnail": convertedData.thumbnail,
-            "Meta title": convertedData.metatitle,
-            "Meta description": convertedData.metadescription
-          }
+          blogPosts[Date.now()] = formData;
+          console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
-          // console.log(blogPosts);
 
           fs.writeFile(__dirname + "/posts.json", final, function(error) {
             if (error) {

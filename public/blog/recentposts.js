@@ -5,6 +5,7 @@ document.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
           console.log("This is your post", data);
+
           for (let blogPost in data) {
             var postDiv = document.createElement("div");
             var postText = document.createElement("p");
@@ -13,9 +14,10 @@ document.onreadystatechange = function() {
               "post-container"
             )[0];
 
-            thumbnail.src = `../assets/favicon.png`;
+            // thumbnail.src = `../assets/favicon.png`;
+            thumbnail.src = `../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}`;
             thumbnail.className = "thumbnail";
-            postText.innerHTML = data[blogPost]["Title"];
+            postText.innerHTML = data[blogPost]["title"];
             postDiv.className = "post";
 
             postDiv.appendChild(thumbnail);
