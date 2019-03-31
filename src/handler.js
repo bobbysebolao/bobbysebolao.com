@@ -2,8 +2,8 @@ const fs = require("fs");
 const querystring = require("querystring");
 const path = require("path");
 const formidable = require('formidable');
-const mime = require("mime");
-const util = require('util');
+// const mime = require("mime");
+// const util = require('util');
 
 const extensionType = {
   html: "text/html",
