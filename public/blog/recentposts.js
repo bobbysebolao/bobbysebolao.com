@@ -13,9 +13,9 @@ document.onreadystatechange = function() {
               "post-container"
             )[0];
 
-            thumbnail.src = "./img/logo2.png";
+            thumbnail.src = `../assets/favicon.png`;
             thumbnail.className = "thumbnail";
-            postText.innerHTML = data[blogPost];
+            postText.innerHTML = data[blogPost]["Title"];
             postDiv.className = "post";
 
             postDiv.appendChild(thumbnail);

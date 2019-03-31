@@ -16,6 +16,7 @@
       <title>Blog | Bobby Sebolao</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" href="/assets/favicon.png"/>
       <link rel="stylesheet" type="text/css" href="../css/blog.css">
       <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
       <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet">
@@ -455,57 +456,54 @@
 
   <div class="header">
 
-    <h1>Blog</h1>
+    <h1>New Post</h1>
 
     <hr>
 
   </div>
 
-  <div class="entry-container">
-        <form class="" action="/create/post" method="post" id="the-form">
-          <h2>Write a Blog Post</h2>
-          <textarea name="post" rows="8" cols="40"></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </div>
+  <div class="education">
 
-      <h2>Recent Posts</h2>
+    <div class="entry-container">
 
-<div class="post-container"></div>
+      <!-- Note that you are supposed to add the 'enctype="multipart/form-data" ' attribute to <form> elements that handle submission of multiple types of data. But for some reason, it causes my handler function to return an empty response
+    See MDN for info on multipart MIME types: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types -->
+          <form class="createPost" action="/create/post" method="post" id="the-form">
+            <h2>Main Content</h2>
+            <label for="title">Title:</label>
+            <input name="title" id="title">
+
+            <label for="mainImage">Upload main image:</label>
+            <input type="file" name="mainImage" accept="image/*" id="mainImage">
+
+            <label for="post">Body:</label>
+            <textarea name="post" rows="12" id="post"></textarea>
+
+            <label for="thumbnailImage">Upload thumbnail:</label>
+            <input type="file" name="thumbnail" accept="image/*" id="thumbnailImage">
+
+            <h2>Metadata</h2>
+            <label for="metatitle">Meta title:</label>
+            <input name="metatitle" type="text" id="metatitle">
+            <label for="metadescription">Meta description:</label>
+            <textarea name="metadescription" rows="8" id="metadescription"></textarea>
+
+            <button type="submit">Publish</button>
+
+          </form>
+
+          <h2>Recent Posts</h2>
+
+    <div class="post-container"></div>
+
+        </div>
+
+  </div>
 
       <div class="footer">
-        <div class="socialIcons">
-          <a href="https://github.com/bobbysebolao" target="_blank">
-          <svg class="githubIcon">
-            <use xlink:href="#githubIcon"></use>
-          </svg>
-        </a>
 
-<a href="https://twitter.com/bobbysebolao" target="_blank">
-          <svg class="twitterIcon">
-            <use xlink:href="#twitterIcon"></use>
-          </svg>
-        </a>
 
-<a href="https://www.linkedin.com/in/bobby-sebolao-90651559/" target="_blank">
-          <svg class="linkedinIcon">
-            <use xlink:href="#linkedinIcon"></use>
-          </svg>
-        </a>
 
-<a href="https://www.freecodecamp.org/bobbysebolao" target="_blank">
-          <svg class="freecodecampIcon">
-            <use xlink:href="#freecodecampIcon"></use>
-          </svg>
-        </a>
-
-<a href="https://www.codewars.com/users/Mistapepper" target="_blank">
-          <svg class="codewarsIcon">
-            <use xlink:href="#codewarsIcon"></use>
-          </svg>
-        </a>
-        </div>
-        <p><sub style="opacity: 0.5;">Powered by vanilla JavaScript, HTML, CSS, and caffeine</sub></p>
       </div>
     </div>
 

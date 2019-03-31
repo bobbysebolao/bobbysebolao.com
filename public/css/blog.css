@@ -1606,12 +1606,44 @@ g.boardroom .audience .clackTwo {
       width: 100%;
     }
 
-    /*BLOG POST SECTION*/
+    /*CREATE NEW BLOG POST SECTION*/
+
+    input {
+      width: 100%;
+      margin: 1em auto;
+    }
+
+    textarea {
+      width: 100%;
+      margin: 1em auto;
+      resize: vertical;
+    }
+
+    /* RECENT POSTS SECTION*/
 
     .post-container {
-      width: 100px;
-      height: 100px;
-      background: red;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .post {
+      flex-basis: calc(33% - 10px);
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #848484;
+      border-radius: 3px;
+      -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+      box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.4);
+      background: white;
+      text-align: center;
+    }
+
+    .post:nth-of-type(3n) {
+      margin-right: 0;
     }
 
     /*===============MEDIA QUERIES================*/
