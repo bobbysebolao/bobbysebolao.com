@@ -468,25 +468,29 @@
 
       <!-- Note that you are supposed to add the 'enctype="multipart/form-data" ' attribute to <form> elements that handle submission of multiple types of data. But for some reason, it causes my handler function to return an empty response
     See MDN for info on multipart MIME types: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types -->
-          <form class="createPost" action="/create/post" method="post" id="the-form">
+
+    <!-- Advice about parsing multipart form responses: https://stackoverflow.com/questions/23717879/how-could-i-upload-files-in-expressjs-4-x/23718166#23718166 -->
+    <!-- TL;DR: You should use a third party parser, writing your own is difficult -->
+
+          <form class="createPost" action="/create/post" method="post" id="the-form" enctype="multipart/form-data">
             <h2>Main Content</h2>
             <label for="title">Title:</label>
-            <input name="title" id="title">
+            <input name="title" id="title" required>
 
             <label for="mainImage">Upload main image:</label>
-            <input type="file" name="mainImage" accept="image/*" id="mainImage">
+            <input type="file" name="mainImage" accept="image/*" id="mainImage" required>
 
             <label for="post">Body:</label>
-            <textarea name="post" rows="12" id="post"></textarea>
+            <textarea name="post" rows="12" id="post" required></textarea>
 
             <label for="thumbnailImage">Upload thumbnail:</label>
-            <input type="file" name="thumbnail" accept="image/*" id="thumbnailImage">
+            <input type="file" name="thumbnail" accept="image/*" id="thumbnailImage" required>
 
             <h2>Metadata</h2>
             <label for="metatitle">Meta title:</label>
-            <input name="metatitle" type="text" id="metatitle">
+            <input name="metatitle" type="text" id="metatitle" required>
             <label for="metadescription">Meta description:</label>
-            <textarea name="metadescription" rows="8" id="metadescription"></textarea>
+            <textarea name="metadescription" rows="8" id="metadescription" required></textarea>
 
             <button type="submit">Publish</button>
 
