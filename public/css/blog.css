@@ -1606,6 +1606,12 @@ g.boardroom .audience .clackTwo {
       width: 100%;
     }
 
+    /*BLOG POST SECTION*/
+
+    .post {
+      background: red;
+    }
+
     /*===============MEDIA QUERIES================*/
     /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
 
