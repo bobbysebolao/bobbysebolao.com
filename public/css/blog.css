@@ -50,7 +50,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #c18e67;
-  background-image: url(desk_background.svg);
+  background-image: url(/assets/desk_background.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -1606,10 +1606,44 @@ g.boardroom .audience .clackTwo {
       width: 100%;
     }
 
-    /*BLOG POST SECTION*/
+    /*CREATE NEW BLOG POST SECTION*/
+
+    input {
+      width: 100%;
+      margin: 1em auto;
+    }
+
+    textarea {
+      width: 100%;
+      margin: 1em auto;
+      resize: vertical;
+    }
+
+    /* RECENT POSTS SECTION*/
+
+    .post-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      width: 100%;
+    }
 
     .post {
-      background: red;
+      flex-basis: calc(33% - 10px);
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #848484;
+      border-radius: 3px;
+      -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+      box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.4);
+      background: white;
+      text-align: center;
+    }
+
+    .post:nth-of-type(3n) {
+      margin-right: 0;
     }
 
     /*===============MEDIA QUERIES================*/
@@ -1623,7 +1657,7 @@ g.boardroom .audience .clackTwo {
       margin: auto;
       text-align: center;
       background-color: #c18e67;
-      background-image: url(desk_background.svg);
+      background-image: url(/assets/desk_background.svg);
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center center;
