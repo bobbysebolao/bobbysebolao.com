@@ -60,6 +60,17 @@ function handler(request, response) {
       });
     }
 
+    else if (endpoint === "/blog/new") {
+      fs.readFile(__dirname + "/../public/blog/create-new-post.html", "utf8", (error, file) => {
+        if (error) {
+          console.log(error);
+          return;
+        }
+        response.writeHead(200, { "Content-Type": "text/html" });
+        response.end(file);
+      });
+    }
+
     else if (endpoint.includes("/scripts")) {
       fs.readFile(__dirname + "/../" + endpoint, (error, file) => {
         if (error) {
