@@ -7,22 +7,22 @@ document.onreadystatechange = function() {
           console.log("This is your post", data);
 
           for (let blogPost in data) {
-            var postDiv = document.createElement("div");
-            var postText = document.createElement("p");
+            var postSpan = document.createElement("span");
+            var postTitle = document.createElement("h2");
             var thumbnail = document.createElement("img");
             var postContainer = document.getElementsByClassName(
-              "post-container"
+              "o-container"
             )[0];
 
             // thumbnail.src = `../assets/favicon.png`;
             thumbnail.src = `../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}`;
             thumbnail.className = "thumbnail";
-            postText.innerHTML = data[blogPost]["title"];
-            postDiv.className = "post";
+            postTitle.innerHTML = data[blogPost]["title"];
+            postSpan.className = "post";
 
-            postDiv.appendChild(thumbnail);
-            postDiv.appendChild(postText);
-            postContainer.appendChild(postDiv);
+            postSpan.appendChild(thumbnail);
+            postSpan.appendChild(postTitle);
+            postContainer.appendChild(postSpan);
 
           }
         }
