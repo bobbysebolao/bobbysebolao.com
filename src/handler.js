@@ -18,10 +18,8 @@ const extensionType = {
 
 function handler(request, response) {
   const endpoint = request.url;
-  // console.log("ENDPOINT:", endpoint);
   const extension = endpoint.split(".")[1];
   const method = request.method;
-  // console.log("METHOD:", method);
 
   if (method === "GET") {
 
@@ -36,10 +34,20 @@ function handler(request, response) {
       });
     }
 
-    else if (endpoint === "/posts") {
+    else if (endpoint === "/blog/all-posts") {
+      fs.readFile(__dirname + "/../public/blog/all-posts.html", function(error, file) {
+        if (error) {
+          console.log("error");
+          return;
+        }
+        response.writeHead(200, { "Content-Type": "text/html" });
+        response.end(file);
+      });
+    }
+
+    else if (endpoint === "/blog/posts") {
       fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
         if (error) {
-          // console.log("hi");
           console.log(error);
           return;
         }
@@ -69,11 +77,10 @@ function handler(request, response) {
 
       fs.readFile(__dirname + "/../public" + endpoint, function(error, file) {
         if (error) {
-          // console.log(endpoint);
-          console.log("Error");
+          console.log("Error: One of the requested files couldn't be found (probably the favicon :P)");
+          console.log(endpoint);
           return;
         }
-        // console.log(__dirname + "/../public" + endpoint);
         response.writeHead(200, { "Content-Type": extensionType[extension] });
         response.end(file);
       });
@@ -101,8 +108,6 @@ function handler(request, response) {
           console.log(`Cannot upload images. Error is ${error}`);
         }
         else {
-          // console.log("LOOK HERE", files);
-          // return;
         let mainImage = {
           name: files["mainImage"]["name"],
           size: files["mainImage"]["size"],
@@ -136,11 +141,7 @@ function handler(request, response) {
       });
 
       request.on("end", function() {
-        // let convertedData = formResponse;
         const convertedData = querystring.parse(allTheData);
-        // console.log(convertedData.post);
-        // console.log(convertedData);
-        // return;
 
         fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
           if (error) {
@@ -153,6 +154,8 @@ function handler(request, response) {
           blogPosts[Date.now()] = formData;
           console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
+          // console.log("CHECK THIS", Object.keys(blogPosts));
+          // return;
 
           fs.writeFile(__dirname + "/posts.json", final, function(error) {
             if (error) {
@@ -160,12 +163,25 @@ function handler(request, response) {
               return;
           }
           console.log("Successfully written to file");
-          // response.writeHead(200, {"Content-Type": "application/json"});
-          // response.end(file);
         });
+
+        let newPostContent = "<h1>Hello Bobby!</h1>";
+        let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
+        // console.log("ALMOST THERE", newPostPath);
+        // return;
+
+        fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
+          if (error) {
+            console.log("Error: No such file exists");
+            return;
+        }
+        console.log("Successfully written to file");
+        // response.writeHead(200, { "Content-Type": "text/html" });
+        // response.end();
+      });
       });
 
-      response.writeHead(302, { Location: "/blog/blog.html" });
+      response.writeHead(302, { Location: "/blog/all-posts" });
       response.end();
     });
   }

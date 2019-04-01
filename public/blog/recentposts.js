@@ -31,6 +31,6 @@ document.onreadystatechange = function() {
         }
       }
     };
-    xhr.open("GET", "/posts", true);
+    xhr.open("GET", "/blog/posts", true);
     xhr.send();
   }
