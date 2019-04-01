@@ -8,12 +8,14 @@ const formidable = require('formidable');
 const extensionType = {
   html: "text/html",
   css: "text/css",
-  js: "application/javascript",
+  js: "text/javascript",
   jpg: "image/jpeg",
+  jpeg: "image/jpeg",
   png: "image/png",
   ico: "image/x-icon",
   svg: "image/svg+xml",
-  gif: "image/gif"
+  gif: "image/gif",
+  json: "application/json"
 };
 
 function handler(request, response) {
@@ -92,6 +94,7 @@ function handler(request, response) {
           console.log(endpoint);
           return;
         }
+        // console.log("IS THIS IT?");
         response.writeHead(200, { "Content-Type": extensionType[extension] });
         response.end(file);
       });

@@ -42,7 +42,7 @@ body {
   text-align: center;
   /* 3. */
   /* min-width: 400px; */
-  max-width: 800px;
+  max-width: 840px;
   /* 4. */
   /* background: #2f2f2f; */
   /* background: rgb(34,193,195);
@@ -97,7 +97,7 @@ h4 {
 }
 
 hr {
-  width: 80%;
+  width: 100%;
   border: 1px solid #5d5d60;
 }
 
@@ -547,7 +547,7 @@ nav {
   width: 100%;
   position: relative;
   background: #fdfdfd;
-  padding: 5em 5em 0em 5em;
+  padding: 80px 80px 0em 80px;
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
