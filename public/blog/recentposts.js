@@ -10,9 +10,21 @@ document.onreadystatechange = function() {
             var postSpan = document.createElement("span");
             var postTitle = document.createElement("h2");
             var thumbnail = document.createElement("img");
-            var postContainer = document.getElementsByClassName(
-              "o-container"
-            )[0];
+            var postContainer = document.querySelector(
+              ".postContainer"
+            );
+            var oContainer = document.querySelector(
+              ".o-container"
+            );
+            var tContainer = document.querySelector(
+              ".t-container"
+            );
+            var lContainer = document.querySelector(
+              ".l-container"
+            );
+            var sContainer = document.querySelector(
+              ".s-container"
+            );
 
             // thumbnail.src = `../assets/favicon.png`;
             thumbnail.src = `../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}`;
@@ -22,7 +34,24 @@ document.onreadystatechange = function() {
 
             postSpan.appendChild(thumbnail);
             postSpan.appendChild(postTitle);
-            postContainer.appendChild(postSpan);
+            postContainer.appendChild(oContainer);
+            postContainer.appendChild(tContainer);
+            postContainer.appendChild(lContainer);
+            postContainer.appendChild(sContainer);
+
+            if (data[blogPost]["contentType"] === "news") {
+            tContainer.appendChild(postSpan);
+          }
+          else if (data[blogPost]["contentType"] === "interview") {
+            lContainer.appendChild(postSpan);
+          }
+          else if (data[blogPost]["contentType"] === "review") {
+            sContainer.appendChild(postSpan);
+          }
+          else {
+            //REWRITE THIS LOGIC TO SELECT THE FOUR LATEST POSTS
+            oContainer.appendChild(postSpan);
+          }
 
           }
         }
