@@ -1623,7 +1623,7 @@ g.boardroom .audience .clackTwo {
     /* RECENT POSTS SECTION*/
 
     .post-container {
-      display: grid;
+      /* display: grid; */
     }
 
     .o-container {
