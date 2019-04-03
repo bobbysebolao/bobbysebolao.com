@@ -1624,67 +1624,109 @@ g.boardroom .audience .clackTwo {
 
     .post-container {
       width: 100%;
-      /* display: grid; */
+      display: grid;
+      grid-template-columns: 210px 210px 210px;
+      grid-template-rows: 210px 210px 210px 210px 210px 210px 210px;
     }
 
-    .o-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      width: 66.66%;
-      min-height: 100px;
-      border: 5px solid blue;
+    .post-container h2 {
+      font-family: 'VT323', monospace;
+      font-size: 3em;
+      /* position: absolute;
+      top: 50%;
+      left: 50%; */
+      line-height: 210px;
+      margin: 0em 0 0em;
+      height: auto;
     }
 
-    .o-container .post {
-      /* flex-basis: 50%;
-      margin-right: 0px;
-      margin-bottom: 0px; */
-      border: 1px solid #848484;
-      border-radius: 3px;
-      -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-      -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-      box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.4);
+    .block-post {
+      border-right: 15px solid black;
+      border-bottom: 15px solid black;
+      position: relative;
+    }
+
+    .block-post:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
       background: white;
-      text-align: center;
-      width: 110px;
-      /* height: 640px; */
-      /* max-width: 320px; */
+      width: 15px;
+      height: 15px;
     }
 
-    .t-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      width: 66.66%;
-      min-height: 100px;
-      border: 5px solid red;
+    .block-post:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: transparent;
+      width: 30px;
+      height: 30px;
+      border-top: 15px solid white;
+      border-left: 15px solid white;
     }
 
-    .l-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      width: 66.66%;
-      min-height: 100px;
-      border: 5px solid yellow;
+    .shine {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
     }
 
-    .s-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      width: 66.66%;
-      min-height: 100px;
-      border: 5px solid green;
+    .shine:after {
+      content: "";
+      position: absolute;
+      top: -110%;
+      left: -210%;
+      width: 200%;
+      height: 200%;
+      opacity: 0;
+      transform: rotate(30deg);
+
+      background: rgba(255, 255, 255, 0.13);
+      background: linear-gradient(to right,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.13) 77%,
+      rgba(255, 255, 255, 0.5) 92%,
+      rgba(255, 255, 255, 0.0) 100%);
+    }
+
+    .shine:hover:after {
+      opacity: 1;
+      top: -30%;
+      left: -30%;
+      transition-property: left, top, opacity;
+      transition-duration: 0.7s, 0.7s, 0.15s;
+      transition-timing-function: ease;
+    }
+
+    .shine:active:after {
+      opacity: 0;
+    }
+
+    .blockO {
+      background: #da3a32;
+    }
+
+    .blockT {
+      background: #1c43f1;
+    }
+
+    .blockL {
+      background: #79f240;
+    }
+
+    .blockS {
+      background: #f0a142;
+    }
+
+    .gap {
+      border: 5px solid black;
     }
 
     .post {
-      flex-basis: 50%;
       margin-right: 0px;
       margin-bottom: 0px;
       border: 1px solid #848484;
@@ -1694,7 +1736,7 @@ g.boardroom .audience .clackTwo {
       box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.4);
       background: white;
       text-align: center;
-      width: 110px;
+      /* width: 210px; */
       /* height: 640px; */
       /* max-width: 320px; */
     }
@@ -1702,6 +1744,7 @@ g.boardroom .audience .clackTwo {
     .post img {
       max-width:100%;
       max-height:100%;
+      object-fit: contain;
     }
 
     .post:nth-of-type(3n) {
