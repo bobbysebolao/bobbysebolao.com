@@ -21,7 +21,6 @@ document.onreadystatechange = function() {
           // ^FOUR MOST RECENT TIMESTAMPS ARE SORTED, READY TO ADD TO DOM
 
           for (let blogPost in data) {
-            return;
             // console.log(data[blogPost]["contentType"]);
             console.log(latestTimestamps);
             var postSpan = document.createElement("span");
@@ -48,7 +47,6 @@ document.onreadystatechange = function() {
             thumbnail.className = "thumbnail";
             postTitle.innerHTML = data[blogPost]["title"];
             postSpan.className = "post";
-            // postSpan.className = "post";
 
             postSpan.appendChild(thumbnail);
             postSpan.appendChild(postTitle);
