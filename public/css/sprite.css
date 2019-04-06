@@ -51,9 +51,11 @@ body {
   flex-direction: column;
   background-color: #c18e67;
   background-image: url(/assets/desk_background.svg);
+  background: #ccc;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
+  font-family: 'VT323', monospace;
 
   /* background-size: cover; */
   padding: 20px;
@@ -81,7 +83,7 @@ h1, h2, h3, h4 {
 
 h1 {
   margin-top: 0;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 h2 {
@@ -1660,82 +1662,63 @@ g.boardroom .audience .clackTwo {
     .post-container {
       width: 100%;
       display: grid;
-      grid-template-columns: 210px 210px 210px;
-      grid-template-rows: 210px 210px 210px 210px 210px 210px 210px;
-      grid-row-gap: 5px;
-      grid-column-gap: 5px;
-      justify-content: center;
-      /* align-items: center; */
+      grid-template-columns: 213px 213px 213px;
+      grid-template-rows: 213px 213px 213px 213px 213px 213px 213px;
     }
 
     .post-container h2 {
+      font-family: 'VT323', monospace;
+      font-size: 3em;
       height: 100%;
       width: 100%;
       margin: 0;
-      padding-top: calc(50% - 0.8em);
+      padding-top: calc(50% - 0.75em);
     }
 
     .latest {
-      background: #afec6a;
+      color: #000000;
+      background: #ccc;
     }
 
     .news {
-      background: #faf557;
+      color: #000000;
+      background: #ccc;
     }
 
     .interviews {
-      background: #7fd9cf;
+      color: #000000;
+      background: #ccc;
     }
 
     .reviews {
-      background: #ef9ab9;
+      color: #000000;
+      background: #ccc;
     }
 
     .all-posts {
-      background: #afec6a;
+      color: #000000;
+      background: #ccc;
     }
 
-    .blockO h3 {
-      background: #afec6a;
+    .blockO {
+      background: #da3a32;
     }
 
-    .blockT h3 {
-      background: #faf557;
+    .blockT {
+      background: #1c43f1;
     }
 
-    .blockL h3 {
-      background: #7fd9cf;
+    .blockL {
+      background: #79f240;
     }
 
-    .blockS h3 {
-      background: #ef9ab9;
-    }
-
-    .post {
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      border-radius: 3px;
-      background-size: contain;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .post h3 {
-      padding-top: 0.7em;
-      height: 90px;
-      width: 100%;
-      margin: 0;
+    .blockS {
+      background: #f0a142;
     }
 
     .block-post {
       border-right: 15px solid black;
       border-bottom: 15px solid black;
-      background-size: contain;
       position: relative;
     }
 
@@ -1759,6 +1742,14 @@ g.boardroom .audience .clackTwo {
       height: 30px;
       border-top: 15px solid white;
       border-left: 15px solid white;
+    }
+
+    .block-post h3 {
+      color: white;
+      position: absolute;
+      top: calc(50% - 0.7em);
+      margin: 0 auto;
+      width: 100%;
     }
 
     .shine {
