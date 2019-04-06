@@ -54,6 +54,7 @@ document.onreadystatechange = function() {
             blockT[newsCount].appendChild(postTitle);
             blockT[newsCount].appendChild(shine);
             blockT[newsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockT[newsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             newsCount--;
           }
 
@@ -61,11 +62,15 @@ document.onreadystatechange = function() {
             blockL[interviewsCount].appendChild(postTitle);
             blockL[interviewsCount].appendChild(shine);
             blockL[interviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockL[interviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             interviewsCount--;
           }
 
           else if (data[blogPost]["contentType"] === "review" && !latestTimestamps.includes(blogPost)) {
             blockS[reviewsCount].appendChild(postTitle);
+            blockS[reviewsCount].appendChild(shine);
+            blockS[reviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockS[reviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             reviewsCount--;
           }
 
