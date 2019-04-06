@@ -9,7 +9,6 @@ document.onreadystatechange = function() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
-
           // console.log("This is your post", data);
 
           //SORTING TIMESTAMPS FOR LATEST POSTS
@@ -31,58 +30,37 @@ document.onreadystatechange = function() {
           let reviewsCount = 3;
 
           for (let blogPost in data) {
-            // console.log(data[blogPost]["contentType"]);
+
             console.log(latestTimestamps);
-            // var postSpan = document.createElement("span");
+
             var postTitle = document.createElement("h3");
-            var thumbnail = document.createElement("img");
             let shine = document.createElement("div");
             shine.className = "shine";
             var postContainer = document.querySelector(".post-container");
-            // var oContainer = document.querySelector(
-            //   ".o-container"
-            // );
-            // var tContainer = document.querySelector(
-            //   ".t-container"
-            // );
-            // var lContainer = document.querySelector(
-            //   ".l-container"
-            // );
-            // var sContainer = document.querySelector(
-            //   ".s-container"
-            // );
 
-
-            // thumbnail.src = `../assets/favicon.png`;
-            thumbnail.src = `../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}`;
-            thumbnail.className = "thumbnail";
             postTitle.innerHTML = data[blogPost]["title"];
-            // postSpan.className = "post";
-
-            // postSpan.appendChild(thumbnail);
-            // postSpan.appendChild(postTitle);
-            // postContainer.appendChild(oContainer);
-            // postContainer.appendChild(tContainer);
-            // postContainer.appendChild(lContainer);
-            // postContainer.appendChild(sContainer);
 
             if (latestTimestamps.includes(blogPost)) {
-              //REWRITE THIS LOGIC TO SELECT THE FOUR LATEST POSTS
-              // console.log(blogPost);
+              //SELECTS THE FOUR LATEST POSTS
               blockO[latestCount].appendChild(postTitle);
               blockO[latestCount].appendChild(shine);
-              blockO[latestCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`
-              // blockO[latestCount].appendChild(thumbnail);
+              blockO[latestCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+              blockO[latestCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+              console.log("DATA ATTR: ", blockO[latestCount].dataset.thumbnail);
               latestCount--;
             }
 
             else if (data[blogPost]["contentType"] === "news" && !latestTimestamps.includes(blogPost)) {
             blockT[newsCount].appendChild(postTitle);
+            blockT[newsCount].appendChild(shine);
+            blockT[newsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             newsCount--;
           }
 
           else if (data[blogPost]["contentType"] === "interview" && !latestTimestamps.includes(blogPost)) {
             blockL[interviewsCount].appendChild(postTitle);
+            blockL[interviewsCount].appendChild(shine);
+            blockL[interviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             interviewsCount--;
           }
 
@@ -108,31 +86,43 @@ document.onreadystatechange = function() {
   let standardStylesheet = document.querySelector("#standardStylesheet");
 
   spriteMode.addEventListener("click", () => {
-      if (standardStylesheet.href.match("../css/blog.css")) {
-      standardStylesheet.href = "../css/sprite.css";
-      for (let i = 0; i < blockO.length; i++) {
 
-      blockO[i].classList.remove("post");
-      blockO[i].classList.add("block-post");
-      blockT[i].classList.remove("post");
-      blockT[i].classList.add("block-post");
-      blockL[i].classList.remove("post");
-      blockL[i].classList.add("block-post");
-      blockS[i].classList.remove("post");
-      blockS[i].classList.add("block-post");
-    }
-    }
+    for (let i = 0; i < 4; i++) {
+
+      if (standardStylesheet.href.match("../css/blog.css")) {
+    blockO[i].classList.remove("post");
+    blockO[i].classList.add("block-post");
+    blockO[i].style.backgroundImage = `url("")`;
+    blockT[i].classList.remove("post");
+    blockT[i].classList.add("block-post");
+    blockT[i].style.backgroundImage = `url("")`;
+    blockL[i].classList.remove("post");
+    blockL[i].classList.add("block-post");
+    blockL[i].style.backgroundImage = `url("")`;
+    blockS[i].classList.remove("post");
+    blockS[i].classList.add("block-post");
+    blockS[i].style.backgroundImage = `url("")`;
+  }
     else {
-      standardStylesheet.href = "../css/blog.css";
-      for (let i = 0; i < blockO.length; i++) {
       blockO[i].classList.remove("block-post");
       blockO[i].classList.add("post");
+      blockO[i].style.backgroundImage = blockO[i].dataset.thumbnail;
       blockT[i].classList.remove("block-post");
       blockT[i].classList.add("post");
+      blockT[i].style.backgroundImage = blockT[i].dataset.thumbnail;
       blockL[i].classList.remove("block-post");
       blockL[i].classList.add("post");
+      blockL[i].style.backgroundImage = blockL[i].dataset.thumbnail;
       blockS[i].classList.remove("block-post");
       blockS[i].classList.add("post");
+      blockS[i].style.backgroundImage = blockS[i].dataset.thumbnail;
     }
-    }
+  }
+
+  if (standardStylesheet.href.match("../css/blog.css")) {
+  standardStylesheet.href = "../css/sprite.css";
+}
+else {
+  standardStylesheet.href = "../css/blog.css";
+}
   });
