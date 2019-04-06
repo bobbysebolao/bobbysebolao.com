@@ -51,6 +51,7 @@ body {
   flex-direction: column;
   background-color: #c18e67;
   background-image: url(/assets/desk_background.svg);
+  background: #2f2f2f;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
