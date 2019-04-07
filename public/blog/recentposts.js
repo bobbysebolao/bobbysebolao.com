@@ -2,6 +2,7 @@ let blockO = document.getElementsByClassName("blockO");
 let blockT = document.getElementsByClassName("blockT");
 let blockL = document.getElementsByClassName("blockL");
 let blockS = document.getElementsByClassName("blockS");
+let postLinks = document.getElementsByClassName("blogPostLink");
 
 document.onreadystatechange = function() {
   if (document.readyState === "complete") {
@@ -47,6 +48,8 @@ document.onreadystatechange = function() {
               blockO[latestCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
               blockO[latestCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
               console.log("DATA ATTR: ", blockO[latestCount].dataset.thumbnail);
+              blockO[latestCount].closest(".blogPostLink").href = data[blogPost]["filename"];
+              console.log("AAAAAAA", blockO[latestCount].closest(".blogPostLink"));
               latestCount--;
             }
 
@@ -56,6 +59,7 @@ document.onreadystatechange = function() {
             blockT[newsCount].appendChild(shine);
             blockT[newsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             blockT[newsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockT[newsCount].closest(".blogPostLink").href = "www.google.com";
             newsCount--;
           }
           }
@@ -66,6 +70,7 @@ document.onreadystatechange = function() {
             blockL[interviewsCount].appendChild(shine);
             blockL[interviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             blockL[interviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockL[interviewsCount].closest(".blogPostLink").href = "www.google.com";
             interviewsCount--;
           }
           }
@@ -76,6 +81,7 @@ document.onreadystatechange = function() {
             blockS[reviewsCount].appendChild(shine);
             blockS[reviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             blockS[reviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockL[reviewsCount].closest(".blogPostLink").href = "www.google.com";
             reviewsCount--;
           }
           }

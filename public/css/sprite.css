@@ -1717,6 +1717,8 @@ g.boardroom .audience .clackTwo {
     }
 
     .block-post {
+      height: 100%;
+      width: 100%;
       border-right: 15px solid black;
       border-bottom: 15px solid black;
       position: relative;
