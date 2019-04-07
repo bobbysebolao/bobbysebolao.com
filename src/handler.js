@@ -167,6 +167,7 @@ function handler(request, response) {
           console.log(blogPosts);
           let timeOfPublication = Date.now();
           blogPosts[timeOfPublication] = formData;
+          blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
           // console.log("CHECK THIS", Object.keys(blogPosts));

@@ -1712,6 +1712,8 @@ g.boardroom .audience .clackTwo {
     }
 
     .post {
+      height: 100%;
+      width: 100%;
       border-top: 0;
       border-left: 0;
       border-right: 0;
@@ -1722,7 +1724,6 @@ g.boardroom .audience .clackTwo {
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      cursor: pointer;
     }
 
     .post h3 {
