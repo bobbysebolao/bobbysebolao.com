@@ -51,27 +51,33 @@ document.onreadystatechange = function() {
             }
 
             else if (data[blogPost]["contentType"] === "news" && !latestTimestamps.includes(blogPost)) {
+              if (newsCount >= 0) {
             blockT[newsCount].appendChild(postTitle);
             blockT[newsCount].appendChild(shine);
             blockT[newsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             blockT[newsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             newsCount--;
           }
+          }
 
           else if (data[blogPost]["contentType"] === "interview" && !latestTimestamps.includes(blogPost)) {
+            if (interviewsCount >= 0) {
             blockL[interviewsCount].appendChild(postTitle);
             blockL[interviewsCount].appendChild(shine);
             blockL[interviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             blockL[interviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             interviewsCount--;
           }
+          }
 
           else if (data[blogPost]["contentType"] === "review" && !latestTimestamps.includes(blogPost)) {
+            if (reviewsCount >= 0) {
             blockS[reviewsCount].appendChild(postTitle);
             blockS[reviewsCount].appendChild(shine);
             blockS[reviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             blockS[reviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
             reviewsCount--;
+          }
           }
 
           }

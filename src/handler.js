@@ -165,7 +165,8 @@ function handler(request, response) {
           console.log(file);
           const blogPosts = JSON.parse(file);
           console.log(blogPosts);
-          blogPosts[Date.now()] = formData;
+          let timeOfPublication = Date.now();
+          blogPosts[timeOfPublication] = formData;
           console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
           // console.log("CHECK THIS", Object.keys(blogPosts));
@@ -179,7 +180,7 @@ function handler(request, response) {
           console.log("Successfully written to file");
         });
 
-        let newPostContent = "<h1>Hello Bobby!</h1>";
+        let newPostContent = blogPosts[timeOfPublication]["post"];
         let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
         // console.log("ALMOST THERE", newPostPath);
         // return;
