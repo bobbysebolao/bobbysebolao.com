@@ -182,6 +182,7 @@ function handler(request, response) {
         });
 
         let newPostContent = blogPosts[timeOfPublication]["post"];
+        // let newPostContent = createPostFromTemplate();
         let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
         // console.log("ALMOST THERE", newPostPath);
         // return;
