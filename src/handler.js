@@ -5,6 +5,7 @@ const formidable = require('formidable');
 // const mime = require("mime");
 // const util = require('util');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
+const readingTimeCalculator = require("./readingTimeCalculator.js");
 
 const extensionType = {
   html: "text/html",
@@ -173,7 +174,10 @@ function handler(request, response) {
           blogPosts[timeOfPublication] = formData;
           blogPosts[timeOfPublication]["date"] = dateOfPublication;
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
-          console.log(blogPosts);
+          blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
+          // console.log("QWERTY", blogPosts[timeOfPublication]["readingminutes"]);
+          // return;
+          // console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
           // console.log("CHECK THIS", Object.keys(blogPosts));
           // return;
@@ -187,7 +191,7 @@ function handler(request, response) {
         });
 
         // let newPostContent = blogPosts[timeOfPublication]["post"];
-        let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]);
+        let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]);
         console.log("TADAAAAA", newPostContent);
 
         // console.log("TAKE NOTE", createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]));

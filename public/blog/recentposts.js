@@ -11,10 +11,10 @@ document.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
           // console.log("This is your post", data);
+          // return;
 
           //SORTING TIMESTAMPS FOR LATEST POSTS
           let timestamps = Object.getOwnPropertyNames(data);
-          console.log(typeof(timestamps[0]));
 
           function descendingSort(a, b) {
             return b - a;
@@ -22,8 +22,30 @@ document.onreadystatechange = function() {
 
           timestamps.sort(descendingSort);
           let latestTimestamps = timestamps.slice(0, 4);
-          console.log(typeof(latestTimestamps[0]));
-          // ^FOUR MOST RECENT TIMESTAMPS ARE SORTED, READY TO ADD TO DOM
+          timestamps.splice(0,4);
+          // console.log("HERE ARE YOUR TIMESTAMPS", timestamps);
+          // return;
+          let newsTimestamps = [];
+          let interviewTimestamps = [];
+          let reviewTimestamps = [];
+          for (let i = 0; i < timestamps.length; i++) {
+            if (data[timestamps[i]]["contentType"] === "news") {
+              newsTimestamps.push(timestamps[i]);
+            }
+            else if (data[timestamps[i]]["contentType"] === "interview") {
+              interviewTimestamps.push(timestamps[i]);
+            }
+            else if (data[timestamps[i]]["contentType"] === "review") {
+              reviewTimestamps.push(timestamps[i]);
+            }
+            // console.log("QWERTY", data[timestamps[i]]["contentType"]);
+          }
+          let latestNewsTimestamps = newsTimestamps.sort(descendingSort).slice(0,4);
+          let latestInterviewTimestamps = interviewTimestamps.sort(descendingSort).slice(0,4);
+          let latestReviewTimestamps = reviewTimestamps.sort(descendingSort).slice(0,4);
+
+          // ^^FOUR MOST RECENT TIMESTAMPS FOR EACH POST TYPE ARE NOW SORTED &
+          // READY TO ADD TO DOM
 
           let latestCount = 3;
           let newsCount = 3;
@@ -54,7 +76,7 @@ document.onreadystatechange = function() {
             }
 
             else if (data[blogPost]["contentType"] === "news" && !latestTimestamps.includes(blogPost)) {
-              if (newsCount >= 0) {
+              if (latestNewsTimestamps.includes(blogPost)) {
             blockT[newsCount].appendChild(postTitle);
             blockT[newsCount].appendChild(shine);
             blockT[newsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
@@ -65,7 +87,7 @@ document.onreadystatechange = function() {
           }
 
           else if (data[blogPost]["contentType"] === "interview" && !latestTimestamps.includes(blogPost)) {
-            if (interviewsCount >= 0) {
+            if (latestInterviewTimestamps.includes(blogPost)) {
             blockL[interviewsCount].appendChild(postTitle);
             blockL[interviewsCount].appendChild(shine);
             blockL[interviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
@@ -76,7 +98,7 @@ document.onreadystatechange = function() {
           }
 
           else if (data[blogPost]["contentType"] === "review" && !latestTimestamps.includes(blogPost)) {
-            if (reviewsCount >= 0) {
+            if (latestReviewTimestamps.includes(blogPost)) {
             blockS[reviewsCount].appendChild(postTitle);
             blockS[reviewsCount].appendChild(shine);
             blockS[reviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
