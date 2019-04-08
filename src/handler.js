@@ -5,6 +5,7 @@ const formidable = require('formidable');
 // const mime = require("mime");
 // const util = require('util');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
+const readingTimeCalculator = require("./readingTimeCalculator.js");
 
 const extensionType = {
   html: "text/html",
@@ -173,6 +174,9 @@ function handler(request, response) {
           blogPosts[timeOfPublication] = formData;
           blogPosts[timeOfPublication]["date"] = dateOfPublication;
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
+          blogPosts[timeOfPublication]["readingtime"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
+          console.log("QWERTY", blogPosts[timeOfPublication]["readingtime"].length);
+          return;
           console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
           // console.log("CHECK THIS", Object.keys(blogPosts));
