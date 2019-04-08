@@ -4,6 +4,7 @@ const path = require("path");
 const formidable = require('formidable');
 // const mime = require("mime");
 // const util = require('util');
+const createPostFromTemplate = require("./createPostFromTemplate.js");
 
 const extensionType = {
   html: "text/html",
@@ -166,7 +167,11 @@ function handler(request, response) {
           const blogPosts = JSON.parse(file);
           console.log(blogPosts);
           let timeOfPublication = Date.now();
+          let dateOfPublication = Date(timeOfPublication);
+          console.log("TODAY'S DATE", dateOfPublication);
+          // return;
           blogPosts[timeOfPublication] = formData;
+          blogPosts[timeOfPublication]["date"] = dateOfPublication;
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
@@ -181,8 +186,12 @@ function handler(request, response) {
           console.log("Successfully written to file");
         });
 
-        let newPostContent = blogPosts[timeOfPublication]["post"];
-        // let newPostContent = createPostFromTemplate();
+        // let newPostContent = blogPosts[timeOfPublication]["post"];
+        let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]);
+        console.log("TADAAAAA", newPostContent);
+
+        // console.log("TAKE NOTE", createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]));
+        // return;
         let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
         // console.log("ALMOST THERE", newPostPath);
         // return;
