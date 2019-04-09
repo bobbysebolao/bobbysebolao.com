@@ -475,7 +475,9 @@
           <form class="createPost" action="/create/post" method="post" id="the-form" enctype="multipart/form-data">
             <h2>Main Content</h2>
             <label for="title">Title:</label>
-            <input name="title" id="title" required>
+            <input name="title" id="title" maxlength="65" required>
+            <label for="subtitle">Subtitle:</label>
+            <input name="subtitle" id="subtitle" required>
 
             <label for="contentType">Type:</label>
             <select name="contentType" id="contentType" required>
@@ -491,6 +493,10 @@
 
             <label for="mainImage">Upload main image:</label>
             <input type="file" name="mainImage" accept="image/*" id="mainImage" required>
+            <label for="mainImageCaption">Caption:</label>
+            <input name="mainImageCaption" id="mainImageCaption" required>
+            <label for="mainImageAltText">Alt text:</label>
+            <input name="mainImageAltText" id="mainImageAltText" required>
 
             <label for="post">Body:</label>
             <textarea name="post" rows="12" id="post" required></textarea>
@@ -500,9 +506,9 @@
 
             <h2>Metadata</h2>
             <label for="metatitle">Meta title:</label>
-            <input name="metatitle" type="text" id="metatitle" required>
+            <input name="metatitle" type="text" id="metatitle" maxlength="65" required>
             <label for="metadescription">Meta description:</label>
-            <textarea name="metadescription" rows="8" id="metadescription" required></textarea>
+            <textarea name="metadescription" rows="4" id="metadescription" maxlength="170" required></textarea>
 
             <button type="submit">Publish</button>
 
