@@ -1677,22 +1677,32 @@ g.boardroom .audience .clackTwo {
 
     .latest {
       background: #afec6a;
+      border: 3px solid #111;
+      border-radius: 10px;
     }
 
     .news {
       background: #faf557;
+      border: 3px solid #111;
+      border-radius: 10px;
     }
 
     .interviews {
       background: #7fd9cf;
+      border: 3px solid #111;
+      border-radius: 10px;
     }
 
     .reviews {
       background: #ef9ab9;
+      border: 3px solid #111;
+      border-radius: 10px;
     }
 
     .all-posts {
       background: #afec6a;
+      border: 3px solid #111;
+      border-radius: 10px;
     }
 
     .blockO h3 {
@@ -1714,10 +1724,7 @@ g.boardroom .audience .clackTwo {
     .post {
       height: 100%;
       width: 100%;
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      border-radius: 3px;
+      border-radius: 10px;
       background-size: contain;
       position: relative;
       display: flex;
@@ -1726,11 +1733,18 @@ g.boardroom .audience .clackTwo {
       align-items: center;
     }
 
+    .post:hover {
+      border: 3px solid #111;
+      transition: all 0.25s ease-in-out;
+    }
+
     .post h3 {
-      padding-top: 0.7em;
-      height: 90px;
+      padding-top: 0.2em;
+      height: 92px;
       width: 100%;
       margin: 0;
+      border-radius: 0px 0px 10px 10px;
+      position: relative;
     }
 
     .block-post {
@@ -1762,7 +1776,7 @@ g.boardroom .audience .clackTwo {
       border-left: 15px solid white;
     }
 
-    .shine {
+    /* .shine {
       position: absolute;
       overflow: hidden;
       width: 100%;
@@ -1798,7 +1812,7 @@ g.boardroom .audience .clackTwo {
 
     .shine:active:after {
       opacity: 0;
-    }
+    } */
 
     /*===============MEDIA QUERIES================*/
     /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
