@@ -7,88 +7,95 @@ const formidable = require('formidable');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
 const readingTimeCalculator = require("./readingTimeCalculator.js");
 
-const extensionType = {
-  html: "text/html",
-  css: "text/css",
-  js: "text/javascript",
-  jpg: "image/jpeg",
-  jpeg: "image/jpeg",
-  png: "image/png",
-  ico: "image/x-icon",
-  svg: "image/svg+xml",
-  gif: "image/gif",
-  json: "application/json"
-};
+//GET REQUEST HANDLERS
 
-function handler(request, response) {
-  const endpoint = request.url;
-  const extension = endpoint.split(".")[1];
-  const method = request.method;
-
-  if (method === "GET") {
-
-    if (endpoint === "/" || endpoint === "/index.html") {
+const homeHandler = (res) => {
       fs.readFile(__dirname + "/../index.html", function(error, file) {
         if (error) {
           console.log("error");
           return;
         }
-        response.writeHead(200, { "Content-Type": "text/html" });
-        response.end(file);
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(file);
       });
     }
 
-    else if (endpoint === "/blog/all-posts") {
+const allPostsHandler = (res) => {
       fs.readFile(__dirname + "/../public/blog/all-posts.html", function(error, file) {
         if (error) {
           console.log("error");
           return;
         }
-        response.writeHead(200, { "Content-Type": "text/html" });
-        response.end(file);
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(file);
       });
     }
 
-    else if (endpoint === "/blog/posts") {
+const postsJSONHandler = (res) => {
       fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
         if (error) {
           console.log(error);
           return;
         }
-        response.writeHead(200, {"Content-Type": "application/json"});
+        res.writeHead(200, {"Content-Type": "application/json"});
         // response.write("You're on the posts page");
         // console.log(JSON.parse(file));
         const blogPosts = JSON.parse(file);
         // console.log("BLOG POSTS:", blogPosts['1456059074613']);
-        response.end(file);
+        res.end(file);
       });
     }
 
-    else if (endpoint === "/blog/new") {
+const newPostHandler = (res) => {
       fs.readFile(__dirname + "/../public/blog/create-new-post.html", "utf8", (error, file) => {
         if (error) {
           console.log(error);
           return;
         }
-        response.writeHead(200, { "Content-Type": "text/html" });
-        response.end(file);
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(file);
       });
     }
 
-    else if (endpoint.includes("/scripts")) {
+    const domScriptsHandler = (res, endpoint, extension) => {
+
+      const extensionType = {
+        html: "text/html",
+        css: "text/css",
+        js: "text/javascript",
+        jpg: "image/jpeg",
+        jpeg: "image/jpeg",
+        png: "image/png",
+        ico: "image/x-icon",
+        svg: "image/svg+xml",
+        gif: "image/gif",
+        json: "application/json"
+      };
+
       fs.readFile(__dirname + "/../" + endpoint, (error, file) => {
         if (error) {
           console.log(error);
           return;
         }
-        response.writeHead(200, {"Content-Type": extensionType[extension]});
-        response.end(file);
+        res.writeHead(200, {"Content-Type": extensionType[extension]});
+        res.end(file);
       });
     }
 
-    else {
-      // const extension = endpoint.split(".")[1];
-      // console.log(extension);
+const publicHandler = (res, endpoint, extension) => {
+
+  const extensionType = {
+    html: "text/html",
+    css: "text/css",
+    js: "text/javascript",
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    ico: "image/x-icon",
+    svg: "image/svg+xml",
+    gif: "image/gif",
+    json: "application/json"
+  };
 
       fs.readFile(__dirname + "/../public" + endpoint, function(error, file) {
         if (error) {
@@ -96,15 +103,14 @@ function handler(request, response) {
           console.log(endpoint);
           return;
         }
-        // console.log("IS THIS IT?");
-        response.writeHead(200, { "Content-Type": extensionType[extension] });
-        response.end(file);
+        res.writeHead(200, { "Content-Type": extensionType[extension] });
+        res.end(file);
       });
     }
-  }
 
-  if (method === "POST") {
-    if (endpoint === "/create/post") {
+//POST REQUEST HANDLERS
+
+const createPostHandler = (req, res) => {
       console.log("POST request received");
 
       let form = new formidable.IncomingForm();
@@ -119,7 +125,7 @@ function handler(request, response) {
 
       let formData = "";
 
-      form.parse(request, function(error, fields, files) {
+      form.parse(req, function(error, fields, files) {
         if (error) {
           console.log(`Cannot upload images. Error is ${error}`);
         }
@@ -151,12 +157,12 @@ function handler(request, response) {
       // to the server: https://stackoverflow.com/questions/21745432/image-upload-to-server-in-node-js-without-using-express
 
       let allTheData = "";
-      request.on("data", function(chunkOfData) {
+      req.on("data", function(chunkOfData) {
         console.log("Writing to file...");
         allTheData += chunkOfData;
       });
 
-      request.on("end", function() {
+      req.on("end", function() {
         const convertedData = querystring.parse(allTheData);
 
         fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
@@ -212,11 +218,17 @@ function handler(request, response) {
       });
       });
 
-      response.writeHead(302, { Location: "/blog/all-posts" });
-      response.end();
+      res.writeHead(302, { Location: "/blog/all-posts" });
+      res.end();
     });
   }
-  }
-}
 
-module.exports = handler;
+module.exports = {
+  homeHandler,
+  allPostsHandler,
+  postsJSONHandler,
+  newPostHandler,
+  domScriptsHandler,
+  publicHandler,
+  createPostHandler
+};
