@@ -584,6 +584,7 @@ nav {
   background: #fdfdfd;
   /* padding: 5em 5em 0em 5em; */
   padding: 80px 80px 0em 80px;
+  /* padding: 2.5em 5vw 0em 5vw; */
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
@@ -1813,6 +1814,33 @@ g.boardroom .audience .clackTwo {
     .shine:active:after {
       opacity: 0;
     } */
+
+    .blog-post {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      position: relative;
+      background: #fdfdfd;
+      /* padding: 5em 5em 0em 5em; */
+      padding: 80px 80px 0em 80px;
+      /* padding: 2.5em 5vw 0em 5vw; */
+      box-shadow: 5px 10px 10px 0px #000000;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .blog-post__main-image {
+      object-fit: contain;
+      width: 100%;
+    }
+
+    .blog-post__main-image-caption {
+      opacity: 0.5;
+      text-align: right;
+    }
 
     /*===============MEDIA QUERIES================*/
     /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
