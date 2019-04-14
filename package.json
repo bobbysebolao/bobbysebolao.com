@@ -25,6 +25,9 @@
     "tape": "^4.10.1"
   },
   "dependencies": {
-    "formidable": "^1.2.1"
+    "env2": "^2.2.2",
+    "formidable": "^1.2.1",
+    "pg": "^7.9.0",
+    "query-string": "^6.4.2"
   }
 }
