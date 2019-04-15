@@ -1,6 +1,10 @@
 BEGIN;
 
-DROP TABLE IF EXISTS posts, post_categories, comments, main_images, users CASCADE;
+DROP TABLE IF EXISTS posts CASCADE;
+DROP TABLE IF EXISTS post_categories CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS main_images CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE posts (
   post_id SERIAL PRIMARY KEY,
