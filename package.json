@@ -4,8 +4,10 @@
   "description": "My one-page portfolio website. Includes:",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test tape /server.js | tap-spec",
-    "start": "NODE_ENV=start nodemon /server.js"
+    "test": "NODE_ENV=test src/tests/*.test.js | tap-spec",
+    "start": "NODE_ENV=start node server.js",
+    "live": "NODE_ENV=start nodemon server.js",
+    "build_db": "NODE_ENV=build node src/database/build.js"
   },
   "repository": {
     "type": "git",
