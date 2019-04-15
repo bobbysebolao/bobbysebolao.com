@@ -9,7 +9,7 @@ CREATE TABLE posts (
   category_id INTEGER NOT NULL,
   title VARCHAR(100) NOT NULL,
   subtitle VARCHAR(500) NOT NULL,
-  reading_mins INT NOT NULL,
+  reading_mins INTEGER NOT NULL,
   main_image_id INTEGER NOT NULL,
   main_image_caption VARCHAR(100) NOT NULL,
   main_image_alt_text VARCHAR(500) NOT NULL,
@@ -19,6 +19,9 @@ CREATE TABLE posts (
   CONSTRAINT main_image_id FOREIGN KEY (main_image_id) REFERENCES main_images (main_image_id),
   CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
+
+INSERT INTO posts (pub_timestamp, pub_date, category_id, title, subtitle, reading_mins, main_image_id, main_image_caption, main_image_alt_text, filename, user_id)
+VALUES (12345, '12 March 2019', 'Interview', 'The first database test blog post', 'Will it work?', 4, 1, 'The main image', 'Main image alt text', 'image.jpeg', 1);
 
 CREATE TABLE post_categories (
   category_id SERIAL PRIMARY KEY,
@@ -53,8 +56,5 @@ CREATE TABLE users (
   email VARCHAR(200) NOT NULL,
   role VARCHAR(100) NOT NULL
 );
-
-INSERT INTO posts (pub_timestamp, pub_date, category_id, title, subtitle, reading_mins, main_image_id, main_image_caption, main_image_alt_text, filename, user_id)
-VALUES (12345, '12 March 2019', 'Interview', 'The first database test blog post', 'Will it work?', 4, 1, 'The main image', 'Main image alt text', 'image.jpeg', 1);
 
 COMMIT;

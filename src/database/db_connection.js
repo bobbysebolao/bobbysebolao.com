@@ -1,5 +1,7 @@
 const { Pool } = require("pg");
+
 const url = require("url");
+
 require("env2")("./config.env");
 
 let DB_URL = process.env.DB_URL;
@@ -13,7 +15,7 @@ if (!DB_URL) {
 }
 
 const params = url.parse(DB_URL);
-
+// console.log("this is params---------> ", params);
 const [username, password] = params.auth.split(":");
 
 const options = {
