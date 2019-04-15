@@ -18,7 +18,7 @@ const sql = fs.readFileSync(sqlPath).toString();
     } else {
       console.log('Database created');
       dbConnection.end(() => {
-        return console.log('Connection closed!');
+        console.log('Connection closed!');
       })
     }
   });
