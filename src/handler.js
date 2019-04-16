@@ -7,6 +7,8 @@ const formidable = require('formidable');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
 const readingTimeCalculator = require("./readingTimeCalculator.js");
 
+const submitNewPost = require("./queries/submitNewPost.js");
+
 //GET REQUEST HANDLERS
 
 const homeHandler = (res) => {
@@ -149,6 +151,9 @@ const createPostHandler = (req, res) => {
         // console.log(fields);
         console.log("Uploaded images successfully");
         formData = fields;
+        submitNewPost(formData);
+        // console.log("BIG OI");
+        // return;
       }
       });
 
@@ -164,15 +169,16 @@ const createPostHandler = (req, res) => {
 
       req.on("end", function() {
         const convertedData = querystring.parse(allTheData);
+        // console.log(convertedData);
 
         fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
           if (error) {
             console.log(error);
             return;
           }
-          console.log(file);
+          // console.log(file);
           const blogPosts = JSON.parse(file);
-          console.log(blogPosts);
+          // console.log(blogPosts);
           let timeOfPublication = Date.now();
           let dateOfPublication = Date(timeOfPublication);
           console.log("TODAY'S DATE", dateOfPublication);
@@ -198,7 +204,7 @@ const createPostHandler = (req, res) => {
 
         // let newPostContent = blogPosts[timeOfPublication]["post"];
         let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]);
-        console.log("TADAAAAA", newPostContent);
+        // console.log("TADAAAAA", newPostContent);
         // return;
 
         // console.log("TAKE NOTE", createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]));
