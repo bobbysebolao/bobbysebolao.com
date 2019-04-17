@@ -8,13 +8,11 @@ let spriteMode = document.querySelector(".spriteMode");
 let standardStylesheet = document.querySelector("#standardStylesheet");
 
 document.onreadystatechange = function() {
-
-  if (sessionStorage.getItem('autosave').includes('css/sprite.css')) {
-  standardStylesheet.href = "../css/sprite.css";
-  // console.log("Session storage is working");
-}
-
   if (document.readyState === "complete") {
+    if (sessionStorage.getItem('autosave') && sessionStorage.getItem('autosave').includes('css/sprite.css')) {
+    standardStylesheet.href = "../css/sprite.css";
+    // console.log("Session storage is working");
+  }
     // console.log("Look here", sessionStorage.getItem('autosave'));
 
     var xhr = new XMLHttpRequest();
