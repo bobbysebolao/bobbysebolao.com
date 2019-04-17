@@ -7,6 +7,7 @@ const formidable = require('formidable');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
 const readingTimeCalculator = require("./readingTimeCalculator.js");
 
+const submitNewImage = require("./queries/submitNewImage.js");
 const submitNewPost = require("./queries/submitNewPost.js");
 
 //GET REQUEST HANDLERS
@@ -151,7 +152,7 @@ const createPostHandler = (req, res) => {
         // console.log(fields);
         console.log("Uploaded images successfully");
         formData = fields;
-        submitNewPost(formData);
+        // submitNewPost(formData);
         // console.log("BIG OI");
         // return;
       }
@@ -184,9 +185,33 @@ const createPostHandler = (req, res) => {
           console.log("TODAY'S DATE", dateOfPublication);
           // return;
           blogPosts[timeOfPublication] = formData;
+          blogPosts[timeOfPublication]["authorName"] = "mistapepper";
           blogPosts[timeOfPublication]["date"] = dateOfPublication;
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
+          // console.log(typeof(blogPosts[timeOfPublication]["mainImage"]["name"]));
+          // return;
+
+          submitNewImage(blogPosts[timeOfPublication], err => {
+            if (err) {
+              console.log(err);
+              // res.writeHead(302, { Location: "/" });
+              // res.end();
+            }
+            // res.writeHead(500, { "Content-Type": "text/html" });
+            // res.end("error, couldn't submit");
+          });
+
+          submitNewPost(blogPosts[timeOfPublication], timeOfPublication, err => {
+            if (err) {
+              console.log(err);
+              // res.writeHead(302, { Location: "/" });
+              // res.end();
+            }
+            // res.writeHead(500, { "Content-Type": "text/html" });
+            // res.end("error, couldn't submit");
+          });
+
           // console.log("QWERTY", blogPosts[timeOfPublication]["readingminutes"]);
           // return;
           // console.log(blogPosts);

@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS main_images CASCADE;
 
 CREATE TABLE posts (
   pk_post_id SERIAL PRIMARY KEY,
-  pub_timestamp INTEGER NOT NULL,
+  pub_timestamp VARCHAR(100) NOT NULL,
   pub_date VARCHAR(100) NOT NULL,
   title VARCHAR(100) NOT NULL,
   subtitle VARCHAR(500) NOT NULL,
@@ -28,6 +28,7 @@ CREATE TABLE users (
   pk_user_id SERIAL PRIMARY KEY,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
+  username VARCHAR(100) NOT NULL,
   email VARCHAR(200) NOT NULL,
   role VARCHAR(100) NOT NULL
 );
@@ -43,8 +44,6 @@ CREATE TABLE main_images (
   pk_image_id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   size INTEGER NOT NULL,
-  width_px INTEGER NOT NULL,
-  height_px INTEGER NOT NULL,
   filepath VARCHAR(200) NOT NULL,
   type VARCHAR(100) NOT NULL
 );
@@ -64,6 +63,7 @@ ALTER TABLE posts ADD COLUMN user_id INTEGER;
 ALTER TABLE posts ADD CONSTRAINT fk_user_id FOREIGN KEY(user_id)
 REFERENCES users (pk_user_id);
 
+ALTER TABLE main_images ADD CONSTRAINT unique_image_name UNIQUE (name);
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename)
 VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg');
@@ -74,10 +74,10 @@ VALUES ('interview');
 INSERT INTO comments (body)
 VALUES ('it wasnt good');
 
-INSERT INTO main_images (name, size, width_px, height_px, filepath, type)
-VALUES ('cat.jpeg', 1305, 1920, 1080, '/users/images', 'image/jpeg');
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
 
-INSERT INTO users (first_name, last_name, email, role)
-VALUES ('Jeff', 'Summ', 'qwerty@gmail.com', 'minion');
+INSERT INTO users (first_name, last_name, username, email, role)
+VALUES ('Jeff', 'Summ', 'mistapepper', 'qwerty@gmail.com', 'minion');
 
 COMMIT;

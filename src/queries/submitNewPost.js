@@ -1,28 +1,25 @@
 const dbConnection = require("../database/db_connection.js");
 
-const submitNewPost = (obj, cb) => {
-  console.log("This is the form data :", obj);
-  return;
-  console.log(parseInt(obj.rating));
+const submitNewPost = (obj, timestamp) => {
+  // console.log("This is the form data :", obj);
+  // console.log("This is the timestamp :", timestamp);
   dbConnection.query(
-    "INSERT INTO reviews(person_name, business_id, rating, freshness, tv_quality, banter, mirror_coverage, comment) VALUES ($1, (SELECT id FROM businesses WHERE name = $2), $3, $4, $5, $6, $7, $8)",
+    "INSERT INTO posts(pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category_id, main_image_id, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, (SELECT pk_category_id FROM post_categories WHERE category_name = $9), (SELECT pk_image_id FROM main_images WHERE name = $10), (SELECT pk_user_id FROM users WHERE username = $11))",
     [
-      obj.person_name,
-      obj.business_name,
-      parseInt(obj.rating),
-      parseInt(obj.freshness),
-      parseInt(obj.tv_quality),
-      parseInt(obj.banter),
-      parseInt(obj.mirror_coverage),
-      obj.comment
+      timestamp.toString(),
+      obj.date,
+      obj.title,
+      obj.subtitle,
+      obj.readingminutes,
+      obj.mainImageCaption,
+      obj.mainImageAltText,
+      obj.filename,
+      obj.contentType,
+      obj.mainImage.name,
+      obj.authorName
     ],
-    (err, res) => {
-      if (err) {
-        return cb(err);
-      }
-      cb(null);
-    }
   );
+  console.log("Successfully written to DB");
 };
 
 module.exports = submitNewPost;
