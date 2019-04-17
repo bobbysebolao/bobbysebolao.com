@@ -4,8 +4,19 @@ let blockL = document.getElementsByClassName("blockL");
 let blockS = document.getElementsByClassName("blockS");
 let postLinks = document.getElementsByClassName("blogPostLink");
 
+let spriteMode = document.querySelector(".spriteMode");
+let standardStylesheet = document.querySelector("#standardStylesheet");
+
 document.onreadystatechange = function() {
+
+  if (sessionStorage.getItem('autosave').includes('css/sprite.css')) {
+  standardStylesheet.href = "../css/sprite.css";
+  // console.log("Session storage is working");
+}
+
   if (document.readyState === "complete") {
+    // console.log("Look here", sessionStorage.getItem('autosave'));
+
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -121,9 +132,6 @@ document.onreadystatechange = function() {
 
 //ACTIVATING SPRITE MODE
 
-  let spriteMode = document.querySelector(".spriteMode");
-  let standardStylesheet = document.querySelector("#standardStylesheet");
-
   spriteMode.addEventListener("click", () => {
 
     for (let i = 0; i < 4; i++) {
@@ -160,8 +168,10 @@ document.onreadystatechange = function() {
 
   if (standardStylesheet.href.match("../css/blog.css")) {
   standardStylesheet.href = "../css/sprite.css";
+  sessionStorage.setItem("autosave", standardStylesheet.href);
 }
 else {
   standardStylesheet.href = "../css/blog.css";
+  sessionStorage.removeItem("autosave");
 }
   });
