@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test tape src/tests/*.test.js | tap-spec",
+    "local": "NODE_ENV=local nodemon server.js",
     "start": "NODE_ENV=start node server.js",
     "live": "NODE_ENV=start nodemon server.js",
     "build_db": "NODE_ENV=build node src/database/build.js"
