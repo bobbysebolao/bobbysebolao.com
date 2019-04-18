@@ -19,6 +19,14 @@ const router = (request, response) => {
       handler.postsJSONHandler(response);
     }
 
+    // else if (endpoint === "/blog/login") {
+    //   handler.loginPageHandler(response);
+    // }
+
+    else if (endpoint === "/create/account") {
+      handler.createAccountHandler(response);
+  }
+
     else if (endpoint === "/blog/new") {
       handler.newPostHandler(response);
     }
@@ -36,6 +44,10 @@ const router = (request, response) => {
     if (endpoint === "/create/post") {
       handler.createPostHandler(request, response);
   }
+
+  else if (endpoint === "/create/account") {
+    handler.createAccountSubmitHandler(request, response);
+}
   }
 }
 

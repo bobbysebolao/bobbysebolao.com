@@ -9,6 +9,7 @@ const readingTimeCalculator = require("./readingTimeCalculator.js");
 
 const submitNewImage = require("./queries/submitNewImage.js");
 const submitNewPost = require("./queries/submitNewPost.js");
+const validateNewUser = require("./authentication/validateNewUser.js")
 
 //GET REQUEST HANDLERS
 
@@ -49,8 +50,19 @@ const postsJSONHandler = (res) => {
       });
     }
 
+const createAccountHandler = (res) => {
+      fs.readFile(__dirname + "/../public/blog/create-account.html", "utf8", (error, file) => {
+        if (error) {
+          console.log(error);
+          return;
+        }
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(file);
+      });
+    }
+
 const newPostHandler = (res) => {
-      fs.readFile(__dirname + "/../public/blog/create-new-post.html", "utf8", (error, file) => {
+      fs.readFile(__dirname + "/../public/blog/create-post.html", "utf8", (error, file) => {
         if (error) {
           console.log(error);
           return;
@@ -254,12 +266,21 @@ const createPostHandler = (req, res) => {
     });
   }
 
+  const createAccountSubmitHandler = (req, res) => {
+    return;
+    console.log(req);
+    return;
+    validateNewUser();
+  }
+
 module.exports = {
   homeHandler,
   allPostsHandler,
   postsJSONHandler,
+  createAccountHandler,
   newPostHandler,
   domScriptsHandler,
   publicHandler,
-  createPostHandler
+  createPostHandler,
+  createAccountSubmitHandler
 };
