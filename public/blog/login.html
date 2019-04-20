@@ -13,7 +13,7 @@
         gtag('config', 'UA-100955415-3');
       </script>
 
-      <title>Create Account | Bobby Sebolao</title>
+      <title>Login | Bobby Sebolao</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" href="/assets/favicon.png"/>
@@ -456,7 +456,7 @@
 
   <div class="header">
 
-    <h1>Create Account</h1>
+    <h1>Login</h1>
 
     <hr>
 
@@ -472,24 +472,13 @@
     <!-- Advice about parsing multipart form responses: https://stackoverflow.com/questions/23717879/how-could-i-upload-files-in-expressjs-4-x/23718166#23718166 -->
     <!-- TL;DR: You should use a third party parser, writing your own is difficult -->
 
-          <form class="createAccount" action="/create/account" method="post" id="the-form" enctype="multipart/form-data">
-            <label for="first_name">First name:</label>
-            <input name="first_name" id="first_name" required>
-            <label for="last_name">Last name:</label>
-            <input name="last_name" id="last_name" required>
+          <form class="login" action="/blog/login" method="post" id="the-form" enctype="multipart/form-data">
             <label for="username">Username:</label>
             <input name="username" id="username" required>
-            <label for="email">Email:</label>
-            <input name="email" id="email" required>
             <label for="password">Password:</label>
             <input name="password" id="password" required>
-            <label for="confirmed_password">Confirm password:</label>
-            <input name="confirmed_password" id="confirmed_password" required>
 
-            <label for="userImage">Upload your profile image:</label>
-            <input type="file" name="userImage" accept="image/*" id="userImage" required>
-
-            <button type="submit">Create</button>
+            <button type="submit">Login</button>
 
           </form>
 
