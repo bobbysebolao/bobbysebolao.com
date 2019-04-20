@@ -30,6 +30,7 @@ CREATE TABLE users (
   last_name VARCHAR(100) NOT NULL,
   username VARCHAR(100) NOT NULL,
   email VARCHAR(200) NOT NULL,
+  password TEXT NOT NULL,
   role VARCHAR(100) NOT NULL
 );
 
@@ -77,7 +78,7 @@ VALUES ('it wasnt good');
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
 
-INSERT INTO users (first_name, last_name, username, email, role)
-VALUES ('Jeff', 'Summ', 'mistapepper', 'qwerty@gmail.com', 'minion');
+INSERT INTO users (first_name, last_name, username, email, password, role)
+VALUES ('Jeff', 'Summ', 'mistapepper', 'qwerty@gmail.com', 'qwertY101!', 'minion');
 
 COMMIT;
