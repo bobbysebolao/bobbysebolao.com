@@ -60,7 +60,6 @@ else if (endpoint === "/blog/login") {
 
 else if (endpoint.includes("/create/comment")) {
   let jwt = cookie.parse(request.headers.cookie).jwt;
-  // console.log("JWT :", jwt);
   handler.commentSubmitHandler(request, response, jwt);
 }
   }

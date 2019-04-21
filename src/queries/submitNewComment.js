@@ -10,7 +10,7 @@ const submitNewUser = (comment, user_id) => {
         "INSERT INTO comments(body, post_id, user_id) VALUES ($1, (SELECT id FROM posts WHERE pub_timestamp=$2))",
         [
           comment,
-
+          user_id
         ]
       )
       .then(res => {

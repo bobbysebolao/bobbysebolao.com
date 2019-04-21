@@ -388,12 +388,7 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
-    console.log(comment);
-    decodeJSONWebToken(encodedJwt);
-    return;
-    // console.log("This is my comment", comment.comment);
-    submitNewComment(comment.comment)
-    // .then(res => )
+    decodeJSONWebToken(encodedJwt, comment.comment, submitNewComment);
     return;
   });
 }
