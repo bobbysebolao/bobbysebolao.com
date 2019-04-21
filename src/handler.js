@@ -2,6 +2,7 @@ const fs = require("fs");
 const querystring = require("query-string");
 const path = require("path");
 const formidable = require('formidable');
+const cookie = require('cookie');
 // const mime = require("mime");
 // const util = require('util');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
@@ -15,6 +16,8 @@ const hash = require("./authentication/hash.js");
 const submitNewUser = require("./queries/submitNewUser.js");
 const getUser = require("./queries/getUser.js");
 const generateJSONWebToken = require("./authentication/generateJWT.js");
+const submitNewComment = require("./queries/submitNewComment.js");
+const decodeJSONWebToken = require("./authentication/decodeJWT.js")
 
 //GET REQUEST HANDLERS
 
@@ -29,7 +32,7 @@ const homeHandler = (res) => {
       });
     }
 
-const allPostsHandler = (res) => {
+const allPostsHandler = (req, res) => {
       fs.readFile(__dirname + "/../public/blog/all-posts.html", function(error, file) {
         if (error) {
           console.log("error");
@@ -141,7 +144,7 @@ const publicHandler = (res, endpoint, extension) => {
 
 //POST REQUEST HANDLERS
 
-const createPostHandler = (req, res) => {
+const createPostHandler = (req, res, jwt) => {
       console.log("POST request received");
 
       let form = new formidable.IncomingForm();
@@ -277,7 +280,7 @@ const createPostHandler = (req, res) => {
       });
       });
 
-      res.writeHead(302, { Location: "/blog/all-posts" });
+      res.writeHead(302, { Location: "/blog/blog.html" });
       res.end();
     });
   }
@@ -349,9 +352,9 @@ const createPostHandler = (req, res) => {
   .then(user => {
     hash.comparePassword(loginData.password, user.password).then(pass => {
       if (pass === true) {
-        generateJSONWebToken({username: user.username, logged_in: true}).then(token => {
+        generateJSONWebToken({user_id: user.pk_user_id, username: user.username, logged_in: true}).then(token => {
           res.writeHead(302, {
-            "set-cookie": `user_status=${token}; max-age=9000; HttpOnly`,
+            "Set-Cookie": `jwt=${token}; max-age=9000; path=/; HttpOnly`,
             Location: "/blog/blog.html"
           });
           res.end();
@@ -363,6 +366,34 @@ const createPostHandler = (req, res) => {
           }
     })
   })
+  });
+}
+
+// const logoutHandler = (res) => {
+//   res.writeHead(302, {
+//     "Set-Cookie": `jwt=0; max-age=0`,
+//     Location: "/blog/blog.html"
+//   });
+//   res.end();
+// }
+
+const commentSubmitHandler = (req, res, encodedJwt) => {
+
+  let allTheData = '';
+
+  req.on("data", chunk => {
+    allTheData += chunk;
+  });
+
+  req.on("end", () => {
+    const comment = querystring.parse(allTheData);
+    console.log(comment);
+    decodeJSONWebToken(encodedJwt);
+    return;
+    // console.log("This is my comment", comment.comment);
+    submitNewComment(comment.comment)
+    // .then(res => )
+    return;
   });
 }
 
@@ -378,5 +409,7 @@ module.exports = {
   loginPageHandler,
   createPostHandler,
   createAccountSubmitHandler,
-  loginSubmitHandler
+  loginSubmitHandler,
+  // logoutHandler,
+  commentSubmitHandler
 };

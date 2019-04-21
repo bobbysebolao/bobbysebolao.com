@@ -1,4 +1,5 @@
 const handler = require("./handler");
+const cookie = require('cookie');
 
 const router = (request, response) => {
   const endpoint = request.url;
@@ -12,7 +13,7 @@ const router = (request, response) => {
     }
 
     else if (endpoint === "/blog/all-posts") {
-      handler.allPostsHandler(response);
+      handler.allPostsHandler(request, response);
     }
 
     else if (endpoint === "/blog/posts") {
@@ -36,6 +37,9 @@ const router = (request, response) => {
     }
 
     else {
+      let cookies = cookie.parse(request.headers.cookie);
+      //
+      console.log("YOOHOO :", cookies);
       handler.publicHandler(response, endpoint, extension);
     }
   }
@@ -51,6 +55,16 @@ const router = (request, response) => {
 
 else if (endpoint === "/blog/login") {
   handler.loginSubmitHandler(request, response);
+}
+
+// else if (endpoint === "/blog/logout") {
+//   handler.logoutHandler(response);
+// }
+
+else if (endpoint.includes("/create/comment")) {
+  let jwt = cookie.parse(request.headers.cookie).jwt;
+  // console.log("JWT :", jwt);
+  handler.commentSubmitHandler(request, response, jwt);
 }
   }
 }
