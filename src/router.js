@@ -6,10 +6,6 @@ const router = (request, response) => {
   const extension = endpoint.split(".")[1];
   const method = request.method;
 
-  let jwt = cookie.parse(request.headers.cookie);
-
-  console.log("YOOHOO :", jwt);
-
   if (method === "GET") {
 
     if (endpoint === "/" || endpoint === "/index.html") {
@@ -41,6 +37,9 @@ const router = (request, response) => {
     }
 
     else {
+      let cookies = cookie.parse(request.headers.cookie);
+      //
+      console.log("YOOHOO :", cookies);
       handler.publicHandler(response, endpoint, extension);
     }
   }
@@ -58,10 +57,14 @@ else if (endpoint === "/blog/login") {
   handler.loginSubmitHandler(request, response);
 }
 
-else if (endpoint === "/create/comment") {
-  console.log("HEYY");
-  // console.log(request.headers);
-  handler.commentSubmitHandler(request, response);
+// else if (endpoint === "/blog/logout") {
+//   handler.logoutHandler(response);
+// }
+
+else if (endpoint.includes("/create/comment")) {
+  let jwt = cookie.parse(request.headers.cookie).jwt;
+  // console.log("JWT :", jwt);
+  handler.commentSubmitHandler(request, response, jwt);
 }
   }
 }

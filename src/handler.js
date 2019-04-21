@@ -17,6 +17,7 @@ const submitNewUser = require("./queries/submitNewUser.js");
 const getUser = require("./queries/getUser.js");
 const generateJSONWebToken = require("./authentication/generateJWT.js");
 const submitNewComment = require("./queries/submitNewComment.js");
+const decodeJSONWebToken = require("./authentication/decodeJWT.js")
 
 //GET REQUEST HANDLERS
 
@@ -143,7 +144,7 @@ const publicHandler = (res, endpoint, extension) => {
 
 //POST REQUEST HANDLERS
 
-const createPostHandler = (req, res) => {
+const createPostHandler = (req, res, jwt) => {
       console.log("POST request received");
 
       let form = new formidable.IncomingForm();
@@ -353,7 +354,7 @@ const createPostHandler = (req, res) => {
       if (pass === true) {
         generateJSONWebToken({user_id: user.pk_user_id, username: user.username, logged_in: true}).then(token => {
           res.writeHead(302, {
-            "Set-Cookie": `jwt=${token}; max-age=9000; HttpOnly`,
+            "Set-Cookie": `jwt=${token}; max-age=9000; path=/; HttpOnly`,
             Location: "/blog/blog.html"
           });
           res.end();
@@ -368,12 +369,15 @@ const createPostHandler = (req, res) => {
   });
 }
 
-const commentSubmitHandler = (req, res, jwt) => {
-  console.log("It's here", jwt);
-  // console.log("Hello");
-  // console.log("YOOHOO :", cookie.parse(req.headers.cookie));
-  // console.log(req.url);
-  return;
+// const logoutHandler = (res) => {
+//   res.writeHead(302, {
+//     "Set-Cookie": `jwt=0; max-age=0`,
+//     Location: "/blog/blog.html"
+//   });
+//   res.end();
+// }
+
+const commentSubmitHandler = (req, res, encodedJwt) => {
 
   let allTheData = '';
 
@@ -382,14 +386,10 @@ const commentSubmitHandler = (req, res, jwt) => {
   });
 
   req.on("end", () => {
-    var cookies = cookie.parse(req.headers.cookie || '');
-    console.log("Here are my cookies :", cookies);
-    return;
-    jwt.verify(token, 'shhhhh', function(err, decoded) {
-    console.log(decoded.foo) // bar
-  });
-  return;
     const comment = querystring.parse(allTheData);
+    console.log(comment);
+    decodeJSONWebToken(encodedJwt);
+    return;
     // console.log("This is my comment", comment.comment);
     submitNewComment(comment.comment)
     // .then(res => )
@@ -410,5 +410,6 @@ module.exports = {
   createPostHandler,
   createAccountSubmitHandler,
   loginSubmitHandler,
+  // logoutHandler,
   commentSubmitHandler
 };

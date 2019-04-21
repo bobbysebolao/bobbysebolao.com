@@ -1,11 +1,17 @@
-const decodeJSONWebToken = (token) => {
+const jwt = require("jsonwebtoken");
+require("env2")("./config.env");
 
-  const base64Url = token.split('.')[1];
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const buff = new Buffer(base64, 'base64');
-  const payloadinit = buff.toString('ascii');
-  const payload = JSON.parse(payloadinit);
-  console.log(payload);
+const secret = process.env.SECRET;
+
+const decodeJSONWebToken = (token) => {
+  jwt.verify(token, secret, function(err, token) {
+    if (err) {
+      return err;
+    }
+    else {
+  return console.log(token.user_id);
+}
+});
 }
 
 module.exports = decodeJSONWebToken;
