@@ -2,6 +2,7 @@ const fs = require("fs");
 const querystring = require("query-string");
 const path = require("path");
 const formidable = require('formidable');
+const cookie = require('cookie');
 // const mime = require("mime");
 // const util = require('util');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
@@ -15,6 +16,7 @@ const hash = require("./authentication/hash.js");
 const submitNewUser = require("./queries/submitNewUser.js");
 const getUser = require("./queries/getUser.js");
 const generateJSONWebToken = require("./authentication/generateJWT.js");
+const submitNewComment = require("./queries/submitNewComment.js");
 
 //GET REQUEST HANDLERS
 
@@ -29,7 +31,7 @@ const homeHandler = (res) => {
       });
     }
 
-const allPostsHandler = (res) => {
+const allPostsHandler = (req, res) => {
       fs.readFile(__dirname + "/../public/blog/all-posts.html", function(error, file) {
         if (error) {
           console.log("error");
@@ -277,7 +279,7 @@ const createPostHandler = (req, res) => {
       });
       });
 
-      res.writeHead(302, { Location: "/blog/all-posts" });
+      res.writeHead(302, { Location: "/blog/blog.html" });
       res.end();
     });
   }
@@ -349,9 +351,9 @@ const createPostHandler = (req, res) => {
   .then(user => {
     hash.comparePassword(loginData.password, user.password).then(pass => {
       if (pass === true) {
-        generateJSONWebToken({username: user.username, logged_in: true}).then(token => {
+        generateJSONWebToken({user_id: user.pk_user_id, username: user.username, logged_in: true}).then(token => {
           res.writeHead(302, {
-            "set-cookie": `user_status=${token}; max-age=9000; HttpOnly`,
+            "Set-Cookie": `jwt=${token}; max-age=9000; HttpOnly`,
             Location: "/blog/blog.html"
           });
           res.end();
@@ -363,6 +365,35 @@ const createPostHandler = (req, res) => {
           }
     })
   })
+  });
+}
+
+const commentSubmitHandler = (req, res, jwt) => {
+  console.log("It's here", jwt);
+  // console.log("Hello");
+  // console.log("YOOHOO :", cookie.parse(req.headers.cookie));
+  // console.log(req.url);
+  return;
+
+  let allTheData = '';
+
+  req.on("data", chunk => {
+    allTheData += chunk;
+  });
+
+  req.on("end", () => {
+    var cookies = cookie.parse(req.headers.cookie || '');
+    console.log("Here are my cookies :", cookies);
+    return;
+    jwt.verify(token, 'shhhhh', function(err, decoded) {
+    console.log(decoded.foo) // bar
+  });
+  return;
+    const comment = querystring.parse(allTheData);
+    // console.log("This is my comment", comment.comment);
+    submitNewComment(comment.comment)
+    // .then(res => )
+    return;
   });
 }
 
@@ -378,5 +409,6 @@ module.exports = {
   loginPageHandler,
   createPostHandler,
   createAccountSubmitHandler,
-  loginSubmitHandler
+  loginSubmitHandler,
+  commentSubmitHandler
 };

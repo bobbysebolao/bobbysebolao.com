@@ -1,9 +1,14 @@
 const handler = require("./handler");
+const cookie = require('cookie');
 
 const router = (request, response) => {
   const endpoint = request.url;
   const extension = endpoint.split(".")[1];
   const method = request.method;
+
+  let jwt = cookie.parse(request.headers.cookie);
+
+  console.log("YOOHOO :", jwt);
 
   if (method === "GET") {
 
@@ -12,7 +17,7 @@ const router = (request, response) => {
     }
 
     else if (endpoint === "/blog/all-posts") {
-      handler.allPostsHandler(response);
+      handler.allPostsHandler(request, response);
     }
 
     else if (endpoint === "/blog/posts") {
@@ -51,6 +56,12 @@ const router = (request, response) => {
 
 else if (endpoint === "/blog/login") {
   handler.loginSubmitHandler(request, response);
+}
+
+else if (endpoint === "/create/comment") {
+  console.log("HEYY");
+  // console.log(request.headers);
+  handler.commentSubmitHandler(request, response);
 }
   }
 }
