@@ -24,6 +24,10 @@ const router = (request, response) => {
       handler.loginPageHandler(response);
     }
 
+    else if (endpoint === "/blog/logout") {
+      handler.logoutHandler(response);
+    }
+
     else if (endpoint === "/create/account") {
       handler.createAccountPageHandler(response);
   }
@@ -37,9 +41,6 @@ const router = (request, response) => {
     }
 
     else {
-      let cookies = cookie.parse(request.headers.cookie);
-      //
-      console.log("YOOHOO :", cookies);
       handler.publicHandler(response, endpoint, extension);
     }
   }
@@ -56,10 +57,6 @@ const router = (request, response) => {
 else if (endpoint === "/blog/login") {
   handler.loginSubmitHandler(request, response);
 }
-
-// else if (endpoint === "/blog/logout") {
-//   handler.logoutHandler(response);
-// }
 
 else if (endpoint.includes("/create/comment")) {
   let jwt = cookie.parse(request.headers.cookie).jwt;
