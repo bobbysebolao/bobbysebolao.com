@@ -369,13 +369,14 @@ const createPostHandler = (req, res, jwt) => {
   });
 }
 
-// const logoutHandler = (res) => {
-//   res.writeHead(302, {
-//     "Set-Cookie": `jwt=0; max-age=0`,
-//     Location: "/blog/blog.html"
-//   });
-//   res.end();
-// }
+const logoutHandler = (res) => {
+  // console.log("YOYOYOYOY");
+  res.writeHead(302, {
+    "Set-Cookie": `jwt=0; max-age=0`,
+    Location: "/blog/blog.html"
+  });
+  res.end();
+}
 
 const commentSubmitHandler = (req, res, encodedJwt) => {
 
@@ -410,6 +411,6 @@ module.exports = {
   createPostHandler,
   createAccountSubmitHandler,
   loginSubmitHandler,
-  // logoutHandler,
+  logoutHandler,
   commentSubmitHandler
 };
