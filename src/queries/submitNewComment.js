@@ -1,15 +1,17 @@
 const dbConnection = require("../database/db_connection.js");
 
-const submitNewUser = (comment, user_id) => {
+const submitNewUser = (comment, post_id, user_id) => {
   console.log("THIS IS THE COMMENT :", comment);
   console.log("THIS IS THE USER ID :", user_id);
-  return;
+  console.log("THIS IS THE POST ID :", post_id);
+  // return;
   return new Promise((resolve, reject) => {
     dbConnection
       .query(
-        "INSERT INTO comments(body, post_id, user_id) VALUES ($1, (SELECT id FROM posts WHERE pub_timestamp=$2))",
+        "INSERT INTO comments(body, post_id, user_id) VALUES ($1, (SELECT pk_post_id FROM posts WHERE pk_post_id=$2), (SELECT pk_user_id FROM users WHERE pk_user_id=$3))",
         [
           comment,
+          post_id,
           user_id
         ]
       )

@@ -18,6 +18,7 @@ const getUser = require("./queries/getUser.js");
 const generateJSONWebToken = require("./authentication/generateJWT.js");
 const submitNewComment = require("./queries/submitNewComment.js");
 const decodeJSONWebToken = require("./authentication/decodeJWT.js")
+const getPost = require("./queries/getPost.js");
 
 //GET REQUEST HANDLERS
 
@@ -379,6 +380,7 @@ const logoutHandler = (res) => {
 }
 
 const commentSubmitHandler = (req, res, encodedJwt) => {
+  const postName = req.headers.referer.split("/")[4];
 
   let allTheData = '';
 
@@ -388,8 +390,12 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
-    decodeJSONWebToken(encodedJwt, comment.comment, submitNewComment);
-    return;
+    console.log("HHH", postName);
+    getPost(postName)
+    .then(post_id => {
+      decodeJSONWebToken(encodedJwt, comment.comment, post_id, submitNewComment)
+    })
+    .catch(err => reject(err));
   });
 }
 
