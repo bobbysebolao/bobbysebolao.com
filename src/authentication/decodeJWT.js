@@ -1,18 +1,28 @@
 const jwt = require("jsonwebtoken");
 require("env2")("./config.env");
 
-const decodeJSONWebToken = (token, comment, post_id, callback) => {
-  const secret = process.env.SECRET;
-  const userID = jwt.verify(token, secret, (err, token) => {
-    if (err) {
-      return err;
-    }
-    else {
-  return token.user_id;
-}
-});
+const decodeJSONWebToken = (token) => {
+  console.log("NO 1")
+  return new Promise((resolve, reject) => {
 
-callback(comment, post_id, userID);
+    const secret = process.env.SECRET;
+    const decodedToken = jwt.verify(token, secret);
+
+    resolve(decodedToken.user_id)
+
+//     (err, token) => {
+//       if (err) {
+//         reject(err);
+//       }
+//       else {
+//     resolve(token.user_id);
+//   }
+// }
+
+  }
+)
+
+// callback(comment, post_id, userID);
 }
 
 module.exports = decodeJSONWebToken;

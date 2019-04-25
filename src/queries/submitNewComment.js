@@ -1,10 +1,6 @@
 const dbConnection = require("../database/db_connection.js");
 
-const submitNewUser = (comment, post_id, user_id) => {
-  console.log("THIS IS THE COMMENT :", comment);
-  console.log("THIS IS THE USER ID :", user_id);
-  console.log("THIS IS THE POST ID :", post_id);
-  // return;
+const submitNewComment = (comment, post_id, user_id) => {
   return new Promise((resolve, reject) => {
     dbConnection
       .query(
@@ -13,14 +9,18 @@ const submitNewUser = (comment, post_id, user_id) => {
           comment,
           post_id,
           user_id
-        ]
-      )
-      .then(res => {
+        ])
+
         console.log("New comment added to database ");
-        resolve(true);
-      })
-      .catch(err => reject(err));
+        resolve(true)
   });
 };
 
-module.exports = submitNewUser;
+module.exports = submitNewComment;
+
+//     (err, res) => {
+//       if (err) {
+//         return cb(err);
+//       }
+//       cb(null);
+//     }

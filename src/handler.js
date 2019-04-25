@@ -217,7 +217,7 @@ const createPostHandler = (req, res, jwt) => {
           console.log("TODAY'S DATE", dateOfPublication);
           // return;
           blogPosts[timeOfPublication] = formData;
-          blogPosts[timeOfPublication]["authorName"] = "mistapepper";
+          blogPosts[timeOfPublication]["authorName"] = "Bobby Sebolao";
           blogPosts[timeOfPublication]["date"] = dateOfPublication;
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
@@ -260,7 +260,7 @@ const createPostHandler = (req, res, jwt) => {
         });
 
         // let newPostContent = blogPosts[timeOfPublication]["post"];
-        let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]);
+        let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"], newPostPath, blogPosts[timeOfPublication]["authorName"]);
         // console.log("TADAAAAA", newPostContent);
         // return;
 
@@ -380,22 +380,29 @@ const logoutHandler = (res) => {
 }
 
 const commentSubmitHandler = (req, res, encodedJwt) => {
-  const postName = req.headers.referer.split("/")[4];
 
   let allTheData = '';
-
   req.on("data", chunk => {
     allTheData += chunk;
   });
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
-    console.log("HHH", postName);
-    getPost(postName)
-    .then(post_id => {
-      decodeJSONWebToken(encodedJwt, comment.comment, post_id, submitNewComment)
-    })
-    .catch(err => reject(err));
+    const postName = req.headers.referer.split("/")[4];
+    let userId = '';
+    let postId = '';
+      decodeJSONWebToken(encodedJwt)
+      .then(decodedUserId => userId = decodedUserId)
+      .then(unusedResult => getPost(postName))
+      .then(retrievedPostId => postId = retrievedPostId)
+      .then(unusedResult => submitNewComment(comment.comment, postId, userId))
+      .then(commentStatus => {
+        if (commentStatus === true) {
+        // renderComment(comment.comment)
+      }
+      })
+      .catch(error => console.log(error))
+      // res.end(comment.comment);
   });
 }
 
