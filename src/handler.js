@@ -380,22 +380,29 @@ const logoutHandler = (res) => {
 }
 
 const commentSubmitHandler = (req, res, encodedJwt) => {
-  const postName = req.headers.referer.split("/")[4];
 
   let allTheData = '';
-
   req.on("data", chunk => {
     allTheData += chunk;
   });
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
-    console.log("HHH", postName);
-    getPost(postName)
-    .then(post_id => {
-      decodeJSONWebToken(encodedJwt, comment.comment, post_id, submitNewComment)
-    })
-    .catch(err => reject(err));
+    const postName = req.headers.referer.split("/")[4];
+    let userId = '';
+    let postId = '';
+      decodeJSONWebToken(encodedJwt)
+      .then(decodedUserId => userId = decodedUserId)
+      .then(unusedResult => getPost(postName))
+      .then(retrievedPostId => postId = retrievedPostId)
+      .then(unusedResult => submitNewComment(comment.comment, postId, userId))
+      .then(commentStatus => {
+        if (commentStatus === true) {
+        // renderComment(comment.comment)
+      }
+      })
+      .catch(error => console.log(error))
+      // res.end(comment.comment);
   });
 }
 

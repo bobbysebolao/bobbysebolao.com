@@ -61,6 +61,7 @@ else if (endpoint === "/blog/login") {
 else if (endpoint.includes("/create/comment")) {
   let jwt = cookie.parse(request.headers.cookie).jwt;
   handler.commentSubmitHandler(request, response, jwt);
+  // console.log(response);
 }
   }
 }
