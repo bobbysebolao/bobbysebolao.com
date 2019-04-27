@@ -19,6 +19,8 @@ const generateJSONWebToken = require("./authentication/generateJWT.js");
 const submitNewComment = require("./queries/submitNewComment.js");
 const decodeJSONWebToken = require("./authentication/decodeJWT.js")
 const getPost = require("./queries/getPost.js");
+const getComments = require("./queries/getComments.js");
+const getUsername = require("./queries/getUsername.js")
 
 //GET REQUEST HANDLERS
 
@@ -143,6 +145,20 @@ const publicHandler = (res, endpoint, extension) => {
           });
         }
 
+    const getCommentsHandler = (req, res) => {
+      console.log(req.headers.referer.split("/")[4]);
+      const postName = req.headers.referer.split("/")[4];
+      let comments;
+      getComments(postName)
+      .then(result => {
+        comments = result;
+        // console.log("These are the comments backend: ", result);
+        // return;
+        res.end(JSON.stringify(result))
+      })
+      .catch(error => console.log(error))
+    };
+
 //POST REQUEST HANDLERS
 
 const createPostHandler = (req, res, jwt) => {
@@ -202,7 +218,6 @@ const createPostHandler = (req, res, jwt) => {
 
       req.on("end", function() {
         const convertedData = querystring.parse(allTheData);
-        // console.log(convertedData);
 
         fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
           if (error) {
@@ -211,7 +226,6 @@ const createPostHandler = (req, res, jwt) => {
           }
           // console.log(file);
           const blogPosts = JSON.parse(file);
-          // console.log(blogPosts);
           let timeOfPublication = Date.now();
           let dateOfPublication = Date(timeOfPublication);
           console.log("TODAY'S DATE", dateOfPublication);
@@ -259,6 +273,8 @@ const createPostHandler = (req, res, jwt) => {
           console.log("Successfully written to file");
         });
 
+        let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
+
         // let newPostContent = blogPosts[timeOfPublication]["post"];
         let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"], newPostPath, blogPosts[timeOfPublication]["authorName"]);
         // console.log("TADAAAAA", newPostContent);
@@ -266,7 +282,6 @@ const createPostHandler = (req, res, jwt) => {
 
         // console.log("TAKE NOTE", createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]));
         // return;
-        let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
         // console.log("ALMOST THERE", newPostPath);
         // return;
 
@@ -382,27 +397,53 @@ const logoutHandler = (res) => {
 const commentSubmitHandler = (req, res, encodedJwt) => {
 
   let allTheData = '';
+
   req.on("data", chunk => {
     allTheData += chunk;
   });
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
+    // const file = JSON.parse(comment.comment);
+    // console.log("Send this back to DOM: ", file);
     const postName = req.headers.referer.split("/")[4];
+    console.log(postName);
+    // return;
     let userId = '';
     let postId = '';
+    let commentTimestamp;
+    let commentDate;
+    let username;
       decodeJSONWebToken(encodedJwt)
       .then(decodedUserId => userId = decodedUserId)
       .then(unusedResult => getPost(postName))
-      .then(retrievedPostId => postId = retrievedPostId)
-      .then(unusedResult => submitNewComment(comment.comment, postId, userId))
+      .then(retrievedPostId => {
+        postId = retrievedPostId;
+        commentTimestamp = Date.now();
+        commentDate = Date(commentTimestamp);
+      })
+      .then(unusedResult => {
+        getUsername(userId)
+        // .then(result => {
+        //   return result
+        // })
+        // .catch(error => console.log(error))
+      // })
+      .then(result => {
+        username = result.username;
+        submitNewComment(comment.comment, postId, userId, commentTimestamp, commentDate, username)
+      // })
       .then(commentStatus => {
+        console.log("Is it true: ", commentStatus)
         if (commentStatus === true) {
-        // renderComment(comment.comment)
+          console.log("Yes it is")
+          res.writeHead(302, { Location: `/blog/${postName}` });
+          res.end();
       }
       })
+            })
+            })
       .catch(error => console.log(error))
-      // res.end(comment.comment);
   });
 }
 
@@ -416,6 +457,7 @@ module.exports = {
   domScriptsHandler,
   publicHandler,
   loginPageHandler,
+  getCommentsHandler,
   createPostHandler,
   createAccountSubmitHandler,
   loginSubmitHandler,

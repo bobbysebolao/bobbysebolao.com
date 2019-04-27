@@ -1,7 +1,7 @@
 const dbConnection = require("../database/db_connection.js");
 
 const getPost = (postName) => {
-    console.log("NO 2");
+    console.log("NO 2: ", postName);
     return new Promise((resolve, reject) => {
     dbConnection.query("SELECT * FROM posts WHERE filename = $1", [postName],
     (err, res) => {

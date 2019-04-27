@@ -1842,6 +1842,14 @@ g.boardroom .audience .clackTwo {
       text-align: right;
     }
 
+    /* BLOG POST COMMENTS SECTION */
+
+    .user-comments__comment {
+      /* width: 100px;
+      height: 100px; */
+      background: pink;
+    }
+
     /*===============MEDIA QUERIES================*/
     /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
 

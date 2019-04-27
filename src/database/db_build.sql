@@ -36,9 +36,12 @@ CREATE TABLE users (
 
 CREATE TABLE comments (
   pk_comment_id SERIAL PRIMARY KEY,
+  com_timestamp VARCHAR(100),
+  com_date VARCHAR(100),
   body VARCHAR(10000) NOT NULL,
   post_id INTEGER REFERENCES posts (pk_post_id),
-  user_id INTEGER REFERENCES users (pk_user_id)
+  user_id INTEGER REFERENCES users (pk_user_id),
+  username VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE main_images (
@@ -72,13 +75,13 @@ VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The 
 INSERT INTO post_categories (category_name)
 VALUES ('interview');
 
-INSERT INTO comments (body)
-VALUES ('it wasnt good');
-
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
 
 INSERT INTO users (first_name, last_name, username, email, password, role)
 VALUES ('Jeff', 'Summ', 'mistapepper', 'qwerty@gmail.com', 'qwertY101!', 'minion');
+
+INSERT INTO comments (body, com_timestamp, com_date, post_id, user_id, username)
+VALUES ('it wasnt good', '12345', '10 Sept 1993', 1, 1, 'leroy_jenkins');
 
 COMMIT;
