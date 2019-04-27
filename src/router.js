@@ -20,6 +20,10 @@ const router = (request, response) => {
       handler.postsJSONHandler(response);
     }
 
+    else if (endpoint === "/blog/comments") {
+      handler.getCommentsHandler(request, response);
+    }
+
     else if (endpoint === "/blog/login") {
       handler.loginPageHandler(response);
     }

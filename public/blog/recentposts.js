@@ -70,7 +70,7 @@ document.onreadystatechange = function() {
             shine.className = "shine";
             var postContainer = document.querySelector(".post-container");
 
-            postTitle.innerHTML = data[blogPost]["title"];
+            postTitle.textContent = data[blogPost]["title"];
 
             if (latestTimestamps.includes(blogPost)) {
               //SELECTS THE FOUR LATEST POSTS
