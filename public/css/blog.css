@@ -1847,7 +1847,15 @@ g.boardroom .audience .clackTwo {
     .user-comments__comment {
       /* width: 100px;
       height: 100px; */
+      text-align: left;
+      padding-left: 80px;
+      padding-right: 80px;
       background: pink;
+    }
+
+    .user-comments__avatar {
+      width: 32px;
+      height: 32px;
     }
 
     /*===============MEDIA QUERIES================*/

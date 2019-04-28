@@ -6,14 +6,18 @@ const submitNewUser = (obj, hashedPassword) => {
   return new Promise((resolve, reject) => {
     dbConnection
       .query(
-        "INSERT INTO users(first_name, last_name, username, email, password, role) VALUES ($1, $2, $3, $4, $5, $6)",
+        "INSERT INTO users(first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
         [
           obj.first_name,
           obj.last_name,
           obj.username.toLowerCase(),
           obj.email.toLowerCase(),
           hashedPassword,
-          'commenter'
+          'commenter',
+          obj.userImage.name,
+          obj.userImage.size,
+          obj.userImage.path,
+          obj.userImage.type
         ]
       )
       .then(res => {

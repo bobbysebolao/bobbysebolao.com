@@ -1,7 +1,7 @@
 const dbConnection = require("../database/db_connection.js");
 
 const getComments = postName => {
-  console.log("This is the post name: ", postName);
+  // console.log("This is the post name: ", postName);
   return new Promise((resolve, reject) => {
     dbConnection
       .query("SELECT * FROM comments WHERE post_id = (SELECT pk_post_id FROM posts WHERE filename = $1)", [postName])
