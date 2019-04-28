@@ -325,13 +325,16 @@ const createPostHandler = (req, res, jwt) => {
 
   req.on("end", () => {
     const loginData = querystring.parse(allTheData);
+    let storedUserDetails;
     console.log("This is my login data", loginData);
 
   getUser(loginData.username)
   .then(user => {
-    hash.comparePassword(loginData.password, user.password).then(pass => {
+    storedUserDetails = user;
+    hash.comparePassword(loginData.password, storedUserDetails.password)
+    .then(pass => {
       if (pass === true) {
-        generateJSONWebToken({user_id: user.pk_user_id, username: user.username, logged_in: true}).then(token => {
+        generateJSONWebToken({user_id: storedUserDetails.pk_user_id, username: storedUserDetails.username, logged_in: true}).then(token => {
           res.writeHead(302, {
             "Set-Cookie": `jwt=${token}; max-age=9000; path=/; HttpOnly`,
             Location: "/blog/blog.html"

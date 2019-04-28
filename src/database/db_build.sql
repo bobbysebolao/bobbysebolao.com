@@ -1,3 +1,6 @@
+-- Follow these instructions to build the DB on Heroku:
+-- https://stackoverflow.com/questions/48180282/how-to-populate-a-heroku-postgresql-database-with-a-sql-file
+
 BEGIN;
 
 DROP TABLE IF EXISTS posts CASCADE;
