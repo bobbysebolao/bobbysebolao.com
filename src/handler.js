@@ -53,10 +53,7 @@ const postsJSONHandler = (res) => {
           return;
         }
         res.writeHead(200, {"Content-Type": "application/json"});
-        // response.write("You're on the posts page");
-        // console.log(JSON.parse(file));
         const blogPosts = JSON.parse(file);
-        // console.log("BLOG POSTS:", blogPosts['1456059074613']);
         res.end(file);
       });
     }
@@ -150,12 +147,7 @@ const publicHandler = (res, endpoint, extension) => {
       const postName = req.headers.referer.split("/")[4];
       let comments;
       getComments(postName)
-      .then(result => {
-        comments = result;
-        // console.log("These are the comments backend: ", result);
-        // return;
-        res.end(JSON.stringify(result))
-      })
+      .then(result => res.end(JSON.stringify(result)))
       .catch(error => console.log(error))
     };
 
@@ -197,12 +189,9 @@ const createPostHandler = (req, res, jwt) => {
 
         fields["mainImage"] = mainImage;
         fields["thumbnail"] = thumbnail;
-        // console.log(fields);
+
         console.log("Uploaded images successfully");
         formData = fields;
-        // submitNewPost(formData);
-        // console.log("BIG OI");
-        // return;
       }
       });
 
@@ -224,46 +213,29 @@ const createPostHandler = (req, res, jwt) => {
             console.log(error);
             return;
           }
-          // console.log(file);
           const blogPosts = JSON.parse(file);
           let timeOfPublication = Date.now();
           let dateOfPublication = Date(timeOfPublication);
           console.log("TODAY'S DATE", dateOfPublication);
-          // return;
           blogPosts[timeOfPublication] = formData;
           blogPosts[timeOfPublication]["authorName"] = "Bobby Sebolao";
           blogPosts[timeOfPublication]["date"] = dateOfPublication;
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
-          // console.log(typeof(blogPosts[timeOfPublication]["mainImage"]["name"]));
-          // return;
 
           submitNewImage(blogPosts[timeOfPublication], err => {
             if (err) {
               console.log(err);
-              // res.writeHead(302, { Location: "/" });
-              // res.end();
             }
-            // res.writeHead(500, { "Content-Type": "text/html" });
-            // res.end("error, couldn't submit");
           });
 
           submitNewPost(blogPosts[timeOfPublication], timeOfPublication, err => {
             if (err) {
               console.log(err);
-              // res.writeHead(302, { Location: "/" });
-              // res.end();
             }
-            // res.writeHead(500, { "Content-Type": "text/html" });
-            // res.end("error, couldn't submit");
           });
 
-          // console.log("QWERTY", blogPosts[timeOfPublication]["readingminutes"]);
-          // return;
-          // console.log(blogPosts);
           const final = JSON.stringify(blogPosts);
-          // console.log("CHECK THIS", Object.keys(blogPosts));
-          // return;
 
           fs.writeFile(__dirname + "/posts.json", final, function(error) {
             if (error) {
@@ -275,15 +247,7 @@ const createPostHandler = (req, res, jwt) => {
 
         let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
 
-        // let newPostContent = blogPosts[timeOfPublication]["post"];
         let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"], newPostPath, blogPosts[timeOfPublication]["authorName"]);
-        // console.log("TADAAAAA", newPostContent);
-        // return;
-
-        // console.log("TAKE NOTE", createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"]));
-        // return;
-        // console.log("ALMOST THERE", newPostPath);
-        // return;
 
         fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
           if (error) {
@@ -291,8 +255,7 @@ const createPostHandler = (req, res, jwt) => {
             return;
         }
         console.log("Successfully written to file");
-        // response.writeHead(200, { "Content-Type": "text/html" });
-        // response.end();
+
       });
       });
 
@@ -386,7 +349,6 @@ const createPostHandler = (req, res, jwt) => {
 }
 
 const logoutHandler = (res) => {
-  // console.log("YOYOYOYOY");
   res.writeHead(302, {
     "Set-Cookie": `jwt=0; max-age=0`,
     Location: "/blog/blog.html"
@@ -404,16 +366,15 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
-    // const file = JSON.parse(comment.comment);
-    // console.log("Send this back to DOM: ", file);
     const postName = req.headers.referer.split("/")[4];
     console.log(postName);
-    // return;
     let userId = '';
     let postId = '';
     let commentTimestamp;
     let commentDate;
     let username;
+    let avatarName;
+    let avatarFilepath;
       decodeJSONWebToken(encodedJwt)
       .then(decodedUserId => userId = decodedUserId)
       .then(unusedResult => getPost(postName))
@@ -424,15 +385,12 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
       })
       .then(unusedResult => {
         getUsername(userId)
-        // .then(result => {
-        //   return result
-        // })
-        // .catch(error => console.log(error))
-      // })
       .then(result => {
         username = result.username;
-        submitNewComment(comment.comment, postId, userId, commentTimestamp, commentDate, username)
-      // })
+        avatarName = result.avatar_name;
+        avatarFilepath = result.avatar_filepath;
+        // console.log("THREE LIONS: ", result)
+        submitNewComment(comment.comment, postId, userId, commentTimestamp, commentDate, username, avatarName, avatarFilepath)
       .then(commentStatus => {
         console.log("Is it true: ", commentStatus)
         if (commentStatus === true) {
