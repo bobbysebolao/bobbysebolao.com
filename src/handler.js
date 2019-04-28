@@ -334,13 +334,15 @@ const createPostHandler = (req, res, jwt) => {
     hash.comparePassword(loginData.password, storedUserDetails.password)
     .then(pass => {
       if (pass === true) {
-        generateJSONWebToken({user_id: storedUserDetails.pk_user_id, username: storedUserDetails.username, logged_in: true}).then(token => {
+        generateJSONWebToken({user_id: storedUserDetails.pk_user_id, username: storedUserDetails.username, logged_in: true})
+        .then(token => {
           res.writeHead(302, {
             "Set-Cookie": `jwt=${token}; max-age=9000; path=/; HttpOnly`,
             Location: "/blog/blog.html"
           });
           res.end();
         })
+        .catch(error => console.log(error))
       }
       else {
             res.writeHead(400, { "content-type": "text/html" });
