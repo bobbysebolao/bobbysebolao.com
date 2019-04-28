@@ -347,7 +347,9 @@ const createPostHandler = (req, res, jwt) => {
             res.end("incorrect password");
           }
     })
+    .catch(error => console.log(error))
   })
+  .catch(error => console.log(error))
   });
 }
 
