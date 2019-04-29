@@ -21,14 +21,13 @@ const inputHandler = e => {
     })
     .catch(error => console.error('Error:', error));
   }, 500);
-  // outputDisplay.innerHTML = "";
 }
 
 const appendTags = tags => {
   // console.log("Append these tags: ", tags);
   if (tags !== undefined) {
 
-  tagsList.innerHTML = "";
+  tagsList.textContent = "";
   let number = 0;
 
   tags.forEach(tag => {
@@ -38,7 +37,10 @@ const appendTags = tags => {
     li.className = "tags__item";
     button.className = "tags__item-name";
     button.textContent = tag.tag_name;
-    button.addEventListener("click", () => selectTag(button.textContent));
+    button.addEventListener("click", () => {
+      tagInput.value = "";
+      selectTag(button.textContent);
+    });
 
     number += 1;
     li.appendChild(button);
@@ -53,9 +55,11 @@ const selectTag = tag => {
   let deleteTagSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   let deleteTagSVGPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-  // <path d="M12 3.41L10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7z"></path>
+  // deleteRenderedTag.addEventListener("click" () => {
+  //   console.log("HELLO");
+  // })
 
-  tagsList.innerHTML = "";
+  tagsList.textContent = "";
   renderedTag.textContent = tag;
 
   deleteTagSVG.appendChild(deleteTagSVGPath);

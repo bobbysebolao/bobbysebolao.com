@@ -1673,6 +1673,12 @@ g.boardroom .audience .clackTwo {
       background-color: #e1ecf4;
       padding: 4px;
       cursor: text;
+      margin-bottom: 10px;
+    }
+
+    .tags__rendered-tag + .tags__rendered-tag
+    {
+      margin-left: 10px;
     }
 
     .tags__rendered-tag--delete {
