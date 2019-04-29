@@ -35,31 +35,31 @@ document.onreadystatechange = function() {
           // console.log("HERE ARE YOUR TIMESTAMPS", timestamps);
           // return;
           let newsTimestamps = [];
-          let interviewTimestamps = [];
-          let reviewTimestamps = [];
+          let learnTimestamps = [];
+          let funTimestamps = [];
           for (let i = 0; i < timestamps.length; i++) {
             if (data[timestamps[i]]["contentType"] === "news") {
               newsTimestamps.push(timestamps[i]);
             }
-            else if (data[timestamps[i]]["contentType"] === "interview") {
-              interviewTimestamps.push(timestamps[i]);
+            else if (data[timestamps[i]]["contentType"] === "learn") {
+              learnTimestamps.push(timestamps[i]);
             }
-            else if (data[timestamps[i]]["contentType"] === "review") {
-              reviewTimestamps.push(timestamps[i]);
+            else if (data[timestamps[i]]["contentType"] === "fun") {
+              funTimestamps.push(timestamps[i]);
             }
             // console.log("QWERTY", data[timestamps[i]]["contentType"]);
           }
           let latestNewsTimestamps = newsTimestamps.sort(descendingSort).slice(0,4);
-          let latestInterviewTimestamps = interviewTimestamps.sort(descendingSort).slice(0,4);
-          let latestReviewTimestamps = reviewTimestamps.sort(descendingSort).slice(0,4);
+          let latestLearnTimestamps = learnTimestamps.sort(descendingSort).slice(0,4);
+          let latestFunTimestamps = funTimestamps.sort(descendingSort).slice(0,4);
 
           // ^^FOUR MOST RECENT TIMESTAMPS FOR EACH POST TYPE ARE NOW SORTED &
           // READY TO ADD TO DOM
 
           let latestCount = 3;
           let newsCount = 3;
-          let interviewsCount = 3;
-          let reviewsCount = 3;
+          let learnCount = 3;
+          let funCount = 3;
 
           for (let blogPost in data) {
 
@@ -95,25 +95,25 @@ document.onreadystatechange = function() {
           }
           }
 
-          else if (data[blogPost]["contentType"] === "interview" && !latestTimestamps.includes(blogPost)) {
-            if (latestInterviewTimestamps.includes(blogPost)) {
-            blockL[interviewsCount].appendChild(postTitle);
-            blockL[interviewsCount].appendChild(shine);
-            blockL[interviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
-            blockL[interviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
-            blockL[interviewsCount].closest(".blogPostLink").href = "www.google.com";
-            interviewsCount--;
+          else if (data[blogPost]["contentType"] === "learn" && !latestTimestamps.includes(blogPost)) {
+            if (latestLearnTimestamps.includes(blogPost)) {
+            blockL[learnCount].appendChild(postTitle);
+            blockL[learnCount].appendChild(shine);
+            blockL[learnCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockL[learnCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockL[learnCount].closest(".blogPostLink").href = "www.google.com";
+            learnCount--;
           }
           }
 
-          else if (data[blogPost]["contentType"] === "review" && !latestTimestamps.includes(blogPost)) {
-            if (latestReviewTimestamps.includes(blogPost)) {
-            blockS[reviewsCount].appendChild(postTitle);
-            blockS[reviewsCount].appendChild(shine);
-            blockS[reviewsCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
-            blockS[reviewsCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
-            blockL[reviewsCount].closest(".blogPostLink").href = "www.google.com";
-            reviewsCount--;
+          else if (data[blogPost]["contentType"] === "fun" && !latestTimestamps.includes(blogPost)) {
+            if (latestFunTimestamps.includes(blogPost)) {
+            blockS[funCount].appendChild(postTitle);
+            blockS[funCount].appendChild(shine);
+            blockS[funCount].style.backgroundImage = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockS[funCount].dataset.thumbnail = `url("../assets/images/blog/${data[blogPost]["thumbnail"]["name"]}")`;
+            blockL[funCount].closest(".blogPostLink").href = "www.google.com";
+            funCount--;
           }
           }
 

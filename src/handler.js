@@ -20,7 +20,8 @@ const submitNewComment = require("./queries/submitNewComment.js");
 const decodeJSONWebToken = require("./authentication/decodeJWT.js")
 const getPost = require("./queries/getPost.js");
 const getComments = require("./queries/getComments.js");
-const getUsername = require("./queries/getUsername.js")
+const getUsername = require("./queries/getUsername.js");
+const getTags = require("./queries/getTags.js");
 
 //GET REQUEST HANDLERS
 
@@ -150,6 +151,21 @@ const publicHandler = (res, endpoint, extension) => {
       .then(result => res.end(JSON.stringify(result)))
       .catch(error => console.log(error))
     };
+
+    const getTagsHandler = (req, res) => {
+      const query = req.url.split("?q=")[1]
+      console.log(query);
+      getTags(query)
+      .then(result => {
+        console.log("Here are the matching tags: ", result);
+        res.end(JSON.stringify(result));
+      })
+      .catch(error => {
+        console.log(error);
+        res.end(JSON.stringify(""));
+      })
+      return;
+    }
 
 //POST REQUEST HANDLERS
 
@@ -422,6 +438,7 @@ module.exports = {
   publicHandler,
   loginPageHandler,
   getCommentsHandler,
+  getTagsHandler,
   createPostHandler,
   createAccountSubmitHandler,
   loginSubmitHandler,

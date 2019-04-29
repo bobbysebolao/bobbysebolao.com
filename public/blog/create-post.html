@@ -482,9 +482,9 @@
             <label for="contentType">Type:</label>
             <select name="contentType" id="contentType" required>
               <option value="">Select one</option>
-              <option value="interview">Interview</option>
               <option value="news">News</option>
-              <option value="review">Review</option>
+              <option value="learn">Learn</option>
+              <option value="fun">Fun</option>
             </select>
 
             <br>
@@ -510,9 +510,17 @@
             <label for="metadescription">Meta description:</label>
             <textarea name="metadescription" rows="4" id="metadescription" maxlength="170" required></textarea>
 
+            <label for="contentTags">Tags:</label>
+            <div class="tags__selected">
+            <input name="contentTags" id="contentTags" required>
+          </div>
+            <ul id="tagsList"></ul>
+
             <button type="submit">Publish</button>
 
           </form>
+
+          <script src="./tagAutocomplete.js" type="text/javascript"></script>
 
         </div>
 
