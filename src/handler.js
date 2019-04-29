@@ -396,7 +396,6 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
         username = result.username;
         avatarName = result.avatar_name;
         avatarFilepath = result.avatar_filepath;
-        // console.log("THREE LIONS: ", result)
         submitNewComment(comment.comment, postId, userId, commentTimestamp, commentDate, username, avatarName, avatarFilepath)
       .then(commentStatus => {
         console.log("Is it true: ", commentStatus)
