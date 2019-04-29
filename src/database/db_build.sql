@@ -4,7 +4,7 @@
 BEGIN;
 
 DROP TABLE IF EXISTS posts CASCADE;
-DROP TABLE IF EXISTS post_categories CASCADE;
+DROP TABLE IF EXISTS post_tags CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS main_images CASCADE;
@@ -18,13 +18,13 @@ CREATE TABLE posts (
   reading_mins INTEGER NOT NULL,
   main_image_caption VARCHAR(100) NOT NULL,
   main_image_alt_text VARCHAR(500) NOT NULL,
-  filename VARCHAR(500) NOT NULL
+  filename VARCHAR(500) NOT NULL,
+  category VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE post_categories (
-  pk_category_id SERIAL PRIMARY KEY,
-  category_name VARCHAR(100) NOT NULL,
-  post_id INTEGER REFERENCES posts (pk_post_id)
+CREATE TABLE post_tags (
+  pk_tag_id SERIAL PRIMARY KEY,
+  tag_name VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE users (
@@ -61,10 +61,10 @@ CREATE TABLE main_images (
   type VARCHAR(100) NOT NULL
 );
 
-ALTER TABLE posts ADD COLUMN category_id INTEGER;
+ALTER TABLE posts ADD COLUMN tag_id INTEGER;
 
-ALTER TABLE posts ADD CONSTRAINT fk_category_id FOREIGN KEY(category_id)
-REFERENCES post_categories (pk_category_id);
+ALTER TABLE posts ADD CONSTRAINT fk_tag_id FOREIGN KEY(tag_id)
+REFERENCES post_tags (pk_tag_id);
 
 ALTER TABLE posts ADD COLUMN main_image_id INTEGER;
 
@@ -78,11 +78,14 @@ REFERENCES users (pk_user_id);
 
 ALTER TABLE main_images ADD CONSTRAINT unique_image_name UNIQUE (name);
 
-INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename)
-VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg');
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category)
+VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'news');
 
-INSERT INTO post_categories (category_name)
-VALUES ('interview');
+INSERT INTO post_tags (tag_name)
+VALUES
+('HTML'),
+('CSS'),
+('JavaScript');
 
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');

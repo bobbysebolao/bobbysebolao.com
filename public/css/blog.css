@@ -1657,6 +1657,56 @@ g.boardroom .audience .clackTwo {
       resize: vertical;
     }
 
+    .tags__item {
+
+    }
+
+    .tags__item-name {
+
+    }
+
+    .tags__rendered-tag {
+      display: inline-block;
+      line-height: normal;
+      color: #2b5777;
+      border-radius: 5px;
+      background-color: #e1ecf4;
+      padding: 4px;
+      cursor: text;
+    }
+
+    .tags__rendered-tag--delete {
+      position: relative;
+      display: inline-block;
+      margin-left: 4px;
+      cursor: pointer;
+      width: 10px;
+      height: 10px;
+      line-height: 50%;
+      border: 3px solid #e1ecf4;
+      border-radius: 3px;
+      box-sizing: content-box;
+      fill: #2b5777;
+    }
+
+    .tags__rendered-tag--delete:hover {
+      background: #2b5777;
+      border: 3px solid #2b5777;
+    }
+
+    .tags__rendered-tag--delete-svg {
+      /* fill: red; */
+    }
+
+    .tags__rendered-tag--delete-svg-path {
+      fill: red;
+      opacity: 1;
+    }
+
+    .tags__rendered-tag--delete-svg:hover, .tags__rendered-tag--delete:hover {
+      fill: #e1ecf4;
+    }
+
     /* RECENT POSTS SECTION*/
 
     .post-container {
