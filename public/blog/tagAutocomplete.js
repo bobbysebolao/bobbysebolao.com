@@ -1,6 +1,9 @@
 const selectedTags = document.querySelector(".tags__selected");
 const tagInput = document.querySelector("#contentTags");
 const tagsList = document.querySelector("#tagsList");
+const hiddenTagInput = document.querySelector("#hiddenContentTags");
+
+let tagsToSubmit = {};
 
 let timeout;
 
@@ -28,7 +31,6 @@ const appendTags = tags => {
   if (tags !== undefined) {
 
   tagsList.textContent = "";
-  let number = 0;
 
   tags.forEach(tag => {
     console.log(tag);
@@ -41,26 +43,24 @@ const appendTags = tags => {
       tagInput.value = "";
       selectTag(button.textContent);
     });
-
-    number += 1;
     li.appendChild(button);
     tagsList.appendChild(li);
   })
 }
 }
 
-const selectTag = tag => {
+const selectTag = tagLabel => {
+
+  if (!tagsToSubmit.hasOwnProperty(tagLabel)) {
+
   let renderedTag = document.createElement("span");
   let deleteRenderedTag = document.createElement("a");
+
   let deleteTagSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   let deleteTagSVGPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-  // deleteRenderedTag.addEventListener("click" () => {
-  //   console.log("HELLO");
-  // })
-
   tagsList.textContent = "";
-  renderedTag.textContent = tag;
+  renderedTag.textContent = tagLabel;
 
   deleteTagSVG.appendChild(deleteTagSVGPath);
   deleteRenderedTag.appendChild(deleteTagSVG);
@@ -78,6 +78,36 @@ const selectTag = tag => {
   deleteRenderedTag.className = "tags__rendered-tag--delete";
   deleteTagSVG.className = "tags__rendered-tag--delete-svg";
   deleteTagSVGPath.className = "tags__rendered-tag--delete-svg-path";
+
+  tagsToSubmit[`${tagLabel}`] = tagLabel;
+
+  // console.log("Here are the tags to submit: ", tagsToSubmit);
+
+  hiddenTagInput.value += tagLabel + " ";
+  // console.log("DA VALUE", hiddenTagInput.value)
+
+  deleteRenderedTag.onclick = () => {
+    renderedTag.parentNode.removeChild(renderedTag);
+    delete tagsToSubmit[`${tagLabel}`];
+    // console.log("Here are the remaining tags: ", tagsToSubmit);
+    // hiddenTagInput.value.split(" ").splice()
+    let hiddenTagInputArray = hiddenTagInput.value.split(" ")
+    // console.log("Boo", hiddenTagInputArray)
+
+    let filtered = hiddenTagInputArray.filter((value, index, arr) => {
+    return value !== tagLabel;
+});
+
+if (filtered[filtered.length-1] = "") {
+  filtered.pop();
+}
+
+hiddenTagInput.value = filtered.join(" ");
+
+// console.log("YES YES YALL", hiddenTagInput.value)
+  }
+
+}
 
 }
 
