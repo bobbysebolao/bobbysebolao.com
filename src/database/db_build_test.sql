@@ -1,7 +1,10 @@
+-- Follow these instructions to build the DB on Heroku:
+-- https://stackoverflow.com/questions/48180282/how-to-populate-a-heroku-postgresql-database-with-a-sql-file
+
 BEGIN;
 
 DROP TABLE IF EXISTS posts CASCADE;
-DROP TABLE IF EXISTS post_categories CASCADE;
+DROP TABLE IF EXISTS post_tags CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS main_images CASCADE;
@@ -15,13 +18,14 @@ CREATE TABLE posts (
   reading_mins INTEGER NOT NULL,
   main_image_caption VARCHAR(100) NOT NULL,
   main_image_alt_text VARCHAR(500) NOT NULL,
-  filename VARCHAR(500) NOT NULL
+  filename VARCHAR(500) NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  tags VARCHAR(200)
 );
 
-CREATE TABLE post_categories (
-  pk_category_id SERIAL PRIMARY KEY,
-  category_name VARCHAR(100) NOT NULL,
-  post_id INTEGER REFERENCES posts (pk_post_id)
+CREATE TABLE post_tags (
+  pk_tag_id SERIAL PRIMARY KEY,
+  tag_name VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE users (
@@ -45,7 +49,9 @@ CREATE TABLE comments (
   body VARCHAR(10000) NOT NULL,
   post_id INTEGER REFERENCES posts (pk_post_id),
   user_id INTEGER REFERENCES users (pk_user_id),
-  username VARCHAR(100) NOT NULL
+  username VARCHAR(100) NOT NULL,
+  avatar_name VARCHAR(200) NOT NULL,
+  avatar_filepath VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE main_images (
@@ -55,11 +61,6 @@ CREATE TABLE main_images (
   filepath VARCHAR(200) NOT NULL,
   type VARCHAR(100) NOT NULL
 );
-
-ALTER TABLE posts ADD COLUMN category_id INTEGER;
-
-ALTER TABLE posts ADD CONSTRAINT fk_category_id FOREIGN KEY(category_id)
-REFERENCES post_categories (pk_category_id);
 
 ALTER TABLE posts ADD COLUMN main_image_id INTEGER;
 
@@ -73,11 +74,120 @@ REFERENCES users (pk_user_id);
 
 ALTER TABLE main_images ADD CONSTRAINT unique_image_name UNIQUE (name);
 
-INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename)
-VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg');
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category, tags)
+VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'news', 'random food drink entertainment');
 
-INSERT INTO post_categories (category_name)
-VALUES ('interview');
+INSERT INTO post_tags (tag_name)
+VALUES
+('html'),
+('css'),
+('javascript'),
+('java'),
+('c#'),
+('php'),
+('android'),
+('python'),
+('c++'),
+('ios'),
+('mysql'),
+('sql'),
+('asp.net'),
+('ruby-on-rails'),
+('c'),
+('arrays'),
+('objective-c'),
+('r'),
+('.net'),
+('node.js'),
+('json'),
+('sql-server'),
+('angularjs'),
+('swift'),
+('iphone'),
+('regex'),
+('ruby'),
+('ajax'),
+('django'),
+('excel'),
+('xml'),
+('svg'),
+('d3.js'),
+('asp.net-mvc'),
+('linux'),
+('angular'),
+('database'),
+('wordpress'),
+('drupal'),
+('methode'),
+('reactjs'),
+('postgresql'),
+('es6'),
+('html5'),
+('mongodb'),
+('multithreading'),
+('xcode'),
+('bash'),
+('git'),
+('forms'),
+('visual-studio'),
+('atom'),
+('sublime'),
+('algorithm'),
+('css3'),
+('amazon-web-services'),
+('heroku'),
+('function'),
+('rest'),
+('api'),
+('docker'),
+('express'),
+('handlebars'),
+('tape'),
+('supertest'),
+('react-native'),
+('istanbul'),
+('macos'),
+('authentication'),
+('encryption'),
+('cookie'),
+('jsonwebtoken'),
+('for-loop'),
+('debugging'),
+('if-statement'),
+('haskell'),
+('hadoop'),
+('session'),
+('ssl'),
+('https'),
+('devtools'),
+('plugins'),
+('testing'),
+('vue.js'),
+('recursion'),
+('github'),
+('dom'),
+('caching'),
+('canvas'),
+('design-patterns'),
+('figma'),
+('illustrator'),
+('gimp'),
+('photoshop'),
+('jquery'),
+('mobile-first'),
+('typography'),
+('accessibility'),
+('colour-scheme'),
+('seo'),
+('cro'),
+('cta'),
+('carousel'),
+('link-architecture'),
+('css-grid'),
+('flexbox'),
+('monochrome'),
+('web-hosting'),
+('cms');
 
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
@@ -85,7 +195,7 @@ VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
 INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type)
 VALUES ('Jeff', 'Summ', 'mistapepper', 'qwerty@gmail.com', 'qwertY101!', 'minion', 'bobby.jpeg', 33439, '/users/images/bobby.jpeg', 'image/png');
 
-INSERT INTO comments (body, com_timestamp, com_date, post_id, user_id, username)
-VALUES ('it wasnt good', '12345', '10 Sept 1993', 1, 1, 'leroy_jenkins');
+INSERT INTO comments (body, com_timestamp, com_date, post_id, user_id, username, avatar_name, avatar_filepath)
+VALUES ('it wasnt good', '12345', '10 Sept 1993', 1, 1, 'leroy_jenkins', 'leroy.jpeg', '/users/images/leroy.jpeg');
 
 COMMIT;

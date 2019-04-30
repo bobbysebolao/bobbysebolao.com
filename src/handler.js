@@ -189,6 +189,8 @@ const createPostHandler = (req, res, jwt) => {
           console.log(`Cannot upload images. Error is ${error}`);
         }
         else {
+          // console.log("YEYEYE", fields);
+          // return;
         let mainImage = {
           name: files["mainImage"]["name"],
           size: files["mainImage"]["size"],
@@ -208,6 +210,7 @@ const createPostHandler = (req, res, jwt) => {
 
         console.log("Uploaded images successfully");
         formData = fields;
+        // console.log("here's all the data: ", formData);
       }
       });
 

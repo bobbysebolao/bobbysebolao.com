@@ -19,7 +19,8 @@ CREATE TABLE posts (
   main_image_caption VARCHAR(100) NOT NULL,
   main_image_alt_text VARCHAR(500) NOT NULL,
   filename VARCHAR(500) NOT NULL,
-  category VARCHAR(100) NOT NULL
+  category VARCHAR(100) NOT NULL,
+  tags VARCHAR(200)
 );
 
 CREATE TABLE post_tags (
@@ -61,11 +62,6 @@ CREATE TABLE main_images (
   type VARCHAR(100) NOT NULL
 );
 
-ALTER TABLE posts ADD COLUMN tag_id INTEGER;
-
-ALTER TABLE posts ADD CONSTRAINT fk_tag_id FOREIGN KEY(tag_id)
-REFERENCES post_tags (pk_tag_id);
-
 ALTER TABLE posts ADD COLUMN main_image_id INTEGER;
 
 ALTER TABLE posts ADD CONSTRAINT fk_main_image_id FOREIGN KEY(main_image_id)
@@ -78,14 +74,120 @@ REFERENCES users (pk_user_id);
 
 ALTER TABLE main_images ADD CONSTRAINT unique_image_name UNIQUE (name);
 
-INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category)
-VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'news');
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category, tags)
+VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'news', 'random food drink entertainment');
 
 INSERT INTO post_tags (tag_name)
 VALUES
-('HTML'),
-('CSS'),
-('JavaScript');
+('html'),
+('css'),
+('javascript'),
+('java'),
+('c#'),
+('php'),
+('android'),
+('python'),
+('c++'),
+('ios'),
+('mysql'),
+('sql'),
+('asp.net'),
+('ruby-on-rails'),
+('c'),
+('arrays'),
+('objective-c'),
+('r'),
+('.net'),
+('node.js'),
+('json'),
+('sql-server'),
+('angularjs'),
+('swift'),
+('iphone'),
+('regex'),
+('ruby'),
+('ajax'),
+('django'),
+('excel'),
+('xml'),
+('svg'),
+('d3.js'),
+('asp.net-mvc'),
+('linux'),
+('angular'),
+('database'),
+('wordpress'),
+('drupal'),
+('methode'),
+('reactjs'),
+('postgresql'),
+('es6'),
+('html5'),
+('mongodb'),
+('multithreading'),
+('xcode'),
+('bash'),
+('git'),
+('forms'),
+('visual-studio'),
+('atom'),
+('sublime'),
+('algorithm'),
+('css3'),
+('amazon-web-services'),
+('heroku'),
+('function'),
+('rest'),
+('api'),
+('docker'),
+('express'),
+('handlebars'),
+('tape'),
+('supertest'),
+('react-native'),
+('istanbul'),
+('macos'),
+('authentication'),
+('encryption'),
+('cookie'),
+('jsonwebtoken'),
+('for-loop'),
+('debugging'),
+('if-statement'),
+('haskell'),
+('hadoop'),
+('session'),
+('ssl'),
+('https'),
+('devtools'),
+('plugins'),
+('testing'),
+('vue.js'),
+('recursion'),
+('github'),
+('dom'),
+('caching'),
+('canvas'),
+('design-patterns'),
+('figma'),
+('illustrator'),
+('gimp'),
+('photoshop'),
+('jquery'),
+('mobile-first'),
+('typography'),
+('accessibility'),
+('colour-scheme'),
+('seo'),
+('cro'),
+('cta'),
+('carousel'),
+('link-architecture'),
+('css-grid'),
+('flexbox'),
+('monochrome'),
+('web-hosting'),
+('cms');
 
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
