@@ -4,8 +4,8 @@
     <head>
       <title>Console | Bobby Sebolao</title>
       <meta charset="UTF-8">
-      <meta name="title" content="i">
-      <meta name="description" content="huygbiu">
+      <meta name="title" content="Cute acat alert1">
+      <meta name="description" content="The cute cat will perform well in GOogle">
       <meta name="author" content="Bobby Sebolao">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,9 +15,9 @@
 
       <meta property="og:url" content="www.bobbysebolao.com/blog/post-1.html" />
       <meta property="og:type" content="article" />
-      <meta property="og:title" content="TEST POST 2" />
-      <meta property="og:description" content="huygbiu" />
-      <meta property="og:image" content="/../assets/images/blog/confused-keanu-640x360px.jpeg" />
+      <meta property="og:title" content="My first test blog post!" />
+      <meta property="og:description" content="The cute cat will perform well in GOogle" />
+      <meta property="og:image" content="/../assets/images/blog/cat640x360px.jpeg" />
       <meta property="og:article:author" content="Bobby Sebolao" />
 
       <link rel="icon" href="/assets/favicon.png"/>
@@ -86,7 +86,7 @@
         <ul class="tabRow">
             <li><a href="../index.html">HOME</a></li>
             <li><a href="../about/about.html">ABOUT</a></li>
-            <li><a href="theOther.html">WORK</a></li>
+            <li><a href="../work/work.html">WORK</a></li>
             <li><a href="../blog/blog.html">BLOG</a></li>
         </ul>
         <ul class="menuTabs">
@@ -95,13 +95,13 @@
                 <use xlink:href="#moonIcon"></use>
               </svg>
             </a></li>
-            <li id="selected"><a href="that.html">
+            <li id="selected"><a class="knightMode">
               <svg class="knightIcon">
                 <use xlink:href="#knightIcon"></use>
               </svg>
             </a></li>
             <li>
-              <a href="theOther.html">
+              <a class="spriteMode">
                 <svg class="tetrisSprite">
                   <use xlink:href="#tetrisSprite"></use>
                 </svg>
@@ -117,21 +117,131 @@
 
   <div class="blog-post">
     <figure>
-    <img class="blog-post__main-image" src="/../assets/images/blog/confused-keanu-640x360px.jpeg" alt="Alt text for test">
+    <img class="blog-post__main-image" src="/../assets/images/blog/cat640x360px.jpeg" alt="A cute cat picture">
     <figcaption class="blog-post__main-image-caption">
-      Caption for test
+      The cute cat
     </figcaption>
   </figure>
-    <h1 class="postTitle">TEST POST 2</h1>
-    <p class="blog-post__subtitle">popopo</p>
-    <p><span class="blog-post__date">Sun Apr 28 2019</span> • <span class="blog-post__reading-time">0 minutes</span></p>
+    <h1 class="postTitle">My first test blog post!</h1>
+    <p class="blog-post__subtitle">What will it look like...</p>
+    <p><span class="blog-post__date">Tue Apr 30 2019</span> • <span class="blog-post__reading-time">2 minutes</span></p>
     <hr>
-    hbvfg
+    <h2>The Question: Is there a way to change the size of the SVG viewbox with CSS, but preserve the aspect ratio? OR is there another way to preserve the aspect ratio of the SVG without a view box.</h2>
+
+The Problem: I want to responsively adjust the size of the SVG, but keep the aspect ratio. The width of the viewbox adjusts with the page, but the height doesn't adjust with the width. The problem with that is that the height of the container div is dependent on the height of the viewbox. So the container div may be really tall even if there's nothing showing in the bottom half of the viewbox.
+
+Fiddle: http://jsfiddle.net/hT9Jb/1/
+
+<style>
+    div{
+        width: 100%;
+        height: 500px;
+        background-color: #00ffff;
+    }
+
+    svg{
+        width: 50%;
+        background-color: #ffff00;
+    }
+</style>
+
+<div>
+    <svg version="1.1" id="Layer_1" x="0px" y="0px" width="250px" height="400px" viewBox="0 0 250 400" enable-background="new 0 0 250 400" aspect-ratio="XminYmin">
+        <rect x="0" y="0" fill="#FF0000" width="250" height="400"/>
+    </svg>
+</div>
+(Object SVGs and img SVGs wont work for my purposes. It has to be inline. The solution doesn't have to be CSS...javascript is definitely an acceptable solution.)
+
+css svg
+shareedit
+asked Jun 28 '14 at 2:44
+
+Geoffrey Burdett
+8821820
+looking for this? jsfiddle.net/hT9Jb/2 – Kheema Pandey Jun 28 '14 at 3:12
+This may be related: stackoverflow.com/questions/23073219/… – Parag Jun 28 '14 at 3:14
+@KheemaPandey I want the div to conform to the svg, not the other way around (And the fiddle you gave me doesn't preserve the aspect ratio of the viewbox) – Geoffrey Burdett Jun 29 '14 at 11:24
+@Sisyphus That's all serverside, but it does give me a javascript idea. – Geoffrey Burdett Jun 29 '14 at 11:27
+add a comment
+6 Answers
+active oldest votes
+
+5
+
+I haven't yet found a way to change the viewBox property with CSS. However this Javascript solution works well:
+
+var mySVG = document.getElementById('svg');
+mySVG.setAttribute("viewBox", "0 0 100 100");
+Also remove any references to width and height from the SVG and set them in CSS. Even though your working with an SVG, it's inline so cascading rules apply.
+
+shareedit
+answered Sep 8 '17 at 4:36
+
+sansSpoon
+725518
+add a comment
+
+ 
+4
+
+The width and height values specified in your SVG are the cause of your problem.
+
+The solution is to fix your SVG file. Change:
+
+width="250px" height="400px"
+to
+
+width="100%" height="100%"
+Or with CSS:
+
+width: 100%;
+height: 100%; 
+shareedit
+edited May 5 '18 at 0:47
+answered Aug 21 '16 at 8:54
+
+Paul LeBeau
+58.5k56996
+add a comment
+
+2
+
+In order to have a flexible SVG, that allows you to change its width and height, you need to remove completely the width and height and work with viewbox instead.
+
+And, contrary to what sansSpoon said, you do not need javascript to do this.
+
+In your css, refer to your svg and define its max-width and max-height, for example:
+
+.my_svg_element {
+    max-width: 250px;
+    max-width: 400px;
+
+}
+After that, your SVG will be elastic and, at the same time, will respect the max width and height you have defined before.
+
+shareedit
+edited Mar 23 '18 at 20:20
+answered Feb 7 '18 at 13:22
+
+Paulo Coghi
+4,22785479
+add a comment
+
+2
+
+Did you try:
+
+preserveAspectRatio='xMinYMin'
+Check this example http://jsfiddle.net/hT9Jb/3/
+
+For more details, see mozila documentation about svg
     <hr>
   </div>
 
   <section class="user-comments">
     <script src="./comments.js" type="text/javascript"></script>
+
+    <h2>Comments</h2>
 
     <form class="createComment" action="/create/comment" method="post">
     <label for="writeComment">Write a comment:</label>

@@ -233,6 +233,9 @@ const createPostHandler = (req, res, jwt) => {
             return;
           }
           const blogPosts = JSON.parse(file);
+          console.log("Here's the posts.json: ", blogPosts);
+          console.log("Here's the length: ", Object.keys(blogPosts).length);
+          // return;
           let timeOfPublication = Date.now();
           let dateOfPublication = Date(timeOfPublication);
           console.log("TODAY'S DATE", dateOfPublication);
