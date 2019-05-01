@@ -16,6 +16,7 @@ const inputHandler = e => {
   timeout = setTimeout(function() {
     let url = `/blog/tags?q=${input}`;
     console.log("Here's the URL: ", url);
+    if (input.length > 0) {
     fetch(url)
     .then(response => response.json())
     .then(json => {
@@ -23,16 +24,19 @@ const inputHandler = e => {
       appendTags(json);
     })
     .catch(error => console.error('Error:', error));
+  } else if (input.length === 0) {
+    tagsList.textContent = "";
+  }
   }, 500);
 }
 
 const appendTags = tags => {
-  // console.log("Append these tags: ", tags);
+  console.log("Append these tags: ", tags);
   if (tags !== undefined) {
 
   tagsList.textContent = "";
 
-  tags.forEach(tag => {
+  tags.slice(0, 5).forEach(tag => {
     console.log(tag);
     const li = document.createElement("li");
     const button = document.createElement("button");
@@ -50,9 +54,7 @@ const appendTags = tags => {
 }
 
 const selectTag = tagLabel => {
-
   if (!tagsToSubmit.hasOwnProperty(tagLabel)) {
-
   let renderedTag = document.createElement("span");
   let deleteRenderedTag = document.createElement("a");
 

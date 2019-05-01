@@ -4,8 +4,8 @@
     <head>
       <title>Console | Bobby Sebolao</title>
       <meta charset="UTF-8">
-      <meta name="title" content="ponpon">
-      <meta name="description" content="ponpon">
+      <meta name="title" content="pokpok">
+      <meta name="description" content="pokpokp">
       <meta name="author" content="Bobby Sebolao">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,8 +15,8 @@
 
       <meta property="og:url" content="www.bobbysebolao.com/blog/post-6.html" />
       <meta property="og:type" content="article" />
-      <meta property="og:title" content="pojpo" />
-      <meta property="og:description" content="ponpon" />
+      <meta property="og:title" content="pokpok" />
+      <meta property="og:description" content="pokpokp" />
       <meta property="og:image" content="/../assets/images/blog/confused-keanu-640x360px.jpeg" />
       <meta property="og:article:author" content="Bobby Sebolao" />
 
@@ -117,16 +117,31 @@
 
   <div class="blog-post">
     <figure>
-    <img class="blog-post__main-image" src="/../assets/images/blog/confused-keanu-640x360px.jpeg" alt="opnon">
+    <img class="blog-post__main-image" src="/../assets/images/blog/confused-keanu-640x360px.jpeg" alt="okpokpok">
     <figcaption class="blog-post__main-image-caption">
-      pononp
+      pokpokp
     </figcaption>
   </figure>
-    <h1 class="postTitle">pojpo</h1>
-    <p class="blog-post__subtitle">ponopno</p>
-    <p><span class="blog-post__date">Mon Apr 29 2019</span> • <span class="blog-post__reading-time">0 minutes</span></p>
+    <h1 class="postTitle">pokpok</h1>
+    <p class="blog-post__subtitle">pokpokpok</p>
+    <p><span class="blog-post__date">Tue Apr 30 2019</span> • <span class="blog-post__reading-time">2 minutes</span></p>
     <hr>
-    pnpon
+    <h2>Before you decode the JWT token, first you need to have an idea about the structure of the JWT token. JWT token consist of 3 main parts. Header, payload and signature. Each part contains different claims which provide user data.</h2>
+
+Header contain the data about the JWT token such as type and algorithm. Payload mainly contain the data about the user. There are predefined claims that can use to save JWT token created date, token expiring date, subject of the token, audience of the token etc. In addition to predefined claims,we can add claims according to programmers will (Ex- a nickname, email address etc). In the signature section, encoded header, encoded payload and a secret are signed together.
+
+Okay, now we know what is JWT token. But do you know where is it?
+
+
+Lemme guess that you don’t know where is the token and explain where you can find it. Usually programmers save tokens in web storage or cookies. It doesn’t matter where you save the token.Because it will always be a JWT structured token. So you just have to take the token from it’s secret place and use it to decode.
+
+Now that we know where to find the token, let’s have a quick inspection on the token we found. When we look at the parts of the JTW token, we can see that payload contains the most of the data that a programmer needs. Because it can have user defined claims. So our main target is to decode the payload. Given below is an example of a JWT token.
+
+
+Dude, i found my token!
+As you can see the whole token is separated with two ‘dot’s. In another word, this token is separated into three parts by two ‘dot’s. First part of the token is the Header and second part of the token is Payload and third part of the payload is Signature. So now we know what part of the token is the payload and what part of the payload is need to be extract (Its the pink color text that we need to extract :D ).
+
+First we take JWT token and split the string using ‘dot’ operator. As we all know when we use the split() function, we get an array. So we have to take the second element of the array.
     <hr>
   </div>
 

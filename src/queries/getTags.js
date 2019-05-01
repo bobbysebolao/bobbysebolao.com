@@ -5,7 +5,7 @@ const getTags = query => {
   // return;
   return new Promise((resolve, reject) => {
     dbConnection
-      .query("SELECT * FROM post_tags WHERE tag_name ~ $1", [query])
+      .query("SELECT * FROM post_tags WHERE tag_name ~ $1", [`^${query}`])
       .then(res => {
         if (!res.rows[0]) reject("Tag query does not match any tags");
         resolve(res.rows);
