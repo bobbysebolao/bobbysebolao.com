@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS post_tags CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS main_images CASCADE;
+DROP TABLE IF EXISTS thumbnails CASCADE;
 
 CREATE TABLE posts (
   pk_post_id SERIAL PRIMARY KEY,
@@ -62,10 +63,23 @@ CREATE TABLE main_images (
   type VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE thumbnails (
+  pk_thumbnail_id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  size INTEGER NOT NULL,
+  filepath VARCHAR(200) NOT NULL,
+  type VARCHAR(100) NOT NULL
+);
+
 ALTER TABLE posts ADD COLUMN main_image_id INTEGER;
 
 ALTER TABLE posts ADD CONSTRAINT fk_main_image_id FOREIGN KEY(main_image_id)
 REFERENCES main_images (pk_image_id);
+
+ALTER TABLE posts ADD COLUMN thumbnail_id INTEGER;
+
+ALTER TABLE posts ADD CONSTRAINT fk_thumbnail_id FOREIGN KEY(thumbnail_id)
+REFERENCES thumbnails (pk_thumbnail_id);
 
 ALTER TABLE posts ADD COLUMN user_id INTEGER;
 
@@ -73,6 +87,8 @@ ALTER TABLE posts ADD CONSTRAINT fk_user_id FOREIGN KEY(user_id)
 REFERENCES users (pk_user_id);
 
 ALTER TABLE main_images ADD CONSTRAINT unique_image_name UNIQUE (name);
+
+ALTER TABLE thumbnails ADD CONSTRAINT unique_thumbnail_name UNIQUE (name);
 
 -- INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category, tags)
 -- VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'news', 'random food drink entertainment');

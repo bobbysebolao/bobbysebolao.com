@@ -9,6 +9,7 @@ const createPostFromTemplate = require("./createPostFromTemplate.js");
 const readingTimeCalculator = require("./readingTimeCalculator.js");
 
 const submitNewImage = require("./queries/submitNewImage.js");
+const submitNewThumbnail = require("./queries/submitNewThumbnail.js");
 const submitNewPost = require("./queries/submitNewPost.js");
 const validateNewUser = require("./authentication/validateNewUser.js");
 const getUsernameValid = require("./queries/getUsernameValid.js");
@@ -22,6 +23,8 @@ const getPost = require("./queries/getPost.js");
 const getComments = require("./queries/getComments.js");
 const getUsername = require("./queries/getUsername.js");
 const getTags = require("./queries/getTags.js");
+const getAllPosts = require("./queries/getAllPosts.js");
+const getAllThumbnails = require("./queries/getAllThumbnails.js");
 
 //GET REQUEST HANDLERS
 
@@ -57,6 +60,21 @@ const postsJSONHandler = (res) => {
         const blogPosts = JSON.parse(file);
         res.end(file);
       });
+
+    }
+
+    const recentPostsHandler = (res) => {
+      console.log("All good")
+      Promise.all([getAllPosts(), getAllThumbnails()])
+      .then(response => {
+        // console.log("GGGOOO", response)
+        let posts = response[0];
+        for (let i = 0; i < response[1].length; i++) {
+        posts[i]["thumbnail"] = response[1][i]
+      }
+        res.end(JSON.stringify(posts));
+      })
+      .catch(error => console.log(error))
     }
 
 const createAccountPageHandler = (res) => {
@@ -169,7 +187,7 @@ const publicHandler = (res, endpoint, extension) => {
 
 //POST REQUEST HANDLERS
 
-const createPostHandler = (req, res, jwt) => {
+const createPostHandler = (req, res, encodedJwt) => {
       console.log("POST request received");
 
       let form = new formidable.IncomingForm();
@@ -245,7 +263,15 @@ const createPostHandler = (req, res, jwt) => {
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
 
+          // decodeJSONWebToken(encodedJwt)
+
           submitNewImage(blogPosts[timeOfPublication], err => {
+            if (err) {
+              console.log(err);
+            }
+          });
+
+          submitNewThumbnail(blogPosts[timeOfPublication], err => {
             if (err) {
               console.log(err);
             }
@@ -279,6 +305,7 @@ const createPostHandler = (req, res, jwt) => {
         console.log("Successfully written to file");
 
       });
+
       });
 
       res.writeHead(302, { Location: "/blog/blog.html" });
@@ -438,6 +465,7 @@ module.exports = {
   homeHandler,
   allPostsHandler,
   postsJSONHandler,
+  recentPostsHandler,
   createAccountPageHandler,
   newPostHandler,
   domScriptsHandler,

@@ -20,6 +20,10 @@ const router = (request, response) => {
       handler.postsJSONHandler(response);
     }
 
+    else if (endpoint === "/blog/recent-posts") {
+      handler.recentPostsHandler(response);
+    }
+
     else if (endpoint === "/blog/comments") {
       handler.getCommentsHandler(request, response);
     }
@@ -58,7 +62,8 @@ const router = (request, response) => {
 
   if (method === "POST") {
     if (endpoint === "/create/post") {
-      handler.createPostHandler(request, response);
+      let jwt = cookie.parse(request.headers.cookie).jwt;
+      handler.createPostHandler(request, response, jwt);
   }
 
   else if (endpoint === "/create/account") {
