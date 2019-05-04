@@ -28,6 +28,8 @@ const getAllThumbnails = require("./queries/getAllThumbnails.js");
 const sendVerificationEmail = require("./authentication/sendVerificationEmail.js");
 const generateEmailVerificationToken = require("./authentication/generateEmailVerificationToken.js");
 const submitEmailVerificationToken = require("./queries/submitEmailVerificationToken.js");
+const getEmailVerificationToken = require("./queries/getEmailVerificationToken.js");
+const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationToken.js");
 
 //GET REQUEST HANDLERS
 
@@ -380,9 +382,36 @@ const createPostHandler = (req, res, encodedJwt) => {
     });
   }
 
+  const calculateTokenAge = (timeOfCreation) => {
+    return Date.now() - timeOfCreation;
+  }
+
   const confirmEmailHandler = (req, endpoint, res) => {
     let token = endpoint.split("?q=")[1];
+    let tokenAge;
     console.log("Here it is: ", token);
+    getEmailVerificationToken(token)
+    .then(response => {
+      tokenAge = calculateTokenAge(response.created_at);
+      deleteEmailVerificationToken(token);
+    })
+    .then(response => {
+      console.log(tokenAge);
+      if (tokenAge < 43200000) {
+        console.log("TOKEN IS VALID");
+        res.writeHead(302, {
+          Location: "/blog/blog.html"
+        });
+        res.end();
+      } else {
+        console.log("TOKEN HAS EXPIRED");
+        res.writeHead(302, {
+          Location: "/blog/blog.html"
+        });
+        res.end();
+      }
+    })
+    .catch(error => console.log(error))
   }
 
   const loginSubmitHandler = (req, res) => {
@@ -478,7 +507,6 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
       .catch(error => console.log(error))
   });
 }
-
 
 module.exports = {
   homeHandler,
