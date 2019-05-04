@@ -11,7 +11,7 @@ async function sendVerificationEmail(recipientName, recipientEmail, recipientUse
     let mailConfig;
     let testAccount = await nodemailer.createTestAccount();
 
-    if (process.env.NODE_ENV !== 'local' && process.env.NODE_ENV !== 'test' process.env.NODE_ENV !== 'live') {
+    if (process.env.NODE_ENV !== 'local' && process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'live' && process.env.NODE_ENV !== 'build_db') {
       console.log("Sending real verification email...")
     mailConfig = {
       service: 'gmail',
