@@ -8,7 +8,8 @@ const decodeJSONWebToken = (token) => {
     const secret = process.env.SECRET;
     const decodedToken = jwt.verify(token, secret);
 
-    resolve(decodedToken.user_id)
+    // resolve(decodedToken.user_id)
+    resolve(decodedToken)
 
 //     (err, token) => {
 //       if (err) {
