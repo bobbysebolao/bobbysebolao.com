@@ -58,7 +58,7 @@ const router = (request, response) => {
     else if (endpoint.includes("/blog/confirm-email")) {
       console.log("PROGRESS!!!");
       console.log(request.url);
-      handler.confirmEmailHandler(response, endpoint);
+      handler.confirmEmailHandler(request, endpoint, response);
     }
 
     else {
