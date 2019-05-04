@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS main_images CASCADE;
 DROP TABLE IF EXISTS thumbnails CASCADE;
+DROP TABLE IF EXISTS email_verification_tokens CASCADE;
 
 CREATE TABLE posts (
   pk_post_id SERIAL PRIMARY KEY,
@@ -71,24 +72,30 @@ CREATE TABLE thumbnails (
   type VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE email_verification_tokens (
+  pk_token_id SERIAL PRIMARY KEY,
+  token VARCHAR(200) NOT NULL,
+  user_id INTEGER REFERENCES users (pk_user_id),
+  created_at VARCHAR(100)
+);
+
 ALTER TABLE posts ADD COLUMN main_image_id INTEGER;
 
-ALTER TABLE posts ADD CONSTRAINT fk_main_image_id FOREIGN KEY(main_image_id)
-REFERENCES main_images (pk_image_id);
+ALTER TABLE posts ADD CONSTRAINT fk_main_image_id FOREIGN KEY(main_image_id) REFERENCES main_images (pk_image_id);
 
 ALTER TABLE posts ADD COLUMN thumbnail_id INTEGER;
 
-ALTER TABLE posts ADD CONSTRAINT fk_thumbnail_id FOREIGN KEY(thumbnail_id)
-REFERENCES thumbnails (pk_thumbnail_id);
+ALTER TABLE posts ADD CONSTRAINT fk_thumbnail_id FOREIGN KEY(thumbnail_id) REFERENCES thumbnails (pk_thumbnail_id);
 
 ALTER TABLE posts ADD COLUMN user_id INTEGER;
 
-ALTER TABLE posts ADD CONSTRAINT fk_user_id FOREIGN KEY(user_id)
-REFERENCES users (pk_user_id);
+ALTER TABLE posts ADD CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES users (pk_user_id);
 
 ALTER TABLE main_images ADD CONSTRAINT unique_image_name UNIQUE (name);
 
 ALTER TABLE thumbnails ADD CONSTRAINT unique_thumbnail_name UNIQUE (name);
+
+ALTER TABLE users ADD is_verified BOOLEAN DEFAULT false;
 
 -- INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category, tags)
 -- VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'news', 'random food drink entertainment');
@@ -138,7 +145,6 @@ VALUES
 ('reactjs'),
 ('postgresql'),
 ('es6'),
-('html5'),
 ('mongodb'),
 ('multithreading'),
 ('xcode'),
@@ -203,7 +209,8 @@ VALUES
 ('flexbox'),
 ('monochrome'),
 ('web-hosting'),
-('cms');
+('cms'),
+('kubernetes');
 
 -- INSERT INTO main_images (name, size, filepath, type)
 -- VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');

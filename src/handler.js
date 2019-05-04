@@ -25,6 +25,9 @@ const getUsername = require("./queries/getUsername.js");
 const getTags = require("./queries/getTags.js");
 const getAllPosts = require("./queries/getAllPosts.js");
 const getAllThumbnails = require("./queries/getAllThumbnails.js");
+const sendVerificationEmail = require("./authentication/sendVerificationEmail.js");
+const generateEmailVerificationToken = require("./authentication/generateEmailVerificationToken.js");
+const submitEmailVerificationToken = require("./queries/submitEmailVerificationToken.js");
 
 //GET REQUEST HANDLERS
 
@@ -67,7 +70,8 @@ const postsJSONHandler = (res) => {
       console.log("All good")
       Promise.all([getAllPosts(), getAllThumbnails()])
       .then(response => {
-        // console.log("GGGOOO", response)
+        console.log("GGGOOO", response)
+        // return;
         let posts = response[0];
         for (let i = 0; i < response[1].length; i++) {
         posts[i]["thumbnail"] = response[1][i]
@@ -342,6 +346,9 @@ const createPostHandler = (req, res, encodedJwt) => {
       fields["userImage"] = userImage;
       console.log("Uploaded images successfully");
       formData = fields;
+      // console.log(formData);
+
+      let emailToken;
 
       Promise.all([
         validateNewUser(formData),
@@ -349,6 +356,13 @@ const createPostHandler = (req, res, encodedJwt) => {
       ])
       .then(response => hash.hashPassword(formData.password))
       .then(hash => submitNewUser(formData, hash))
+      .then(response => {
+        emailToken = generateEmailVerificationToken()
+      })
+      .then(token => {
+        Promise.all([sendVerificationEmail(formData.first_name, formData.email, emailToken), submitEmailVerificationToken(emailToken, formData.username)])
+        .catch(console.error)
+      })
       .then(response => {
         res.writeHead(302, { Location: "/blog/blog.html" });
         res.end();
@@ -364,6 +378,11 @@ const createPostHandler = (req, res, encodedJwt) => {
 
     }
     });
+  }
+
+  const confirmEmailHandler = (req, endpoint, res) => {
+    let token = endpoint.split("?q=")[1];
+    console.log("Here it is: ", token);
   }
 
   const loginSubmitHandler = (req, res) => {
@@ -475,6 +494,7 @@ module.exports = {
   getTagsHandler,
   createPostHandler,
   createAccountSubmitHandler,
+  confirmEmailHandler,
   loginSubmitHandler,
   logoutHandler,
   commentSubmitHandler
