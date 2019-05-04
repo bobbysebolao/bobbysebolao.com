@@ -36,6 +36,7 @@ const router = (request, response) => {
     }
 
     else if (endpoint === "/blog/login") {
+      // console.log("BOASTY", request.headers.referer)
       handler.loginPageHandler(response);
     }
 
@@ -56,8 +57,9 @@ const router = (request, response) => {
     }
 
     else if (endpoint.includes("/blog/confirm-email")) {
-      console.log("PROGRESS!!!");
-      console.log(request.url);
+      // console.log("BOASTY", request.headers.referer)
+      // console.log("PROGRESS!!!");
+      // console.log(request.url);
       handler.confirmEmailHandler(request, endpoint, response);
     }
 
@@ -77,6 +79,7 @@ const router = (request, response) => {
 }
 
 else if (endpoint === "/blog/login") {
+  // let evt = cookie.parse(request.headers.cookie).evt;
   handler.loginSubmitHandler(request, response);
 }
 

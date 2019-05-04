@@ -5,13 +5,13 @@ require("env2")("./config.env");
 let GMAIL_ADDRESS = process.env.GMAIL_ADDRESS;
 let GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
 
-async function sendVerificationEmail(recipientName, recipientEmail, token) {
+async function sendVerificationEmail(recipientName, recipientEmail, recipientUsername, token) {
   console.log("HOOOHAAA", recipientName, recipientEmail, token);
 
     let mailConfig;
     let testAccount = await nodemailer.createTestAccount();
 
-    if (process.env.NODE_ENV === 'local') {
+    if (process.env.NODE_ENV === 'start') {
       console.log("Sending real verification email...")
     mailConfig = {
       service: 'gmail',
@@ -46,10 +46,9 @@ async function sendVerificationEmail(recipientName, recipientEmail, token) {
       to: `${recipientEmail}`, //list of receivers
       subject: "Console - Verify Email Address ✔", //subject linkedin
       text: `Hi ${recipientName},
-      To verify this email address is yours, please copy and paste this link into your browser: https://rocky-plains-29996.herokuapp.com/blog/confirm-email?q=${token}`, //plain text Body
+      To verify this email address is yours, please copy and paste this link into your browser: https://rocky-plains-29996.herokuapp.com/blog/confirm-email?evt=${token}&username=${recipientUsername}`, //plain text Body
       html: `<p>Hi ${recipientName},</p>
-      <p>To verify this email address is yours, please click this link: <a href="http://localhost:9000/blog/confirm-email?q=${token}">Confirm email</a></p>
-      <br>
+      <p>To verify this email address is yours, please click this link: <a href="https://rocky-plains-29996.herokuapp.com/blog/confirm-email?evt=${token}&username=${recipientUsername}">Confirm email</a></p>
       <p>Bee well,</p>
       <p>Bobby 🐝</p>` //html body
     };

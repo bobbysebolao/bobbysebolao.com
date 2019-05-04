@@ -30,6 +30,7 @@ const generateEmailVerificationToken = require("./authentication/generateEmailVe
 const submitEmailVerificationToken = require("./queries/submitEmailVerificationToken.js");
 const getEmailVerificationToken = require("./queries/getEmailVerificationToken.js");
 const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationToken.js");
+const updateVerifiedUser = require("./queries/updateVerifiedUser.js")
 
 //GET REQUEST HANDLERS
 
@@ -362,7 +363,7 @@ const createPostHandler = (req, res, encodedJwt) => {
         emailToken = generateEmailVerificationToken()
       })
       .then(token => {
-        Promise.all([sendVerificationEmail(formData.first_name, formData.email, emailToken), submitEmailVerificationToken(emailToken, formData.username)])
+        Promise.all([sendVerificationEmail(formData.first_name, formData.email, formData.username, emailToken), submitEmailVerificationToken(emailToken, formData.username)])
         .catch(console.error)
       })
       .then(response => {
@@ -387,7 +388,11 @@ const createPostHandler = (req, res, encodedJwt) => {
   }
 
   const confirmEmailHandler = (req, endpoint, res) => {
-    let token = endpoint.split("?q=")[1];
+    let token = endpoint.split("?evt=")[1].split("&username")[0];
+    let username = endpoint.split("&username=")[1];
+    console.log("The token", token);
+    console.log("The username", username);
+    // return;
     let tokenAge;
     console.log("Here it is: ", token);
     getEmailVerificationToken(token)
@@ -399,14 +404,21 @@ const createPostHandler = (req, res, encodedJwt) => {
       console.log(tokenAge);
       if (tokenAge < 43200000) {
         console.log("TOKEN IS VALID");
-        res.writeHead(302, {
-          Location: "/blog/blog.html"
-        });
-        res.end();
+        updateVerifiedUser(username);
+        // return;
+        // generateJSONWebToken({username: username, is_verified: true})
+        // .then(evt => {
+          res.writeHead(302, {
+            // "Set-Cookie": `evt=${evt}; max-age=9000; path=/; HttpOnly`,
+            Location: "/blog/login.html"
+          });
+          res.end();
+        // })
+        // .catch(error => console.log(error))
       } else {
         console.log("TOKEN HAS EXPIRED");
         res.writeHead(302, {
-          Location: "/blog/blog.html"
+          Location: "/blog/login.html"
         });
         res.end();
       }
@@ -425,30 +437,49 @@ const createPostHandler = (req, res, encodedJwt) => {
     let storedUserDetails;
     console.log("This is my login data", loginData);
 
-  getUser(loginData.username)
-  .then(user => {
-    storedUserDetails = user;
-    hash.comparePassword(loginData.password, storedUserDetails.password)
-    .then(pass => {
-      if (pass === true) {
-        generateJSONWebToken({user_id: storedUserDetails.pk_user_id, username: storedUserDetails.username, logged_in: true})
-        .then(token => {
-          res.writeHead(302, {
-            "Set-Cookie": `jwt=${token}; max-age=9000; path=/; HttpOnly`,
-            Location: "/blog/blog.html"
-          });
-          res.end();
+  // decodeJSONWebToken(encodedEvt)
+  // .then(evt => {
+    // console.log("This is the evt: ", evt);
+    // if (evt.is_verified === true) {
+      // console.log("The account is verified, proceeding with login...")
+      getUser(loginData.username)
+      .then(user => {
+        storedUserDetails = user;
+        if (storedUserDetails.is_verified !== true) {
+          res.writeHead(400, { "content-type": "text/html" });
+          res.end("You are not verified yet. Please click the link in your confirmation email");
+        }
+        else {
+        hash.comparePassword(loginData.password, storedUserDetails.password)
+        .then(pass => {
+          if (pass === true) {
+            generateJSONWebToken({user_id: storedUserDetails.pk_user_id, username: storedUserDetails.username, logged_in: true})
+            .then(token => {
+              res.writeHead(302, {
+                "Set-Cookie": `jwt=${token}; max-age=9000; path=/; HttpOnly`,
+                Location: "/blog/blog.html"
+              });
+              res.end();
+            })
+            .catch(error => console.log(error))
+          }
+          else {
+                res.writeHead(400, { "content-type": "text/html" });
+                res.end("incorrect password");
+              }
         })
         .catch(error => console.log(error))
       }
-      else {
-            res.writeHead(400, { "content-type": "text/html" });
-            res.end("incorrect password");
-          }
-    })
-    .catch(error => console.log(error))
-  })
-  .catch(error => console.log(error))
+      })
+      .catch(error => console.log(error))
+
+    // else {
+    //   res.writeHead(400, { "content-type": "text/html" });
+    //   res.end("You haven't verified this email address");
+    // }
+  // })
+
+
   });
 }
 
@@ -480,7 +511,7 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
     let avatarName;
     let avatarFilepath;
       decodeJSONWebToken(encodedJwt)
-      .then(decodedUserId => userId = decodedUserId)
+      .then(decodedToken => userId = decodedToken.user_id)
       .then(unusedResult => getPost(postName))
       .then(retrievedPostId => {
         postId = retrievedPostId;
