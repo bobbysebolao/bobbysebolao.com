@@ -30,7 +30,7 @@ const generateEmailVerificationToken = require("./authentication/generateEmailVe
 const submitEmailVerificationToken = require("./queries/submitEmailVerificationToken.js");
 const getEmailVerificationToken = require("./queries/getEmailVerificationToken.js");
 const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationToken.js");
-const updateVerifiedUser = require("./queries/updateVerifiedUser.js")
+const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
 
 //GET REQUEST HANDLERS
 
@@ -74,6 +74,7 @@ const postsJSONHandler = (res) => {
       Promise.all([getAllPosts(), getAllThumbnails()])
       .then(response => {
         console.log("GGGOOO", response)
+        //FIX THIS HANDLER FUNCTION - causing problems with loading thumbnails for recent posts
         // return;
         let posts = response[0];
         for (let i = 0; i < response[1].length; i++) {
@@ -168,6 +169,20 @@ const publicHandler = (res, endpoint, extension) => {
           });
         }
 
+    const checkLoginStatusHandler = (res, encodedJwt) => {
+      let loginStatus;
+      decodeJSONWebToken(encodedJwt)
+      .then(decodedToken => loginStatus = decodedToken.logged_in)
+      .then(unusedResult => {
+        if (loginStatus === true) {
+          console.log("Commenter is logged in, display the comment form")
+          // res.writeHead(302, { Location: `/blog/${postName}` });
+          res.end("true");
+      }
+      })
+      .catch(error => console.log(error))
+    }
+
     const getCommentsHandler = (req, res) => {
       console.log(req.headers.referer.split("/")[4]);
       const postName = req.headers.referer.split("/")[4];
@@ -196,6 +211,14 @@ const publicHandler = (res, endpoint, extension) => {
 
 const createPostHandler = (req, res, encodedJwt) => {
       console.log("POST request received");
+
+      decodeJSONWebToken(encodedJwt)
+      .then(decodedToken => {
+        if (decodedToken === undefined) {
+          res.writeHead(400, { "Content-Type": "text/html" });
+          res.end("You are not logged in. Please login in order to publish a post")
+        }
+        else if (decodedToken.logged_in === true){
 
       let form = new formidable.IncomingForm();
 
@@ -270,8 +293,6 @@ const createPostHandler = (req, res, encodedJwt) => {
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
 
-          // decodeJSONWebToken(encodedJwt)
-
           submitNewImage(blogPosts[timeOfPublication], err => {
             if (err) {
               console.log(err);
@@ -318,6 +339,9 @@ const createPostHandler = (req, res, encodedJwt) => {
       res.writeHead(302, { Location: "/blog/blog.html" });
       res.end();
     });
+  }
+        })
+        .catch(error => console.log(error))
   }
 
   const createAccountSubmitHandler = (req, res) => {
@@ -511,7 +535,14 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
     let avatarName;
     let avatarFilepath;
       decodeJSONWebToken(encodedJwt)
-      .then(decodedToken => userId = decodedToken.user_id)
+      .then(decodedToken => {
+        if (decodedToken === undefined) {
+          res.writeHead(400, { "Content-Type": "text/html" });
+          res.end("You are not logged in. Please login in order to leave a comment")
+        } else {
+          userId = decodedToken.user_id
+        }
+      })
       .then(unusedResult => getPost(postName))
       .then(retrievedPostId => {
         postId = retrievedPostId;
@@ -549,6 +580,7 @@ module.exports = {
   domScriptsHandler,
   publicHandler,
   loginPageHandler,
+  checkLoginStatusHandler,
   getCommentsHandler,
   getTagsHandler,
   createPostHandler,

@@ -52,6 +52,16 @@ const router = (request, response) => {
       handler.newPostHandler(response);
     }
 
+    else if (endpoint === "/blog/check-login-status") {
+      let jwt = cookie.parse(request.headers.cookie).jwt;
+      if (jwt !== undefined) {
+      handler.checkLoginStatusHandler(response, jwt);
+    }
+    else {
+      response.end("false")
+    }
+    }
+
     else if (endpoint.includes("/scripts")) {
       handler.domScriptsHandler(response, endpoint, extension);
     }
