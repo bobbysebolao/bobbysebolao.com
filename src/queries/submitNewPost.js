@@ -1,6 +1,7 @@
 const dbConnection = require("../database/db_connection.js");
 
 const submitNewPost = (obj, timestamp) => {
+  return new Promise((resolve, reject) => {
   // console.log("There's the post: ", obj)
   // return;
   dbConnection.query(
@@ -20,8 +21,13 @@ const submitNewPost = (obj, timestamp) => {
       obj.thumbnail.name,
       obj.authorName
     ],
-  );
-  console.log("Successfully written to DB");
+  )
+  .then(res => {
+    console.log("Successfully written to DB");
+    resolve("Successfully written to DB");
+  })
+  .catch(err => reject(err));
+})
 };
 
 module.exports = submitNewPost;

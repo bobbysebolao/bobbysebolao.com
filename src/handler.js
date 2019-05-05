@@ -73,13 +73,23 @@ const postsJSONHandler = (res) => {
       console.log("All good")
       Promise.all([getAllPosts(), getAllThumbnails()])
       .then(response => {
-        console.log("GGGOOO", response)
+        // console.log("GGGOOO", response)
         //FIX THIS HANDLER FUNCTION - causing problems with loading thumbnails for recent posts
         // return;
         let posts = response[0];
-        for (let i = 0; i < response[1].length; i++) {
-        posts[i]["thumbnail"] = response[1][i]
+        let thumbnails = response[1];
+        console.log("The blog posts --->", posts);
+        console.log("The thumbnails --->", thumbnails);
+        // console.log("The post thumbnail ID --->", posts.thumbnail_id);
+        // return;
+        for (let i = 0; i < posts.length; i++) {
+          for (let j = 0; j < thumbnails.length; j++) {
+            if (thumbnails[j].pk_thumbnail_id === posts[i].thumbnail_id) {
+              posts[i]["thumbnail"] = thumbnails[j]
+            }
+          }
       }
+      // return;
         res.end(JSON.stringify(posts));
       })
       .catch(error => console.log(error))
@@ -237,6 +247,8 @@ const createPostHandler = (req, res, encodedJwt) => {
           console.log(`Cannot upload images. Error is ${error}`);
         }
         else {
+          console.log("BOOOOOOOGALOOOOOOOO", files["thumbnail"]["name"]);
+          // return;
           // console.log("YEYEYE", fields);
           // return;
         let mainImage = {
@@ -293,47 +305,50 @@ const createPostHandler = (req, res, encodedJwt) => {
           blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
           blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
 
-          submitNewImage(blogPosts[timeOfPublication], err => {
-            if (err) {
-              console.log(err);
+          // submitNewImage(blogPosts[timeOfPublication], err => {
+          //   if (err) {
+          //     console.log(err);
+          //   }
+          // });
+
+          // submitNewThumbnail(blogPosts[timeOfPublication], err => {
+          //   if (err) {
+          //     console.log(err);
+          //   }
+          // });
+
+          // submitNewPost(blogPosts[timeOfPublication], timeOfPublication, err => {
+          //   if (err) {
+          //     console.log(err);
+          //   }
+          // });
+
+          Promise.all([submitNewImage(blogPosts[timeOfPublication]), submitNewThumbnail(blogPosts[timeOfPublication]), submitNewPost(blogPosts[timeOfPublication], timeOfPublication)])
+          .then(result => {
+            const final = JSON.stringify(blogPosts);
+
+            fs.writeFile(__dirname + "/posts.json", final, function(error) {
+              if (error) {
+                console.log("Error");
+                return;
             }
+            console.log("Successfully written to file");
           });
 
-          submitNewThumbnail(blogPosts[timeOfPublication], err => {
-            if (err) {
-              console.log(err);
-            }
-          });
+          let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
 
-          submitNewPost(blogPosts[timeOfPublication], timeOfPublication, err => {
-            if (err) {
-              console.log(err);
-            }
-          });
+          let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"], newPostPath, blogPosts[timeOfPublication]["authorName"]);
 
-          const final = JSON.stringify(blogPosts);
-
-          fs.writeFile(__dirname + "/posts.json", final, function(error) {
+          fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
             if (error) {
-              console.log("Error");
+              console.log("Error: No such file exists");
               return;
           }
           console.log("Successfully written to file");
+
         });
-
-        let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
-
-        let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"], newPostPath, blogPosts[timeOfPublication]["authorName"]);
-
-        fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
-          if (error) {
-            console.log("Error: No such file exists");
-            return;
-        }
-        console.log("Successfully written to file");
-
-      });
-
+          })
+          .catch(error => console.log(error))
       });
 
       res.writeHead(302, { Location: "/blog/blog.html" });
