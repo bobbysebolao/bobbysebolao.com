@@ -9,10 +9,12 @@ async function sendVerificationEmail(recipientName, recipientEmail, recipientUse
   console.log("HOOOHAAA", recipientName, recipientEmail, token);
 
     let mailConfig;
+    let confirmationLink;
     let testAccount = await nodemailer.createTestAccount();
 
     if (process.env.NODE_ENV !== 'local' && process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'live' && process.env.NODE_ENV !== 'build_db') {
       console.log("Sending real verification email...")
+      confirmationLink = `https://rocky-plains-29996.herokuapp.com/blog/confirm-email?evt=${token}&username=${recipientUsername}`
     mailConfig = {
       service: 'gmail',
       host: "smtp.gmail.com",
@@ -27,6 +29,7 @@ async function sendVerificationEmail(recipientName, recipientEmail, recipientUse
 
   else {
     console.log("Sending test verification email...")
+    confirmationLink = `http://localhost:9000/blog/confirm-email?evt=${token}&username=${recipientUsername}`
     mailConfig = {
       host: "smtp.ethereal.email",
       port: 587,
@@ -46,9 +49,9 @@ async function sendVerificationEmail(recipientName, recipientEmail, recipientUse
       to: `${recipientEmail}`, //list of receivers
       subject: "Console - Verify Email Address ✔", //subject linkedin
       text: `Hi ${recipientName},
-      To verify this email address is yours, please copy and paste this link into your browser: https://rocky-plains-29996.herokuapp.com/blog/confirm-email?evt=${token}&username=${recipientUsername}`, //plain text Body
+      To verify this email address is yours, please copy and paste this link into your browser: ${confirmationLink}`, //plain text Body
       html: `<p>Hi ${recipientName},</p>
-      <p>To verify this email address is yours, please click this link: <a href="https://rocky-plains-29996.herokuapp.com/blog/confirm-email?evt=${token}&username=${recipientUsername}">Confirm email</a></p>
+      <p>To verify this email address is yours, please click this link: <a href="${confirmationLink}">Confirm email</a></p>
       <p>Bee well,</p>
       <p>Bobby 🐝</p>` //html body
     };

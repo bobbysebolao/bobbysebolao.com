@@ -1927,9 +1927,20 @@ g.boardroom .audience .clackTwo {
 
     /* BLOG POST COMMENTS SECTION */
 
+    .loginToComment {
+      padding: 5px;
+      margin: 20px 0px 20px 0px;
+      background: #e1ecf4;
+      /* opacity: 0.5; */
+      width: 100%;
+      /* border: 1px solid #757575; */
+      border-radius: 0px 10px 0px 10px;
+      text-align: center;
+    }
+
     #writeComment {
       padding: 5px;
-      border-radius: 10px;
+      border-radius: 0px 10px 0px 10px;
     }
 
     #addComment {
@@ -1954,9 +1965,9 @@ g.boardroom .audience .clackTwo {
     .user-comments__comment {
       margin: 20px 0px 20px 0px;
       padding: 10px 0px 10px 10px;
-      background: white;
-      border: 1px solid #111;
-      border-radius: 10px;
+      background: #e1ecf4;
+      /* border: 1px solid #111; */
+      border-radius: 0px 10px 0px 10px;
     }
 
     .user-comments__user {

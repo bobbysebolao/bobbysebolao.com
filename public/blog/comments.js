@@ -1,4 +1,19 @@
 const userComments = document.querySelector(".user-comments");
+const userCommentsForm = document.querySelector(".createComment");
+const loginToComment = document.querySelector(".loginToComment");
+
+fetch("/blog/check-login-status")
+  .then(res => res.json())
+  .then(loginStatus => {
+    if (loginStatus !== true) {
+      userCommentsForm.style.display = 'none';
+      loginToComment.style.display = 'block';
+    }
+    else {
+      userCommentsForm.style.display = 'block';
+      loginToComment.style.display = 'none';
+    }
+  });
 
 document.onreadystatechange = function() {
   if (document.readyState === "complete") {
@@ -56,7 +71,3 @@ document.onreadystatechange = function() {
   xhr.open("GET", "/blog/comments", true);
   xhr.send();
 }
-
-// // fetch("/getbusinesses")
-// //   .then(res => res.json())
-// //   .then(json => updateSelect(json));
