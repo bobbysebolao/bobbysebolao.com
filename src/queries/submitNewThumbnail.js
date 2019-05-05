@@ -1,6 +1,7 @@
 const dbConnection = require("../database/db_connection.js");
 
 const submitNewThumbnail = (obj) => {
+  return new Promise((resolve, reject) => {
   // console.log("This is the form data :", obj);
   // console.log("This is the timestamp :", timestamp);
   dbConnection.query(
@@ -11,8 +12,13 @@ const submitNewThumbnail = (obj) => {
       obj.thumbnail.path,
       obj.thumbnail.type
     ],
-  );
-  console.log("Successfully written to DB");
+  )
+  .then(res => {
+    console.log("Successfully written to DB");
+    resolve("Successfully written to DB");
+  })
+  .catch(err => reject(err));
+})
 };
 
 module.exports = submitNewThumbnail;
