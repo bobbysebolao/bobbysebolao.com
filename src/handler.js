@@ -323,7 +323,13 @@ const createPostHandler = (req, res, encodedJwt) => {
           //   }
           // });
 
-          Promise.all([submitNewImage(blogPosts[timeOfPublication]), submitNewThumbnail(blogPosts[timeOfPublication]), submitNewPost(blogPosts[timeOfPublication], timeOfPublication)])
+          submitNewImage(blogPosts[timeOfPublication])
+          .then(result => {
+            submitNewThumbnail(blogPosts[timeOfPublication])
+          })
+          .then(result => {
+            submitNewPost(blogPosts[timeOfPublication], timeOfPublication)
+          })
           .then(result => {
             const final = JSON.stringify(blogPosts);
 
