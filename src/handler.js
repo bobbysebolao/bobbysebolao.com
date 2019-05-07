@@ -247,7 +247,7 @@ const createPostHandler = (req, res, encodedJwt) => {
           console.log(`Cannot upload images. Error is ${error}`);
         }
         else {
-          console.log("BOOOOOOOGALOOOOOOOO", files["thumbnail"]["name"]);
+          console.log("BOOOOOOOGALOOOOOOOO", files["thumbnail"], "BOOOOOOOGALOOOOOOOO");
           // return;
           // console.log("YEYEYE", fields);
           // return;
