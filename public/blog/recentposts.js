@@ -1,3 +1,6 @@
+//Great Heroku guide on how to handle image uploads, with AWS integration:
+//https://devcenter.heroku.com/articles/s3-upload-node
+
 let blockO = document.getElementsByClassName("blockO");
 let blockT = document.getElementsByClassName("blockT");
 let blockL = document.getElementsByClassName("blockL");
