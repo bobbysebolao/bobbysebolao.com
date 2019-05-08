@@ -73,6 +73,11 @@ const router = (request, response) => {
       handler.confirmEmailHandler(request, endpoint, response);
     }
 
+    else if (endpoint.includes("/sign-s3")) {
+      // console.log(endpoint)
+      handler.awsSignatureHandler(request, endpoint, response);
+    }
+
     else {
       handler.publicHandler(response, endpoint, extension);
     }

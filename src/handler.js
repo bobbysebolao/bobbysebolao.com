@@ -3,6 +3,7 @@ const querystring = require("query-string");
 const path = require("path");
 const formidable = require('formidable');
 const cookie = require('cookie');
+
 // const mime = require("mime");
 // const util = require('util');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
@@ -31,6 +32,7 @@ const submitEmailVerificationToken = require("./queries/submitEmailVerificationT
 const getEmailVerificationToken = require("./queries/getEmailVerificationToken.js");
 const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationToken.js");
 const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
+const generateAWSSignature = require("./authentication/generateAWSSignature.js");
 
 //GET REQUEST HANDLERS
 
@@ -471,6 +473,11 @@ const createPostHandler = (req, res, encodedJwt) => {
     .catch(error => console.log(error))
   }
 
+  const awsSignatureHandler = (req, endpoint, res) => {
+    // console.log("HI HO");
+    generateAWSSignature(req, endpoint, res);
+  }
+
   const loginSubmitHandler = (req, res) => {
   let allTheData = "";
   req.on("data", chunk => {
@@ -607,6 +614,7 @@ module.exports = {
   createPostHandler,
   createAccountSubmitHandler,
   confirmEmailHandler,
+  awsSignatureHandler,
   loginSubmitHandler,
   logoutHandler,
   commentSubmitHandler
