@@ -493,6 +493,9 @@
 
             <label for="mainImage">Upload main image:</label>
             <input type="file" name="mainImage" accept="image/*" id="mainImage" required>
+
+            <img id="mainImagePreview" src="">
+
             <label for="mainImageCaption">Caption:</label>
             <input name="mainImageCaption" id="mainImageCaption" required>
             <label for="mainImageAltText">Alt text:</label>
@@ -504,6 +507,8 @@
             <label for="thumbnailImage">Upload thumbnail:</label>
             <input type="file" name="thumbnail" accept="image/*" id="thumbnailImage" required>
 
+            <img id="thumbnailPreview" src="">
+
             <script src="./imageUploads.js" type="text/javascript"></script>
 
             <h2>Metadata</h2>
@@ -511,6 +516,8 @@
             <input name="metatitle" type="text" id="metatitle" maxlength="65" required>
             <label for="metadescription">Meta description:</label>
             <textarea name="metadescription" rows="4" id="metadescription" maxlength="170" required></textarea>
+            <label for="postUrl">Post URL:</label>
+            <input name="postUrl" type="text" id="postUrl" maxlength="100" required>
 
             <label for="contentTags">Tags:</label>
             <div class="tags__selected">
@@ -519,6 +526,9 @@
             <input type="hidden" id="hiddenContentTags" name="tagString" value="">
           </div>
             <ul class="tags-list" id="tagsList"></ul>
+
+            <input type="hidden" id="mainImageUrl" name="mainImageUrl" value="">
+            <input type="hidden" id="thumbnailUrl" name="thumbnailUrl" value="">
 
             <button type="submit">Publish</button>
 

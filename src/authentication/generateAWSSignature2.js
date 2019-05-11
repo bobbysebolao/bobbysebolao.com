@@ -7,7 +7,8 @@ require("env2")("./config.env");
 aws.config.region = 'eu-west-2';
 const S3_BUCKET = process.env.S3_BUCKET;
 
-const generateAWSSignature = (req, endpoint, res) => {
+const generateAWSSignature2 = (endpoint) => {
+  return new Promise((resolve, reject) => {
 
   const s3 = new aws.S3();
 
@@ -29,17 +30,18 @@ const generateAWSSignature = (req, endpoint, res) => {
 
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err) {
-      console.log(err);
-      return res.end();
+      reject(err);
     }
     const returnData = {
       signedRequest: data,
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
     };
-    // console.log(returnData);
-    res.write(JSON.stringify(returnData));
-    res.end();
+    console.log("AYOOOOOOO", returnData);
+    resolve(returnData);
+    // res.write(JSON.stringify(returnData));
+    // res.end();
   })
+    })
 }
 
-module.exports = generateAWSSignature;
+module.exports = generateAWSSignature2;

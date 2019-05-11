@@ -74,9 +74,15 @@ const router = (request, response) => {
     }
 
     else if (endpoint.includes("/sign-s3")) {
-      // console.log(endpoint)
+      console.log("AWS request reached the router");
+      // return;
       handler.awsSignatureHandler(request, endpoint, response);
     }
+
+    // else if (endpoint.includes("/meme8-640x360px.jpeg")) {
+    //   console.log("WAHEY");
+    //   return;
+    // }
 
     else {
       handler.publicHandler(response, endpoint, extension);
@@ -86,6 +92,8 @@ const router = (request, response) => {
   if (method === "POST") {
     if (endpoint === "/create/post") {
       let jwt = cookie.parse(request.headers.cookie).jwt;
+      // console.log(request.url)
+      // return;
       handler.createPostHandler(request, response, jwt);
   }
 
