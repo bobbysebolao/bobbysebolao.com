@@ -6,12 +6,14 @@
     const files = document.getElementById('mainImage').files;
     const file = files[0];
     console.log(file.name, "<====== LOOK");
+    let newImgName = file.name.split(".")[0] + "-main-image." + file.name.split(".")[1];
+    console.log(newImgName, "<====== LOOK AGAIN");
     // return;
     if(file == null){
-      return alert('No file selected.');
+      console.log('No file selected.');
     }
     console.log("This is the image: ", file);
-    getSignedRequest(file, imageType);
+    getSignedRequest(file, imageType, newImgName);
   };
 })();
 
@@ -20,17 +22,22 @@
     const imageType = "thumbnailImage";
     const files = document.getElementById('thumbnailImage').files;
     const file = files[0];
+
+    console.log(file.name, "<====== LOOK");
+    let newImgName = file.name.split(".")[0] + "-thumbnail-image." + file.name.split(".")[1];
+    console.log(newImgName, "<====== LOOK AGAIN");
+
     if(file == null){
-      return alert('No file selected.');
+      console.log('No file selected.');
     }
     console.log("This is the image: ", file);
-    getSignedRequest(file, imageType);
+    getSignedRequest(file, imageType, newImgName);
   };
 })();
 
-function getSignedRequest(file, imageType){
+function getSignedRequest(file, imageType, newFileName){
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+  xhr.open('GET', `/sign-s3?file-name=${newFileName}&file-type=${file.type}`);
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4){
       if(xhr.status === 200){
@@ -67,7 +74,7 @@ function uploadFile(file, signedRequest, url, imageType){
         }
       }
       else{
-        alert('Could not upload file.');
+        console.log('Could not upload file.');
       }
     }
   };

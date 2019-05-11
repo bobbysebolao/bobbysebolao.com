@@ -75,6 +75,7 @@ const router = (request, response) => {
 
     else if (endpoint.includes("/sign-s3")) {
       console.log("AWS request reached the router");
+      // console.log("BAM", request);
       // return;
       handler.awsSignatureHandler(request, endpoint, response);
     }

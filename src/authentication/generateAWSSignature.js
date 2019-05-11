@@ -7,7 +7,9 @@ require("env2")("./config.env");
 aws.config.region = 'eu-west-2';
 const S3_BUCKET = process.env.S3_BUCKET;
 
-const generateAWSSignature = (req, endpoint, res) => {
+const generateAWSSignature = (endpoint, res) => {
+  return new Promise((resolve, reject) => {
+    console.log("CHECK OUT DA ENDPOINT", endpoint)
 
   const s3 = new aws.S3();
 
@@ -19,9 +21,24 @@ const generateAWSSignature = (req, endpoint, res) => {
   console.log("c", fileType);
   // return;
 
+  let key = "";
+
+  if (fileName.includes("-main-image") && !endpoint.includes("text/html")) {
+    key = "blog-images/" + fileName;
+  }
+  else if (fileName.includes("-thumbnail-image") && !endpoint.includes("text/html")) {
+    key = "blog-thumbnails/" + fileName;
+  }
+  else if (fileName.includes("-avatar-image") && !endpoint.includes("text/html")) {
+    key = "user-avatars/" + fileName;
+  }
+  else if (fileType === "text/html") {
+    key = "blog-posts/" + fileName;
+  }
+
   const s3Params = {
     Bucket: S3_BUCKET,
-    Key: fileName,
+    Key: `${key}`,
     Expires: 60,
     ContentType: fileType,
     ACL: 'public-read'
@@ -29,17 +46,23 @@ const generateAWSSignature = (req, endpoint, res) => {
 
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err) {
-      console.log(err);
-      return res.end();
+      reject(err);
     }
     const returnData = {
       signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${key}`
     };
-    // console.log(returnData);
+    console.log("AYOOOOOOO", returnData);
+    if (!endpoint.includes("text/html")) {
     res.write(JSON.stringify(returnData));
     res.end();
+  } else {
+    resolve(returnData);
+  }
+    // res.write(JSON.stringify(returnData));
+    // res.end();
   })
+    })
 }
 
 module.exports = generateAWSSignature;
