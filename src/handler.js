@@ -33,7 +33,6 @@ const getEmailVerificationToken = require("./queries/getEmailVerificationToken.j
 const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationToken.js");
 const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
 const generateAWSSignature = require("./authentication/generateAWSSignature.js");
-const generateAWSSignature2 = require("./authentication/generateAWSSignature2.js");
 const getSignedAwsRequest = require("./authentication/getSignedAwsRequest.js");
 
 //GET REQUEST HANDLERS
@@ -322,12 +321,38 @@ const createPostHandler = (req, res, encodedJwt) => {
             } else {
             console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
             // return;
-            generateAWSSignature2(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
+            generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
             .then(response => {
               // const result = JSON.parse(response);
               getSignedAwsRequest.uploadFile(file, response.signedRequest);
 
             })
+            .then(result => {
+              fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
+                if (err) {
+                  console.log(err)
+                  return;
+                }
+                console.log("Blog post successfully deleted from local filesystem");
+              })
+              })
+              .then(result => {
+                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
+                    if (err) {
+                      console.log(err)
+                      return;
+                    }
+                    console.log("Main image successfully deleted from local filesystem");
+                  })
+
+                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
+                    if (err) {
+                      console.log(err)
+                      return;
+                    }
+                    console.log("Thumbnail successfully deleted from local filesystem");
+                  })
+              })
             .catch(error => console.log(error))
 
             // `/sign-s3?file-name=${fields["filename"]}&file-type=text/html`
@@ -516,8 +541,8 @@ const createPostHandler = (req, res, encodedJwt) => {
   }
 
   const awsSignatureHandler = (req, endpoint, res) => {
-    // console.log("HI HO");
-    generateAWSSignature(req, endpoint, res);
+    generateAWSSignature(endpoint, res)
+    .catch(error => console.log(error));
   }
 
   const loginSubmitHandler = (req, res) => {
