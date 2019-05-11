@@ -33,6 +33,8 @@ const getEmailVerificationToken = require("./queries/getEmailVerificationToken.j
 const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationToken.js");
 const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
 const generateAWSSignature = require("./authentication/generateAWSSignature.js");
+const generateAWSSignature2 = require("./authentication/generateAWSSignature2.js");
+const getSignedAwsRequest = require("./authentication/getSignedAwsRequest.js");
 
 //GET REQUEST HANDLERS
 
@@ -80,8 +82,8 @@ const postsJSONHandler = (res) => {
         // return;
         let posts = response[0];
         let thumbnails = response[1];
-        console.log("The blog posts --->", posts);
-        console.log("The thumbnails --->", thumbnails);
+        // console.log("The blog posts --->", posts);
+        // console.log("The thumbnails --->", thumbnails);
         // console.log("The post thumbnail ID --->", posts.thumbnail_id);
         // return;
         for (let i = 0; i < posts.length; i++) {
@@ -244,68 +246,139 @@ const createPostHandler = (req, res, encodedJwt) => {
 
       let formData = "";
 
-      form.parse(req, function(error, fields, files) {
+      let newPostPath;
+      let newPostContent;
+
+      form.parse(req, (error, fields, files) => {
         if (error) {
           console.log(`Cannot upload images. Error is ${error}`);
         }
         else {
-          console.log("BOOOOOOOGALOOOOOOOO", files["thumbnail"]["name"]);
+          // console.log("The image file: ", files);
           // return;
-          // console.log("YEYEYE", fields);
-          // return;
+
         let mainImage = {
           name: files["mainImage"]["name"],
           size: files["mainImage"]["size"],
-          path: files["mainImage"]["path"],
+          // path: files["mainImage"]["path"],
+          path: fields["mainImageUrl"],
           type: files["mainImage"]["type"]
         }
 
         let thumbnail = {
           name: files["thumbnail"]["name"],
           size: files["thumbnail"]["size"],
-          path: files["thumbnail"]["path"],
+          // path: files["thumbnail"]["path"],
+          path: fields["thumbnailUrl"],
           type: files["thumbnail"]["type"]
         }
 
+        let timeOfPublication = Date.now();
+        let dateOfPublication = Date(timeOfPublication);
+        console.log("TODAY'S DATE", dateOfPublication);
+
         fields["mainImage"] = mainImage;
         fields["thumbnail"] = thumbnail;
+        fields["authorName"] = "Bobby Sebolao";
+        fields["timeOfPublication"] = timeOfPublication;
+        fields["date"] = dateOfPublication;
+        fields["readingminutes"] = readingTimeCalculator(fields["post"]);
+        fields["filename"] = `${fields["postUrl"].toLowerCase().replace(/\s/g, "-")}.html`;
+
+        // console.log("Form fields: ", fields["filename"]);
+        // return;
 
         console.log("Uploaded images successfully");
         formData = fields;
-        // console.log("here's all the data: ", formData);
+        // console.log(formData, "LOOK HERE <=====");
+
+        submitNewImage(fields)
+        .then(result => {
+          submitNewThumbnail(fields)
+        })
+        .then(result => {
+          submitNewPost(fields, fields["timeOfPublication"])
+        })
+        .then(result => {
+          newPostPath = `/blog/${fields["filename"]}`;
+
+          newPostContent = createPostFromTemplate(fields["title"], fields["subtitle"], fields["post"], fields["date"], fields["readingminutes"], fields["mainImage"]["name"], fields["mainImageAltText"], fields["mainImageCaption"], fields["metatitle"], fields["metadescription"], newPostPath, fields["authorName"]);
+
+            fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
+              if (error) {
+                console.log("Error: No such file exists");
+                return;
+            }
+            console.log("Successfully written to file");
+
+          });
+        })
+        .then(result => {
+          // fs.readFile(__dirname + `/../public` + newPostPath, "utf8", function(error, file) {
+          fs.readFile(__dirname + `/../public` + newPostPath, function(error, file) {
+            if (error) {
+              console.log("error");
+              return;
+            } else {
+            console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
+            // return;
+            generateAWSSignature2(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
+            .then(response => {
+              // const result = JSON.parse(response);
+              getSignedAwsRequest.uploadFile(file, response.signedRequest);
+
+            })
+            .catch(error => console.log(error))
+
+            // `/sign-s3?file-name=${fields["filename"]}&file-type=text/html`
+            // let base64data = new Buffer(file, 'binary');
+            // getSignedAwsRequest.getSignedAwsRequest(fields["filename"]);
+            // res.writeHead(200, { "Content-Type": "text/html" });
+            // res.end(file);
+          }
+          });
+
+          // getSignedAwsRequest.getSignedAwsRequest(file, "text/html");
+          // return;
+        })
+        .catch(error => console.log(error))
+
       }
       });
+
+      // console.log(formData, "LOOK HERE <=====");
+      // return;
 
       // STEP 6: Sending blog post to the Server
       // This stackoverflow answer helped me find out how to pass the image data
       // to the server: https://stackoverflow.com/questions/21745432/image-upload-to-server-in-node-js-without-using-express
 
-      let allTheData = "";
-      req.on("data", function(chunkOfData) {
-        console.log("Writing to file...");
-        allTheData += chunkOfData;
-      });
+      // let allTheData = "";
+      // req.on("data", function(chunkOfData) {
+      //   console.log("Writing to file...");
+      //   allTheData += chunkOfData;
+      // });
 
-      req.on("end", function() {
-        const convertedData = querystring.parse(allTheData);
+      // req.on("end", function() {
+      //   const convertedData = querystring.parse(allTheData);
 
-        fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
-          if (error) {
-            console.log(error);
-            return;
-          }
-          const blogPosts = JSON.parse(file);
-          console.log("Here's the posts.json: ", blogPosts);
-          console.log("Here's the length: ", Object.keys(blogPosts).length);
-          // return;
-          let timeOfPublication = Date.now();
-          let dateOfPublication = Date(timeOfPublication);
-          console.log("TODAY'S DATE", dateOfPublication);
-          blogPosts[timeOfPublication] = formData;
-          blogPosts[timeOfPublication]["authorName"] = "Bobby Sebolao";
-          blogPosts[timeOfPublication]["date"] = dateOfPublication;
-          blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
-          blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
+        // fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
+        //   if (error) {
+        //     console.log(error);
+        //     return;
+        //   }
+          // const blogPosts = JSON.parse(file);
+          // console.log("Here's the posts.json: ", blogPosts);
+          // console.log("Here's the length: ", Object.keys(blogPosts).length);
+
+          // let timeOfPublication = Date.now();
+          // let dateOfPublication = Date(timeOfPublication);
+          // console.log("TODAY'S DATE", dateOfPublication);
+          // blogPosts[timeOfPublication] = formData;
+          // blogPosts[timeOfPublication]["authorName"] = "Bobby Sebolao";
+          // blogPosts[timeOfPublication]["date"] = dateOfPublication;
+          // blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
+          // blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
 
           // submitNewImage(blogPosts[timeOfPublication], err => {
           //   if (err) {
@@ -325,43 +398,12 @@ const createPostHandler = (req, res, encodedJwt) => {
           //   }
           // });
 
-          submitNewImage(blogPosts[timeOfPublication])
-          .then(result => {
-            submitNewThumbnail(blogPosts[timeOfPublication])
-          })
-          .then(result => {
-            submitNewPost(blogPosts[timeOfPublication], timeOfPublication)
-          })
-          .then(result => {
-            const final = JSON.stringify(blogPosts);
 
-            fs.writeFile(__dirname + "/posts.json", final, function(error) {
-              if (error) {
-                console.log("Error");
-                return;
-            }
-            console.log("Successfully written to file");
-          });
-
-          let newPostPath = `/blog/post-${Object.keys(blogPosts).length}.html`;
-
-          let newPostContent = createPostFromTemplate(blogPosts[timeOfPublication]["title"], blogPosts[timeOfPublication]["subtitle"], blogPosts[timeOfPublication]["post"], blogPosts[timeOfPublication]["date"], blogPosts[timeOfPublication]["readingminutes"], blogPosts[timeOfPublication]["mainImage"]["name"], blogPosts[timeOfPublication]["mainImageAltText"], blogPosts[timeOfPublication]["mainImageCaption"], blogPosts[timeOfPublication]["metatitle"], blogPosts[timeOfPublication]["metadescription"], newPostPath, blogPosts[timeOfPublication]["authorName"]);
-
-          fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
-            if (error) {
-              console.log("Error: No such file exists");
-              return;
-          }
-          console.log("Successfully written to file");
-
-        });
-          })
-          .catch(error => console.log(error))
-      });
+      // });
 
       res.writeHead(302, { Location: "/blog/blog.html" });
       res.end();
-    });
+    // });
   }
         })
         .catch(error => console.log(error))
