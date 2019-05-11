@@ -35,6 +35,8 @@ const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
 const generateAWSSignature = require("./authentication/generateAWSSignature.js");
 const getSignedAwsRequest = require("./authentication/getSignedAwsRequest.js");
 
+require("env2")("./config.env");
+
 //GET REQUEST HANDLERS
 
 const homeHandler = (res) => {
@@ -328,15 +330,21 @@ const createPostHandler = (req, res, encodedJwt) => {
 
             })
             .then(result => {
-              fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
-                if (err) {
-                  console.log(err)
-                  return;
-                }
-                console.log("Blog post successfully deleted from local filesystem");
-              })
+
+              if (process.env.NODE_ENV === "local") {
+                fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
+                  if (err) {
+                    console.log(err)
+                    return;
+                  }
+                  console.log("Blog post successfully deleted from local filesystem");
+                })
+              }
+
               })
               .then(result => {
+
+                if (process.env.NODE_ENV === "local") {
                   fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
                     if (err) {
                       console.log(err)
@@ -352,6 +360,8 @@ const createPostHandler = (req, res, encodedJwt) => {
                     }
                     console.log("Thumbnail successfully deleted from local filesystem");
                   })
+
+                }
               })
             .catch(error => console.log(error))
 
