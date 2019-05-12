@@ -325,45 +325,45 @@ const createPostHandler = (req, res, encodedJwt) => {
             console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
             // return;
             generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
-            // .then(response => {
-            //   // const result = JSON.parse(response);
-            //   getSignedAwsRequest.uploadFile(file, response.signedRequest);
-            //
-            // })
-            // .then(result => {
-            //
-            //   if (process.env.NODE_ENV === "local") {
-            //     fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
-            //       if (err) {
-            //         console.log(err)
-            //         return;
-            //       }
-            //       console.log("Blog post successfully deleted from local filesystem");
-            //     })
-            //   }
-            //
-            //   })
-              // .then(result => {
-              //
-              //   if (process.env.NODE_ENV === "local") {
-              //     fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
-              //       if (err) {
-              //         console.log(err)
-              //         return;
-              //       }
-              //       console.log("Main image successfully deleted from local filesystem");
-              //     })
-              //
-              //     fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
-              //       if (err) {
-              //         console.log(err)
-              //         return;
-              //       }
-              //       console.log("Thumbnail successfully deleted from local filesystem");
-              //     })
-              //
-              //   }
-              // })
+            .then(response => {
+              // const result = JSON.parse(response);
+              getSignedAwsRequest.uploadFile(file, response.signedRequest);
+
+            })
+            .then(result => {
+
+              if (process.env.NODE_ENV === "local") {
+                fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
+                  if (err) {
+                    console.log(err)
+                    return;
+                  }
+                  console.log("Blog post successfully deleted from local filesystem");
+                })
+              }
+
+              })
+              .then(result => {
+
+                if (process.env.NODE_ENV === "local") {
+                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
+                    if (err) {
+                      console.log(err)
+                      return;
+                    }
+                    console.log("Main image successfully deleted from local filesystem");
+                  })
+
+                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
+                    if (err) {
+                      console.log(err)
+                      return;
+                    }
+                    console.log("Thumbnail successfully deleted from local filesystem");
+                  })
+
+                }
+              })
             .catch(error => console.log(error))
 
             // `/sign-s3?file-name=${fields["filename"]}&file-type=text/html`
