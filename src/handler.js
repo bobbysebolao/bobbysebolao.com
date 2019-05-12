@@ -1,3 +1,5 @@
+require("env2")("./config.env");
+
 const fs = require("fs");
 const querystring = require("query-string");
 const path = require("path");
@@ -34,8 +36,6 @@ const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationT
 const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
 const generateAWSSignature = require("./authentication/generateAWSSignature.js");
 const getSignedAwsRequest = require("./authentication/getSignedAwsRequest.js");
-
-require("env2")("./config.env");
 
 //GET REQUEST HANDLERS
 
@@ -255,6 +255,7 @@ const createPostHandler = (req, res, encodedJwt) => {
           console.log(`Cannot upload images. Error is ${error}`);
         }
         else {
+          console.log("Form data parsing underway...");
           // console.log("The image file: ", files);
           // return;
 
@@ -324,11 +325,11 @@ const createPostHandler = (req, res, encodedJwt) => {
             console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
             // return;
             generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
-            .then(response => {
-              // const result = JSON.parse(response);
-              getSignedAwsRequest.uploadFile(file, response.signedRequest);
-
-            })
+            // .then(response => {
+            //   // const result = JSON.parse(response);
+            //   getSignedAwsRequest.uploadFile(file, response.signedRequest);
+            //
+            // })
             // .then(result => {
             //
             //   if (process.env.NODE_ENV === "local") {
