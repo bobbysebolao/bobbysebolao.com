@@ -1,8 +1,8 @@
+require("env2")("./config.env");
+
 const querystring = require("query-string");
 const url = require('url');
 const aws = require('aws-sdk');
-
-require("env2")("./config.env");
 
 aws.config.region = 'eu-west-2';
 const S3_BUCKET = process.env.S3_BUCKET;
