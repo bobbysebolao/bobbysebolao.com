@@ -329,19 +329,19 @@ const createPostHandler = (req, res, encodedJwt) => {
               getSignedAwsRequest.uploadFile(file, response.signedRequest);
 
             })
-            .then(result => {
-
-              if (process.env.NODE_ENV === "local") {
-                fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
-                  if (err) {
-                    console.log(err)
-                    return;
-                  }
-                  console.log("Blog post successfully deleted from local filesystem");
-                })
-              }
-
-              })
+            // .then(result => {
+            //
+            //   if (process.env.NODE_ENV === "local") {
+            //     fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
+            //       if (err) {
+            //         console.log(err)
+            //         return;
+            //       }
+            //       console.log("Blog post successfully deleted from local filesystem");
+            //     })
+            //   }
+            //
+            //   })
               // .then(result => {
               //
               //   if (process.env.NODE_ENV === "local") {
