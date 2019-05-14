@@ -4,7 +4,7 @@ const querystring = require("query-string");
 const url = require('url');
 const aws = require('aws-sdk');
 
-aws.config.region = 'eu-west-2';
+// aws.config.region = 'eu-west-2';
 const S3_BUCKET = process.env.S3_BUCKET;
 
 const generateAWSSignature = (endpoint, res) => {
