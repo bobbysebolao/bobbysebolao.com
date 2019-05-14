@@ -294,18 +294,18 @@ const createPostHandler = (req, res, encodedJwt) => {
         formData = fields;
         // console.log(formData, "LOOK HERE <=====");
 
-        Promise.all([
-          submitNewImage(fields),
-          submitNewThumbnail(fields),
-          submitNewPost(fields, fields["timeOfPublication"])
-        ])
-        // submitNewImage(fields)
-        // .then(result => {
-        //   submitNewThumbnail(fields)
-        // })
-        // .then(result => {
+        // Promise.all([
+        //   submitNewImage(fields),
+        //   submitNewThumbnail(fields),
         //   submitNewPost(fields, fields["timeOfPublication"])
-        // })
+        // ])
+        submitNewImage(fields)
+        .then(result => {
+          submitNewThumbnail(fields)
+        })
+        .then(result => {
+          submitNewPost(fields, fields["timeOfPublication"])
+        })
         .then(result => {
           console.log("STILL DRE")
           newPostPath = `/blog/${fields["filename"]}`;
