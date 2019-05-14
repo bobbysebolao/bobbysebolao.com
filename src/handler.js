@@ -225,10 +225,6 @@ const publicHandler = (res, endpoint, extension) => {
 //POST REQUEST HANDLERS
 
 const createPostHandler = (req, res, encodedJwt) => {
-  process.on('uncaughtException', function (err) {
-  console.error(err.stack); // either logs on console or send to other server via api call.
-  process.exit(1)
-})
       console.log("POST request received");
 
       decodeJSONWebToken(encodedJwt)
