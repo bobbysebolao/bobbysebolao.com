@@ -307,44 +307,48 @@ const createPostHandler = (req, res, encodedJwt) => {
         //   submitNewPost(fields, fields["timeOfPublication"])
         // })
         .then(result => {
+          console.log("STILL DRE")
           newPostPath = `/blog/${fields["filename"]}`;
 
           newPostContent = createPostFromTemplate(fields["title"], fields["subtitle"], fields["post"], fields["date"], fields["readingminutes"], fields["mainImage"]["name"], fields["mainImageAltText"], fields["mainImageCaption"], fields["metatitle"], fields["metadescription"], newPostPath, fields["authorName"]);
 
-          //   fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
-          //     if (error) {
-          //       console.log("Error: No such file exists");
-          //       return;
-          //   }
-          //   console.log("Successfully written to file");
-          //
-          // });
+            fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
+              if (error) {
+                console.log("Error: No such file exists");
+                return;
+            }
+            console.log("Successfully written to file");
+
+          });
         })
         .then(result => {
           // fs.readFile(__dirname + `/../public` + newPostPath, "utf8", function(error, file) {
-          fs.readFile(__dirname + `/../public` + newPostPath, function(error, file) {
-            if (error) {
-              console.log("error");
-              return;
-            } else {
+          // fs.readFile(__dirname + `/../public` + newPostPath, function(error, file) {
+            // if (error) {
+            //   console.log("error");
+            //   return;
+            // }
+            // else {
             console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
             // return;
             generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
             .then(response => {
               // const result = JSON.parse(response);
-              getSignedAwsRequest.uploadFile(file, response.signedRequest);
+              console.log("DJANGO UNCHAINED");
+              // return;
+              getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
 
             })
             .then(result => {
 
               // if (process.env.NODE_ENV === "local") {
-                fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
-                  if (err) {
-                    console.log(err)
-                    return;
-                  }
-                  console.log("Blog post successfully deleted from local filesystem");
-                })
+                // fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
+                //   if (err) {
+                //     console.log(err)
+                //     return;
+                //   }
+                //   console.log("Blog post successfully deleted from local filesystem");
+                // })
               // }
 
               })
@@ -376,8 +380,8 @@ const createPostHandler = (req, res, encodedJwt) => {
             // getSignedAwsRequest.getSignedAwsRequest(fields["filename"]);
             // res.writeHead(200, { "Content-Type": "text/html" });
             // res.end(file);
-          }
-          });
+          // }
+          // });
 
           // getSignedAwsRequest.getSignedAwsRequest(file, "text/html");
           // return;
