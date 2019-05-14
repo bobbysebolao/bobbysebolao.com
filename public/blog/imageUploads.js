@@ -57,6 +57,7 @@ function getSignedRequest(file, imageType, newFileName){
 
 function uploadFile(file, signedRequest, url, imageType){
   console.log("ITS A WRAP", file);
+  console.log(file, "<============== WAKA WAKA AYY AYY");
   const xhr = new XMLHttpRequest();
   xhr.open('PUT', signedRequest);
   xhr.onreadystatechange = () => {

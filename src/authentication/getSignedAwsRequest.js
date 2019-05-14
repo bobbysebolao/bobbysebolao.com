@@ -30,6 +30,8 @@ const getSignedAwsRequest = (filename) => {
 }
 
 const uploadFile = (file, signedRequest) => {
+  // console.log(file, "<============== WAKA WAKA AYY AYY");
+  // return;
   const xhr = new XMLHttpRequest();
   xhr.open('PUT', signedRequest);
   xhr.onreadystatechange = () => {

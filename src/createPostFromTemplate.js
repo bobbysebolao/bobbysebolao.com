@@ -18,7 +18,14 @@ const createPostFromTemplate = function(title, subtitle, body, date, readingTime
     data = data.replace(/\*\*\*\*\*insertpostmetadescriptionhere\*\*\*\*\*/g, metadescription);
     data = data.replace("*****insertposturlhere*****", "www.bobbysebolao.com" + url);
     data = data.replace("*****insertauthorhere*****", author);
-    return data;
+
+    // console.log(typeof(data), "HALELLUJAH");
+    // return;
+
+    let buf = Buffer.from(data, 'utf8');
+    console.log(buf);
+    // return;
+    return buf;
     // createdPost = data;
     // processFile();
   // function processFile() {
