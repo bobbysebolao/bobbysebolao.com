@@ -312,6 +312,51 @@ const createPostHandler = (req, res, encodedJwt) => {
 
           newPostContent = createPostFromTemplate(fields["title"], fields["subtitle"], fields["post"], fields["date"], fields["readingminutes"], fields["mainImage"]["name"], fields["mainImageAltText"], fields["mainImageCaption"], fields["metatitle"], fields["metadescription"], newPostPath, fields["authorName"]);
 
+          console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
+          // return;
+          generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
+          .then(response => {
+            // const result = JSON.parse(response);
+            console.log("DJANGO UNCHAINED");
+            getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
+
+          })
+          // .then(result => {
+
+            // if (process.env.NODE_ENV === "local") {
+              // fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
+              //   if (err) {
+              //     console.log(err)
+              //     return;
+              //   }
+              //   console.log("Blog post successfully deleted from local filesystem");
+              // })
+            // }
+
+            // })
+            .then(result => {
+
+              // if (process.env.NODE_ENV === "local") {
+                fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
+                  if (err) {
+                    console.log(err)
+                    return;
+                  }
+                  console.log("Main image successfully deleted from local filesystem");
+                })
+
+                fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
+                  if (err) {
+                    console.log(err)
+                    return;
+                  }
+                  console.log("Thumbnail successfully deleted from local filesystem");
+                })
+
+              // }
+            })
+          .catch(error => console.log(error))
+
           //   fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
           //     if (error) {
           //       console.log("Error: No such file exists");
@@ -321,7 +366,7 @@ const createPostHandler = (req, res, encodedJwt) => {
           //
           // });
         })
-        .then(result => {
+        // .then(result => {
           // fs.readFile(__dirname + `/../public` + newPostPath, "utf8", function(error, file) {
           // fs.readFile(__dirname + `/../public` + newPostPath, function(error, file) {
             // if (error) {
@@ -329,50 +374,50 @@ const createPostHandler = (req, res, encodedJwt) => {
             //   return;
             // }
             // else {
-            console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
-            // return;
-            generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
-            .then(response => {
-              // const result = JSON.parse(response);
-              console.log("DJANGO UNCHAINED");
-              getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
-
-            })
-            // .then(result => {
-
-              // if (process.env.NODE_ENV === "local") {
-                // fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
-                //   if (err) {
-                //     console.log(err)
-                //     return;
-                //   }
-                //   console.log("Blog post successfully deleted from local filesystem");
-                // })
-              // }
-
-              // })
-              .then(result => {
-
-                // if (process.env.NODE_ENV === "local") {
-                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
-                    if (err) {
-                      console.log(err)
-                      return;
-                    }
-                    console.log("Main image successfully deleted from local filesystem");
-                  })
-
-                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
-                    if (err) {
-                      console.log(err)
-                      return;
-                    }
-                    console.log("Thumbnail successfully deleted from local filesystem");
-                  })
-
-                // }
-              })
-            .catch(error => console.log(error))
+            // console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
+            // // return;
+            // generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
+            // .then(response => {
+            //   // const result = JSON.parse(response);
+            //   console.log("DJANGO UNCHAINED");
+            //   getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
+            //
+            // })
+            // // .then(result => {
+            //
+            //   // if (process.env.NODE_ENV === "local") {
+            //     // fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
+            //     //   if (err) {
+            //     //     console.log(err)
+            //     //     return;
+            //     //   }
+            //     //   console.log("Blog post successfully deleted from local filesystem");
+            //     // })
+            //   // }
+            //
+            //   // })
+            //   .then(result => {
+            //
+            //     // if (process.env.NODE_ENV === "local") {
+            //       fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
+            //         if (err) {
+            //           console.log(err)
+            //           return;
+            //         }
+            //         console.log("Main image successfully deleted from local filesystem");
+            //       })
+            //
+            //       fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
+            //         if (err) {
+            //           console.log(err)
+            //           return;
+            //         }
+            //         console.log("Thumbnail successfully deleted from local filesystem");
+            //       })
+            //
+            //     // }
+            //   })
+            // .catch(error => console.log(error))
 
             // `/sign-s3?file-name=${fields["filename"]}&file-type=text/html`
             // let base64data = new Buffer(file, 'binary');
@@ -384,7 +429,7 @@ const createPostHandler = (req, res, encodedJwt) => {
 
           // getSignedAwsRequest.getSignedAwsRequest(file, "text/html");
           // return;
-        })
+        // })
         .catch(error => console.log(error))
 
       }
