@@ -311,14 +311,14 @@ const createPostHandler = (req, res, encodedJwt) => {
 
           newPostContent = createPostFromTemplate(fields["title"], fields["subtitle"], fields["post"], fields["date"], fields["readingminutes"], fields["mainImage"]["name"], fields["mainImageAltText"], fields["mainImageCaption"], fields["metatitle"], fields["metadescription"], newPostPath, fields["authorName"]);
 
-            fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
-              if (error) {
-                console.log("Error: No such file exists");
-                return;
-            }
-            console.log("Successfully written to file");
-
-          });
+          //   fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
+          //     if (error) {
+          //       console.log("Error: No such file exists");
+          //       return;
+          //   }
+          //   console.log("Successfully written to file");
+          //
+          // });
         })
         .then(result => {
           // fs.readFile(__dirname + `/../public` + newPostPath, "utf8", function(error, file) {
