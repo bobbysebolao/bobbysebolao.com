@@ -345,24 +345,29 @@ const createPostHandler = (req, res, encodedJwt) => {
                   }
                   console.log("Blog post successfully deleted from local filesystem");
                 })
-
-                fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
-                  if (err) {
-                    console.log(err)
-                    return;
-                  }
-                  console.log("Main image successfully deleted from local filesystem");
-                })
-
-                fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
-                  if (err) {
-                    console.log(err)
-                    return;
-                  }
-                  console.log("Thumbnail successfully deleted from local filesystem");
-                })
               // }
 
+              })
+              .then(result => {
+
+                // if (process.env.NODE_ENV === "local") {
+                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
+                    if (err) {
+                      console.log(err)
+                      return;
+                    }
+                    console.log("Main image successfully deleted from local filesystem");
+                  })
+
+                  fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
+                    if (err) {
+                      console.log(err)
+                      return;
+                    }
+                    console.log("Thumbnail successfully deleted from local filesystem");
+                  })
+
+                // }
               })
             .catch(error => console.log(error))
 
