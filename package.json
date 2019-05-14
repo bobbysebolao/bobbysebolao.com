@@ -37,6 +37,7 @@
     "nodemailer": "^6.1.1",
     "pg": "^7.9.0",
     "query-string": "^6.4.2",
+    "request": "^2.88.0",
     "xmlhttprequest": "^1.8.0"
   }
 }
