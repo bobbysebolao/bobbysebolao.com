@@ -4,7 +4,7 @@ const querystring = require("query-string");
 const url = require('url');
 const aws = require('aws-sdk');
 
-// aws.config.region = 'eu-west-2';
+aws.config.region = 'eu-west-2';
 const S3_BUCKET = process.env.S3_BUCKET;
 
 const generateAWSSignature = (endpoint, res) => {
@@ -33,7 +33,7 @@ const generateAWSSignature = (endpoint, res) => {
     key = "user-avatars/" + fileName;
   }
   else if (fileType === "text/html") {
-    key = "blog-posts/" + fileName;
+    key = fileName;
   }
 
   const s3Params = {
