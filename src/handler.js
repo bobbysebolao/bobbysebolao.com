@@ -246,7 +246,7 @@ const createPostHandler = (req, res, encodedJwt) => {
         file.path = path.join(__dirname, "../public/assets/images/blog", file.name);
       });
 
-      let formData = "";
+      let formData;
 
       let newPostPath;
       let newPostContent;
@@ -303,13 +303,6 @@ const createPostHandler = (req, res, encodedJwt) => {
           submitNewThumbnail(fields),
           submitNewPost(fields, fields["timeOfPublication"])
         ])
-        // submitNewImage(fields)
-        // .then(result => {
-        //   submitNewThumbnail(fields)
-        // })
-        // .then(result => {
-        //   submitNewPost(fields, fields["timeOfPublication"])
-        // })
         .then(result => {
           console.log("STILL DRE")
           newPostPath = `/blog/${fields["filename"]}`;
@@ -325,22 +318,7 @@ const createPostHandler = (req, res, encodedJwt) => {
             getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
 
           })
-          // .then(result => {
-
-            // if (process.env.NODE_ENV === "local") {
-              // fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
-              //   if (err) {
-              //     console.log(err)
-              //     return;
-              //   }
-              //   console.log("Blog post successfully deleted from local filesystem");
-              // })
-            // }
-
-            // })
             .then(result => {
-
-              // if (process.env.NODE_ENV === "local") {
                 fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
                   if (err) {
                     console.log(err)
@@ -356,147 +334,15 @@ const createPostHandler = (req, res, encodedJwt) => {
                   }
                   console.log("Thumbnail successfully deleted from local filesystem");
                 })
-
-              // }
             })
           .catch(error => console.log(error))
-
-          //   fs.writeFile(__dirname + `/../public` + newPostPath, newPostContent, function(error) {
-          //     if (error) {
-          //       console.log("Error: No such file exists");
-          //       return;
-          //   }
-          //   console.log("Successfully written to file");
-          //
-          // });
         })
-        // .then(result => {
-          // fs.readFile(__dirname + `/../public` + newPostPath, "utf8", function(error, file) {
-          // fs.readFile(__dirname + `/../public` + newPostPath, function(error, file) {
-            // if (error) {
-            //   console.log("error");
-            //   return;
-            // }
-            // else {
-            // console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
-            // // return;
-            // generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
-            // .then(response => {
-            //   // const result = JSON.parse(response);
-            //   console.log("DJANGO UNCHAINED");
-            //   getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
-            //
-            // })
-            // // .then(result => {
-            //
-            //   // if (process.env.NODE_ENV === "local") {
-            //     // fs.unlink(__dirname + `/../public` + newPostPath, (err) => {
-            //     //   if (err) {
-            //     //     console.log(err)
-            //     //     return;
-            //     //   }
-            //     //   console.log("Blog post successfully deleted from local filesystem");
-            //     // })
-            //   // }
-            //
-            //   // })
-            //   .then(result => {
-            //
-            //     // if (process.env.NODE_ENV === "local") {
-            //       fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
-            //         if (err) {
-            //           console.log(err)
-            //           return;
-            //         }
-            //         console.log("Main image successfully deleted from local filesystem");
-            //       })
-            //
-            //       fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
-            //         if (err) {
-            //           console.log(err)
-            //           return;
-            //         }
-            //         console.log("Thumbnail successfully deleted from local filesystem");
-            //       })
-            //
-            //     // }
-            //   })
-            // .catch(error => console.log(error))
-
-            // `/sign-s3?file-name=${fields["filename"]}&file-type=text/html`
-            // let base64data = new Buffer(file, 'binary');
-            // getSignedAwsRequest.getSignedAwsRequest(fields["filename"]);
-            // res.writeHead(200, { "Content-Type": "text/html" });
-            // res.end(file);
-          // }
-          // });
-
-          // getSignedAwsRequest.getSignedAwsRequest(file, "text/html");
-          // return;
-        // })
         .catch(error => console.log(error))
-
       }
       });
 
-      // console.log(formData, "LOOK HERE <=====");
-      // return;
-
-      // STEP 6: Sending blog post to the Server
-      // This stackoverflow answer helped me find out how to pass the image data
-      // to the server: https://stackoverflow.com/questions/21745432/image-upload-to-server-in-node-js-without-using-express
-
-      // let allTheData = "";
-      // req.on("data", function(chunkOfData) {
-      //   console.log("Writing to file...");
-      //   allTheData += chunkOfData;
-      // });
-
-      // req.on("end", function() {
-      //   const convertedData = querystring.parse(allTheData);
-
-        // fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
-        //   if (error) {
-        //     console.log(error);
-        //     return;
-        //   }
-          // const blogPosts = JSON.parse(file);
-          // console.log("Here's the posts.json: ", blogPosts);
-          // console.log("Here's the length: ", Object.keys(blogPosts).length);
-
-          // let timeOfPublication = Date.now();
-          // let dateOfPublication = Date(timeOfPublication);
-          // console.log("TODAY'S DATE", dateOfPublication);
-          // blogPosts[timeOfPublication] = formData;
-          // blogPosts[timeOfPublication]["authorName"] = "Bobby Sebolao";
-          // blogPosts[timeOfPublication]["date"] = dateOfPublication;
-          // blogPosts[timeOfPublication]["filename"] = `post-${Object.keys(blogPosts).length}.html`;
-          // blogPosts[timeOfPublication]["readingminutes"] = readingTimeCalculator(blogPosts[timeOfPublication]["post"]);
-
-          // submitNewImage(blogPosts[timeOfPublication], err => {
-          //   if (err) {
-          //     console.log(err);
-          //   }
-          // });
-
-          // submitNewThumbnail(blogPosts[timeOfPublication], err => {
-          //   if (err) {
-          //     console.log(err);
-          //   }
-          // });
-
-          // submitNewPost(blogPosts[timeOfPublication], timeOfPublication, err => {
-          //   if (err) {
-          //     console.log(err);
-          //   }
-          // });
-
-
-      // });
-
       res.writeHead(302, { Location: "/blog/blog.html" });
       res.end();
-    // });
   }
         })
         .catch(error => console.log(error))
