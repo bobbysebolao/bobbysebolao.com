@@ -234,6 +234,7 @@ const createPostHandler = (req, res, encodedJwt) => {
           res.end("You are not logged in. Please login in order to publish a post")
         }
         else if (decodedToken.logged_in === true){
+          console.log("NO 2");
 
       let form = new formidable.IncomingForm();
 
@@ -249,6 +250,8 @@ const createPostHandler = (req, res, encodedJwt) => {
 
       let newPostPath;
       let newPostContent;
+
+      console.log("NO 3");
 
       form.parse(req, (error, fields, files) => {
         if (error) {
