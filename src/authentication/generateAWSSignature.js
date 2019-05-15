@@ -33,7 +33,7 @@ const generateAWSSignature = (endpoint, res) => {
     key = "user-avatars/" + fileName;
   }
   else if (fileType === "text/html") {
-    key = fileName;
+    key = "blog-posts/" + fileName;
   }
 
   const s3Params = {
@@ -46,6 +46,7 @@ const generateAWSSignature = (endpoint, res) => {
 
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err) {
+      console.log(err);
       reject(err);
     }
     const returnData = {

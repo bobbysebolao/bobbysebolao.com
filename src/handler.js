@@ -253,6 +253,7 @@ const createPostHandler = (req, res, encodedJwt) => {
       form.parse(req, (error, fields, files) => {
         if (error) {
           console.log(`Cannot upload images. Error is ${error}`);
+          return error;
         }
         else {
           console.log("Form data parsing underway...");
