@@ -1,4 +1,6 @@
-// console.log("Hello")
+console.log("Hello")
+
+if (document.getElementById("mainImage")) {
 
 (() => {
   document.getElementById("mainImage").onchange = () => {
@@ -16,7 +18,9 @@
     getSignedRequest(file, imageType, newImgName);
   };
 })();
+}
 
+if (document.getElementById("thumbnailImage")) {
 (() => {
   document.getElementById("thumbnailImage").onchange = () => {
     const imageType = "thumbnailImage";
@@ -34,6 +38,29 @@
     getSignedRequest(file, imageType, newImgName);
   };
 })();
+}
+
+if (document.getElementById("userImage")) {
+(() => {
+  document.getElementById("userImage").onchange = () => {
+    console.log("Hi")
+    const imageType = "userImage";
+    const files = document.getElementById('userImage').files;
+    const file = files[0];
+    console.log(file.name, "<====== LOOK");
+    let newImgName = file.name.split(".")[0] + "-user-image." + file.name.split(".")[1];
+    console.log(newImgName, "<====== LOOK AGAIN");
+    // return;
+    if(file == null){
+      console.log('No file selected.');
+    }
+    // console.log("This is the image: ", file);
+    // console.log("This is the image type: ", file.type);
+    // console.log(`/sign-s3?file-name=${newImgName}&file-type=${file.type}`)
+    getSignedRequest(file, imageType, newImgName);
+  };
+})();
+}
 
 function getSignedRequest(file, imageType, newFileName){
   const xhr = new XMLHttpRequest();
@@ -72,6 +99,11 @@ function uploadFile(file, signedRequest, url, imageType){
           document.getElementById('thumbnailPreview').src = url;
           document.getElementById('thumbnailUrl').value = url;
           console.log("Thumbnail successfully uploaded to AWS");
+        }
+        else if (imageType === "userImage") {
+          document.getElementById('userPreview').src = url;
+          document.getElementById('userUrl').value = url;
+          console.log("User image successfully uploaded to AWS");
         }
       }
       else{
