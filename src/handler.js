@@ -298,46 +298,46 @@ const createPostHandler = (req, res, encodedJwt) => {
         formData = fields;
         // console.log(formData, "LOOK HERE <=====");
 
-        Promise.all([
-          submitNewImage(fields),
-          submitNewThumbnail(fields),
-          submitNewPost(fields, fields["timeOfPublication"])
-        ])
-        .then(result => {
-          console.log("STILL DRE")
-          newPostPath = `/blog/${fields["filename"]}`;
-
-          newPostContent = createPostFromTemplate(fields["title"], fields["subtitle"], fields["post"], fields["date"], fields["readingminutes"], fields["mainImage"]["name"], fields["mainImageAltText"], fields["mainImageCaption"], fields["metatitle"], fields["metadescription"], newPostPath, fields["authorName"]);
-
-          console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
-          // return;
-          generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
-          .then(response => {
-            // const result = JSON.parse(response);
-            console.log("DJANGO UNCHAINED");
-            getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
-
-          })
-            .then(result => {
-                fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
-                  if (err) {
-                    console.log(err)
-                    return;
-                  }
-                  console.log("Main image successfully deleted from local filesystem");
-                })
-
-                fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
-                  if (err) {
-                    console.log(err)
-                    return;
-                  }
-                  console.log("Thumbnail successfully deleted from local filesystem");
-                })
-            })
-          .catch(error => console.log(error))
-        })
-        .catch(error => console.log(error))
+        // Promise.all([
+        //   submitNewImage(fields),
+        //   submitNewThumbnail(fields),
+        //   submitNewPost(fields, fields["timeOfPublication"])
+        // ])
+        // .then(result => {
+        //   console.log("STILL DRE")
+        //   newPostPath = `/blog/${fields["filename"]}`;
+        //
+        //   newPostContent = createPostFromTemplate(fields["title"], fields["subtitle"], fields["post"], fields["date"], fields["readingminutes"], fields["mainImage"]["name"], fields["mainImageAltText"], fields["mainImageCaption"], fields["metatitle"], fields["metadescription"], newPostPath, fields["authorName"]);
+        //
+        //   console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
+        //   // return;
+        //   generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
+        //   .then(response => {
+        //     // const result = JSON.parse(response);
+        //     console.log("DJANGO UNCHAINED");
+        //     getSignedAwsRequest.uploadFile(newPostContent, response.signedRequest);
+        //
+        //   })
+        //     .then(result => {
+        //         fs.unlink(__dirname + "/../public/assets/images/blog/" + files["mainImage"]["name"], (err) => {
+        //           if (err) {
+        //             console.log(err)
+        //             return;
+        //           }
+        //           console.log("Main image successfully deleted from local filesystem");
+        //         })
+        //
+        //         fs.unlink(__dirname + "/../public/assets/images/blog/" + files["thumbnail"]["name"], (err) => {
+        //           if (err) {
+        //             console.log(err)
+        //             return;
+        //           }
+        //           console.log("Thumbnail successfully deleted from local filesystem");
+        //         })
+        //     })
+        //   .catch(error => console.log(error))
+        // })
+        // .catch(error => console.log(error))
       }
       });
 
