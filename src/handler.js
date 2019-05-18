@@ -338,11 +338,13 @@ const createPostHandler = (req, res, encodedJwt) => {
         //   .catch(error => console.log(error))
         // })
         // .catch(error => console.log(error))
+        res.writeHead(302, { Location: "/blog/blog.html" });
+        res.end();
       }
       });
 
-      res.writeHead(302, { Location: "/blog/blog.html" });
-      res.end();
+      // res.writeHead(302, { Location: "/blog/blog.html" });
+      // res.end();
   }
         })
         .catch(error => console.log(error))
