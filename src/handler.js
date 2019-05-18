@@ -347,13 +347,12 @@ const createPostHandler = (req, res, encodedJwt) => {
 
       }
       });
-
-      // res.writeHead(302, { Location: "/blog/blog.html" });
-      // res.end();
   }
         })
         .catch(error => console.log(error))
   }
+
+  
 
   const createAccountSubmitHandler = (req, res) => {
     let form = new formidable.IncomingForm();

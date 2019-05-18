@@ -29,7 +29,7 @@ const generateAWSSignature = (endpoint, res) => {
   else if (fileName.includes("-thumbnail-image") && !endpoint.includes("text/html")) {
     key = "blog-thumbnails/" + fileName;
   }
-  else if (fileName.includes("-avatar-image") && !endpoint.includes("text/html")) {
+  else if (fileName.includes("-user-image") && !endpoint.includes("text/html")) {
     key = "user-avatars/" + fileName;
   }
   else if (fileType === "text/html") {
