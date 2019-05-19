@@ -28,7 +28,7 @@ const router = (request, response) => {
       handler.getCommentsHandler(request, response);
     }
 
-    else if (endpoint.includes("/blog/tags")) {
+    else if (endpoint.includes("/blog/tags?q=")) {
       console.log("Tag request reached the router");
       console.log("The request URL is: ", request.url);
       // return;
@@ -78,6 +78,15 @@ const router = (request, response) => {
       // console.log("BAM", request);
       // return;
       handler.awsSignatureHandler(request, endpoint, response);
+    }
+
+    else if (endpoint.includes("/blog/posts/") && endpoint.includes(".html")) {
+      console.log("Creating temp blog post file on local filesystem...");
+      handler.specificPostHandler(request, response, endpoint);
+      // console.log(request.headers.referer.split("/")[4])
+      // console.log("BAM", request);
+      // return;
+      // handler.awsSignatureHandler(request, endpoint, response);
     }
 
     // else if (endpoint.includes("/meme8-640x360px.jpeg")) {

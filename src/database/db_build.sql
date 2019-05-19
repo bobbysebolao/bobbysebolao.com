@@ -25,6 +25,7 @@ CREATE TABLE posts (
   main_image_caption VARCHAR(100) NOT NULL,
   main_image_alt_text VARCHAR(500) NOT NULL,
   filename VARCHAR(500) NOT NULL,
+  filepath TEXT NOT NULL,
   category VARCHAR(100) NOT NULL,
   tags VARCHAR(200)
 );

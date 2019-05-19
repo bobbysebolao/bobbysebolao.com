@@ -5,7 +5,7 @@ const submitNewPost = (obj, timestamp) => {
   // console.log("There's the post: ", obj)
   // return;
   dbConnection.query(
-    "INSERT INTO posts(pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category, tags, main_image_id, thumbnail_id, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, (SELECT pk_image_id FROM main_images WHERE name = $11), (SELECT pk_thumbnail_id FROM thumbnails WHERE name = $12), (SELECT pk_user_id FROM users WHERE username = $13))",
+    "INSERT INTO posts(pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, (SELECT pk_image_id FROM main_images WHERE name = $12), (SELECT pk_thumbnail_id FROM thumbnails WHERE name = $13), (SELECT pk_user_id FROM users WHERE username = $14))",
     [
       timestamp.toString(),
       obj.date,
@@ -15,6 +15,7 @@ const submitNewPost = (obj, timestamp) => {
       obj.mainImageCaption,
       obj.mainImageAltText,
       obj.filename,
+      obj.filepath,
       obj.contentType,
       obj.tagString,
       obj.mainImage.name,
