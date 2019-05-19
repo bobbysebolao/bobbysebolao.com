@@ -61,6 +61,33 @@ const allPostsHandler = (req, res) => {
       });
     }
 
+    const specificPostHandler = (req, res, endpoint) => {
+      console.log(endpoint)
+      console.log("BOBO", endpoint.split("/")[3])
+      let filename = endpoint.split("/")[3];
+
+      generateAWSSignature.getAwsFile(filename)
+      .then(response => {
+        let fileContents = response["Body"].toString();
+        fs.writeFile(__dirname + "/../public" + endpoint, fileContents, (err, file) => {
+          if (err) console.log(err);
+          console.log('File has been written to the local filepath! Now reading...');
+
+          fs.readFile(__dirname + "/../public" + endpoint, "utf8", (error, file) => {
+            if (error) {
+              console.log(error);
+              return;
+            }
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.end(file);
+          });
+  });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }
+
 const postsJSONHandler = (res) => {
       fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
         if (error) {
@@ -78,7 +105,7 @@ const postsJSONHandler = (res) => {
       console.log("All good")
       Promise.all([getAllPosts(), getAllThumbnails()])
       .then(response => {
-        // console.log("GGGOOO", response)
+        console.log("GGGOOO", response)
         //FIX THIS HANDLER FUNCTION - causing problems with loading thumbnails for recent posts
         // return;
         let posts = response[0];
@@ -199,8 +226,8 @@ const publicHandler = (res, endpoint, extension) => {
     }
 
     const getCommentsHandler = (req, res) => {
-      console.log(req.headers.referer.split("/")[4]);
-      const postName = req.headers.referer.split("/")[4];
+      console.log(req.headers.referer.split("/")[5]);
+      const postName = req.headers.referer.split("/")[5];
       let comments;
       getComments(postName)
       .then(result => res.end(JSON.stringify(result)))
@@ -290,19 +317,22 @@ const createPostHandler = (req, res, encodedJwt) => {
         fields["date"] = dateOfPublication;
         fields["readingminutes"] = readingTimeCalculator(fields["post"]);
         fields["filename"] = `${fields["postUrl"].toLowerCase().replace(/\s/g, "-")}.html`;
+        fields["filepath"] = `https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/${fields["filename"]}`
 
         // console.log("Form fields: ", fields["filename"]);
         // return;
 
         console.log("Uploaded images successfully");
         formData = fields;
-        // console.log(formData, "LOOK HERE <=====");
+        console.log(formData, "LOOK HERE <=====");
 
         Promise.all([
           submitNewImage(fields),
-          submitNewThumbnail(fields),
-          submitNewPost(fields, fields["timeOfPublication"])
+          submitNewThumbnail(fields)
         ])
+        .then(response => {
+          submitNewPost(fields, fields["timeOfPublication"]);
+        })
         .then(result => {
           console.log("STILL DRE")
           newPostPath = `/blog/${fields["filename"]}`;
@@ -311,7 +341,7 @@ const createPostHandler = (req, res, encodedJwt) => {
 
           console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
           // return;
-          generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
+          generateAWSSignature.generateAWSSignature(`/sign-s3?file-name=${fields["filename"]}&file-type=text/html`)
           .then(response => {
             // const result = JSON.parse(response);
             console.log("DJANGO UNCHAINED");
@@ -352,7 +382,7 @@ const createPostHandler = (req, res, encodedJwt) => {
         .catch(error => console.log(error))
   }
 
-  
+
 
   const createAccountSubmitHandler = (req, res) => {
     let form = new formidable.IncomingForm();
@@ -461,7 +491,7 @@ const createPostHandler = (req, res, encodedJwt) => {
   }
 
   const awsSignatureHandler = (req, endpoint, res) => {
-    generateAWSSignature(endpoint, res)
+    generateAWSSignature.generateAWSSignature(endpoint, res)
     .catch(error => console.log(error));
   }
 
@@ -540,8 +570,9 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
-    const postName = req.headers.referer.split("/")[4];
+    const postName = req.headers.referer.split("/")[5];
     console.log(postName);
+    // return;
     let userId = '';
     let postId = '';
     let commentTimestamp;
@@ -575,7 +606,7 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
         console.log("Is it true: ", commentStatus)
         if (commentStatus === true) {
           console.log("Yes it is")
-          res.writeHead(302, { Location: `/blog/${postName}` });
+          res.writeHead(302, { Location: `/blog/posts/${postName}` });
           res.end();
       }
       })
@@ -588,6 +619,7 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
 module.exports = {
   homeHandler,
   allPostsHandler,
+  specificPostHandler,
   postsJSONHandler,
   recentPostsHandler,
   createAccountPageHandler,

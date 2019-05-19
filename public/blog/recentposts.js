@@ -102,10 +102,10 @@ document.onreadystatechange = function() {
               //SELECTS THE FOUR LATEST POSTS
               blockO[latestCount].appendChild(postTitle);
               blockO[latestCount].appendChild(shine);
-              blockO[latestCount].style.backgroundImage = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
-              blockO[latestCount].dataset.thumbnail = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
+              blockO[latestCount].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+              blockO[latestCount].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
               // console.log("DATA ATTR: ", blockO[latestCount].dataset.thumbnail);
-              blockO[latestCount].closest(".blogPostLink").href = posts[blogPost]["filename"];
+              blockO[latestCount].closest(".blogPostLink").href = `/blog/posts/${posts[blogPost]["filename"]}`;
               // console.log("AAAAAAA", blockO[latestCount].closest(".blogPostLink"));
               latestCount--;
             }
@@ -116,9 +116,9 @@ document.onreadystatechange = function() {
                 // console.log("BOOOBOOOO")
             blockT[newsCount].appendChild(postTitle);
             blockT[newsCount].appendChild(shine);
-            blockT[newsCount].style.backgroundImage = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
-            blockT[newsCount].dataset.thumbnail = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
-            blockT[newsCount].closest(".blogPostLink").href = "www.google.com";
+            blockT[newsCount].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+            blockT[newsCount].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+            blockT[newsCount].closest(".blogPostLink").href = posts[blogPost]["filename"];
             newsCount--;
           }
           }
@@ -129,9 +129,9 @@ document.onreadystatechange = function() {
               // console.log("WOOOWOOOO")
             blockL[learnCount].appendChild(postTitle);
             blockL[learnCount].appendChild(shine);
-            blockL[learnCount].style.backgroundImage = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
-            blockL[learnCount].dataset.thumbnail = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
-            blockL[learnCount].closest(".blogPostLink").href = "www.google.com";
+            blockL[learnCount].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+            blockL[learnCount].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+            blockL[learnCount].closest(".blogPostLink").href = posts[blogPost]["filename"];
             learnCount--;
           }
           }
@@ -145,9 +145,9 @@ document.onreadystatechange = function() {
               // return;
             blockS[funCount].appendChild(postTitle);
             blockS[funCount].appendChild(shine);
-            blockS[funCount].style.backgroundImage = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
-            blockS[funCount].dataset.thumbnail = `url("../assets/images/blog/${posts[blogPost]["thumbnail"]["name"]}")`;
-            blockL[funCount].closest(".blogPostLink").href = "www.google.com";
+            blockS[funCount].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+            blockS[funCount].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+            blockL[funCount].closest(".blogPostLink").href = posts[blogPost]["filename"];
             funCount--;
           }
           }

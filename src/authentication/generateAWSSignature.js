@@ -7,11 +7,11 @@ const aws = require('aws-sdk');
 aws.config.region = 'eu-west-2';
 const S3_BUCKET = process.env.S3_BUCKET;
 
+const s3 = new aws.S3();
+
 const generateAWSSignature = (endpoint, res) => {
   return new Promise((resolve, reject) => {
     console.log("CHECK OUT DA ENDPOINT", endpoint)
-
-  const s3 = new aws.S3();
 
   const parsedUrl = url.parse(endpoint);
   const fileName = querystring.parse(parsedUrl.query)['file-name'];
@@ -66,4 +66,31 @@ const generateAWSSignature = (endpoint, res) => {
     })
 }
 
-module.exports = generateAWSSignature;
+const getAwsFile = (filename) => {
+  return new Promise((resolve, reject) => {
+
+  const s3Params = {
+  Bucket: S3_BUCKET,
+  Key: `blog-posts/${filename}`,
+  // Range: "bytes=0-9"
+ };
+
+  s3.getObject(s3Params, function(err, data) {
+    if (err) {
+      console.log("boo")
+      console.log(s3Params["Key"])
+      console.log(err)
+      reject(err)
+    } // an error occurred
+    else {
+      console.log("WEEEE", data);
+      resolve(data)
+    };
+  })
+})
+}
+
+module.exports = {
+  generateAWSSignature,
+  getAwsFile
+};

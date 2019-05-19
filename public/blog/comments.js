@@ -43,7 +43,9 @@ document.onreadystatechange = function() {
 
           commentBody.className = "user-comments__body";
 
-          userAvatar.src = "../assets/images/users/" + data[comment]["avatar_name"];
+          userAvatar.src = `https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/${data[comment]["avatar_name"].split(".")[0]}-user-image.${data[comment]["avatar_name"].split(".")[1]}`;
+          // https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/
+          // `https://s3.eu-west-2.amazonaws.com/console-blog/blog-images/${data[comment]["avatar_name".split(".")[0]}-user-image.${data[comment]["avatar_name".split(".")[1]}`
           commentUsername.textContent = data[comment]["username"];
           commentDate.textContent = data[comment]["com_date"].split(" ").slice(1, 4).join(" ");
           commentBody.textContent = data[comment]["body"];
