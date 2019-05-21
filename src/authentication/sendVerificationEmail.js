@@ -14,7 +14,7 @@ async function sendVerificationEmail(recipientName, recipientEmail, recipientUse
 
     if (process.env.NODE_ENV !== 'local' && process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'live' && process.env.NODE_ENV !== 'build_db') {
       console.log("Sending real verification email...")
-      confirmationLink = `https://rocky-plains-29996.herokuapp.com/blog/confirm-email?evt=${token}&username=${recipientUsername}`
+      confirmationLink = `http://bobbysebolao.com/blog/confirm-email?evt=${token}&username=${recipientUsername}`
     mailConfig = {
       service: 'gmail',
       host: "smtp.gmail.com",
