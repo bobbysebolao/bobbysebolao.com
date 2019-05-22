@@ -424,7 +424,7 @@ const createPostHandler = (req, res, encodedJwt) => {
         let userImage = {
           name: files["userImage"]["name"],
           size: files["userImage"]["size"],
-          path: files["userImage"]["path"],
+          path: fields["userUrl"],
           type: files["userImage"]["type"]
         }
 
