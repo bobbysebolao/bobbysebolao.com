@@ -78,8 +78,15 @@ const allPostsHandler = (req, res) => {
               console.log(error);
               return;
             }
-            res.writeHead(200, {"Content-Type": "text/html"});
-            res.end(file);
+            fs.unlink(__dirname + "/../public" + endpoint, (err) => {
+              if (err) {
+                console.log(err)
+                return;
+              }
+              console.log("Main image successfully deleted from local filesystem");
+              res.writeHead(200, {"Content-Type": "text/html"});
+              res.end(file);
+            })
           });
   });
       })
