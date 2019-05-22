@@ -234,6 +234,20 @@ const publicHandler = (res, endpoint, extension) => {
       .catch(error => console.log(error))
     };
 
+    const getAuthorHandler = (req, res) => {
+      let encodedJwt = cookie.parse(req.headers.cookie).jwt;
+      decodeJSONWebToken(encodedJwt)
+      .then(decodedToken => {
+        getUsername(decodedToken.user_id)
+        .then(response => {
+          let authorData = {username: response.username, avatar: response.avatar_filepath}
+          res.end(JSON.stringify(authorData));
+        })
+        .catch(err => console.log(err))
+      })
+      .catch(error => console.log(error))
+    }
+
     const getTagsHandler = (req, res) => {
       const query = req.url.split("?q=")[1]
       console.log(query);
@@ -254,6 +268,8 @@ const publicHandler = (res, endpoint, extension) => {
 const createPostHandler = (req, res, encodedJwt) => {
       console.log("POST request received");
 
+      let username;
+
       decodeJSONWebToken(encodedJwt)
       .then(decodedToken => {
         if (decodedToken === undefined) {
@@ -261,6 +277,8 @@ const createPostHandler = (req, res, encodedJwt) => {
           res.end("You are not logged in. Please login in order to publish a post")
         }
         else if (decodedToken.logged_in === true){
+          username = decodedToken.username
+          console.log(username);
           console.log("NO 2");
 
       let form = new formidable.IncomingForm();
@@ -312,7 +330,7 @@ const createPostHandler = (req, res, encodedJwt) => {
 
         fields["mainImage"] = mainImage;
         fields["thumbnail"] = thumbnail;
-        fields["authorName"] = "Bobby Sebolao";
+        fields["authorName"] = username;
         fields["timeOfPublication"] = timeOfPublication;
         fields["date"] = dateOfPublication;
         fields["readingminutes"] = readingTimeCalculator(fields["post"]);
@@ -629,6 +647,7 @@ module.exports = {
   loginPageHandler,
   checkLoginStatusHandler,
   getCommentsHandler,
+  getAuthorHandler,
   getTagsHandler,
   createPostHandler,
   createAccountSubmitHandler,

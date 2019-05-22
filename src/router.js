@@ -28,6 +28,10 @@ const router = (request, response) => {
       handler.getCommentsHandler(request, response);
     }
 
+    else if (endpoint === "/blog/author") {
+      handler.getAuthorHandler(request, response);
+    }
+
     else if (endpoint.includes("/blog/tags?q=")) {
       console.log("Tag request reached the router");
       console.log("The request URL is: ", request.url);
