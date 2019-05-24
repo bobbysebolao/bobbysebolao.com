@@ -218,18 +218,41 @@ const publicHandler = (res, endpoint, extension) => {
           });
         }
 
-    const checkLoginStatusHandler = (res, encodedJwt) => {
-      let loginStatus;
-      decodeJSONWebToken(encodedJwt)
-      .then(decodedToken => loginStatus = decodedToken.logged_in)
+    const checkLoginStatusHandler = (req, res) => {
+      let jwt = cookie.parse(req.headers.cookie).jwt;
+      if (jwt !== undefined) {
+        // console.log("Biggie");
+        // return;
+        let user = {};
+      // let loginStatus;
+      // let userId;
+      decodeJSONWebToken(jwt)
+      .then(decodedToken => {
+        user.loginStatus = decodedToken.logged_in;
+        user.id = decodedToken.user_id;
+      })
       .then(unusedResult => {
-        if (loginStatus === true) {
-          console.log("Commenter is logged in, display the comment form")
+        if (user.loginStatus === true) {
+          console.log("Commenter is logged in, display the gated content");
+          getUsername(user.id)
+          .then(response => {
+            user.username = response.username;
+            user.avatar = response.avatar_filepath;
+            user.role = response.role;
+            // console.log("JOKER", response)
+            // return;
+            res.end(JSON.stringify(user));
+          })
+          .catch(error => console.log(error))
           // res.writeHead(302, { Location: `/blog/${postName}` });
-          res.end("true");
+          // res.end("true");
       }
       })
       .catch(error => console.log(error))
+    }
+    else {
+      res.end("false")
+    }
     }
 
     const getCommentsHandler = (req, res) => {

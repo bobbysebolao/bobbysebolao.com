@@ -10,10 +10,81 @@ let postLinks = document.getElementsByClassName("blogPostLink");
 let spriteMode = document.querySelector(".spriteMode");
 let standardStylesheet = document.querySelector("#standardStylesheet");
 
-const xhr = new XMLHttpRequest();
+// const xhr = new XMLHttpRequest();
+
+const fileDivider = document.querySelector(".fileDivider");
+
+// fetch("/blog/check-login-status")
+//   .then(res => res.json())
+//   .then(userData => {
+//     console.log("balloon", userData)
+//     if (userData.loginStatus !== true) {
+//       let register = document.createElement('p');
+//       let login = document.createElement('p');
+//
+//       register.textContent = "Register";
+//       login.textContent = "Sign in";
+//
+//       register.className = "blog__login-options";
+//       login.className = "blog__login-options";
+//
+//       fileDivider.appendChild(login);
+//       fileDivider.appendChild(register);
+//       console.log("It's false")
+//       // userCommentsForm.style.display = 'none';
+//       // loginToComment.style.display = 'block';
+//     }
+//     else {
+//       let userAvatar = document.createElement('img');
+//       userAvatar.className = "user-comments__avatar";
+//       userAvatar.src = `${userData.avatar}`;
+//       fileDivider.appendChild(userAvatar);
+//       console.log("It's true")
+//       // userCommentsForm.style.display = 'block';
+//       // loginToComment.style.display = 'none';
+//     }
+//   });
+
+
+
+
+
 
 document.onreadystatechange = function() {
   if (document.readyState === "complete") {
+
+    fetch("/blog/check-login-status")
+      .then(res => res.json())
+      .then(userData => {
+        console.log("balloon", userData)
+        if (userData.loginStatus !== true) {
+          let register = document.createElement('p');
+          let login = document.createElement('p');
+
+          register.textContent = "Register";
+          login.textContent = "Sign in";
+
+          register.className = "blog__login-options";
+          login.className = "blog__login-options";
+
+          fileDivider.appendChild(login);
+          fileDivider.appendChild(register);
+          console.log("It's false")
+          // userCommentsForm.style.display = 'none';
+          // loginToComment.style.display = 'block';
+        }
+        else {
+          let userAvatar = document.createElement('img');
+          userAvatar.className = "user-comments__avatar";
+          userAvatar.src = `${userData.avatar}`;
+          fileDivider.appendChild(userAvatar);
+          console.log("It's true")
+          // userCommentsForm.style.display = 'block';
+          // loginToComment.style.display = 'none';
+        }
+      });
+
+    let xhr = new XMLHttpRequest();
     if (sessionStorage.getItem('autosave') && sessionStorage.getItem('autosave').includes('css/sprite.css')) {
     standardStylesheet.href = "../css/sprite.css";
   }
@@ -158,9 +229,11 @@ document.onreadystatechange = function() {
         //   console.error(xhr.responseText);
         // }
       }
+      xhr.open("GET", "/blog/recent-posts", true);
+      xhr.send();
     };
-    xhr.open("GET", "/blog/recent-posts", true);
-    xhr.send();
+    // xhr.open("GET", "/blog/recent-posts", true);
+    // xhr.send();
   }
 
 //ACTIVATING SPRITE MODE
