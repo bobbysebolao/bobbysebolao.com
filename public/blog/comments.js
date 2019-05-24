@@ -4,8 +4,8 @@ const loginToComment = document.querySelector(".loginToComment");
 
 fetch("/blog/check-login-status")
   .then(res => res.json())
-  .then(loginStatus => {
-    if (loginStatus !== true) {
+  .then(userData => {
+    if (userData.loginStatus !== true) {
       userCommentsForm.style.display = 'none';
       loginToComment.style.display = 'block';
     }
@@ -64,12 +64,15 @@ document.onreadystatechange = function() {
         }
 
       }
-      else {
-       console.error(xhr.responseText);
-     }
+     //  else {
+     //   console.error(xhr.responseText);
+     // }
     }
 
+    xhr.open("GET", "/blog/comments", true);
+    xhr.send();
+
   };
-  xhr.open("GET", "/blog/comments", true);
-  xhr.send();
+  // xhr.open("GET", "/blog/comments", true);
+  // xhr.send();
 }

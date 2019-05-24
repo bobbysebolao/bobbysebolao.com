@@ -332,10 +332,17 @@ nav {
 }
 
 .fileDivider {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   background: #fe9bba;
   border-radius: 5px 5px 0 0;
-  height: 10px;
+  height: 50px;
   z-index: 5;
+}
+
+.blog__login-options {
+  padding-right: 25px;
 }
 
 .landing-screen__intro--typed {

@@ -57,13 +57,15 @@ const router = (request, response) => {
     }
 
     else if (endpoint === "/blog/check-login-status") {
-      let jwt = cookie.parse(request.headers.cookie).jwt;
-      if (jwt !== undefined) {
-      handler.checkLoginStatusHandler(response, jwt);
-    }
-    else {
-      response.end("false")
-    }
+      // let jwt = cookie.parse(request.headers.cookie).jwt;
+      // if (jwt !== undefined) {
+      // console.log("hai mark");
+      // return;
+      handler.checkLoginStatusHandler(request, response);
+    // }
+    // else {
+    //   response.end("false")
+    // }
     }
 
     else if (endpoint.includes("/scripts")) {
