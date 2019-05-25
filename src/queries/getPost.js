@@ -8,7 +8,7 @@ const getPost = (postName) => {
       if (err) {
         reject(err);
       }
-      resolve(res.rows[0].pk_post_id);
+      resolve(res.rows[0]);
     }
   );
 

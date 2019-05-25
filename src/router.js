@@ -29,7 +29,7 @@ const router = (request, response) => {
     }
 
     else if (endpoint === "/blog/author") {
-      handler.getAuthorHandler(request, response);
+      handler.getAuthorHandler(request, response, endpoint);
     }
 
     else if (endpoint.includes("/blog/tags?q=")) {
