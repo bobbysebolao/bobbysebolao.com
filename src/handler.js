@@ -266,11 +266,17 @@ const publicHandler = (res, endpoint, extension) => {
 
     const getAuthorHandler = (req, res) => {
       let encodedJwt = cookie.parse(req.headers.cookie).jwt;
+      let authorData = {};
       decodeJSONWebToken(encodedJwt)
       .then(decodedToken => {
+        authorData.loginStatus = decodedToken.logged_in;
+        authorData.id = decodedToken.user_id;
         getUsername(decodedToken.user_id)
         .then(response => {
-          let authorData = {username: response.username, avatar: response.avatar_filepath}
+          authorData.username = response.username;
+          authorData.avatar = response.avatar_filepath;
+          authorData.role = response.role;
+
           res.end(JSON.stringify(authorData));
         })
         .catch(err => console.log(err))

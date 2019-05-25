@@ -2,18 +2,68 @@ const userComments = document.querySelector(".user-comments");
 const userCommentsForm = document.querySelector(".createComment");
 const loginToComment = document.querySelector(".loginToComment");
 
+const fileDivider = document.querySelector(".fileDivider");
+
+// const authorDetails = document.querySelector(".blog-post__author-details");
+
 fetch("/blog/check-login-status")
   .then(res => res.json())
   .then(userData => {
     if (userData.loginStatus !== true) {
       userCommentsForm.style.display = 'none';
       loginToComment.style.display = 'block';
+
+      let register = document.createElement('p');
+      let login = document.createElement('p');
+
+      register.textContent = "Register";
+      login.textContent = "Sign in";
+
+      register.className = "blog__login-options";
+      login.className = "blog__login-options";
+
+      fileDivider.appendChild(login);
+      fileDivider.appendChild(register);
+      console.log("It's false")
+
     }
     else {
       userCommentsForm.style.display = 'block';
       loginToComment.style.display = 'none';
+
+      let userAvatar = document.createElement('img');
+      userAvatar.className = "user-comments__avatar";
+      userAvatar.src = `${userData.avatar}`;
+      fileDivider.appendChild(userAvatar);
+      console.log("It's true")
     }
   });
+
+
+
+
+  // fetch("/blog/author")
+  //   .then(res => res.json())
+  //   .then(data => {
+  //
+  //     let authorAvatar = document.createElement('img');
+  //     let authorName = document.createElement('p');
+  //
+  //     authorAvatar.className = "blog-post__author-avatar";
+  //     authorAvatar.src = `${data.avatar}`;
+  //
+  //     authorName.className = "blog-post__author-name";
+  //
+  //     authorName.textContent = `${data.username}`;
+  //
+  //     authorDetails.appendChild(authorAvatar);
+  //     authorDetails.appendChild(authorName);
+  //   });
+
+
+
+
+
 
 document.onreadystatechange = function() {
   if (document.readyState === "complete") {
