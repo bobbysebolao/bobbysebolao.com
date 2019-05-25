@@ -440,11 +440,14 @@ const createPostHandler = (req, res, encodedJwt) => {
   const createAccountSubmitHandler = (req, res) => {
     let form = new formidable.IncomingForm();
 
+    let filename;
+
     form.uploadDir = __dirname + "/../public/assets/images/users";
     form.keepExtensions = true;
     form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
 
     form.on('fileBegin', function(name, file) {
+      filename = file.name;
       file.path = path.join(__dirname, "../public/assets/images/users", file.name);
     });
 
@@ -484,8 +487,15 @@ const createPostHandler = (req, res, encodedJwt) => {
         .catch(console.error)
       })
       .then(response => {
-        res.writeHead(302, { Location: "/blog/blog.html" });
-        res.end();
+        fs.unlink(__dirname + "/../public/assets/images/users/" + filename, (err) => {
+          if (err) {
+            console.log(err)
+            return;
+          }
+          console.log("User image successfully deleted from local filesystem");
+          res.writeHead(302, { Location: "/blog/blog.html" });
+          res.end();
+        })
       })
       .catch(err => {
         res.writeHead(400, {
