@@ -1,6 +1,7 @@
 console.log("AUTHOR HERE")
 
 const authorDetails = document.querySelector(".blog-post__author-details");
+const postDetails = document.querySelector(".blog-post__post-details");
 // const userCommentsForm = document.querySelector(".createComment");
 // const loginToComment = document.querySelector(".loginToComment");
 
@@ -46,13 +47,13 @@ fetch("/blog/author")
     let authorAvatar = document.createElement('img');
     let authorName = document.createElement('p');
 
-    authorAvatar.className = "blog-post__author-avatar";
+    authorAvatar.className = "blog-post__user-avatar";
     authorAvatar.src = `${data.avatar}`;
 
     authorName.className = "blog-post__author-name";
 
     authorName.textContent = `${data.username}`;
 
-    authorDetails.appendChild(authorAvatar);
-    authorDetails.appendChild(authorName);
+    postDetails.insertBefore(authorName, postDetails.firstChild);
+    authorDetails.insertBefore(authorAvatar, authorDetails.firstChild);
   });

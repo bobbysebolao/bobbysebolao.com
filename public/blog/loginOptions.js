@@ -5,7 +5,6 @@ const fileDivider = document.querySelector(".fileDivider");
 fetch("/blog/check-login-status")
   .then(res => res.json())
   .then(userData => {
-    console.log("balloon", userData)
     if (userData.loginStatus !== true) {
       let register = document.createElement('p');
       let login = document.createElement('p');
@@ -23,9 +22,15 @@ fetch("/blog/check-login-status")
       // loginToComment.style.display = 'block';
     }
     else {
+      let welcome = document.createElement('p');
       let userAvatar = document.createElement('img');
-      userAvatar.className = "user-comments__avatar";
+
+      welcome.textContent = `${userData.username}`;
+      welcome.className = 'blog__login-options--welcome';
+
+      userAvatar.className = "blog-post__user-avatar";
       userAvatar.src = `${userData.avatar}`;
+      fileDivider.appendChild(welcome);
       fileDivider.appendChild(userAvatar);
       console.log("It's true")
       // userCommentsForm.style.display = 'block';

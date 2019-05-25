@@ -335,14 +335,44 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   background: #fe9bba;
   border-radius: 5px 5px 0 0;
-  height: 50px;
+  padding: 10px 25px 10px 0px;
+  /* height: 50px; */
   z-index: 5;
 }
 
 .blog__login-options {
   padding-right: 25px;
+}
+
+.blog__login-options--welcome {
+  padding-right: 10px;
+  margin: 0;
+}
+
+.blog-post__author-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.blog-post__date-time-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.blog-post__post-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #757575;
+}
+
+.blog-post__post-details > * {
+  margin: 0 0 0 10px;
 }
 
 .landing-screen__intro--typed {
@@ -1983,13 +2013,13 @@ g.boardroom .audience .clackTwo {
       align-items: center;
     }
 
-    .user-comments__avatar {
+    /* .user-comments__avatar {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-    }
+    } */
 
-    .blog-post__author-avatar {
+    .blog-post__user-avatar {
       width: 32px;
       height: 32px;
       border-radius: 50%;
