@@ -264,13 +264,18 @@ const publicHandler = (res, endpoint, extension) => {
       .catch(error => console.log(error))
     };
 
-    const getAuthorHandler = (req, res) => {
-      let encodedJwt = cookie.parse(req.headers.cookie).jwt;
-      decodeJSONWebToken(encodedJwt)
-      .then(decodedToken => {
-        getUsername(decodedToken.user_id)
+    const getAuthorHandler = (req, res, endpoint) => {
+      let postName = req.headers.referer.split("/")[5];
+      let authorData = {};
+      getPost(postName)
+      .then(postData => {
+        console.log("Googlebot", postData);
+        getUsername(postData.user_id)
         .then(response => {
-          let authorData = {username: response.username, avatar: response.avatar_filepath}
+          authorData.username = response.username;
+          authorData.avatar = response.avatar_filepath;
+          authorData.role = response.role;
+
           res.end(JSON.stringify(authorData));
         })
         .catch(err => console.log(err))
@@ -638,8 +643,8 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
         }
       })
       .then(unusedResult => getPost(postName))
-      .then(retrievedPostId => {
-        postId = retrievedPostId;
+      .then(retrievedPost => {
+        postId = retrievedPost.pk_post_id;
         commentTimestamp = Date.now();
         commentDate = Date(commentTimestamp);
       })
