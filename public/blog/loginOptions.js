@@ -6,11 +6,14 @@ fetch("/blog/check-login-status")
   .then(res => res.json())
   .then(userData => {
     if (userData.loginStatus !== true) {
-      let register = document.createElement('p');
-      let login = document.createElement('p');
+      let register = document.createElement('a');
+      let login = document.createElement('a');
 
       register.textContent = "Register";
+      register.href = "../create/account";
+      
       login.textContent = "Sign in";
+      login.href = "login";
 
       register.className = "blog__login-options";
       login.className = "blog__login-options";
