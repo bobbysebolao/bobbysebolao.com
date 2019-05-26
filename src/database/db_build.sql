@@ -220,8 +220,8 @@ VALUES
 -- INSERT INTO main_images (name, size, filepath, type)
 -- VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
 --
--- INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type)
--- VALUES ('Jeff', 'Summ', 'mistapepper', 'qwerty@gmail.com', 'qwertY101!', 'minion', 'bobby.jpeg', 33439, '/users/images/bobby.jpeg', 'image/png');
+INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
+VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
 --
 -- INSERT INTO comments (body, com_timestamp, com_date, post_id, user_id, username, avatar_name, avatar_filepath)
 -- VALUES ('it wasnt good', '12345', '10 Sept 1993', 1, 1, 'leroy_jenkins', 'leroy.jpeg', '/users/images/leroy.jpeg');

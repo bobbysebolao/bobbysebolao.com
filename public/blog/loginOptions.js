@@ -1,6 +1,17 @@
 console.log("LOGIN OPTIONS HERE")
 
 const fileDivider = document.querySelector(".fileDivider");
+const createOptions = document.querySelector(".blog__create-options");
+const loginOptions = document.querySelector(".blog__login-options");
+
+const userProfile = document.querySelector(".user-profile");
+
+const profileOptionsList = document.querySelector(".blog__profile-options");
+
+loginOptions.addEventListener("click", () => {
+  profileOptionsList.classList.toggle("blog__profile-options--hidden");
+  profileOptionsList.classList.toggle("blog__profile-options--display");
+})
 
 fetch("/blog/check-login-status")
   .then(res => res.json())
@@ -11,30 +22,50 @@ fetch("/blog/check-login-status")
 
       register.textContent = "Register";
       register.href = "../create/account";
-      
+
       login.textContent = "Sign in";
       login.href = "login";
 
-      register.className = "blog__login-options";
-      login.className = "blog__login-options";
+      // register.className = "blog__login-options";
+      // login.className = "blog__login-options";
 
-      fileDivider.appendChild(login);
-      fileDivider.appendChild(register);
+      loginOptions.appendChild(login);
+      loginOptions.appendChild(register);
       console.log("It's false")
       // userCommentsForm.style.display = 'none';
       // loginToComment.style.display = 'block';
     }
     else {
-      let welcome = document.createElement('p');
-      let userAvatar = document.createElement('img');
+      // let profileOptions = document.createElement('details');
+      // let logoutOption = document.createElement('summary');
 
-      welcome.textContent = `${userData.username}`;
-      welcome.className = 'blog__login-options--welcome';
+      // profileOptions.textContent = "Hello";
+      // logoutOption.textContent = "Bye";
 
-      userAvatar.className = "blog-post__user-avatar";
-      userAvatar.src = `${userData.avatar}`;
-      fileDivider.appendChild(welcome);
-      fileDivider.appendChild(userAvatar);
+      let username = document.createElement('p');
+      let avatar = document.createElement('img');
+
+      let createNewPost = document.createElement('a');
+      createNewPost.className = 'blog__login-options--create';
+      createNewPost.textContent = "New post";
+      createNewPost.href = "new";
+
+      username.textContent = `${userData.username}`;
+      username.className = 'user-profile__username';
+
+      avatar.className = "blog-post__user-avatar";
+      avatar.src = `${userData.avatar}`;
+
+      // profileOptions.appendChild(logoutOption);
+      // loginOptions.appendChild(profileOptions);
+
+
+
+      createOptions.appendChild(createNewPost);
+      userProfile.appendChild(username);
+      userProfile.appendChild(avatar);
+      // loginOptions.appendChild(userProfile)
+      // loginOptions.appendChild(profileOptions);
       console.log("It's true")
       // userCommentsForm.style.display = 'block';
       // loginToComment.style.display = 'none';
