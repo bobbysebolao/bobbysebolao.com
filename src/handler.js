@@ -145,7 +145,16 @@ const createAccountPageHandler = (res) => {
       });
     }
 
-const newPostHandler = (res) => {
+const newPostHandler = (req, res) => {
+  let jwt = cookie.parse(req.headers.cookie).jwt;
+  console.log(jwt);
+  if (jwt !== undefined) {
+
+  decodeJSONWebToken(jwt)
+  .then(decodedToken => {
+    if (decodedToken.logged_in === true) {
+      if (decodedToken.role === "admin") {
+      console.log("Commenter is logged in, display the gated content");
       fs.readFile(__dirname + "/../public/blog/create-post.html", "utf8", (error, file) => {
         if (error) {
           console.log(error);
@@ -154,6 +163,19 @@ const newPostHandler = (res) => {
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end(file);
       });
+    }
+    else {
+      res.writeHead(400, { "Content-Type": "text/html" });
+      res.end("You are not authorised to view the selected content. Please login as admin.")
+    }
+  }
+  })
+  .catch(error => console.log(error))
+}
+else {
+  res.writeHead(400, { "Content-Type": "text/html" });
+  res.end("You are not logged in. Please login in order to publish a post")
+}
     }
 
     const domScriptsHandler = (res, endpoint, extension) => {
@@ -585,10 +607,10 @@ const createPostHandler = (req, res, encodedJwt) => {
         hash.comparePassword(loginData.password, storedUserDetails.password)
         .then(pass => {
           if (pass === true) {
-            generateJSONWebToken({user_id: storedUserDetails.pk_user_id, username: storedUserDetails.username, logged_in: true})
+            generateJSONWebToken({user_id: storedUserDetails.pk_user_id, username: storedUserDetails.username, logged_in: true, role: storedUserDetails.role})
             .then(token => {
               res.writeHead(302, {
-                "Set-Cookie": `jwt=${token}; max-age=9000; path=/; HttpOnly`,
+                "Set-Cookie": `jwt=${token}; max-age=9000; path=/; domain=; HttpOnly`,
                 Location: "/blog/blog.html"
               });
               res.end();
@@ -617,7 +639,7 @@ const createPostHandler = (req, res, encodedJwt) => {
 
 const logoutHandler = (res) => {
   res.writeHead(302, {
-    "Set-Cookie": `jwt=0; max-age=0`,
+    "Set-Cookie": `jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0`,
     Location: "/blog/blog.html"
   });
   res.end();

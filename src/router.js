@@ -53,7 +53,7 @@ const router = (request, response) => {
   }
 
     else if (endpoint === "/blog/new") {
-      handler.newPostHandler(response);
+      handler.newPostHandler(request, response);
     }
 
     else if (endpoint === "/blog/check-login-status") {
