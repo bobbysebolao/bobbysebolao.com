@@ -103,7 +103,7 @@ ALTER TABLE thumbnails ADD CONSTRAINT unique_thumbnail_name UNIQUE (name);
 ALTER TABLE users ADD is_verified BOOLEAN DEFAULT false;
 
 -- INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category, tags)
--- VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'news', 'random food drink entertainment');
+-- VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'friends', 'random food drink entertainment');
 
 INSERT INTO post_tags (tag_name)
 VALUES

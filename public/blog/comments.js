@@ -10,44 +10,34 @@ fetch("/blog/check-login-status")
   .then(res => res.json())
   .then(userData => {
     if (userData.loginStatus !== true) {
-      userCommentsForm.style.display = 'none';
-      loginToComment.style.display = 'block';
-    }
-    else {
-      userCommentsForm.style.display = 'block';
-      loginToComment.style.display = 'none';
+      userCommentsForm.style.display = "none";
+      loginToComment.style.display = "block";
+    } else {
+      userCommentsForm.style.display = "block";
+      loginToComment.style.display = "none";
     }
   });
 
-
-
-
-  // fetch("/blog/author")
-  //   .then(res => res.json())
-  //   .then(data => {
-  //
-  //     let authorAvatar = document.createElement('img');
-  //     let authorName = document.createElement('p');
-  //
-  //     authorAvatar.className = "blog-post__author-avatar";
-  //     authorAvatar.src = `${data.avatar}`;
-  //
-  //     authorName.className = "blog-post__author-name";
-  //
-  //     authorName.textContent = `${data.username}`;
-  //
-  //     authorDetails.appendChild(authorAvatar);
-  //     authorDetails.appendChild(authorName);
-  //   });
-
-
-
-
-
+// fetch("/blog/author")
+//   .then(res => res.json())
+//   .then(data => {
+//
+//     let authorAvatar = document.createElement('img');
+//     let authorName = document.createElement('p');
+//
+//     authorAvatar.className = "blog-post__author-avatar";
+//     authorAvatar.src = `${data.avatar}`;
+//
+//     authorName.className = "blog-post__author-name";
+//
+//     authorName.textContent = `${data.username}`;
+//
+//     authorDetails.appendChild(authorAvatar);
+//     authorDetails.appendChild(authorName);
+//   });
 
 document.onreadystatechange = function() {
   if (document.readyState === "complete") {
-
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -73,11 +63,17 @@ document.onreadystatechange = function() {
 
           commentBody.className = "user-comments__body";
 
-          userAvatar.src = `https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/${data[comment]["avatar_name"].split(".")[0]}-user-image.${data[comment]["avatar_name"].split(".")[1]}`;
+          // userAvatar.src = `https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/${data[comment]["avatar_name"].split(".")[0]}-user-image.${data[comment]["avatar_name"].split(".")[1]}`;
+          userAvatar.src = `https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/${
+            data[comment]["avatar_name"]
+          }`;
           // https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/
           // `https://s3.eu-west-2.amazonaws.com/console-blog/blog-images/${data[comment]["avatar_name".split(".")[0]}-user-image.${data[comment]["avatar_name".split(".")[1]}`
           commentUsername.textContent = data[comment]["username"];
-          commentDate.textContent = data[comment]["com_date"].split(" ").slice(1, 4).join(" ");
+          commentDate.textContent = data[comment]["com_date"]
+            .split(" ")
+            .slice(1, 4)
+            .join(" ");
           commentBody.textContent = data[comment]["body"];
           // userContainer.appendChild(userAvatar);
           usernameContainer.appendChild(commentUsername);
@@ -92,17 +88,15 @@ document.onreadystatechange = function() {
           commentContainer.appendChild(commentBody);
           userComments.appendChild(commentContainer);
         }
-
       }
-     //  else {
-     //   console.error(xhr.responseText);
-     // }
-    }
+      //  else {
+      //   console.error(xhr.responseText);
+      // }
+    };
 
     xhr.open("GET", "/blog/comments", true);
     xhr.send();
-
-  };
+  }
   // xhr.open("GET", "/blog/comments", true);
   // xhr.send();
-}
+};

@@ -1,85 +1,121 @@
 <!DOCTYPE html>
 <html>
-
-    <head>
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-      <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100955415-3"></script>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100955415-3"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'UA-100955415-3');
-      </script> -->
+      </script>
+    -->
 
-      <title>Console | Bobby Sebolao</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="icon" href="/assets/favicon.png"/>
-      <link id="standardStylesheet" rel="stylesheet" type="text/css" href="../css/blog.css">
-      <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
-      <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <title>Console | Bobby Sebolao</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/assets/favicon.png" />
+    <link
+      id="standardStylesheet"
+      rel="stylesheet"
+      type="text/css"
+      href="../css/blog.css"
+    />
+    <!--
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Permanent+Marker"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
+      rel="stylesheet"
+    />
+  </head>
 
-    </head>
+  <body>
+    <!-- -SVG ICONS DEFS BLOCK----------------------- -->
 
-<body>
-
-  <!---SVG ICONS DEFS BLOCK------------------------->
-
-  <svg style="display:none;">
-     <defs>
-       <symbol id="moonIcon" viewBox="7.158 5.878 37.662 40.099">
-       <g>
-         <path d="M27.659,45.477c-5.592,0-10.778-2.249-14.603-6.334c-3.821-4.079-5.722-9.415-5.353-15.025
+    <svg style="display:none;">
+      <defs>
+        <symbol id="moonIcon" viewBox="7.158 5.878 37.662 40.099">
+          <g>
+            <path
+              d="M27.659,45.477c-5.592,0-10.778-2.249-14.603-6.334c-3.821-4.079-5.722-9.415-5.353-15.025
            C8.2,16.574,13.067,9.919,20.028,7.012c-3.29,4.124-4.828,9.375-4.25,14.691c0.984,9.056,8.25,16.461,17.277,17.609
-           c0.866,0.11,1.741,0.166,2.603,0.166c2.617,0,5.218-0.517,7.622-1.504C39.502,42.703,33.792,45.477,27.659,45.477z"/>
-         <path d="M18.479,8.304c-2.568,3.942-3.718,8.672-3.198,13.453c1.008,9.284,8.457,16.875,17.712,18.051
+           c0.866,0.11,1.741,0.166,2.603,0.166c2.617,0,5.218-0.517,7.622-1.504C39.502,42.703,33.792,45.477,27.659,45.477z"
+            />
+            <path
+              d="M18.479,8.304c-2.568,3.942-3.718,8.672-3.198,13.453c1.008,9.284,8.457,16.875,17.712,18.051
            c0.886,0.112,1.783,0.17,2.665,0.17c2.026,0,4.043-0.302,5.97-0.886c-3.633,3.735-8.637,5.885-13.969,5.885
            c-5.453,0-10.509-2.193-14.238-6.176c-3.726-3.977-5.579-9.18-5.219-14.651C8.644,17.443,12.631,11.455,18.479,8.304 M21.693,5.878
            C13.647,8.36,7.758,15.681,7.204,24.084c-0.378,5.751,1.57,11.219,5.487,15.4c3.919,4.186,9.234,6.492,14.968,6.492
            c7.027,0,13.437-3.586,17.161-9.279c-2.791,1.487-5.924,2.28-9.162,2.28c-0.842,0-1.695-0.055-2.539-0.162
-           c-8.801-1.118-15.885-8.338-16.844-17.167C15.634,15.751,17.694,9.992,21.693,5.878L21.693,5.878z"/>
-       </g>
-     </symbol>
-     <symbol id="knightIcon" viewBox="1110.047 0 809.953 1080">
-     <path d="M1121.408,411.071c13.838,16.335,27.676,32.939,41.514,49.545c22.477,27,60.952,34.425,92.205,18.226
+           c-8.801-1.118-15.885-8.338-16.844-17.167C15.634,15.751,17.694,9.992,21.693,5.878L21.693,5.878z"
+            />
+          </g>
+        </symbol>
+        <symbol id="knightIcon" viewBox="1110.047 0 809.953 1080">
+          <path
+            d="M1121.408,411.071c13.838,16.335,27.676,32.939,41.514,49.545c22.477,27,60.952,34.425,92.205,18.226
        c13.298-6.886,26.527-13.771,38.475-21.735c21.398-13.567,45.766-16.335,69.863-10.8c41.58,10.867,77.761,0,111.443-25.785
        c6.817-5.535,13.433-10.801,20.25-16.336l-109.553,141.751c-11.948,15.458-25.785,29.633-40.973,42.053
        c0,0-31.523,27.54-61.224,56.971c-29.7,29.43-24.907,69.593-24.907,69.593v95.445h594.071V683.436c0-1.351,0-2.768,0-5.535
        c-1.418-47.453,0-93.758-2.768-141.481c-2.431-62.37-9.315-123.728-24.098-185.019c-13.433-57.172-30.646-114.278-65.746-163.418
        c-32.265-46.306-69.795-79.043-130.343-76.275c-40.5,1.35-72.562-13.635-92.813-54.405c-14.782-28.553-40.298-46.306-71.213-55.756
        c-13.433-4.117-20.25,0-18.899,12.218c7.897,49.141-11.003,87.143-49.883,117.046c-89.641,70.673-178.269,141.278-268.247,211.951
-       C1107.031,359.636,1103.791,390.214,1121.408,411.071z"/>
-     <path d="M1182.496,1064.002c6.21,9.923,17.078,15.998,28.756,15.998h675.004c11.678,0,22.545-6.143,28.688-16.065
+       C1107.031,359.636,1103.791,390.214,1121.408,411.071z"
+          />
+          <path
+            d="M1182.496,1064.002c6.21,9.923,17.078,15.998,28.756,15.998h675.004c11.678,0,22.545-6.143,28.688-16.065
        c6.143-9.922,6.75-22.343,1.484-32.805l-67.5-135.001c-5.737-11.407-17.415-18.63-30.173-18.63h-540.003
-       c-12.758,0-24.436,7.223-30.173,18.63l-67.5,135.068C1175.813,1041.66,1176.354,1054.08,1182.496,1064.002z"/>
-     </symbol>
-     <symbol id="tetrisSprite" viewBox="4.873 4.43 296.127 452.903">
-       <g>
-         <rect x="164.146" y="6.93" width="134.354" height="134.355"/>
-         <path d="M296,9.43v129.355H166.646V9.43H296 M301,4.43H161.646v139.355H301V4.43L301,4.43z"/>
-       </g>
-       <g>
-         <rect x="164.146" y="163.704" width="134.354" height="134.354"/>
-         <path d="M296,166.204v129.354H166.646V166.204H296 M301,161.204H161.646v139.354H301V161.204L301,161.204z"/>
-       </g>
-       <g>
-         <rect x="164.146" y="320.479" width="134.354" height="134.354"/>
-         <path d="M296,322.979v129.354H166.646V322.979H296 M301,317.979H161.646v139.354H301V317.979L301,317.979z"/>
-       </g>
-       <g>
-         <rect x="7.373" y="320.479" width="134.355" height="134.354"/>
-         <path d="M139.228,322.979v129.354H9.873V322.979H139.228 M144.228,317.979H4.873v139.354h139.355V317.979
-           L144.228,317.979z"/>
-       </g>
-     </symbol>
+       c-12.758,0-24.436,7.223-30.173,18.63l-67.5,135.068C1175.813,1041.66,1176.354,1054.08,1182.496,1064.002z"
+          />
+        </symbol>
+        <symbol id="tetrisSprite" viewBox="4.873 4.43 296.127 452.903">
+          <g>
+            <rect x="164.146" y="6.93" width="134.354" height="134.355" />
+            <path
+              d="M296,9.43v129.355H166.646V9.43H296 M301,4.43H161.646v139.355H301V4.43L301,4.43z"
+            />
+          </g>
+          <g>
+            <rect x="164.146" y="163.704" width="134.354" height="134.354" />
+            <path
+              d="M296,166.204v129.354H166.646V166.204H296 M301,161.204H161.646v139.354H301V161.204L301,161.204z"
+            />
+          </g>
+          <g>
+            <rect x="164.146" y="320.479" width="134.354" height="134.354" />
+            <path
+              d="M296,322.979v129.354H166.646V322.979H296 M301,317.979H161.646v139.354H301V317.979L301,317.979z"
+            />
+          </g>
+          <g>
+            <rect x="7.373" y="320.479" width="134.355" height="134.354" />
+            <path
+              d="M139.228,322.979v129.354H9.873V322.979H139.228 M144.228,317.979H4.873v139.354h139.355V317.979
+           L144.228,317.979z"
+            />
+          </g>
+        </symbol>
 
-     <symbol id="githubIcon" viewBox="0 0 32.6 31.8">
-       <path fill-rule="evenodd" clip-rule="evenodd" d="M16.289,0C7.294,0,0,7.293,0,16.291
+        <symbol id="githubIcon" viewBox="0 0 32.6 31.8">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M16.289,0C7.294,0,0,7.293,0,16.291
        	c0,7.197,4.667,13.302,11.141,15.457c0.814,0.148,1.112-0.354,1.112-0.785c0-0.387-0.014-1.412-0.022-2.771
        	c-4.531,0.984-5.487-2.184-5.487-2.184c-0.741-1.881-1.809-2.383-1.809-2.383c-1.479-1.01,0.112-0.99,0.112-0.99
        	c1.635,0.115,2.495,1.68,2.495,1.68c1.453,2.488,3.812,1.77,4.741,1.354c0.148-1.053,0.569-1.771,1.034-2.178
@@ -87,40 +123,53 @@
        	c0,0,1.368-0.438,4.479,1.67c1.299-0.361,2.693-0.542,4.078-0.548c1.384,0.006,2.776,0.187,4.078,0.548
        	c3.11-2.108,4.476-1.67,4.476-1.67c0.889,2.243,0.329,3.899,0.162,4.311c1.043,1.139,1.674,2.593,1.674,4.371
        	c0,6.258-3.809,7.635-7.438,8.038c0.585,0.504,1.105,1.498,1.105,3.018c0,2.178-0.02,3.934-0.02,4.469
-       	c0,0.436,0.293,0.941,1.12,0.783c6.468-2.158,11.13-8.26,11.13-15.455C32.579,7.293,25.286,0,16.289,0z"/>
-     </symbol>
+       	c0,0.436,0.293,0.941,1.12,0.783c6.468-2.158,11.13-8.26,11.13-15.455C32.579,7.293,25.286,0,16.289,0z"
+          />
+        </symbol>
 
-     <symbol id="twitterIcon" viewBox="0 1.5 450 450">
-       <g id="twitterIconBackground">
-       	<path d="M393.75,451.5H56.25C25.2,451.5,0,426.3,0,395.25V57.75C0,26.7,25.2,1.5,56.25,1.5h337.5C424.8,1.5,450,26.7,450,57.75
-       		v337.5C450,426.3,424.8,451.5,393.75,451.5z"/>
-       </g>
-       <g id="twitterIconForeground">
-       	<path fill="#FFFFFF" d="M172.8,340.8c106.089,0,164.138-87.975,164.138-164.138c0-2.475,0-4.949-0.111-7.425
+        <symbol id="twitterIcon" viewBox="0 1.5 450 450">
+          <g id="twitterIconBackground">
+            <path
+              d="M393.75,451.5H56.25C25.2,451.5,0,426.3,0,395.25V57.75C0,26.7,25.2,1.5,56.25,1.5h337.5C424.8,1.5,450,26.7,450,57.75
+       		v337.5C450,426.3,424.8,451.5,393.75,451.5z"
+            />
+          </g>
+          <g id="twitterIconForeground">
+            <path
+              fill="#FFFFFF"
+              d="M172.8,340.8c106.089,0,164.138-87.975,164.138-164.138c0-2.475,0-4.949-0.111-7.425
        		c11.25-8.101,21.037-18.337,28.8-29.925c-10.351,4.611-21.487,7.649-33.188,9.111c11.926-7.087,21.037-18.45,25.426-31.95
        		c-11.139,6.639-23.514,11.363-36.676,13.95c-10.574-11.25-25.537-18.225-42.074-18.225c-31.838,0-57.712,25.875-57.712,57.712
        		c0,4.5,0.562,8.888,1.462,13.163c-47.925-2.362-90.45-25.425-118.912-60.3c-4.95,8.55-7.763,18.448-7.763,29.023
        		c0,20.025,10.237,37.688,25.65,48.038c-9.45-0.338-18.337-2.926-26.1-7.2c0,0.226,0,0.45,0,0.787c0,27.9,19.913,51.3,46.238,56.588
        		c-4.837,1.351-9.9,2.024-15.188,2.024c-3.712,0-7.312-0.337-10.8-1.012c7.312,22.948,28.688,39.6,53.888,40.05
-       		c-19.8,15.523-44.663,24.75-71.663,24.75c-4.612,0-9.225-0.227-13.725-0.788C109.913,331.237,140.288,340.8,172.8,340.8"/>
-       </g>
-     </symbol>
+       		c-19.8,15.523-44.663,24.75-71.663,24.75c-4.612,0-9.225-0.227-13.725-0.788C109.913,331.237,140.288,340.8,172.8,340.8"
+            />
+          </g>
+        </symbol>
 
-     <symbol id="linkedinIcon" viewBox="0 0 36 36">
-       <path d="M33.336,0H2.655C1.19,0,0,1.162,0,2.596v30.807C0,34.836,1.19,36,2.655,36h30.681c1.468,0,2.663-1.164,2.663-2.598V2.596
+        <symbol id="linkedinIcon" viewBox="0 0 36 36">
+          <path
+            d="M33.336,0H2.655C1.19,0,0,1.162,0,2.596v30.807C0,34.836,1.19,36,2.655,36h30.681c1.468,0,2.663-1.164,2.663-2.598V2.596
          C35.999,1.162,34.804,0,33.336,0z M10.679,30.676H5.334v-17.18h5.345V30.676z M8.008,11.149c-1.715,0-3.098-1.387-3.098-3.097
          c0-1.709,1.383-3.096,3.098-3.096c1.708,0,3.095,1.387,3.095,3.096C11.103,9.762,9.716,11.149,8.008,11.149z M30.677,30.676
          h-5.339v-8.354c0-1.992-0.034-4.555-2.774-4.555c-2.778,0-3.202,2.171-3.202,4.413v8.497h-5.333v-17.18h5.118v2.349h0.073
-         c0.712-1.351,2.454-2.775,5.052-2.775c5.406,0,6.405,3.557,6.405,8.184V30.676z"/>
-     </symbol>
+         c0.712-1.351,2.454-2.775,5.052-2.775c5.406,0,6.405,3.557,6.405,8.184V30.676z"
+          />
+        </symbol>
 
-     <symbol id="freecodecampIcon" viewBox="0 0 450 450">
-       <g id="freecodecampIconBackground">
-       	<path d="M393.75,451.5H56.25C25.2,451.5,0,426.3,0,395.25V57.75C0,26.7,25.2,1.5,56.25,1.5h337.5C424.8,1.5,450,26.7,450,57.75
-       		v337.5C450,426.3,424.8,451.5,393.75,451.5z"/>
-       </g>
-       <g id="freecodecampIconForeground">
-       <path id="path1" fill="#FFFFFF" d="M112.867,341.08c-5.858-1.398-14.335-8.753-23.736-20.593
+        <symbol id="freecodecampIcon" viewBox="0 0 450 450">
+          <g id="freecodecampIconBackground">
+            <path
+              d="M393.75,451.5H56.25C25.2,451.5,0,426.3,0,395.25V57.75C0,26.7,25.2,1.5,56.25,1.5h337.5C424.8,1.5,450,26.7,450,57.75
+       		v337.5C450,426.3,424.8,451.5,393.75,451.5z"
+            />
+          </g>
+          <g id="freecodecampIconForeground">
+            <path
+              id="path1"
+              fill="#FFFFFF"
+              d="M112.867,341.08c-5.858-1.398-14.335-8.753-23.736-20.593
        	c-19.083-24.034-29.444-50.991-32.495-84.541c-0.587-6.458-0.582-22.794,0.01-28.773c2.791-28.188,12.654-52.463,30.752-75.684
        	c5.542-7.111,14.728-16.426,19.127-19.397c6.225-4.204,10.143-4.544,13.903-1.206c1.533,1.361,1.887,1.995,2.083,3.74
        	c0.369,3.286-1.314,5.853-9.147,13.943c-10.945,11.305-15.995,17.598-21.587,26.905c-12.702,21.134-18.136,43.359-17.357,70.978
@@ -148,13 +197,15 @@
        	c-1.606,0-1.738,0.098-1.738,1.278c0,0.792,0.445,1.693,1.174,2.373c3.859,3.602,4.584,10.981,1.722,17.496
        	c-1.77,4.026-3.765,6.308-10.579,12.091c-8.966,7.609-11.854,11.233-13.646,17.117c-0.828,2.722-0.914,3.829-0.681,8.815
        	c0.392,8.373,2.098,13.923,6.086,19.796c3.062,4.509,6.647,7.369,11.517,9.188c2.342,0.875,2.6,1.101,2.6,2.279
-       	c0,1.366-1.038,2.263-2.569,2.222C215.462,286.771,213.262,286.096,211.024,285.281L211.024,285.281z"/>
-       </g>
-     </symbol>
+       	c0,1.366-1.038,2.263-2.569,2.222C215.462,286.771,213.262,286.096,211.024,285.281L211.024,285.281z"
+            />
+          </g>
+        </symbol>
 
-     <symbol id="codewarsIcon" viewBox="-74.5 450.5 450 450">
-       <g>
-       	<path d="M10.719,672.689l1.612,1.289c0.484,0.646,1.29,1.291,1.935,1.612l0.645,0.646c1.128,0.968,1.935,2.258,2.257,3.709
+        <symbol id="codewarsIcon" viewBox="-74.5 450.5 450 450">
+          <g>
+            <path
+              d="M10.719,672.689l1.612,1.289c0.484,0.646,1.29,1.291,1.935,1.612l0.645,0.646c1.128,0.968,1.935,2.258,2.257,3.709
        		l1.612,7.255c0,1.935,1.612,3.547,3.225,4.03l2.58,0.806c0,0,0.483,0,0.806,0.321l3.224,0.969c2.58,0.806,4.837,2.257,6.771,4.191
        		c1.935,1.611,3.869,3.707,5.481,5.965l0.645,0.646c1.29,1.612,3.224,2.418,5.159,1.935c1.935-0.482,4.031-0.645,6.126-0.645h2.418
        		c1.612,0,3.708,0.482,5.481,1.612c1.612,0.967,3.708,1.612,5.643,2.418h0.484c1.935,0.806,4.03,0.483,5.643-0.646
@@ -172,8 +223,10 @@
        		c-0.806,1.936-2.096,3.709-3.708,4.837c-1.612,1.29-2.741,3.225-2.741,5.159l-0.322,7.416c0,3.225-0.484,6.449-1.612,9.672
        		l-0.323,1.291c-0.806,2.096,0,4.353,1.935,5.32l6.771,2.9l0.645,0.323c0.483,0,0.645,0.321,0.806,0.806
        		c0.483,0.645,0,1.612-0.484,1.612l-1.612,0.806c-0.967,0.323-1.612,1.29-1.935,2.419l-0.322,1.612v0.322l-1.612,9.027
-       		c-0.322,1.29-0.322,2.74-0.322,4.191c0,1.29,0.806,2.419,1.935,2.902l3.547,1.611C7.495,670.434,9.429,671.562,10.719,672.689z"/>
-       	<path d="M122.445,776.678c3.225-0.322,6.126-3.225,6.449-6.449l0.645-3.225c0-2.096,0.968-4.03,2.418-5.643
+       		c-0.322,1.29-0.322,2.74-0.322,4.191c0,1.29,0.806,2.419,1.935,2.902l3.547,1.611C7.495,670.434,9.429,671.562,10.719,672.689z"
+            />
+            <path
+              d="M122.445,776.678c3.225-0.322,6.126-3.225,6.449-6.449l0.645-3.225c0-2.096,0.968-4.03,2.418-5.643
        		c1.612-1.612,3.225-2.579,4.837-3.226l1.935-0.806c2.741-1.129,4.837-3.547,5.804-6.449l0.968-3.869
        		c0.806-3.225,2.418-6.449,4.837-8.545l0.322-0.322c1.934-1.611,2.256-4.836,0.966-7.094l-0.483-1.129
        		c-1.127-1.611-1.29-4.029-0.482-6.126c0.805-2.257,1.611-4.19,2.9-6.126l1.612-2.258c0.646-1.289,0.646-3.225-0.321-4.354
@@ -192,8 +245,10 @@
        		c2.58,0.807,5.159,1.612,7.577,3.226h1.29c1.29,0,2.418-1.129,2.257-2.58v-5.644c0-1.611,0.645-3.225,1.935-3.868l0.806-0.322
        		c0.806,0.322,1.612,0.967,1.29,1.612v2.739c0,2.097,0.645,4.03,2.096,5.481c1.612,1.612,3.708,1.935,5.481,1.29
        		c1.935-0.808,3.87-0.968,5.965-0.808l5.965,0.323c2.902,0.322,5.643,0,8.061-1.129c2.902-0.968,5.32-2.257,7.577-4.03l0.967-0.646
-       		l4.836-4.354c1.612-1.611,3.708-2.418,5.643-2.418H122.445L122.445,776.678z"/>
-       	<path d="M69.726,606.912c2.58,1.936,4.192,4.836,4.837,8.383v2.902c0.483,3.225,2.257,6.449,5.159,8.061
+       		l4.836-4.354c1.612-1.611,3.708-2.418,5.643-2.418H122.445L122.445,776.678z"
+            />
+            <path
+              d="M69.726,606.912c2.58,1.936,4.192,4.836,4.837,8.383v2.902c0.483,3.225,2.257,6.449,5.159,8.061
        		c2.902,1.936,5.159,4.838,6.449,8.061l0.806,2.58c1.29,3.547,4.192,5.644,7.417,5.966h0.967c2.902,0,5.481,1.612,7.094,4.19
        		c1.612,2.58,4.191,4.354,7.094,4.838l4.514,1.289c2.741,0.807,5.32,2.258,7.416,4.354l0.323,0.322
        		c1.612,1.289,4.191,1.129,5.643-0.646l1.128-1.29l-0.161-0.161c1.129-1.129,0.968-3.225,0-4.03c-1.612-1.289-2.74-2.74-3.708-4.354
@@ -209,8 +264,10 @@
        		c-3.547,1.128-6.449,3.708-8.061,7.255l-1.29,2.097c-1.612,3.547-4.353,6.448-7.739,8.545c-3.225,2.096-4.837,5.48-5.159,9.351
        		v1.612c-0.322,3.225-1.29,6.449-3.225,8.705l-0.806,1.291c-1.29,1.611-1.612,3.707-0.806,5.48c0.806,1.936,1.29,4.031,1.128,6.126
        		v8.545c0,2.257-1.612,4.19-3.225,4.836c-2.257,0.806-3.708,2.58-4.353,4.837l-0.806,3.225
-       		C65.856,601.753,66.985,604.977,69.726,606.912z"/>
-       	<path d="M154.527,579.504h-0.323c-1.612,0.322-3.223,2.096-2.901,4.03c0.322,2.741,0,5.159-0.483,7.577l-0.646,2.742
+       		C65.856,601.753,66.985,604.977,69.726,606.912z"
+            />
+            <path
+              d="M154.527,579.504h-0.323c-1.612,0.322-3.223,2.096-2.901,4.03c0.322,2.741,0,5.159-0.483,7.577l-0.646,2.742
        		c-0.645,2.418-2.257,4.353-4.353,5.158l-0.968,0.483h-0.322c-0.967,0.646-1.612,2.096-0.806,3.226
        		c0.967,1.611,1.29,3.223,1.128,4.836l-0.483,5.158c0,1.936-0.806,3.708-1.612,5.32c-0.967,1.611-0.967,3.225-0.322,4.836
        		l1.612,3.547c0.806,1.611,0.968,3.225,0.483,5.159c-0.483,1.612-0.806,3.225-0.645,4.837c0,1.611,0.967,3.225,2.257,3.869
@@ -230,8 +287,10 @@
        		c-1.612-0.645-2.902-0.322-3.869,0.807l-0.807,0.967c-1.612,1.611-3.869,2.902-6.127,3.225l-8.705,0.483
        		c-1.612,0-3.226,0.806-4.354,1.935c-1.29,1.129-2.74,1.936-4.354,2.258h-0.322c-1.612,0-3.225,1.127-4.837,2.257v0.323
        		c-1.612,1.611-3.708,2.418-5.804,2.418l-0.646,0.322c-1.935,0-3.869,0-5.805,0.483h-1.935c-2.74,0.483-4.837,2.741-5.481,5.644
-       		l-0.646,3.707c-0.482,2.579-1.611,4.836-3.225,6.932c-1.612,1.936-3.547,3.226-5.965,3.226L154.527,579.504L154.527,579.504z"/>
-       	<path d="M230.141,745.078c0.805-2.096,1.935-4.191,3.224-6.126c1.29-1.612,1.129-3.87-0.483-5.159l-2.74-2.419
+       		l-0.646,3.707c-0.482,2.579-1.611,4.836-3.225,6.932c-1.612,1.936-3.547,3.226-5.965,3.226L154.527,579.504L154.527,579.504z"
+            />
+            <path
+              d="M230.141,745.078c0.805-2.096,1.935-4.191,3.224-6.126c1.29-1.612,1.129-3.87-0.483-5.159l-2.74-2.419
        		c-2.258-1.935-3.547-4.836-3.869-7.738l-0.322-3.225c0-0.968,0-2.097-0.322-3.226l-0.322-2.418c-0.322-2.74-1.935-4.836-4.19-6.449
        		l-1.13-0.321c-1.611-0.968-3.225-2.418-4.514-4.353c-1.289-1.612-1.936-3.869-2.418-6.127l-0.484-2.74
        		c0-0.969-0.645-1.612-1.611-2.096l-2.579-0.808l-5.159-1.612c-1.611-0.322-3.225-1.611-4.354-2.74h-0.322
@@ -254,8 +313,10 @@
        		c1.612-2.096,3.224-3.868,4.836-5.48c2.097-1.612,4.192-2.419,6.448-2.58h1.291c2.578-0.483,4.514-2.901,4.353-5.481v-0.321
        		v-10.479c0.322-1.611,0.968-3.708,1.935-5.319l3.226-4.838l1.29-1.61c0.967-0.808,1.611-1.937,2.74-3.226l1.611-2.096
        		c0.969-1.612,0.969-3.709-0.322-5.159c-1.611-1.611-2.418-3.869-2.74-6.127v-0.645c-0.322-2.58-0.322-5.32,0.484-8.062v-0.806
-       		H230.141z"/>
-       	<path d="M319.25,450.5h-337.5c-31.05,0-56.25,25.2-56.25,56.25v337.5c0,31.05,25.2,56.25,56.25,56.25h337.5
+       		H230.141z"
+            />
+            <path
+              d="M319.25,450.5h-337.5c-31.05,0-56.25,25.2-56.25,56.25v337.5c0,31.05,25.2,56.25,56.25,56.25h337.5
        		c31.05,0,56.25-25.2,56.25-56.25v-337.5C375.5,475.7,350.3,450.5,319.25,450.5z M342.35,710.416l-0.322,1.128
        		c-0.807,1.935-2.096,3.708-3.709,5.159c-1.611,1.611-3.225,2.58-4.19,3.708c-0.968,0.968-1.612,2.58-1.129,4.03l0.483,2.258
        		c0.807,3.224,0.807,6.447,0,9.351v1.29c-0.646,2.418-1.612,4.514-2.58,6.448c-1.129,2.096-2.74,3.708-4.836,4.837l-2.418,1.612
@@ -305,8 +366,10 @@
        		c0,2.58,1.612,4.836,3.226,6.449c2.257,1.612,3.547,4.192,3.869,6.771c0.646,4.029,0.807,7.255,0.807,10.479v3.709
        		c0,1.289,0,2.579,0.482,3.868c0.322,1.129,1.129,2.259,2.097,2.902l3.225,2.418c3.226,2.097,5.481,4.837,6.771,8.545
        		c1.613,3.547,2.097,7.255,2.097,10.963v1.29c0,2.902-0.322,5.965-1.29,8.706c-0.807,2.901-0.645,5.644,0.482,8.062
-       		c1.291,2.258,2.098,4.836,2.42,7.577C343.8,704.611,343.479,707.836,342.35,710.416z"/>
-       	<path d="M304.301,689.457c-1.611-0.807-3.225-2.096-3.708-4.03l-0.483-0.968c-0.807-2.902-1.289-5.805-1.289-8.706l0.322-8.062
+       		c1.291,2.258,2.098,4.836,2.42,7.577C343.8,704.611,343.479,707.836,342.35,710.416z"
+            />
+            <path
+              d="M304.301,689.457c-1.611-0.807-3.225-2.096-3.708-4.03l-0.483-0.968c-0.807-2.902-1.289-5.805-1.289-8.706l0.322-8.062
        		v-0.483c0-2.74-2.258-4.836-4.838-4.836h-0.322c-3.225,0-5.803-0.968-8.061-3.226l-1.29-1.611l-3.226-3.708l-4.19-4.837
        		c-1.612-2.258-3.226-4.191-5.319-6.126c-1.612-1.612-4.031-3.226-6.449-3.548l-3.225-0.483c-1.611-0.322-3.709-1.128-5.482-2.257
        		c-1.288-0.967-3.223-0.645-4.514,0.645l-2.096,2.258l-0.968,0.645c-1.128,0.322-2.257-0.323-2.74-1.611
@@ -327,181 +390,170 @@
        		l0.646-0.322c1.289-0.323,2.096-1.612,2.096-2.901c0-1.613,0.807-2.902,1.612-4.031l1.289-1.129l3.226-4.19v-0.321
        		c0.967-1.291,1.611-2.742,1.935-4.354s0-3.226-0.646-4.837l-0.322-0.646c-0.646-1.612-0.967-2.741-1.129-4.19l-0.482-4.516
        		l-0.482-4.837c0-1.61,0.645-3.224,1.611-4.836c1.128-1.29,1.936-2.901,2.579-4.515v-0.646l0.321-0.321
-       		C306.559,691.068,305.752,689.457,304.301,689.457z"/>
-       </g>
-     </symbol>
+       		C306.559,691.068,305.752,689.457,304.301,689.457z"
+            />
+          </g>
+        </symbol>
+      </defs>
+    </svg>
 
-  </defs>
-  </svg>
-
-  <!---MAIN CONTENT----------------------->
-  <header>
-    <nav>
-      <div class="tabs">
-        <ul class="tabRow">
+    <!-- -MAIN CONTENT--------------------- -->
+    <header>
+      <nav>
+        <div class="tabs">
+          <ul class="tabRow">
             <li><a href="../index.html">HOME</a></li>
             <li><a href="../about/about.html">ABOUT</a></li>
             <li><a href="../work/work.html">WORK</a></li>
             <li><a href="../blog/blog.html">BLOG</a></li>
-        </ul>
-        <ul class="menuTabs">
-            <li><a href="this.html">
-              <svg class="moonIcon">
-                <use xlink:href="#moonIcon"></use>
-              </svg>
-            </a></li>
-            <li id="selected"><a href="that.html">
-              <svg class="knightIcon">
-                <use xlink:href="#knightIcon"></use>
-              </svg>
-            </a></li>
+          </ul>
+          <ul class="menuTabs">
+            <li>
+              <a href="this.html">
+                <svg class="moonIcon"><use xlink:href="#moonIcon"></use></svg>
+              </a>
+            </li>
+            <li id="selected">
+              <a href="that.html">
+                <svg class="knightIcon">
+                  <use xlink:href="#knightIcon"></use>
+                </svg>
+              </a>
+            </li>
             <li class="spriteMode">
               <!-- <a href="theOther.html"> -->
-                <svg class="tetrisSprite">
-                  <use xlink:href="#tetrisSprite"></use>
-                </svg>
+              <svg class="tetrisSprite">
+                <use xlink:href="#tetrisSprite"></use>
+              </svg>
               <!-- </a> -->
             </li>
-        </ul>
-      </div>
-      <div class="fileDivider">
-        <div class="blog__create-options">
-        </div>
-        <div class="blog__login-options">
-          <div class="user-profile">
-          </div>
-          <ul class="blog__profile-options blog__profile-options--hidden">
-            <li><a href="../blog/logout">Log out</a></li>
           </ul>
         </div>
+        <div class="fileDivider">
+          <div class="blog__create-options"></div>
+          <div class="blog__login-options">
+            <div class="user-profile"></div>
+            <ul class="blog__profile-options blog__profile-options--hidden">
+              <li><a href="../blog/logout">Log out</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="page">
+      <div class="header">
+        <h1 class="landing-screen__intro">Console.Blog</h1>
+        <span class="landing-screen__intro--typed">&nbsp;</span>
+        <hr />
+        <!--
+          <img class="blog-post__main-image" src="/../assets/images/blog/confused-keanu-640x360px.jpeg" alt="Confused Keanu">
+        -->
+        <div class="post-container">
+          <h2 class="latest">LATEST</h2>
+          <a href="" class="blogPostLink">
+            <article class="blockO post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockO post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockT post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockO post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockO post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockT post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockT post" data-thumbnail=""></article>
+          </a>
+          <h2 class="friends">FRIENDS</h2>
+          <a href="" class="blogPostLink">
+            <article class="blockT post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockL post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockL post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockS post" data-thumbnail=""></article>
+          </a>
+          <h2 class="learn">LEARN</h2>
+          <a href="" class="blogPostLink">
+            <article class="blockL post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockS post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockS post" data-thumbnail=""></article>
+          </a>
+          <a href="" class="blogPostLink">
+            <article class="blockL post" data-thumbnail=""></article>
+          </a>
+          <h2 class="fun">FUN</h2>
+          <a href="" class="blogPostLink">
+            <article class="blockS post" data-thumbnail=""></article>
+          </a>
+          <h2 class="all-posts">ALL POSTS</h2>
+
+          <!--
+            <div class="o-container"></div>
+            <div class="t-container"></div>
+            <div class="l-container"></div>
+            <div class="s-container"></div>
+          -->
+        </div>
       </div>
-    </nav>
-  </header>
-  <div class="page">
 
-  <div class="header">
-    <h1 class="landing-screen__intro">Console.Blog</h1>
-    <span class="landing-screen__intro--typed">&nbsp;</span>
-    <hr>
-    <!-- <img class="blog-post__main-image" src="/../assets/images/blog/confused-keanu-640x360px.jpeg" alt="Confused Keanu"> -->
-    <div class="post-container">
-      <h2 class="latest">LATEST</h2>
-      <a href="" class="blogPostLink">
-      <article class="blockO post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockO post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockT post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockO post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockO post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockT post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockT post" data-thumbnail="">
-      </article>
-    </a>
-      <h2 class="news">NEWS</h2>
-      <a href="" class="blogPostLink">
-      <article class="blockT post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockL post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockL post" data-thumbnail="">
-      </article>
-      </a>
-      <a href="" class="blogPostLink">
-      <article class="blockS post" data-thumbnail="">
-      </article>
-    </a>
-      <h2 class="learn">LEARN</h2>
-      <a href="" class="blogPostLink">
-      <article class="blockL post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockS post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockS post" data-thumbnail="">
-      </article>
-    </a>
-    <a href="" class="blogPostLink">
-      <article class="blockL post" data-thumbnail="">
-      </article>
-    </a>
-      <h2 class="fun">FUN</h2>
-      <a href="" class="blogPostLink">
-      <article class="blockS post" data-thumbnail="">
-      </article>
-    </a>
-      <h2 class="all-posts">ALL POSTS</h2>
+      <div class="footer">
+        <div class="socialIcons">
+          <a href="https://github.com/bobbysebolao" target="_blank">
+            <svg class="githubIcon"><use xlink:href="#githubIcon"></use></svg>
+          </a>
 
-      <!-- <div class="o-container"></div>
-      <div class="t-container"></div>
-      <div class="l-container"></div>
-      <div class="s-container"></div> -->
-    </div>
-  </div>
+          <a href="https://twitter.com/bobbysebolao" target="_blank">
+            <svg class="twitterIcon"><use xlink:href="#twitterIcon"></use></svg>
+          </a>
 
-  <div class="footer">
-    <div class="socialIcons">
-      <a href="https://github.com/bobbysebolao" target="_blank">
-      <svg class="githubIcon">
-        <use xlink:href="#githubIcon"></use>
-      </svg>
-    </a>
+          <a
+            href="https://www.linkedin.com/in/bobby-sebolao-90651559/"
+            target="_blank"
+          >
+            <svg class="linkedinIcon">
+              <use xlink:href="#linkedinIcon"></use>
+            </svg>
+          </a>
 
-<a href="https://twitter.com/bobbysebolao" target="_blank">
-      <svg class="twitterIcon">
-        <use xlink:href="#twitterIcon"></use>
-      </svg>
-    </a>
+          <a href="https://www.freecodecamp.org/bobbysebolao" target="_blank">
+            <svg class="freecodecampIcon">
+              <use xlink:href="#freecodecampIcon"></use>
+            </svg>
+          </a>
 
-<a href="https://www.linkedin.com/in/bobby-sebolao-90651559/" target="_blank">
-      <svg class="linkedinIcon">
-        <use xlink:href="#linkedinIcon"></use>
-      </svg>
-    </a>
-
-<a href="https://www.freecodecamp.org/bobbysebolao" target="_blank">
-      <svg class="freecodecampIcon">
-        <use xlink:href="#freecodecampIcon"></use>
-      </svg>
-    </a>
-
-<a href="https://www.codewars.com/users/Mistapepper" target="_blank">
-      <svg class="codewarsIcon">
-        <use xlink:href="#codewarsIcon"></use>
-      </svg>
-    </a>
-    </div>
-    <p><sub style="opacity: 0.5;">Powered by vanilla JavaScript, HTML, CSS, and caffeine</sub></p>
-  </div>
+          <a href="https://www.codewars.com/users/Mistapepper" target="_blank">
+            <svg class="codewarsIcon">
+              <use xlink:href="#codewarsIcon"></use>
+            </svg>
+          </a>
+        </div>
+        <p>
+          <sub style="opacity: 0.5;"
+            >Powered by vanilla JavaScript, HTML, CSS, and caffeine</sub
+          >
+        </p>
+      </div>
     </div>
 
     <script src="./loginOptions.js" type="text/javascript"></script>
     <script src="./recentposts.js" type="text/javascript"></script>
     <script src="./blog-intro.js" type="text/javascript"></script>
     <!-- <script src="./loginOptions.js" type="text/javascript"></script> -->
-    </body>
-
-    </html>
+  </body>
+</html>
