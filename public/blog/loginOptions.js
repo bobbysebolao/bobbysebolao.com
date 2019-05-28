@@ -1,4 +1,4 @@
-console.log("LOGIN OPTIONS HERE")
+console.log("LOGIN OPTIONS HERE");
 
 const fileDivider = document.querySelector(".fileDivider");
 const createOptions = document.querySelector(".blog__create-options");
@@ -8,17 +8,37 @@ const userProfile = document.querySelector(".user-profile");
 
 const profileOptionsList = document.querySelector(".blog__profile-options");
 
+document.addEventListener("click", e => {
+  console.log("BAH", e.target.className);
+  if (
+    e.target.className !== "blog__login-options" &&
+    e.target.className !== "user-profile" &&
+    e.target.className !== "user-profile__username" &&
+    e.target.className !== "blog-post__user-avatar"
+  ) {
+    if (
+      profileOptionsList.classList.contains("blog__profile-options--display")
+    ) {
+      console.log("WOOOOOO");
+      profileOptionsList.classList.toggle("blog__profile-options--hidden");
+      profileOptionsList.classList.toggle("blog__profile-options--display");
+    }
+  }
+});
+
 loginOptions.addEventListener("click", () => {
-  profileOptionsList.classList.toggle("blog__profile-options--hidden");
-  profileOptionsList.classList.toggle("blog__profile-options--display");
-})
+  if (userProfile.hasChildNodes()) {
+    profileOptionsList.classList.toggle("blog__profile-options--hidden");
+    profileOptionsList.classList.toggle("blog__profile-options--display");
+  }
+});
 
 fetch("/blog/check-login-status")
   .then(res => res.json())
   .then(userData => {
     if (userData.loginStatus !== true) {
-      let register = document.createElement('a');
-      let login = document.createElement('a');
+      let register = document.createElement("a");
+      let login = document.createElement("a");
 
       register.textContent = "Register";
       register.href = "../create/account";
@@ -31,27 +51,26 @@ fetch("/blog/check-login-status")
 
       loginOptions.appendChild(login);
       loginOptions.appendChild(register);
-      console.log("It's false")
+      console.log("It's false");
       // userCommentsForm.style.display = 'none';
       // loginToComment.style.display = 'block';
-    }
-    else {
+    } else {
       // let profileOptions = document.createElement('details');
       // let logoutOption = document.createElement('summary');
 
       // profileOptions.textContent = "Hello";
       // logoutOption.textContent = "Bye";
 
-      let username = document.createElement('p');
-      let avatar = document.createElement('img');
+      let username = document.createElement("p");
+      let avatar = document.createElement("img");
 
-      let createNewPost = document.createElement('a');
-      createNewPost.className = 'blog__login-options--create';
+      let createNewPost = document.createElement("a");
+      createNewPost.className = "blog__login-options--create";
       createNewPost.textContent = "New post";
       createNewPost.href = "new";
 
       username.textContent = `${userData.username}`;
-      username.className = 'user-profile__username';
+      username.className = "user-profile__username";
 
       avatar.className = "blog-post__user-avatar";
       avatar.src = `${userData.avatar}`;
@@ -59,14 +78,12 @@ fetch("/blog/check-login-status")
       // profileOptions.appendChild(logoutOption);
       // loginOptions.appendChild(profileOptions);
 
-
-
       createOptions.appendChild(createNewPost);
       userProfile.appendChild(username);
       userProfile.appendChild(avatar);
       // loginOptions.appendChild(userProfile)
       // loginOptions.appendChild(profileOptions);
-      console.log("It's true")
+      console.log("It's true");
       // userCommentsForm.style.display = 'block';
       // loginToComment.style.display = 'none';
     }
