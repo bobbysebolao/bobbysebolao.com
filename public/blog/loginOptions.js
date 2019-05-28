@@ -8,7 +8,7 @@ const userProfile = document.querySelector(".user-profile");
 
 const profileOptionsList = document.querySelector(".blog__profile-options");
 
-document.body.addEventListener("click", e => {
+document.addEventListener("click", e => {
   console.log("BAH", e.target.className);
   if (
     e.target.className !== "blog__login-options" &&
@@ -27,8 +27,10 @@ document.body.addEventListener("click", e => {
 });
 
 loginOptions.addEventListener("click", () => {
-  profileOptionsList.classList.toggle("blog__profile-options--hidden");
-  profileOptionsList.classList.add("blog__profile-options--display");
+  if (userProfile.hasChildNodes()) {
+    profileOptionsList.classList.toggle("blog__profile-options--hidden");
+    profileOptionsList.classList.toggle("blog__profile-options--display");
+  }
 });
 
 fetch("/blog/check-login-status")
