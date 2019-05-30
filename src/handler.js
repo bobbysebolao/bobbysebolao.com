@@ -202,6 +202,44 @@ const newPostHandler = (req, res) => {
   }
 };
 
+const uploadImageHandler = (req, res) => {
+  let jwt = cookie.parse(req.headers.cookie).jwt;
+  console.log(jwt);
+  if (jwt !== undefined) {
+    decodeJSONWebToken(jwt)
+      .then(decodedToken => {
+        if (decodedToken.logged_in === true) {
+          if (decodedToken.role === "admin") {
+            console.log("Commenter is logged in, display the gated content");
+            fs.readFile(
+              __dirname + "/../public/blog/upload-image.html",
+              "utf8",
+              (error, file) => {
+                if (error) {
+                  console.log(error);
+                  return;
+                }
+                res.writeHead(200, { "Content-Type": "text/html" });
+                res.end(file);
+              }
+            );
+          } else {
+            res.writeHead(302, {
+              Location: "/blog/authorisation-failure"
+            });
+            // res.writeHead(400, { "Content-Type": "text/html" });
+            res.end();
+          }
+        }
+      })
+      .catch(error => console.log(error));
+  } else {
+    res.writeHead(302, { Location: "/blog/publish-failure.html" });
+    // res.writeHead(400, { "Content-Type": "text/html" });
+    res.end();
+  }
+};
+
 const domScriptsHandler = (res, endpoint, extension) => {
   const extensionType = {
     html: "text/html",
@@ -800,6 +838,7 @@ module.exports = {
   recentPostsHandler,
   createAccountPageHandler,
   newPostHandler,
+  uploadImageHandler,
   domScriptsHandler,
   publicHandler,
   loginPageHandler,
