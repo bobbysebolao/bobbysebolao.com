@@ -15,6 +15,8 @@ const router = (request, response) => {
       handler.postsJSONHandler(response);
     } else if (endpoint === "/blog/recent-posts") {
       handler.recentPostsHandler(response);
+    } else if (endpoint === "/blog/main-images") {
+      handler.mainImagesHandler(response);
     } else if (endpoint === "/blog/comments") {
       handler.getCommentsHandler(request, response);
     } else if (endpoint === "/blog/author") {
@@ -33,8 +35,8 @@ const router = (request, response) => {
       handler.createAccountPageHandler(response);
     } else if (endpoint === "/blog/new") {
       handler.newPostHandler(request, response);
-    } else if (endpoint === "/blog/upload-image") {
-      handler.uploadImageHandler(request, response);
+    } else if (endpoint === "/blog/image-manager") {
+      handler.imageManagerPageHandler(request, response);
     } else if (endpoint === "/blog/check-login-status") {
       // let jwt = cookie.parse(request.headers.cookie).jwt;
       // if (jwt !== undefined) {
@@ -84,6 +86,11 @@ const router = (request, response) => {
       // console.log(request.url)
       // return;
       handler.createPostHandler(request, response, jwt);
+    } else if (endpoint === "/create/image") {
+      let jwt = cookie.parse(request.headers.cookie).jwt;
+      // console.log(request.url)
+      // return;
+      handler.uploadImageHandler(request, response, jwt);
     } else if (endpoint === "/create/account") {
       handler.createAccountSubmitHandler(request, response);
     } else if (endpoint === "/blog/login") {

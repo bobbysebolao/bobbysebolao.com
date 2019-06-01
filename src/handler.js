@@ -28,6 +28,7 @@ const getUsername = require("./queries/getUsername.js");
 const getTags = require("./queries/getTags.js");
 const getAllPosts = require("./queries/getAllPosts.js");
 const getAllThumbnails = require("./queries/getAllThumbnails.js");
+const getAllMainImages = require("./queries/getAllMainImages.js");
 const sendVerificationEmail = require("./authentication/sendVerificationEmail.js");
 const generateEmailVerificationToken = require("./authentication/generateEmailVerificationToken.js");
 const submitEmailVerificationToken = require("./queries/submitEmailVerificationToken.js");
@@ -149,6 +150,15 @@ const recentPostsHandler = res => {
     .catch(error => console.log(error));
 };
 
+const mainImagesHandler = res => {
+  console.log("All good");
+  getAllMainImages()
+    .then(images => {
+      res.end(JSON.stringify(images));
+    })
+    .catch(error => console.log(error));
+};
+
 const createAccountPageHandler = res => {
   fs.readFile(
     __dirname + "/../public/blog/create-account.html",
@@ -202,7 +212,7 @@ const newPostHandler = (req, res) => {
   }
 };
 
-const uploadImageHandler = (req, res) => {
+const imageManagerPageHandler = (req, res) => {
   let jwt = cookie.parse(req.headers.cookie).jwt;
   console.log(jwt);
   if (jwt !== undefined) {
@@ -212,7 +222,7 @@ const uploadImageHandler = (req, res) => {
           if (decodedToken.role === "admin") {
             console.log("Commenter is logged in, display the gated content");
             fs.readFile(
-              __dirname + "/../public/blog/upload-image.html",
+              __dirname + "/../public/blog/image-manager.html",
               "utf8",
               (error, file) => {
                 if (error) {
@@ -563,6 +573,101 @@ const createPostHandler = (req, res, encodedJwt) => {
     .catch(error => console.log(error));
 };
 
+const uploadImageHandler = (req, res, encodedJwt) => {
+  console.log("IMAGE UPLOAD request received");
+  // return;
+
+  let username;
+
+  decodeJSONWebToken(encodedJwt).then(decodedToken => {
+    if (decodedToken === undefined) {
+      res.writeHead(302, { Location: "/blog/publish-failure.html" });
+      // res.writeHead(400, { "Content-Type": "text/html" });
+      res.end();
+      // res.writeHead(400, { "Content-Type": "text/html" });
+      // res.end(
+      //   "You are not logged in. Please login in order to publish a post"
+      // );
+    } else if (decodedToken.logged_in === true) {
+      username = decodedToken.username;
+      console.log(username);
+
+      console.log("NO 2");
+
+      let form = new formidable.IncomingForm();
+
+      form.uploadDir = __dirname + "/../public/assets/images/blog";
+      form.keepExtensions = true;
+      form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
+
+      form.on("fileBegin", function(name, file) {
+        file.path = path.join(
+          __dirname,
+          "../public/assets/images/blog",
+          file.name
+        );
+      });
+
+      let formData;
+
+      form.parse(req, (error, fields, files) => {
+        if (error) {
+          console.log(`Cannot upload images. Error is ${error}`);
+          return error;
+        } else {
+          console.log("Form data parsing underway...");
+          // console.log("The image file: ", files);
+          // return;
+
+          let mainImage = {
+            name: files["mainImage"]["name"],
+            size: files["mainImage"]["size"],
+            // path: files["mainImage"]["path"],
+            path: fields["mainImageUrl"],
+            type: files["mainImage"]["type"]
+          };
+
+          console.log("MAIN", mainImage);
+          // return;
+
+          fields["mainImage"] = mainImage;
+
+          console.log("Uploaded images successfully");
+          formData = fields;
+          console.log(formData, "LOOK HERE <=====");
+          // return;
+
+          submitNewImage(fields)
+          .then(result => {
+            fs.unlink(
+              __dirname +
+                "/../public/assets/images/blog/" +
+                files["mainImage"]["name"],
+              err => {
+                if (err) {
+                  console.log(err);
+                  return;
+                }
+                console.log(
+                  "Main image successfully deleted from local filesystem"
+                );
+              }
+            );
+          })
+          .then(response => {
+            res.writeHead(302, { Location: "/blog/image-manager" });
+            res.end();
+          })
+          .catch(error => console.log(error));
+        }
+      })
+
+
+    }
+  })
+  .catch(error => console.log(error))
+};
+
 const createAccountSubmitHandler = (req, res) => {
   let form = new formidable.IncomingForm();
 
@@ -836,9 +941,10 @@ module.exports = {
   specificPostHandler,
   postsJSONHandler,
   recentPostsHandler,
+  mainImagesHandler,
   createAccountPageHandler,
   newPostHandler,
-  uploadImageHandler,
+  imageManagerPageHandler,
   domScriptsHandler,
   publicHandler,
   loginPageHandler,
@@ -847,6 +953,7 @@ module.exports = {
   getAuthorHandler,
   getTagsHandler,
   createPostHandler,
+  uploadImageHandler,
   createAccountSubmitHandler,
   confirmEmailHandler,
   awsSignatureHandler,
