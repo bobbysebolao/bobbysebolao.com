@@ -69,6 +69,11 @@ fetch("/blog/check-login-status")
       createNewPost.textContent = "New post";
       createNewPost.href = "new";
 
+      let imageManager = document.createElement("a");
+      imageManager.className = "blog__login-options--create";
+      imageManager.textContent = "Image manager";
+      imageManager.href = "image-manager";
+
       username.textContent = `${userData.username}`;
       username.className = "user-profile__username";
 
@@ -79,6 +84,7 @@ fetch("/blog/check-login-status")
       // loginOptions.appendChild(profileOptions);
 
       createOptions.appendChild(createNewPost);
+      createOptions.appendChild(imageManager);
       userProfile.appendChild(username);
       userProfile.appendChild(avatar);
       // loginOptions.appendChild(userProfile)
