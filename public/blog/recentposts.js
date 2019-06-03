@@ -8,6 +8,7 @@ let blockS = document.getElementsByClassName("blockS");
 let postLinks = document.getElementsByClassName("blogPostLink");
 
 let spriteMode = document.querySelector(".spriteMode");
+let nightMode = document.querySelector(".nightMode");
 let standardStylesheet = document.querySelector("#standardStylesheet");
 
 // const xhr = new XMLHttpRequest();
@@ -85,6 +86,12 @@ document.onreadystatechange = function() {
     ) {
       standardStylesheet.href = "../css/sprite.css";
     }
+
+    else if (sessionStorage.getItem("autosave") &&
+    sessionStorage.getItem("autosave").includes("css/sprite.css")
+  ) {
+    standardStylesheet.href = "../css/night.css";
+  }
     // const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -309,6 +316,18 @@ spriteMode.addEventListener("click", () => {
 
   if (standardStylesheet.href.match("../css/blog.css")) {
     standardStylesheet.href = "../css/sprite.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else {
+    standardStylesheet.href = "../css/blog.css";
+    sessionStorage.removeItem("autosave");
+  }
+});
+
+//ACTIVATING NIGHT mode
+nightMode.addEventListener("click", () => {
+
+  if (standardStylesheet.href.match("../css/blog.css")) {
+    standardStylesheet.href = "../css/night.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else {
     standardStylesheet.href = "../css/blog.css";
