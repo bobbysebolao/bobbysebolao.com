@@ -21,7 +21,7 @@ html {
   /* 2. */
   scroll-behavior: smooth;
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.84);
+  color: #fdfdfd;
 }
 
 *,
@@ -66,6 +66,10 @@ p {
   margin-bottom: 1em;
 }
 
+a {
+  color: #fdfdfd;
+}
+
 strong {
   font-weight: 800;
 }
@@ -80,7 +84,7 @@ h3,
 h4 {
   margin: 1.414em 0 0.5em;
   line-height: 1.35;
-  color: #111;
+  color: #fdfdfd;
   font-weight: 400;
 }
 
@@ -215,57 +219,57 @@ nav {
 }
 
 .tabRow li:nth-child(1) {
-  background: #afec6a;
+  background: #707993;
 }
 
 .tabRow li:nth-child(1):before {
-  box-shadow: 2px 2px 0 #afec6a;
+  box-shadow: 2px 2px 0 #707993;
 }
 
 .tabRow li:nth-child(1):after {
-  box-shadow: -2px 2px 0 #afec6a;
+  box-shadow: -2px 2px 0 #707993;
 }
 
 .tabRow li:nth-child(2) {
-  background: #faf557;
+  background: #707993;
 }
 
 .tabRow li:nth-child(2):before {
-  box-shadow: 2px 2px 0 #faf557;
+  box-shadow: 2px 2px 0 #707993;
 }
 
 .tabRow li:nth-child(2):after {
-  box-shadow: -2px 2px 0 #faf557;
+  box-shadow: -2px 2px 0 #707993;
 }
 
 .tabRow li:nth-child(3) {
-  background: #7fd9cf;
+  background: #707993;
 }
 
 .tabRow li:nth-child(3):before {
-  box-shadow: 2px 2px 0 #7fd9cf;
+  box-shadow: 2px 2px 0 #707993;
 }
 
 .tabRow li:nth-child(3):after {
-  box-shadow: -2px 2px 0 #7fd9cf;
+  box-shadow: -2px 2px 0 #707993;
 }
 
 .tabRow li:nth-child(4) {
-  background: #fe9bba;
+  background: #252d3e;
   margin-right: 15px;
 }
 
 .tabRow li:nth-child(4):before {
-  box-shadow: 2px 2px 0 #fe9bba;
+  box-shadow: 2px 2px 0 #252d3e;
 }
 
 .tabRow li:nth-child(4):after {
-  box-shadow: -2px 2px 0 #fe9bba;
+  box-shadow: -2px 2px 0 #252d3e;
 }
 
 .tabRow a {
   display: block;
-  color: #111;
+  color: #fdfdfd;
   text-decoration: none;
   padding: 15px 10px 15px 10px;
   line-height: inherit;
@@ -277,7 +281,7 @@ nav {
   top: 3px;
   margin: 0 2px;
   padding: 10px 10px 10px 10px;
-  background: #fe9bba;
+  background: #252d3e;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   z-index: 0;
@@ -312,11 +316,11 @@ nav {
 }
 
 .menuTabs li:nth-child(1):before {
-  box-shadow: 2px 2px 0 #fe9bba;
+  box-shadow: 2px 2px 0 #252d3e;
 }
 
 .menuTabs li:nth-child(1):after {
-  box-shadow: -2px 2px 0 #fe9bba;
+  box-shadow: -2px 2px 0 #252d3e;
 }
 
 .knightIcon:hover,
@@ -325,11 +329,11 @@ nav {
 }
 
 .menuTabs li:nth-child(2):before {
-  box-shadow: 2px 2px 0 #fe9bba;
+  box-shadow: 2px 2px 0 #252d3e;
 }
 
 .menuTabs li:nth-child(2):after {
-  box-shadow: -2px 2px 0 #fe9bba;
+  box-shadow: -2px 2px 0 #252d3e;
 }
 
 .tetrisSprite:hover,
@@ -338,11 +342,11 @@ nav {
 }
 
 .menuTabs li:nth-child(3):before {
-  box-shadow: 2px 2px 0 #fe9bba;
+  box-shadow: 2px 2px 0 #252d3e;
 }
 
 .menuTabs li:nth-child(3):after {
-  box-shadow: -2px 2px 0 #fe9bba;
+  box-shadow: -2px 2px 0 #252d3e;
 }
 
 .fileDivider {
@@ -350,7 +354,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: #fe9bba;
+  background: #252d3e;
   border-radius: 5px 5px 0 0;
   padding: 10px 25px 10px 25px;
   /* max-height: 52px; */
@@ -756,7 +760,7 @@ nav {
 .header {
   width: 100%;
   position: relative;
-  background: #fdfdfd;
+  background: #3d465c;
   /* padding: 5em 5em 0em 5em; */
   padding: 80px 80px 0em 80px;
   /* padding: 2.5em 5vw 0em 5vw; */
@@ -996,7 +1000,7 @@ nav {
 .footer {
   width: 100%;
   position: relative;
-  background: #fdfdfd;
+  background: #3d465c;
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
@@ -1945,49 +1949,49 @@ textarea {
 }
 
 .latest {
-  background: #afec6a;
+  background: #252d3e;
   border: 3px solid #111;
   border-radius: 10px;
 }
 
 .friends {
-  background: #faf557;
+  background: #707993;
   border: 3px solid #111;
   border-radius: 10px;
 }
 
 .learn {
-  background: #7fd9cf;
+  background: #252d3e;
   border: 3px solid #111;
   border-radius: 10px;
 }
 
 .fun {
-  background: #ef9ab9;
+  background: #707993;
   border: 3px solid #111;
   border-radius: 10px;
 }
 
 .all-posts {
-  background: #afec6a;
+  background: #252d3e;
   border: 3px solid #111;
   border-radius: 10px;
 }
 
 .blockO h3 {
-  background: #afec6a;
+  background: #252d3e;
 }
 
 .blockT h3 {
-  background: #faf557;
+  background: #707993;
 }
 
 .blockL h3 {
-  background: #7fd9cf;
+  background: #252d3e;
 }
 
 .blockS h3 {
-  background: #ef9ab9;
+  background: #707993;
 }
 
 .post {
@@ -1995,6 +1999,7 @@ textarea {
   width: 100%;
   border-radius: 10px;
   background-size: contain;
+  /* mix-blend-mode: multiply; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2014,6 +2019,7 @@ textarea {
   margin: 0;
   border-radius: 0px 0px 10px 10px;
   position: relative;
+  /* mix-blend-mode: normal; */
 }
 
 .block-post {
