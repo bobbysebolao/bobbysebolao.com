@@ -1934,6 +1934,7 @@ textarea {
   grid-row-gap: 5px;
   grid-column-gap: 5px;
   justify-content: center;
+  margin-bottom: 40px;
   /* align-items: center; */
 }
 
@@ -1946,31 +1947,36 @@ textarea {
 
 .latest {
   background: #afec6a;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .friends {
   background: #faf557;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .learn {
   background: #7fd9cf;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .fun {
   background: #ef9ab9;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .all-posts {
   background: #afec6a;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
@@ -1991,6 +1997,7 @@ textarea {
 }
 
 .post {
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
   height: 100%;
   width: 100%;
   border-radius: 10px;
@@ -2003,7 +2010,7 @@ textarea {
 }
 
 .post:hover {
-  border: 3px solid #111;
+  box-shadow: 0px 10px 20px rgba(17, 17, 17, 1);
   transition: all 0.25s ease-in-out;
 }
 
