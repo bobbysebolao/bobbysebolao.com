@@ -52,7 +52,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #c18e67;
-  background-image: url(/assets/desk_background.svg);
+  background-image: url(/assets/desk_background_night.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -162,6 +162,7 @@ nav {
 }
 
 .tabRow li {
+  font-family: "Permanent Marker", cursive;
   display: inline;
   vertical-align: middle;
   position: relative;
@@ -511,6 +512,10 @@ nav {
 .main-image-container:hover {
   background: #cccccc;
   cursor: pointer;
+}
+
+.landing-screen__intro {
+  font-family: "Permanent Marker", cursive;
 }
 
 .landing-screen__intro--typed {
@@ -1938,6 +1943,7 @@ textarea {
   grid-row-gap: 5px;
   grid-column-gap: 5px;
   justify-content: center;
+  margin-bottom: 40px;
   /* align-items: center; */
 }
 
@@ -1949,36 +1955,46 @@ textarea {
 }
 
 .latest {
+  font-family: "Permanent Marker", cursive;
   background: #252d3e;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .friends {
-  background: #707993;
-  border: 3px solid #111;
+  font-family: "Permanent Marker", cursive;
+  background: #252d3e;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .learn {
+  font-family: "Permanent Marker", cursive;
   background: #252d3e;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .fun {
-  background: #707993;
-  border: 3px solid #111;
+  font-family: "Permanent Marker", cursive;
+  background: #252d3e;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
 .all-posts {
+  font-family: "Permanent Marker", cursive;
   background: #252d3e;
-  border: 3px solid #111;
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
-.blockO h3 {
+/* .blockO h3 {
   background: #252d3e;
 }
 
@@ -1992,14 +2008,16 @@ textarea {
 
 .blockS h3 {
   background: #707993;
-}
+} */
 
 .post {
+  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
   height: 100%;
   width: 100%;
   border-radius: 10px;
   background-size: contain;
-  /* mix-blend-mode: multiply; */
+  background-color: #707993;
+  background-blend-mode: multiply;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2008,7 +2026,7 @@ textarea {
 }
 
 .post:hover {
-  border: 3px solid #111;
+  box-shadow: 0px 10px 20px rgba(17, 17, 17, 1);
   transition: all 0.25s ease-in-out;
 }
 
@@ -2019,7 +2037,7 @@ textarea {
   margin: 0;
   border-radius: 0px 0px 10px 10px;
   position: relative;
-  /* mix-blend-mode: normal; */
+  background: #3d465c;
 }
 
 .block-post {
@@ -2212,7 +2230,7 @@ figure {
     margin: auto;
     text-align: center;
     background-color: #c18e67;
-    background-image: url(/assets/desk_background.svg);
+    background-image: url(/assets/desk_background_night.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
