@@ -158,6 +158,7 @@ nav {
 }
 
 .tabRow li {
+  font-family: "Permanent Marker", cursive;
   display: inline;
   vertical-align: middle;
   position: relative;
@@ -507,6 +508,10 @@ nav {
 .main-image-container:hover {
   background: #cccccc;
   cursor: pointer;
+}
+
+.landing-screen__intro {
+  font-family: "Permanent Marker", cursive;
 }
 
 .landing-screen__intro--typed {
@@ -1946,6 +1951,7 @@ textarea {
 }
 
 .latest {
+  font-family: "Permanent Marker", cursive;
   background: #afec6a;
   box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
   /* border: 3px solid #111; */
@@ -1953,6 +1959,7 @@ textarea {
 }
 
 .friends {
+  font-family: "Permanent Marker", cursive;
   background: #faf557;
   box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
   /* border: 3px solid #111; */
@@ -1960,6 +1967,7 @@ textarea {
 }
 
 .learn {
+  font-family: "Permanent Marker", cursive;
   background: #7fd9cf;
   box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
   /* border: 3px solid #111; */
@@ -1967,6 +1975,7 @@ textarea {
 }
 
 .fun {
+  font-family: "Permanent Marker", cursive;
   background: #ef9ab9;
   box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
   /* border: 3px solid #111; */
@@ -1974,6 +1983,7 @@ textarea {
 }
 
 .all-posts {
+  font-family: "Permanent Marker", cursive;
   background: #afec6a;
   box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
   /* border: 3px solid #111; */
