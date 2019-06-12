@@ -1932,6 +1932,7 @@ textarea {
 /* RECENT POSTS SECTION*/
 
 .post-container {
+  font-family: "Permanent Marker", cursive;
   width: 100%;
   display: grid;
   grid-template-columns: 210px 210px 210px;
@@ -1948,6 +1949,10 @@ textarea {
   width: 100%;
   margin: 0;
   padding-top: calc(50% - 0.8em);
+}
+
+.post-container a {
+  text-decoration: none;
 }
 
 .latest {
@@ -2129,6 +2134,10 @@ figure {
 
 .blog-post__subtitle {
   font-style: italic;
+}
+
+.blog-post__headers {
+  font-family: "Permanent Marker", cursive;
 }
 
 /* BLOG POST COMMENTS SECTION */
