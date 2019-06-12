@@ -64,8 +64,8 @@ document.onreadystatechange = function() {
           commentBody.className = "user-comments__body";
 
           // userAvatar.src = `https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/${data[comment]["avatar_name"].split(".")[0]}-user-image.${data[comment]["avatar_name"].split(".")[1]}`;
-          userAvatar.src = `https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/${
-            data[comment]["avatar_name"]
+          userAvatar.src = `${
+            data[comment]["avatar_filepath"]
           }`;
           // https://s3.eu-west-2.amazonaws.com/console-blog/user-avatars/
           // `https://s3.eu-west-2.amazonaws.com/console-blog/blog-images/${data[comment]["avatar_name".split(".")[0]}-user-image.${data[comment]["avatar_name".split(".")[1]}`
