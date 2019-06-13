@@ -942,7 +942,7 @@ nav {
   max-width: 90%;
   height: 500px;
   margin: 0 auto;
-  background: url(calculator.svg);
+  background: url(../assets/calculator.svg);
   background-repeat: no-repeat;
   background-position: top center;
 }
@@ -1122,7 +1122,7 @@ nav {
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(green_postit.svg) bottom center;
+  background: url(../assets/green_postit.svg) bottom center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -1176,7 +1176,7 @@ nav {
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(yellow_postit.svg) bottom center;
+  background: url(../assets/yellow_postit.svg) bottom center;
   background-size: 100% 100%;
 }
 
@@ -1219,7 +1219,7 @@ nav {
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(blue_postit.svg) bottom center;
+  background: url(../assets/blue_postit.svg) bottom center;
   background-size: 100% 100%;
 }
 
@@ -1260,7 +1260,7 @@ nav {
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(pink_postit.svg) bottom center;
+  background: url(../assets/pink_postit.svg) bottom center;
   background-size: 100% 100%;
 }
 /*====================== SCENE ONE ANIMATIONS ================*/
@@ -1780,7 +1780,7 @@ g.boardroom .audience .clackTwo {
 #autoplay + label {
   width: 100%;
   height: 100%;
-  background: url(play.svg);
+  background: url(../assets/play.svg);
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;
@@ -1790,7 +1790,7 @@ g.boardroom .audience .clackTwo {
 #autoplay:checked + label {
   width: 100%;
   height: 100%;
-  background: url(pause.svg);
+  background: url(../assets/pause.svg);
   background-repeat: no-repeat;
   background-attachment: cover;
   background-position: center center;
@@ -2358,7 +2358,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(green_postit.svg) bottom center;
+    background: url(../assets/green_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
@@ -2396,7 +2396,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(yellow_postit.svg) bottom center;
+    background: url(../assets/yellow_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
@@ -2426,7 +2426,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(blue_postit.svg) bottom center;
+    background: url(../assets/blue_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
@@ -2455,7 +2455,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(pink_postit.svg) bottom center;
+    background: url(../assets/pink_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }

@@ -429,18 +429,22 @@
             <li><a href="../blog/blog.html">BLOG</a></li>
         </ul>
         <ul class="menuTabs">
-            <li><a href="this.html">
+            <li class="nightMode">
+              <a>
               <svg class="moonIcon">
                 <use xlink:href="#moonIcon"></use>
               </svg>
-            </a></li>
-            <li id="selected"><a href="that.html">
+            </a>
+            </li>
+            <li class="knightMode">
+              <a>
               <svg class="knightIcon">
                 <use xlink:href="#knightIcon"></use>
               </svg>
-            </a></li>
-            <li>
-              <a href="theOther.html">
+            </a>
+            </li>
+            <li class="spriteMode">
+              <a>
                 <svg class="tetrisSprite">
                   <use xlink:href="#tetrisSprite"></use>
                 </svg>
@@ -19660,6 +19664,8 @@ workshop</li>
     </div>
 
     <script type="text/javascript" src="../scripts/about.js"></script>
+    <script src="../blog/nightMode.js" type="text/javascript"></script>
+    <script src="../blog/spriteMode.js" type="text/javascript"></script>
     </body>
 
     </html>
