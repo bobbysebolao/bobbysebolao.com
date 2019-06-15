@@ -407,6 +407,64 @@ nav {
   display: none;
 }
 
+.prev-next-post-nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+}
+
+.prev-next-post-nav svg {
+  position: absolute;
+  top: 0;
+  left: calc(100% - 100px);
+  width: 100px;
+  height: 100px;
+}
+
+.prev-post {
+  position: relative;
+  background: #fdfdfd;
+  width: 50%;
+  height: 100%;
+  transform: scaleX(-1);
+  background: url('../assets/page_corner.svg');
+  background-color: #fdfdfd;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+.next-post {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: url('../assets/page_corner.svg');
+  background-color: #fdfdfd;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+.page-corner-selector {
+  cursor: pointer;
+}
+
+.page-corner-selector:hover .page-corner {
+  fill: #cccccc;
+  opacity: 0.5;
+  transition: all 0.25s ease;
+}
+
+.page-corner-selector:hover .page-arrow {
+  fill: #fe9bba;
+  opacity: 1;
+  transition: all 0.25s ease;
+}
+
+.page-arrow:hover {
+  fill: #fe9bba;
+  cursor: pointer;
+}
+
 /* .blog__login-options > *:nth-child(2) {
   margin: 0px 10px 0px 0px;
 }
@@ -1945,54 +2003,41 @@ textarea {
 }
 
 .post-container h2 {
-  height: 100%;
   width: 100%;
   margin: 0;
-  padding-top: calc(50% - 0.8em);
 }
 
 .post-container a {
   text-decoration: none;
 }
 
-.latest {
+.post-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: "Permanent Marker", cursive;
-  background: #afec6a;
   box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-  /* border: 3px solid #111; */
   border-radius: 10px;
 }
 
-.friends {
-  font-family: "Permanent Marker", cursive;
+.latest {
+  background: #afec6a;
+}
+
+.features {
   background: #faf557;
-  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-  /* border: 3px solid #111; */
-  border-radius: 10px;
 }
 
 .learn {
-  font-family: "Permanent Marker", cursive;
   background: #7fd9cf;
-  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-  /* border: 3px solid #111; */
-  border-radius: 10px;
 }
 
 .fun {
-  font-family: "Permanent Marker", cursive;
   background: #ef9ab9;
-  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-  /* border: 3px solid #111; */
-  border-radius: 10px;
 }
 
 .all-posts {
-  font-family: "Permanent Marker", cursive;
   background: #afec6a;
-  box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-  /* border: 3px solid #111; */
-  border-radius: 10px;
 }
 
 .blockO h3 {
@@ -2016,6 +2061,9 @@ textarea {
   height: 100%;
   width: 100%;
   border-radius: 10px;
+  border-color: #111;
+  /* border-width: 5px; */
+  border-style: dashed;
   background-size: contain;
   position: relative;
   display: flex;
@@ -2113,7 +2161,7 @@ textarea {
   position: relative;
   background: #fdfdfd;
   /* padding: 5em 5em 0em 5em; */
-  padding: 80px 80px 0em 80px;
+  padding: 0px 80px 0em 80px;
   /* padding: 2.5em 5vw 0em 5vw; */
   box-shadow: 5px 10px 10px 0px #000000;
 }

@@ -122,15 +122,15 @@ document.onreadystatechange = function() {
         // }
         console.log("HERE ARE YOUR TIMESTAMPS", timestamps);
         // return;
-        let friendsTimestamps = [];
+        let featuresTimestamps = [];
         let learnTimestamps = [];
         let funTimestamps = [];
         for (let i = 0; i < posts.length; i++) {
           if (
-            posts[i]["category"] === "friends" &&
+            posts[i]["category"] === "features" &&
             !latestTimestamps.includes(posts[i]["pub_timestamp"])
           ) {
-            friendsTimestamps.push(posts[i]["pub_timestamp"]);
+            featuresTimestamps.push(posts[i]["pub_timestamp"]);
           } else if (
             posts[i]["category"] === "learn" &&
             !latestTimestamps.includes(posts[i]["pub_timestamp"])
@@ -148,7 +148,7 @@ document.onreadystatechange = function() {
         // console.log("LEARN: ", learnTimestamps);
         // console.log("FUN: ", funTimestamps);
         // return;
-        let latestFriendsTimestamps = friendsTimestamps
+        let latestFeaturesTimestamps = featuresTimestamps
           .sort(descendingSort)
           .slice(0, 4);
         let latestLearnTimestamps = learnTimestamps
@@ -168,7 +168,7 @@ document.onreadystatechange = function() {
         // READY TO ADD TO DOM
 
         let latestCount = 3;
-        let friendsCount = 3;
+        let featuresCount = 3;
         let learnCount = 3;
         let funCount = 3;
 
@@ -195,6 +195,7 @@ document.onreadystatechange = function() {
             blockO[latestCount].dataset.thumbnail = `url("${
               posts[blogPost]["thumbnail"]["filepath"]
             }")`;
+            blockO[latestCount].style.border = "none";
             // console.log("DATA ATTR: ", blockO[latestCount].dataset.thumbnail);
             blockO[latestCount].closest(".blogPostLink").href = `/blog/posts/${
               posts[blogPost]["filename"]
@@ -202,25 +203,26 @@ document.onreadystatechange = function() {
             // console.log("AAAAAAA", blockO[latestCount].closest(".blogPostLink"));
             latestCount--;
           } else if (
-            posts[blogPost]["category"] === "friends" &&
+            posts[blogPost]["category"] === "features" &&
             !latestTimestamps.includes(posts[blogPost]["pub_timestamp"])
           ) {
             // console.log("BOOOBOOOO")
             if (
-              latestFriendsTimestamps.includes(posts[blogPost]["pub_timestamp"])
+              latestFeaturesTimestamps.includes(posts[blogPost]["pub_timestamp"])
             ) {
               // console.log("BOOOBOOOO")
-              blockT[friendsCount].appendChild(postTitle);
-              blockT[friendsCount].appendChild(shine);
-              blockT[friendsCount].style.backgroundImage = `url("${
+              blockT[featuresCount].appendChild(postTitle);
+              blockT[featuresCount].appendChild(shine);
+              blockT[featuresCount].style.backgroundImage = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
-              blockT[friendsCount].dataset.thumbnail = `url("${
+              blockT[featuresCount].dataset.thumbnail = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
-              blockT[friendsCount].closest(".blogPostLink").href =
+              blockT[featuresCount].style.border = "none";
+              blockT[featuresCount].closest(".blogPostLink").href =
                 posts[blogPost]["filename"];
-              friendsCount--;
+              featuresCount--;
             }
           } else if (
             posts[blogPost]["category"] === "learn" &&
@@ -239,6 +241,7 @@ document.onreadystatechange = function() {
               blockL[learnCount].dataset.thumbnail = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
+              blockL[learnCount].style.border = "none";
               blockL[learnCount].closest(".blogPostLink").href =
                 posts[blogPost]["filename"];
               learnCount--;
@@ -263,6 +266,7 @@ document.onreadystatechange = function() {
               blockS[funCount].dataset.thumbnail = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
+              blockS[funCount].style.border = "none";
               blockL[funCount].closest(".blogPostLink").href =
                 posts[blogPost]["filename"];
               funCount--;
