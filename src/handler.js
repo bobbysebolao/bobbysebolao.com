@@ -197,7 +197,7 @@ const newPostHandler = (req, res) => {
             );
           } else {
             res.writeHead(302, {
-              Location: "/blog/authorisation-failure"
+              Location: "./authorisation-failure.html"
             });
             // res.writeHead(400, { "Content-Type": "text/html" });
             res.end();
@@ -235,7 +235,7 @@ const imageManagerPageHandler = (req, res) => {
             );
           } else {
             res.writeHead(302, {
-              Location: "/blog/authorisation-failure"
+              Location: "./authorisation-failure.html"
             });
             // res.writeHead(400, { "Content-Type": "text/html" });
             res.end();

@@ -195,7 +195,7 @@ document.onreadystatechange = function() {
             blockO[latestCount].dataset.thumbnail = `url("${
               posts[blogPost]["thumbnail"]["filepath"]
             }")`;
-            blockO[latestCount].style.border = "none";
+            // blockO[latestCount].style.border = "none";
             // console.log("DATA ATTR: ", blockO[latestCount].dataset.thumbnail);
             blockO[latestCount].closest(".blogPostLink").href = `/blog/posts/${
               posts[blogPost]["filename"]
@@ -219,7 +219,7 @@ document.onreadystatechange = function() {
               blockT[featuresCount].dataset.thumbnail = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
-              blockT[featuresCount].style.border = "none";
+              // blockT[featuresCount].style.border = "none";
               blockT[featuresCount].closest(".blogPostLink").href =
                 posts[blogPost]["filename"];
               featuresCount--;
@@ -241,7 +241,7 @@ document.onreadystatechange = function() {
               blockL[learnCount].dataset.thumbnail = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
-              blockL[learnCount].style.border = "none";
+              // blockL[learnCount].style.border = "none";
               blockL[learnCount].closest(".blogPostLink").href =
                 posts[blogPost]["filename"];
               learnCount--;
@@ -266,7 +266,7 @@ document.onreadystatechange = function() {
               blockS[funCount].dataset.thumbnail = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
-              blockS[funCount].style.border = "none";
+              // blockS[funCount].style.border = "none";
               blockL[funCount].closest(".blogPostLink").href =
                 posts[blogPost]["filename"];
               funCount--;
