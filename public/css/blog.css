@@ -454,6 +454,11 @@ nav {
   transition: all 0.25s ease;
 }
 
+.page-arrow {
+  width: 30px;
+  height: 30px;
+}
+
 .page-corner-selector:hover .page-arrow {
   fill: #fe9bba;
   opacity: 1;
