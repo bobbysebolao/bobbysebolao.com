@@ -1,5 +1,8 @@
 console.log("LOGIN OPTIONS HERE");
 
+const getUrl = window.location;
+const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
 const fileDivider = document.querySelector(".fileDivider");
 const createOptions = document.querySelector(".blog__create-options");
 const loginOptions = document.querySelector(".blog__login-options");
@@ -67,12 +70,12 @@ fetch("/blog/check-login-status")
       let createNewPost = document.createElement("a");
       createNewPost.className = "blog__login-options--create";
       createNewPost.textContent = "New post";
-      createNewPost.href = "new";
+      createNewPost.href = baseUrl + "/new";
 
       let imageManager = document.createElement("a");
       imageManager.className = "blog__login-options--create";
       imageManager.textContent = "Image manager";
-      imageManager.href = "image-manager";
+      imageManager.href = baseUrl + "/image-manager";
 
       username.textContent = `${userData.username}`;
       username.className = "user-profile__username";
