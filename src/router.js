@@ -47,7 +47,11 @@ const router = (request, response) => {
       // else {
       //   response.end("false")
       // }
-    } else if (endpoint.includes("/scripts")) {
+    }
+    else if (endpoint === "/projects") {
+      handler.getProjectsHandler(request, response);
+    }
+    else if (endpoint.includes("/scripts")) {
       handler.domScriptsHandler(response, endpoint, extension);
     } else if (endpoint.includes("/blog/confirm-email")) {
       // console.log("BOASTY", request.headers.referer)

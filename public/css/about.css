@@ -169,6 +169,7 @@ nav {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   z-index: 0;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
 .tabRow li:before,
@@ -283,6 +284,7 @@ nav {
   border-top-right-radius: 6px;
   z-index: 0;
   cursor: pointer;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
 /* .menuTabs li:nth-child(1) {
@@ -355,7 +357,8 @@ nav {
   border-radius: 5px 5px 0 0;
   padding: 10px 25px 10px 25px;
   /* max-height: 52px; */
-  z-index: 5;
+  z-index: 0;
+  box-shadow: 5px 10px 10px 0px #000000;
 }
 
 .blog__create-options {

@@ -37,6 +37,7 @@ const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationT
 const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
 const generateAWSSignature = require("./authentication/generateAWSSignature.js");
 const getSignedAwsRequest = require("./authentication/getSignedAwsRequest.js");
+const getProjects = require("./airtable/getProjects.js");
 
 //GET REQUEST HANDLERS
 
@@ -351,6 +352,19 @@ const checkLoginStatusHandler = (req, res) => {
     res.end("false");
   }
 };
+
+const getProjectsHandler = (req, res) => {
+  // console.log("So far so good");
+  getProjects()
+  .then(response => {
+    console.log("Boogie woogie", response);
+    return;
+    res.end(JSON.stringify(response));
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
 
 const getCommentsHandler = (req, res) => {
   console.log(req.headers.referer.split("/")[5]);
@@ -949,6 +963,7 @@ module.exports = {
   publicHandler,
   loginPageHandler,
   checkLoginStatusHandler,
+  getProjectsHandler,
   getCommentsHandler,
   getAuthorHandler,
   getTagsHandler,
