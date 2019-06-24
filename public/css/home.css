@@ -853,6 +853,46 @@ nav {
   padding: 80px 80px 0em 80px;
   /* padding: 2.5em 5vw 0em 5vw; */
   box-shadow: 5px 10px 10px 0px #000000;
+  font-family: "Permanent Marker", cursive;
+}
+
+.aliens {
+  display: flex;
+  justify-content: space-around;
+}
+
+.aliens div {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  animation: alienAnim 2s steps(2) infinite;
+}
+
+.aliens__one {
+  background: url('../assets/alien_1.svg');
+}
+
+.aliens__two {
+  background: url('../assets/alien_2.svg');
+}
+
+.aliens__three {
+  background: url('../assets/alien_3.svg');
+}
+
+.aliens__defense {
+  background: url('../assets/defense.svg');
+}
+
+.aliens__player {
+  background: url('../assets/player.svg');
+}
+
+
+@keyframes alienAnim {
+  100% {background-position-x: 200%; }
 }
 
 .hiddenHeader {
