@@ -799,7 +799,7 @@ nav {
   height: 50px;
   width: 100%;
   margin-top: -25px;
-  background: url(tape.svg) bottom center;
+  background: url(../assets/tape.svg) bottom center;
   background-size: 100% 100%;
   opacity: 0.7;
   transform: rotate(-6deg);
@@ -813,7 +813,7 @@ nav {
   height: 50px;
   width: 100%;
   margin-top: -25px;
-  background: url(tape.svg) bottom center;
+  background: url(../assets/tape.svg) bottom center;
   background-size: 100% 100%;
   opacity: 0.7;
 }
