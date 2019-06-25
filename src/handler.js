@@ -356,15 +356,15 @@ const checkLoginStatusHandler = (req, res) => {
 const getProjectsHandler = (req, res) => {
   // console.log("So far so good");
   getProjects()
-  .then(response => {
-    console.log("Boogie woogie", response);
-    return;
-    res.end(JSON.stringify(response));
-  })
-  .catch(error => {
-    console.log(error)
-  })
-}
+    .then(response => {
+      console.log("Boogie woogie", response);
+      // return;
+      res.end(JSON.stringify(response));
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
 
 const getCommentsHandler = (req, res) => {
   console.log(req.headers.referer.split("/")[5]);
@@ -593,93 +593,92 @@ const uploadImageHandler = (req, res, encodedJwt) => {
 
   let username;
 
-  decodeJSONWebToken(encodedJwt).then(decodedToken => {
-    if (decodedToken === undefined) {
-      res.writeHead(302, { Location: "/blog/publish-failure.html" });
-      // res.writeHead(400, { "Content-Type": "text/html" });
-      res.end();
-      // res.writeHead(400, { "Content-Type": "text/html" });
-      // res.end(
-      //   "You are not logged in. Please login in order to publish a post"
-      // );
-    } else if (decodedToken.logged_in === true) {
-      username = decodedToken.username;
-      console.log(username);
+  decodeJSONWebToken(encodedJwt)
+    .then(decodedToken => {
+      if (decodedToken === undefined) {
+        res.writeHead(302, { Location: "/blog/publish-failure.html" });
+        // res.writeHead(400, { "Content-Type": "text/html" });
+        res.end();
+        // res.writeHead(400, { "Content-Type": "text/html" });
+        // res.end(
+        //   "You are not logged in. Please login in order to publish a post"
+        // );
+      } else if (decodedToken.logged_in === true) {
+        username = decodedToken.username;
+        console.log(username);
 
-      console.log("NO 2");
+        console.log("NO 2");
 
-      let form = new formidable.IncomingForm();
+        let form = new formidable.IncomingForm();
 
-      form.uploadDir = __dirname + "/../public/assets/images/blog";
-      form.keepExtensions = true;
-      form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
+        form.uploadDir = __dirname + "/../public/assets/images/blog";
+        form.keepExtensions = true;
+        form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
 
-      form.on("fileBegin", function(name, file) {
-        file.path = path.join(
-          __dirname,
-          "../public/assets/images/blog",
-          file.name
-        );
-      });
+        form.on("fileBegin", function(name, file) {
+          file.path = path.join(
+            __dirname,
+            "../public/assets/images/blog",
+            file.name
+          );
+        });
 
-      let formData;
+        let formData;
 
-      form.parse(req, (error, fields, files) => {
-        if (error) {
-          console.log(`Cannot upload images. Error is ${error}`);
-          return error;
-        } else {
-          console.log("Form data parsing underway...");
-          // console.log("The image file: ", files);
-          // return;
+        form.parse(req, (error, fields, files) => {
+          if (error) {
+            console.log(`Cannot upload images. Error is ${error}`);
+            return error;
+          } else {
+            console.log("Form data parsing underway...");
+            // console.log("The image file: ", files);
+            // return;
 
-          let mainImage = {
-            name: files["mainImage"]["name"],
-            size: files["mainImage"]["size"],
-            // path: files["mainImage"]["path"],
-            path: fields["mainImageUrl"],
-            type: files["mainImage"]["type"]
-          };
+            let mainImage = {
+              name: files["mainImage"]["name"],
+              size: files["mainImage"]["size"],
+              // path: files["mainImage"]["path"],
+              path: fields["mainImageUrl"],
+              type: files["mainImage"]["type"]
+            };
 
-          console.log("MAIN", mainImage);
-          // return;
+            console.log("MAIN", mainImage);
+            // return;
 
-          fields["mainImage"] = mainImage;
+            fields["mainImage"] = mainImage;
 
-          console.log("Uploaded images successfully");
-          formData = fields;
-          console.log(formData, "LOOK HERE <=====");
-          // return;
+            console.log("Uploaded images successfully");
+            formData = fields;
+            console.log(formData, "LOOK HERE <=====");
+            // return;
 
-          submitNewImage(fields)
-          .then(result => {
-            fs.unlink(
-              __dirname +
-                "/../public/assets/images/blog/" +
-                files["mainImage"]["name"],
-              err => {
-                if (err) {
-                  console.log(err);
-                  return;
-                }
-                console.log(
-                  "Main image successfully deleted from local filesystem"
+            submitNewImage(fields)
+              .then(result => {
+                fs.unlink(
+                  __dirname +
+                    "/../public/assets/images/blog/" +
+                    files["mainImage"]["name"],
+                  err => {
+                    if (err) {
+                      console.log(err);
+                      return;
+                    }
+                    console.log(
+                      "Main image successfully deleted from local filesystem"
+                    );
+                  }
                 );
-              }
-            );
-          })
-          .then(response => {
-            res.writeHead(302, { Location: "/blog/image-manager" });
-            res.end();
-          })
-          .catch(error => console.log(error));
-        }
-      })
-
-
-    }
-  })
-  .catch(error => console.log(error))
+              })
+              .then(response => {
+                res.writeHead(302, { Location: "/blog/image-manager" });
+                res.end();
+              })
+              .catch(error => console.log(error));
+          }
+        });
+      }
+    })
+    .catch(error => console.log(error));
 };
 
 const createAccountSubmitHandler = (req, res) => {
