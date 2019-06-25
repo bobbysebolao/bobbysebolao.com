@@ -432,7 +432,7 @@ nav {
   width: 50%;
   height: 100%;
   transform: scaleX(-1);
-  background: url('../assets/page_corner.svg');
+  background: url("../assets/page_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -442,7 +442,7 @@ nav {
   position: relative;
   width: 50%;
   height: 100%;
-  background: url('../assets/page_corner.svg');
+  background: url("../assets/page_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -478,7 +478,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url('../assets/patreon_corner.svg');
+  background: url("../assets/patreon_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -871,28 +871,35 @@ nav {
 }
 
 .aliens__one {
-  background: url('../assets/alien_1.svg');
+  background: url("../assets/alien_1.svg");
 }
 
 .aliens__two {
-  background: url('../assets/alien_2.svg');
+  background: url("../assets/alien_2.svg");
 }
 
 .aliens__three {
-  background: url('../assets/alien_3.svg');
+  background: url("../assets/alien_3.svg");
 }
 
 .aliens__defense {
-  background: url('../assets/defense.svg');
+  background: url("../assets/defense.svg");
 }
 
 .aliens__player {
-  background: url('../assets/player.svg');
+  background: url("../assets/player.svg");
 }
 
-
 @keyframes alienAnim {
-  100% {background-position-x: 200%; }
+  100% {
+    background-position-x: 200%;
+  }
+}
+
+.portfolio-project {
+  background: red;
+  width: 100%;
+  height: 360px;
 }
 
 .hiddenHeader {
