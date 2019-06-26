@@ -897,9 +897,10 @@ nav {
 }
 
 .portfolio-project {
-  background: red;
+  /* background: red; */
   width: 100%;
   height: 360px;
+  margin-top: 10px;
 }
 
 .hiddenHeader {
