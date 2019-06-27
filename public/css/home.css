@@ -897,10 +897,35 @@ nav {
 }
 
 .portfolio-project {
-  /* background: red; */
-  width: 100%;
+  margin-top: 5em;
+  position: relative;
+  z-index: 0;
+}
+
+.portfolio-project__image {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  background: blue;
+  width: 360px;
   height: 360px;
   margin-top: 10px;
+  border: 1px solid black;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 1;
+}
+
+.portfolio-project__description {
+  position: absolute;
+  /* background: red; */
+  top: -2em;
+  left: 2em;
+  width: calc(100% - 2em);
+  height: 360px;
+  background: red;
+  /* border: 5px solid red; */
+  z-index: -1;
 }
 
 .hiddenHeader {
