@@ -859,6 +859,8 @@ nav {
 .aliens {
   display: flex;
   justify-content: space-around;
+  margin-top: 5em;
+  margin-bottom: 6.5em;
 }
 
 .aliens div {
@@ -897,20 +899,20 @@ nav {
 }
 
 .portfolio-project {
-  margin-top: 5em;
+  /* margin-top: 5em;
+  margin-bottom: 5em; */
   position: relative;
   z-index: 0;
 }
 
 .portfolio-project__image {
   width: 360px;
-  height: 424px;
+  height: 448px;
   margin-top: 0px;
   background: #cccccc;
   background-repeat: no-repeat;
   background-position: center center;
   z-index: 1;
-  border: 1px solid black;
 }
 
 .portfolio-project__background {
@@ -918,7 +920,7 @@ nav {
   top: -1.5em;
   left: 1.5em;
   width: calc(100% - 1.5em);
-  height: 424px;
+  height: 448px;
   background: #afec6a;
   z-index: -1;
 }
@@ -960,13 +962,22 @@ nav {
 
 .portfolio-project__read-more {
   position: absolute;
-  height: 48px;
   bottom: 0px;
   right: 20px;
   font-size: 1.25em;
-  padding: 0 24px;
+  padding: 12px 12px;
   text-transform: uppercase;
   border: 1px solid black;
+  /* font-family: "Lato", sans-serif; */
+  background: black;
+  text-decoration: none;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.portfolio-project__read-more:hover {
+  background: white;
+  color: black;
 }
 
 .hiddenHeader {
