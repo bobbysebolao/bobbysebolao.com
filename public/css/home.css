@@ -903,29 +903,70 @@ nav {
 }
 
 .portfolio-project__image {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-  background: blue;
   width: 360px;
-  height: 360px;
-  margin-top: 10px;
-  border: 1px solid black;
+  height: 424px;
+  margin-top: 0px;
+  background: #cccccc;
   background-repeat: no-repeat;
   background-position: center center;
   z-index: 1;
+  border: 1px solid black;
+}
+
+.portfolio-project__background {
+  position: absolute;
+  top: -1.5em;
+  left: 1.5em;
+  width: calc(100% - 1.5em);
+  height: 424px;
+  background: #afec6a;
+  z-index: -1;
 }
 
 .portfolio-project__description {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  /* background: red; */
   top: -2em;
-  left: 2em;
-  width: calc(100% - 2em);
-  height: 360px;
-  background: red;
-  /* border: 5px solid red; */
-  z-index: -1;
+  right: 0;
+  width: 280px;
+  z-index: 0;
+  /* border: 1px solid black */
+  padding: 2em 1.25em 0em 1.25em;
+}
+
+.portfolio-project__type {
+  align-self: flex-end;
+  text-align: right;
+  width: 70%;
+  margin: 0 0 0 0;
+}
+
+.portfolio-project__title {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.portfolio-project__summary {
+  font-family: "Lato", sans-serif;
+  text-align: left;
+}
+
+.portfolio-project__tech-stack {
+  font-family: "Lato", sans-serif;
+  text-align: left;
+}
+
+.portfolio-project__read-more {
+  position: absolute;
+  height: 48px;
+  bottom: 0px;
+  right: 20px;
+  font-size: 1.25em;
+  padding: 0 24px;
+  text-transform: uppercase;
+  border: 1px solid black;
 }
 
 .hiddenHeader {
