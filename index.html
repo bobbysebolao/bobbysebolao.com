@@ -20,7 +20,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/assets/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <link id="standardStylesheet" rel="stylesheet" type="text/css" href="/css/home.css" />
     <!--
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     -->
@@ -34,6 +34,10 @@
     />
     <link
       href="https://fonts.googleapis.com/css?family=Indie+Flower"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
       rel="stylesheet"
     />
   </head>
@@ -520,7 +524,7 @@
     </header>
     <div class="page">
       <div class="header">
-        <h1><span>Hi</span><br /><span>I'm</span><br /><span>Bobby</span></h1>
+        <h1 class="home-title"><span class="home-title__wordone">Hi </span>-<span class="home-title__wordtwo"> I'm</span><br /><span class="home-title__wordthree">Bobby</span></h1>
         <div class="aliens">
           <div class="aliens__one"></div>
           <div class="aliens__one"></div>
@@ -529,9 +533,11 @@
           <div class="aliens__one"></div>
         </div>
 
+        <hr class="home-separators">
+
         <section class="portfolio-project">
           <div class="portfolio-project__image"></div>
-          <div class="portfolio-project__background"></div>
+          <div class="portfolio-project__background portfolio-project__bg-one"></div>
           <div class="portfolio-project__description">
             <p class="portfolio-project__type">Distributed Cloud Platform</p>
             <h2 class="portfolio-project__title">LSx Action Planner</h2>
@@ -544,7 +550,7 @@
               Built with Node.js, React, and SQL.
             </p>
           </div>
-          <a href="google.com" class="portfolio-project__read-more"
+          <a href="google.com" class="portfolio-project__read-more portfolio-project__read-more-one"
             >Github =></a
           >
         </section>
@@ -557,9 +563,11 @@
           <div class="aliens__two"></div>
         </div>
 
+        <hr class="home-separators">
+
         <section class="portfolio-project">
           <div class="portfolio-project__image"></div>
-          <div class="portfolio-project__background"></div>
+          <div class="portfolio-project__background portfolio-project__bg-two"></div>
           <div class="portfolio-project__description">
             <p class="portfolio-project__type">Distributed Cloud Platform</p>
             <h2 class="portfolio-project__title">LSx Action Planner</h2>
@@ -572,7 +580,7 @@
               Built with Node.js, React, and SQL.
             </p>
           </div>
-          <a href="google.com" class="portfolio-project__read-more"
+          <a href="google.com" class="portfolio-project__read-more portfolio-project__read-more-two"
             >Github =></a
           >
         </section>
@@ -585,9 +593,11 @@
           <div class="aliens__three"></div>
         </div>
 
+        <hr class="home-separators">
+
         <section class="portfolio-project">
           <div class="portfolio-project__image"></div>
-          <div class="portfolio-project__background"></div>
+          <div class="portfolio-project__background portfolio-project__bg-three"></div>
           <div class="portfolio-project__description">
             <p class="portfolio-project__type">Distributed Cloud Platform</p>
             <h2 class="portfolio-project__title">LSx Action Planner</h2>
@@ -600,7 +610,7 @@
               Built with Node.js, React, and SQL.
             </p>
           </div>
-          <a href="google.com" class="portfolio-project__read-more"
+          <a href="google.com" class="portfolio-project__read-more portfolio-project__read-more-three"
             >Github =></a
           >
         </section>
@@ -609,19 +619,15 @@
           <div class="aliens__defense"></div>
           <div class="aliens__defense"></div>
           <div class="aliens__defense"></div>
-          <div class="aliens__defense"></div>
-          <div class="aliens__defense"></div>
         </div>
 
         <div class="aliens">
           <div class="aliens__player"></div>
           <div class="aliens__player"></div>
           <div class="aliens__player"></div>
-          <div class="aliens__player"></div>
-          <div class="aliens__player"></div>
         </div>
 
-        <hr />
+        <hr class="home-separators">
 
         <!-- <div class="projects-container"></div> -->
       </div>
@@ -666,5 +672,6 @@
     </div>
 
     <script src="./scripts/projects.js" type="text/javascript"></script>
+    <script src="./blog/spriteMode.js" type="text/javascript"></script>
   </body>
 </html>

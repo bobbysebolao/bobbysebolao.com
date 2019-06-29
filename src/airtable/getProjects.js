@@ -15,7 +15,11 @@ const getProjects = () => {
   return new Promise((resolve, reject) => {
     let result = [];
     base('Projects')
-      .select()
+      .select({
+    // Selecting the first 3 records in Grid view:
+    maxRecords: 3,
+    view: "Grid view"
+})
       .eachPage(
         function page(records, fetchNextPage) {
           // let result = [];
