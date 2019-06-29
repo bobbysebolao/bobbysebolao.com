@@ -860,7 +860,7 @@ nav {
   padding: 80px 80px 0em 80px;
   /* padding: 2.5em 5vw 0em 5vw; */
   box-shadow: 5px 10px 10px 0px #000000;
-  font-family: "Permanent Marker", cursive;
+  font-family: "VT323", monospace;
 }
 
 .home-title {
@@ -935,6 +935,7 @@ nav {
   background-repeat: no-repeat;
   background-position: center center;
   z-index: 1;
+  border: 5px solid black;
 }
 
 .portfolio-project__background {
@@ -943,8 +944,21 @@ nav {
   left: 1.5em;
   width: calc(100% - 1.5em);
   height: 448px;
-  background: #afec6a;
+  background: hsl(88, 77%, 67%);
   z-index: -1;
+  border: 5px solid black;
+}
+
+.portfolio-project__bg-one {
+  background: #afec6a;
+}
+
+.portfolio-project__bg-two {
+  background: #faf557;
+}
+
+.portfolio-project__bg-three {
+  background: #7fd9cf;
 }
 
 .portfolio-project__description {
@@ -989,16 +1003,25 @@ nav {
   font-size: 1.25em;
   padding: 12px 12px;
   text-transform: uppercase;
-  border: 1px solid black;
+  border: 5px solid black;
   /* font-family: "Lato", sans-serif; */
   background: black;
   text-decoration: none;
   color: white;
-  transition: all 0.25s ease;
 }
 
-.portfolio-project__read-more:hover {
-  background: white;
+.portfolio-project__read-more-one:hover {
+  background: hsl(88, 77%, 77%);
+  color: black;
+}
+
+.portfolio-project__read-more-two:hover {
+  background: hsl(58, 94%, 76%);
+  color: black;
+}
+
+.portfolio-project__read-more-three:hover {
+  background: hsl(173, 54%, 77%);
   color: black;
 }
 
