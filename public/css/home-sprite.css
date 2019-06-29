@@ -873,7 +873,18 @@ nav {
   display: none;
 }
 
+.home-title__wordone {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.home-title__wordtwo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 .home-title__wordthree {
+  font-size: 1.5em;
   font-family: 'Calculator';
   font-weight: bold;
 }
