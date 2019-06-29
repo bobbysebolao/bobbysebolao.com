@@ -286,7 +286,8 @@ const publicHandler = (res, endpoint, extension) => {
     ico: "image/x-icon",
     svg: "image/svg+xml",
     gif: "image/gif",
-    json: "application/json"
+    json: "application/json",
+    ttf: "application/octet-stream"
   };
 
   fs.readFile(__dirname + "/../public" + endpoint, function(error, file) {

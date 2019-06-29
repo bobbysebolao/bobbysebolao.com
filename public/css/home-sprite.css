@@ -10,6 +10,13 @@ width of an element) */
 
 /* ======================= TOP LEVEL STYLING======================= */
 
+@font-face {
+    font-family: 'Calculator';
+    src: url('fonts/calculator.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* 1. Set font. */
 /* 2. Make 'Return to top' scrolling smooth */
 
@@ -857,17 +864,22 @@ nav {
 }
 
 .home-title {
-  /* font-family: "VT323", monospace; */
+  font-family: "VT323", monospace;
+  position: relative;
+  text-transform: uppercase;
 }
 
 .home-separators {
-  display: block;
-  margin-top: 5em;
-  margin-bottom: 6.5em;
+  display: none;
+}
+
+.home-title__wordthree {
+  font-family: 'Calculator';
+  font-weight: bold;
 }
 
 .aliens {
-  display: none;
+  display: flex;
   justify-content: space-around;
   margin-top: 5em;
   margin-bottom: 6.5em;
@@ -923,7 +935,6 @@ nav {
   background-repeat: no-repeat;
   background-position: center center;
   z-index: 1;
-  border-radius: 5px;
 }
 
 .portfolio-project__background {
@@ -934,7 +945,6 @@ nav {
   height: 448px;
   background: #afec6a;
   z-index: -1;
-  border-radius: 5px;
 }
 
 .portfolio-project__description {
@@ -985,7 +995,6 @@ nav {
   text-decoration: none;
   color: white;
   transition: all 0.25s ease;
-  border-radius: 5px;
 }
 
 .portfolio-project__read-more:hover {
