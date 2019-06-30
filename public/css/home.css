@@ -74,7 +74,6 @@ em {
   font-style: italic;
 }
 
-h1,
 h2,
 h3,
 h4 {
@@ -82,6 +81,8 @@ h4 {
   line-height: 1.35;
   color: #111;
   font-weight: 400;
+  text-align: left;
+  margin-bottom: 2.5em;
 }
 
 h1 {
@@ -856,14 +857,13 @@ nav {
   font-family: "Permanent Marker", cursive;
 }
 
-.home-title {
-  /* font-family: "VT323", monospace; */
+.home-subtitle {
+  font-size: 2em;
 }
 
 .home-separators {
   display: block;
   margin-top: 5em;
-  margin-bottom: 6.5em;
 }
 
 .aliens {
@@ -909,8 +909,8 @@ nav {
 }
 
 .portfolio-project {
-  /* margin-top: 5em;
-  margin-bottom: 5em; */
+  /* margin-top: 10em; */
+  margin-bottom: 10em;
   position: relative;
   z-index: 0;
 }

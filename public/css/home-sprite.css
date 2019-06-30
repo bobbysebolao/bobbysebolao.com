@@ -81,7 +81,6 @@ em {
   font-style: italic;
 }
 
-h1,
 h2,
 h3,
 h4 {
@@ -89,6 +88,8 @@ h4 {
   line-height: 1.35;
   color: #111;
   font-weight: 400;
+  text-align: left;
+  margin-bottom: 2.5em;
 }
 
 h1 {
@@ -866,6 +867,11 @@ nav {
 .home-title {
   font-family: "VT323", monospace;
   position: relative;
+  text-transform: uppercase;
+}
+
+.home-subtitle {
+  font-size: 2em;
   text-transform: uppercase;
 }
 
