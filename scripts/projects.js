@@ -27,9 +27,8 @@ let projectLinksArr = Array.prototype.slice.call(projectLinksHTMLCollection);
 fetch("/projects")
   .then(res => res.json())
   .then(projectsData => {
-    console.log("Here are the airtable results: ", projectsData);
+    // console.log("Here are the airtable results: ", projectsData);
     for (let i = 0; i < projectsData.length; i++) {
-      console.log("The image URL: ", projectsData[i]["Image"][0]["url"]);
       projectImageArr[i].style.backgroundImage = `url("${
         projectsData[i]["Image"][0]["url"]
       }")`;
@@ -39,5 +38,11 @@ fetch("/projects")
       projectTechStackArr[i].textContent = projectsData[i]["Tech Stack"];
       projectLinksArr[i].textContent = projectsData[i]["Link Text"];
       projectLinksArr[i].href = projectsData[i]["Link URL"];
+
+      console.log("The image URL: ", projectsData[i]["Image"][0]["url"]);
+      console.log("The type: ", projectsData[i]["Type"]);
+      console.log("The title: ", projectsData[i]["Title"]);
+      console.log("The description: ", projectsData[i]["Description"]);
+      console.log("The link: ", projectsData[i]["Link URL"]);
     }
   });
