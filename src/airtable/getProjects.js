@@ -17,7 +17,7 @@ const getProjects = () => {
     base('Projects')
       .select({
     // Selecting the first 3 records in Grid view:
-    maxRecords: 3,
+    maxRecords: 4,
     view: "Grid view"
 })
       .eachPage(
