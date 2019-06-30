@@ -948,6 +948,10 @@ nav {
   background: #7fd9cf;
 }
 
+.portfolio-project__bg-four {
+  background: #fe9bba;
+}
+
 .portfolio-project__description {
   display: flex;
   flex-direction: column;
@@ -1011,6 +1015,11 @@ nav {
 
 .portfolio-project__read-more-three:hover {
   background: hsl(173, 54%, 77%);
+  color: black;
+}
+
+.portfolio-project__read-more-four:hover {
+  background: hsl(341, 98%, 90%);
   color: black;
 }
 
