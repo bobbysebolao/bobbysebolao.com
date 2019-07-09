@@ -1033,6 +1033,12 @@ nav {
 
 /* CONTACT FORM STYLING */
 
+.contact-form-intro {
+  font-family: "Lato", sans-serif;
+  text-align: left;
+  margin-top: 0;
+}
+
 .contact-form {
   display: grid;
   grid-template-columns: 2fr 9fr;
@@ -1042,9 +1048,11 @@ nav {
   "name-label name-field"
   "email-label email-field"
   "about about"
-  "message-label message-field";
-  grid-row-gap: 50px;
+  "message-label message-field"
+  ". contact-button";
+  grid-row-gap: 3em;
   width: 550px;
+  margin-top: 4em;
 }
 
 .contact-form input {
@@ -1054,13 +1062,13 @@ nav {
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #cccccc;
   transition: all 0.25s ease;
   background: #fdfdfd;
 }
 
 .contact-form input:hover {
-  border-color: red;
+  border-color: black;
 }
 
 #contact-form-name {
@@ -1139,6 +1147,7 @@ nav {
     margin-right: 17px;
     /* display: inline-block; */
     z-index: 0;
+    font-family: "Lato", sans-serif;
 }
 
 .contact-form-checkbox + label:before {
@@ -1158,21 +1167,100 @@ nav {
     transition(background 250ms ease-in-out);
     width: 100px;
     height: 100px;
-    background: red;
+    /* background: red; */
     z-index: -1;
+    border: 1px solid black;
+    transition: all 0.25s ease;
 }
 
-.contact-form-checkbox:checked + label:before {
+.contact-form-checkbox + label:hover:before {
+  background: #cccccc;
+}
+
+#contact-form-checkbox-one + label:before {
+  background-image: url(../assets/desktop-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#contact-form-checkbox-one:checked + label:before {
 /* Your checked background color */
-background: #a8bd44;
+background: #afec6a;
+background-image: url(../assets/desktop-icon.svg);
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
+}
+
+#contact-form-checkbox-two + label:before {
+  background-image: url(../assets/file-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#contact-form-checkbox-two:checked + label:before {
+/* Your checked background color */
+background: #faf557;
+background-image: url(../assets/file-icon.svg);
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
+}
+
+#contact-form-checkbox-three + label:before {
+  background-image: url(../assets/globe-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#contact-form-checkbox-three:checked + label:before {
+/* Your checked background color */
+background: #7fd9cf;
+background-image: url(../assets/globe-icon.svg);
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
+}
+
+#contact-form-checkbox-four + label:before {
+  background-image: url(../assets/cup-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#contact-form-checkbox-four:checked + label:before {
+/* Your checked background color */
+background: #fe9bba;
+background-image: url(../assets/cup-icon.svg);
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
 }
 
 #contact-form-message {
   grid-area: message-field;
+  margin: 0;
+  padding: 0;
 }
 
 #contact-form-message + label{
   grid-area: message-label;
+}
+
+#contact-form-button {
+  grid-area: contact-button;
+  margin: auto;
+  margin-bottom: 3em;
+  font-size: 1.25em;
+  padding: 12px 12px;
+  border-radius: 5px;
+  /* border: 0; */
+  text-transform: uppercase;
+  font-family: "Permanent Marker", cursive;
 }
 
 /* #contact-form-checkbox-one {

@@ -652,11 +652,11 @@
 
         <h2>Let's Talk</h2>
 
-        <p>Wanna grab a latte? ☕</p>
+        <p class="contact-form-intro">Wanna grab a latte? ☕</p>
 
-        <p>Send me an email!</p>
+        <p class="contact-form-intro">Send me a message!</p>
 
-        <form class="contact-form">
+        <form class="contact-form" action="/contact/send" method="post" enctype="multipart/form-data">
           <input type="text" name="contact-form-name" placeholder="Ada Lovelace" id="contact-form-name"/>
           <label for="contact-form-name">Name</label>
           <input type="text" name="contact-form-email" placeholder="ada@example.com" id="contact-form-email"/>
@@ -683,13 +683,13 @@
     </div>
     </div>
     </fieldset>
-    <textarea id="contact-form-message" name="contact-form-message" rows="8">
-    </textarea>
+    <textarea id="contact-form-message" name="contact-form-message" rows="8"></textarea>
     <label for="contact-form-message">Message</label>
 
 
-          <button type="submit" id="contact-form-button">Let's Chat!</button>
+          <button type="submit" id="contact-form-button">Send</button>
         </form>
+        <hr>
       </div>
 
       <div class="footer">

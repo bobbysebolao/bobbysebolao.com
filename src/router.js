@@ -85,7 +85,9 @@ const router = (request, response) => {
   }
 
   if (method === "POST") {
-    if (endpoint === "/create/post") {
+    if (endpoint === "/contact/send") {
+      handler.contactFormHandler(request, response);
+    } else if (endpoint === "/create/post") {
       let jwt = cookie.parse(request.headers.cookie).jwt;
       // console.log(request.url)
       // return;
