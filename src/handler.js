@@ -412,6 +412,37 @@ const getTagsHandler = (req, res) => {
 
 //POST REQUEST HANDLERS
 
+const contactFormHandler = (req, res) => {
+  console.log("YAH");
+
+  let form = new formidable.IncomingForm();
+
+  form.uploadDir = __dirname + "/../public/assets/images/blog";
+  form.keepExtensions = true;
+  form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
+
+  form.on("fileBegin", function(name, file) {
+    file.path = path.join(
+      __dirname,
+      "../public/assets/images/blog",
+      file.name
+    );
+  });
+
+  form.parse(req, (error, fields, files) => {
+    if (error) {
+      console.log(`Cannot upload images. Error is ${error}`);
+      return error;
+    } else {
+      console.log("Form data parsing underway...");
+      console.log(fields)
+      // console.log("The image file: ", files);
+      // return;
+    }
+  });
+
+}
+
 const createPostHandler = (req, res, encodedJwt) => {
   console.log("POST request received");
 
@@ -967,6 +998,7 @@ module.exports = {
   getCommentsHandler,
   getAuthorHandler,
   getTagsHandler,
+  contactFormHandler,
   createPostHandler,
   uploadImageHandler,
   createAccountSubmitHandler,
