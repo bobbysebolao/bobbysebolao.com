@@ -367,15 +367,15 @@ nav {
   /* box-shadow: 5px 10px 10px 0px #000000; */
 }
 
-.fileDivider:before {
-  /* content: ""; */
+/* .fileDivider:before {
+  content: "";
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   height: 30px;
   background: #fdfdfd;
-}
+} */
 
 .blog__create-options {
   display: flex;
