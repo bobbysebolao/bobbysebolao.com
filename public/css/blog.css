@@ -364,11 +364,11 @@ nav {
   padding: 10px 25px 10px 25px;
   /* max-height: 52px; */
   z-index: 0;
-  box-shadow: 5px 10px 10px 0px #000000;
+  /* box-shadow: 5px 10px 10px 0px #000000; */
 }
 
 .fileDivider:before {
-  content: "";
+  /* content: ""; */
   position: absolute;
   top: 100%;
   left: 0;
@@ -661,6 +661,17 @@ nav {
   justify-content: space-between;
   width: 100%;
   z-index: 0;
+  position: relative;
+}
+
+.page:before {
+  content: "";
+  box-shadow: 5px 10px 10px 0px #000000;
+  position: absolute;
+  top: -52px;
+  left: 0;
+  width: 100%;
+  height: 52px;
 }
 
 .pageBreak {
@@ -2340,6 +2351,7 @@ figure {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    position: relative;
   }
 
   .header {
