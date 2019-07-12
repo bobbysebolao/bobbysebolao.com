@@ -122,15 +122,15 @@ document.onreadystatechange = function() {
         // }
         console.log("HERE ARE YOUR TIMESTAMPS", timestamps);
         // return;
-        let featuresTimestamps = [];
+        let lifeTimestamps = [];
         let learnTimestamps = [];
         let funTimestamps = [];
         for (let i = 0; i < posts.length; i++) {
           if (
-            posts[i]["category"] === "features" &&
+            posts[i]["category"] === "life" &&
             !latestTimestamps.includes(posts[i]["pub_timestamp"])
           ) {
-            featuresTimestamps.push(posts[i]["pub_timestamp"]);
+            lifeTimestamps.push(posts[i]["pub_timestamp"]);
           } else if (
             posts[i]["category"] === "learn" &&
             !latestTimestamps.includes(posts[i]["pub_timestamp"])
@@ -148,7 +148,7 @@ document.onreadystatechange = function() {
         // console.log("LEARN: ", learnTimestamps);
         // console.log("FUN: ", funTimestamps);
         // return;
-        let latestFeaturesTimestamps = featuresTimestamps
+        let latestLifeTimestamps = lifeTimestamps
           .sort(descendingSort)
           .slice(0, 4);
         let latestLearnTimestamps = learnTimestamps
@@ -168,7 +168,7 @@ document.onreadystatechange = function() {
         // READY TO ADD TO DOM
 
         let latestCount = 3;
-        let featuresCount = 3;
+        let lifeCount = 3;
         let learnCount = 3;
         let funCount = 3;
 
@@ -203,26 +203,26 @@ document.onreadystatechange = function() {
             // console.log("AAAAAAA", blockO[latestCount].closest(".blogPostLink"));
             latestCount--;
           } else if (
-            posts[blogPost]["category"] === "features" &&
+            posts[blogPost]["category"] === "life" &&
             !latestTimestamps.includes(posts[blogPost]["pub_timestamp"])
           ) {
             // console.log("BOOOBOOOO")
             if (
-              latestFeaturesTimestamps.includes(posts[blogPost]["pub_timestamp"])
+              latestLifeTimestamps.includes(posts[blogPost]["pub_timestamp"])
             ) {
               // console.log("BOOOBOOOO")
-              blockT[featuresCount].appendChild(postTitle);
-              blockT[featuresCount].appendChild(shine);
-              blockT[featuresCount].style.backgroundImage = `url("${
+              blockT[lifeCount].appendChild(postTitle);
+              blockT[lifeCount].appendChild(shine);
+              blockT[lifeCount].style.backgroundImage = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
-              blockT[featuresCount].dataset.thumbnail = `url("${
+              blockT[lifeCount].dataset.thumbnail = `url("${
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
-              // blockT[featuresCount].style.border = "none";
-              blockT[featuresCount].closest(".blogPostLink").href =
+              // blockT[lifeCount].style.border = "none";
+              blockT[lifeCount].closest(".blogPostLink").href =
                 posts[blogPost]["filename"];
-              featuresCount--;
+              lifeCount--;
             }
           } else if (
             posts[blogPost]["category"] === "learn" &&
