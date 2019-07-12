@@ -67,7 +67,7 @@ p {
 }
 
 strong {
-  font-weight: 800;
+  font-weight: 900;
 }
 
 em {
@@ -2228,6 +2228,10 @@ textarea {
 
 figure {
   margin: 0;
+}
+
+figcaption {
+  text-align: center;
 }
 
 .blog-post__main-image {
