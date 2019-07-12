@@ -68,8 +68,9 @@ const allPostsHandler = (req, res) => {
 
 const specificPostHandler = (req, res, endpoint) => {
   console.log(endpoint);
-  console.log("BOBO", endpoint.split("/")[3]);
-  let filename = endpoint.split("/")[3];
+  console.log("BOBO", `${endpoint.split("/")[3].split(".html")[0]}` + ".html");
+  // return;
+  let filename = `${endpoint.split("/")[3].split(".html")[0]}` + ".html";
 
   generateAWSSignature
     .getAwsFile(filename)

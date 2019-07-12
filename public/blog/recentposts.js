@@ -144,7 +144,7 @@ document.onreadystatechange = function() {
           }
           // console.log("QWERTY", data[timestamps[i]]["contentType"]);
         }
-        // console.log("FRIENDS: ", friendsTimestamps);
+        // console.log("LIFE: ", lifeTimestamps);
         // console.log("LEARN: ", learnTimestamps);
         // console.log("FUN: ", funTimestamps);
         // return;
@@ -158,7 +158,7 @@ document.onreadystatechange = function() {
           .sort(descendingSort)
           .slice(0, 4);
 
-        // console.log("FRIENDS: ", latestFriendsTimestamps);
+        // console.log("LIFE: ", latestLifeTimestamps);
         // console.log("LEARN: ", latestLearnTimestamps);
         // console.log("FUN: ", latestFunTimestamps);
         // console.log(data[0]["pub_timestamp"])
