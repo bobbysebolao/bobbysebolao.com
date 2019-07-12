@@ -2226,12 +2226,13 @@ textarea {
   text-align: left;
 }
 
-figure {
-  margin: 0;
+.blog-post figcaption {
+  text-align: center;
+  opacity: 0.5;
 }
 
-figcaption {
-  text-align: center;
+figure {
+  margin: 0;
 }
 
 .blog-post__main-image {
