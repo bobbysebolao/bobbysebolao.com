@@ -215,7 +215,10 @@ VALUES
 ('monochrome'),
 ('web-hosting'),
 ('cms'),
-('kubernetes');
+('kubernetes'),
+('markup'),
+('markdown'),
+('jamstack');
 
 -- INSERT INTO main_images (name, size, filepath, type)
 -- VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
