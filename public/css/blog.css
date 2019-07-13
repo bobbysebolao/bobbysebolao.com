@@ -2240,7 +2240,7 @@ figure {
   width: 100%;
 }
 
-.blog-post__main-image-caption {
+.blog-post .blog-post__main-image-caption {
   opacity: 0.5;
   text-align: right;
 }

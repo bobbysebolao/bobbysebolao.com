@@ -86,24 +86,21 @@ CREATE TABLE email_verification_tokens (
 
 ALTER TABLE posts ADD COLUMN main_image_id INTEGER;
 
-ALTER TABLE posts ADD CONSTRAINT fk_main_image_id FOREIGN KEY(main_image_id) REFERENCES main_images (pk_image_id);
+-- ALTER TABLE posts ADD CONSTRAINT fk_main_image_id FOREIGN KEY(main_image_id) REFERENCES main_images (pk_image_id);
 
 ALTER TABLE posts ADD COLUMN thumbnail_id INTEGER;
 
-ALTER TABLE posts ADD CONSTRAINT fk_thumbnail_id FOREIGN KEY(thumbnail_id) REFERENCES thumbnails (pk_thumbnail_id);
+-- ALTER TABLE posts ADD CONSTRAINT fk_thumbnail_id FOREIGN KEY(thumbnail_id) REFERENCES thumbnails (pk_thumbnail_id);
 
 ALTER TABLE posts ADD COLUMN user_id INTEGER;
 
-ALTER TABLE posts ADD CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES users (pk_user_id);
+-- ALTER TABLE posts ADD CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES users (pk_user_id);
 
 ALTER TABLE main_images ADD CONSTRAINT unique_image_name UNIQUE (name);
 
 ALTER TABLE thumbnails ADD CONSTRAINT unique_thumbnail_name UNIQUE (name);
 
 ALTER TABLE users ADD is_verified BOOLEAN DEFAULT false;
-
--- INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, category, tags)
--- VALUES (12345, '12 March 2019', 'The first blog post', 'Will it work?', 4, 'The main image', 'Main image alt text', 'image.jpeg', 'life', 'random food drink entertainment');
 
 INSERT INTO post_tags (tag_name)
 VALUES
@@ -220,13 +217,16 @@ VALUES
 ('markdown'),
 ('jamstack');
 
--- INSERT INTO main_images (name, size, filepath, type)
--- VALUES ('cat.jpeg', 1305, '/users/images', 'image/jpeg');
---
--- INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type)
--- VALUES ('Jeff', 'Summ', 'mistapepper', 'qwerty@gmail.com', 'qwertY101!', 'minion', 'bobby.jpeg', 33439, '/users/images/bobby.jpeg', 'image/png');
---
--- INSERT INTO comments (body, com_timestamp, com_date, post_id, user_id, username, avatar_name, avatar_filepath)
--- VALUES ('it wasnt good', '12345', '10 Sept 1993', 1, 1, 'leroy_jenkins', 'leroy.jpeg', '/users/images/leroy.jpeg');
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
+VALUES ('1562943885875', 'Fri Jul 12 2019 15:04:45 GMT+0000 (Coordinated Universal Time)', 'JAMstack Conf 2019 Recap', 'Jam packed with reasons to come back', 4, 'Image © 2019 Markus Schork', 'A snapshot of the main breakout area at JAMstack Conf 2019', 'jamstack-conf-2019-recap.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/jamstack-conf-2019-recap.html', 'life', 'javascript api markup cms', 1, 1, 1);
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('jamstack-2019-640x360px.jpg', 83722, 'https://console-blog.s3.amazonaws.com/blog-images/jamstack-2019-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
+VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
 
 COMMIT;
