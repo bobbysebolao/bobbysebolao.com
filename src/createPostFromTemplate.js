@@ -2,6 +2,16 @@ const fs = require("fs");
 const querystring = require("querystring");
 const path = require("path");
 
+require("env2")("./config.env");
+
+let mainImageRoot = "";
+
+if (process.env.NODE_ENV === "start") {
+  mainImageRoot = "https://s3.eu-west-2.amazonaws.com/console-blog/blog-images/";
+} else if (process.env.NODE_ENV === "local") {
+  mainImageRoot = "https://s3.eu-west-2.amazonaws.com/console-blog/local-uploads/practice-images/";
+}
+
 const createPostFromTemplate = function(title, subtitle, body, date, readingTime, mainImage, mainImageAltText, mainImageCaption, metatitle, metadescription, url, author) {
 
   console.log("MAAAAAAAAAN", mainImage)
@@ -13,7 +23,7 @@ const createPostFromTemplate = function(title, subtitle, body, date, readingTime
     data = data.replace("*****insertpostbodyhere*****", body);
     data = data.replace("*****insertpostdatehere*****", date.split(" ").slice(0,4).join(" "));
     data = data.replace("*****insertreadingtimehere*****", readingTime);
-    data = data.replace(/\*\*\*\*\*insertpostmainimagehere\*\*\*\*\*/g, `https://s3.eu-west-2.amazonaws.com/console-blog/blog-images/${mainImage.split(".")[0]}-main-image.${mainImage.split(".")[1]}`);
+    data = data.replace(/\*\*\*\*\*insertpostmainimagehere\*\*\*\*\*/g, `${mainImageRoot}${mainImage.split(".")[0]}-main-image.${mainImage.split(".")[1]}`);
     data = data.replace("*****insertmainimagealttexthere*****", mainImageAltText);
     data = data.replace("*****insertmainimagecaption*****", mainImageCaption);
     data = data.replace("*****insertpostmetatitlehere*****", metatitle);
