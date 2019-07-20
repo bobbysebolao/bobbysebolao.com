@@ -523,13 +523,21 @@ const createPostHandler = (req, res, encodedJwt) => {
             fields["filename"] = `${fields["postUrl"]
               .toLowerCase()
               .replace(/\s/g, "-")}.html`;
-            fields[
-              "filepath"
-            ] = `https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/${
-              fields["filename"]
-            }`;
+              if (process.env.NODE_ENV === "start") {
+                fields[
+                  "filepath"
+                ] = `https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/${
+                  fields["filename"]
+                }`;
+              } else if (process.env.NODE_ENV === "local") {
+                fields[
+                  "filepath"
+                ] = `https://s3.eu-west-2.amazonaws.com/console-blog/local-uploads/practice-posts/${
+                  fields["filename"]
+                }`;
+              }
 
-            // console.log("Form fields: ", fields["filename"]);
+            // console.log("Form fields: ", fields["filepath"]);
             // return;
 
             console.log("Uploaded images successfully");

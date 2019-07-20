@@ -24,16 +24,33 @@ const generateAWSSignature = (endpoint, res) => {
   let key = "";
 
   if (fileName.includes("-main-image") && !endpoint.includes("text/html")) {
+    if (process.env.NODE_ENV === "start") {
     key = "blog-images/" + fileName;
+  } else if (process.env.NODE_ENV === "local") {
+    key = "local-uploads/practice-images/" + fileName;
+  }
   }
   else if (fileName.includes("-thumbnail-image") && !endpoint.includes("text/html")) {
+    if (process.env.NODE_ENV === "start") {
     key = "blog-thumbnails/" + fileName;
+  } else if (process.env.NODE_ENV === "local") {
+    key = "local-uploads/practice-thumbnails/" + fileName;
+  }
   }
   else if (fileName.includes("-user-image") && !endpoint.includes("text/html")) {
+    if (process.env.NODE_ENV === "start") {
     key = "user-avatars/" + fileName;
+  } else if (process.env.NODE_ENV === "local") {
+    key = "local-uploads/practice-avatars/" + fileName;
+  }
   }
   else if (fileType === "text/html") {
+    if (process.env.NODE_ENV === "start") {
     key = "blog-posts/" + fileName;
+  }
+    else if (process.env.NODE_ENV === "local") {
+      key = "local-uploads/practice-posts/" + fileName;
+    }
   }
 
   const s3Params = {
@@ -69,9 +86,17 @@ const generateAWSSignature = (endpoint, res) => {
 const getAwsFile = (filename) => {
   return new Promise((resolve, reject) => {
 
+    let key = "";
+
+    if (process.env.NODE_ENV === "start") {
+      key = "blog-posts/" + filename
+    } else if (process.env.NODE_ENV === "local") {
+      key = "local-uploads/practice-posts/" + filename
+    }
+
   const s3Params = {
   Bucket: S3_BUCKET,
-  Key: `blog-posts/${filename}`,
+  Key: key,
   // Range: "bytes=0-9"
  };
 
