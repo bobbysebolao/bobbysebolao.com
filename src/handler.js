@@ -375,8 +375,8 @@ const getProjectsHandler = (req, res) => {
 };
 
 const getCommentsHandler = (req, res) => {
-  console.log(req.headers.referer.split("/")[5]);
-  const postName = req.headers.referer.split("/")[5];
+  console.log(req.headers.referer.split("/")[4]);
+  const postName = req.headers.referer.split("/")[4];
   let comments;
   getComments(postName)
     .then(result => res.end(JSON.stringify(result)))
@@ -384,7 +384,8 @@ const getCommentsHandler = (req, res) => {
 };
 
 const getAuthorHandler = (req, res, endpoint) => {
-  let postName = req.headers.referer.split("/")[5];
+  let postName = req.headers.referer.split("/")[4];
+  console.log("The author", postName);
   let authorData = {};
   getPost(postName)
     .then(postData => {
@@ -941,7 +942,7 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
 
   req.on("end", () => {
     const comment = querystring.parse(allTheData);
-    const postName = req.headers.referer.split("/")[5];
+    const postName = req.headers.referer.split("/")[4];
     console.log(postName);
     // return;
     let userId = "";
