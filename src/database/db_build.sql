@@ -239,7 +239,7 @@ INSERT INTO main_images (name, size, filepath, type)
 VALUES ('world-emoji-day-banner-640x360px.jpg', 44296, 'https://console-blog.s3.amazonaws.com/blog-images/world-emoji-day-banner-640x360px-main-image.jpg', 'image/jpeg');
 
 INSERT INTO main_images (name, size, filepath, type)
-VALUES ('css-variables-example-640x360px.jpg', 25119, 'https://console-blog.s3.amazonaws.com/blog-images/3.amazonaws.com/blog-images/css-variables-example-640x360px-main-image.jpg', 'image/jpeg');
+VALUES ('css-variables-example-640x360px.jpg', 25119, 'https://console-blog.s3.amazonaws.com/blog-images/css-variables-example-640x360px-main-image.jpg', 'image/jpeg');
 
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
