@@ -366,6 +366,7 @@ nav {
   background: #252d3e;
   border-radius: 5px 5px 0 0;
   padding: 10px 25px 10px 25px;
+  min-height: 52px;
   /* max-height: 52px; */
   z-index: 0;
   /* box-shadow: 5px 10px 10px 0px #000000; */
