@@ -51,9 +51,10 @@ const router = (request, response) => {
     else if (endpoint === "/projects") {
       handler.getProjectsHandler(request, response);
     }
-    else if (endpoint.includes("/scripts")) {
-      handler.domScriptsHandler(response, endpoint, extension);
-    } else if (endpoint.includes("/blog/confirm-email")) {
+    // else if (endpoint.includes("/scripts")) {
+    //   handler.domScriptsHandler(response, endpoint, extension);
+    // }
+    else if (endpoint.includes("/blog/confirm-email")) {
       // console.log("BOASTY", request.headers.referer)
       // console.log("PROGRESS!!!");
       // console.log(request.url);
@@ -64,7 +65,7 @@ const router = (request, response) => {
       // return;
       handler.awsSignatureHandler(request, endpoint, response);
     } else if (
-      endpoint.includes("/blog/posts/") &&
+      endpoint.includes("/posts/") &&
       endpoint.includes(".html")
     ) {
       console.log("Creating temp blog post file on local filesystem...");

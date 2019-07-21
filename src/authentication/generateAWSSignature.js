@@ -84,6 +84,7 @@ const generateAWSSignature = (endpoint, res) => {
 }
 
 const getAwsFile = (filename) => {
+  console.log("Lion King", filename)
   return new Promise((resolve, reject) => {
 
     let key = "";

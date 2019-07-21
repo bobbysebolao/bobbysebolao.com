@@ -197,7 +197,7 @@ document.onreadystatechange = function() {
             }")`;
             // blockO[latestCount].style.border = "none";
             // console.log("DATA ATTR: ", blockO[latestCount].dataset.thumbnail);
-            blockO[latestCount].closest(".blogPostLink").href = `/blog/posts/${
+            blockO[latestCount].closest(".blogPostLink").href = `/posts/${
               posts[blogPost]["filename"]
             }`;
             // console.log("AAAAAAA", blockO[latestCount].closest(".blogPostLink"));

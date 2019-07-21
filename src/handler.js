@@ -68,16 +68,17 @@ const allPostsHandler = (req, res) => {
 
 const specificPostHandler = (req, res, endpoint) => {
   console.log(endpoint);
-  console.log("BOBO", `${endpoint.split("/")[3].split(".html")[0]}` + ".html");
+  console.log("BOBO", `${endpoint.split("/")[2].split(".html")[0]}` + ".html");
   // return;
-  let filename = `${endpoint.split("/")[3].split(".html")[0]}` + ".html";
+  let filename = `${endpoint.split("/")[2].split(".html")[0]}` + ".html";
 
   generateAWSSignature
     .getAwsFile(filename)
     .then(response => {
+      console.log("Simba", response)
       let fileContents = response["Body"].toString();
       fs.writeFile(
-        __dirname + "/../public" + endpoint,
+        __dirname + "/../public" + "/posts/" + filename,
         fileContents,
         (err, file) => {
           if (err) console.log(err);
@@ -86,20 +87,20 @@ const specificPostHandler = (req, res, endpoint) => {
           );
 
           fs.readFile(
-            __dirname + "/../public" + endpoint,
+            __dirname + "/../public" + "/posts/" + filename,
             "utf8",
             (error, file) => {
               if (error) {
                 console.log(error);
                 return;
               }
-              fs.unlink(__dirname + "/../public" + endpoint, err => {
+              fs.unlink(__dirname + "/../public" + "/posts/" + filename, err => {
                 if (err) {
                   console.log(err);
                   return;
                 }
                 console.log(
-                  "Main image successfully deleted from local filesystem"
+                  "Blog post successfully deleted from local filesystem"
                 );
                 res.writeHead(200, { "Content-Type": "text/html" });
                 res.end(file);
@@ -253,6 +254,9 @@ const imageManagerPageHandler = (req, res) => {
 };
 
 const domScriptsHandler = (res, endpoint, extension) => {
+  let filename = `${endpoint.split("/")[4]}`;
+  console.log("JS IS HERE", filename);
+  console.log("EXTENSION IS HERE", extension);
   const extensionType = {
     html: "text/html",
     css: "text/css",
@@ -266,7 +270,7 @@ const domScriptsHandler = (res, endpoint, extension) => {
     json: "application/json"
   };
 
-  fs.readFile(__dirname + "/../" + endpoint, (error, file) => {
+  fs.readFile(__dirname + "/../public/" + filename, (error, file) => {
     if (error) {
       console.log(error);
       return;
@@ -277,6 +281,8 @@ const domScriptsHandler = (res, endpoint, extension) => {
 };
 
 const publicHandler = (res, endpoint, extension) => {
+  console.log("RODNEY", endpoint)
+  console.log("GIGI", __dirname + "/../public" + endpoint)
   const extensionType = {
     html: "text/html",
     css: "text/css",
@@ -550,7 +556,7 @@ const createPostHandler = (req, res, encodedJwt) => {
               })
               .then(result => {
                 console.log("STILL DRE");
-                newPostPath = `/blog/${fields["filename"]}`;
+                newPostPath = `/posts/${fields["filename"]}`;
 
                 newPostContent = createPostFromTemplate(
                   fields["title"],

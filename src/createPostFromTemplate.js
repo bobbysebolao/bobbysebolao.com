@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "start") {
 
 const createPostFromTemplate = function(title, subtitle, body, date, readingTime, mainImage, mainImageAltText, mainImageCaption, metatitle, metadescription, url, author) {
 
-  console.log("MAAAAAAAAAN", mainImage)
+  console.log("MAAAAAAAAAN", url)
 
   let data = fs.readFileSync(__dirname + "/../public/blog/post-template.html", "utf8")
 

@@ -47,7 +47,7 @@ fetch("/blog/check-login-status")
       register.href = "../create/account";
 
       login.textContent = "Sign in";
-      login.href = "login";
+      login.href = "../blog/login";
 
       // register.className = "blog__login-options";
       // login.className = "blog__login-options";
