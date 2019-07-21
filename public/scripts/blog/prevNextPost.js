@@ -1,7 +1,8 @@
 console.log("POSTS HERE")
 
 let currentPostUrl = document.getElementsByName("postUrl")[0].content;
-let currentPostName = currentPostUrl.split("/blog/")[1];
+let currentPostName = currentPostUrl.split("/posts/")[1];
+console.log("BAMBINO", currentPostName)
 let prevPostButton = document.querySelector("#prevPost");
 let nextPostButton = document.querySelector("#nextPost");
 let prevArrow = document.querySelector("#prevArrow");
@@ -34,7 +35,7 @@ fetch("/blog/recent-posts")
     for (let i = 0; i < data.length; i++) {
       if (data[i].filename === currentPostName) {
         if (typeof data[i+1] !== 'undefined') {
-          nextPostUrl = `/blog/posts/${data[i+1].filename}`;
+          nextPostUrl = `/posts/${data[i+1].filename}`;
           nextPostButton.href.baseVal = nextPostUrl;
           nextPostButton.href.animVal = nextPostUrl;
         }
@@ -42,7 +43,7 @@ fetch("/blog/recent-posts")
           nextPostSvg.removeChild(nextPostSvg.lastElementChild);
         }
         if (typeof data[i-1] !== 'undefined') {
-        prevPostUrl = `/blog/posts/${data[i-1].filename}`;
+        prevPostUrl = `/posts/${data[i-1].filename}`;
         prevPostButton.href.baseVal = prevPostUrl;
         prevPostButton.href.animVal = prevPostUrl;
       }
