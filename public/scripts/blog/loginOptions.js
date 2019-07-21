@@ -70,12 +70,12 @@ fetch("/blog/check-login-status")
       let createNewPost = document.createElement("a");
       createNewPost.className = "blog__login-options--create";
       createNewPost.textContent = "New post";
-      createNewPost.href = baseUrl + "/new";
+      createNewPost.href = baseUrl + "./../blog/new";
 
       let imageManager = document.createElement("a");
       imageManager.className = "blog__login-options--create";
       imageManager.textContent = "Image manager";
-      imageManager.href = baseUrl + "/image-manager";
+      imageManager.href = baseUrl + "./../blog/image-manager";
 
       username.textContent = `${userData.username}`;
       username.className = "user-profile__username";
