@@ -445,7 +445,7 @@ const contactFormHandler = (req, res) => {
       console.log("Form data parsing underway...");
       console.log("Check this out:", fields);
       sendEmail(fields);
-      return;
+      res.end();
       // console.log("The image file: ", files);
       // return;
     }
