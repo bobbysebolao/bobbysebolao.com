@@ -29,7 +29,7 @@ const getTags = require("./queries/getTags.js");
 const getAllPosts = require("./queries/getAllPosts.js");
 const getAllThumbnails = require("./queries/getAllThumbnails.js");
 const getAllMainImages = require("./queries/getAllMainImages.js");
-const sendVerificationEmail = require("./authentication/sendVerificationEmail.js");
+const sendEmail = require("./authentication/sendEmail.js");
 const generateEmailVerificationToken = require("./authentication/generateEmailVerificationToken.js");
 const submitEmailVerificationToken = require("./queries/submitEmailVerificationToken.js");
 const getEmailVerificationToken = require("./queries/getEmailVerificationToken.js");
@@ -443,7 +443,9 @@ const contactFormHandler = (req, res) => {
       return error;
     } else {
       console.log("Form data parsing underway...");
-      console.log(fields)
+      console.log("Check this out:", fields);
+      sendEmail(fields);
+      return;
       // console.log("The image file: ", files);
       // return;
     }
@@ -778,11 +780,8 @@ const createAccountSubmitHandler = (req, res) => {
         })
         .then(token => {
           Promise.all([
-            sendVerificationEmail(
-              formData.first_name,
-              formData.email,
-              formData.username,
-              emailToken
+            sendEmail(
+              formData, emailToken
             ),
             submitEmailVerificationToken(emailToken, formData.username)
           ]).catch(console.error);
