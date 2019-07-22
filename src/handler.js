@@ -444,8 +444,13 @@ const contactFormHandler = (req, res) => {
     } else {
       console.log("Form data parsing underway...");
       console.log("Check this out:", fields);
-      sendEmail(fields);
-      res.end();
+      Promise.all([sendEmail(fields)])
+      .then(response => {
+        res.writeHead(302, { Location: "/index.html" });
+        // res.writeHead(400, { "Content-Type": "text/html" });
+        res.end();
+      })
+      .catch(console.error)
       // console.log("The image file: ", files);
       // return;
     }
