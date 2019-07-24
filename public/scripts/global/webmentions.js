@@ -1,7 +1,7 @@
 console.log("webmentions.js is working");
 const thisUrl = window.location;
 const postUrl = thisUrl.protocol + "//" + thisUrl.host + "/" + thisUrl.pathname.split('/')[1]
-console.log("SKRAAA", baseUrl);
+console.log("SKRAAA", postUrl);
 
 fetch(`${postUrl}`)
 .then(res => {
