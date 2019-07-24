@@ -5,6 +5,7 @@ console.log("SKRAAA", postUrl);
 
 // fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
 fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
-.then(res => {
-  console.log("The webmentions data: ", res.json())
+.then(res => res.json())
+.then(webmentions => {
+  console.log("The webmentions response object: ", webmentions)
 })
