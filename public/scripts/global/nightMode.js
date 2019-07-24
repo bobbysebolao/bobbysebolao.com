@@ -1,4 +1,4 @@
-// console.log("hey");
+console.log("hey");
 
 let nightMode = document.querySelector(".nightMode");
 

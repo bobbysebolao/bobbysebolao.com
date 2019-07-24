@@ -6,6 +6,8 @@ const loginToComment = document.querySelector(".loginToComment");
 
 // const authorDetails = document.querySelector(".blog-post__author-details");
 
+console.log("wee bey");
+
 fetch("/blog/check-login-status")
   .then(res => res.json())
   .then(userData => {
