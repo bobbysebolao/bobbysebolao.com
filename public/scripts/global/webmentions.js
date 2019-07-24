@@ -4,14 +4,7 @@ const postUrl = thisUrl.protocol + "//" + thisUrl.host + thisUrl.pathname
 console.log("SKRAAA", postUrl);
 
 // fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
-fetch(`https://webmention.io/api/mentions.jf2?target=https://indieweb.org`, {
-  method: 'GET',
-  mode: 'cors',
-  headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
-  }
-})
+fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
 .then(res => {
-  console.log("The webmentions data: ", res)
+  console.log("The webmentions data: ", res.json())
 })
