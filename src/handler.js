@@ -71,6 +71,8 @@ const specificPostHandler = (req, res, endpoint) => {
   console.log("BOBO", `${endpoint.split("/")[2].split(".html")[0]}` + ".html");
   // return;
   let filename = `${endpoint.split("/")[2].split(".html")[0]}` + ".html";
+  console.log("Monsters inc", filename);
+  // return;
 
   generateAWSSignature
     .getAwsFile(filename)
@@ -375,7 +377,9 @@ const getProjectsHandler = (req, res) => {
 };
 
 const getCommentsHandler = (req, res) => {
+  console.log("yo, da comments");
   console.log(req.headers.referer.split("/")[4]);
+  // return;
   const postName = req.headers.referer.split("/")[4];
   let comments;
   getComments(postName)
@@ -990,7 +994,7 @@ const commentSubmitHandler = (req, res, encodedJwt) => {
             console.log("Is it true: ", commentStatus);
             if (commentStatus === true) {
               console.log("Yes it is");
-              res.writeHead(302, { Location: `/blog/posts/${postName}` });
+              res.writeHead(302, { Location: `/posts/${postName}` });
               res.end();
             }
           });
