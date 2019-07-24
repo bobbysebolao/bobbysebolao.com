@@ -1,9 +1,9 @@
 console.log("webmentions.js is working");
-const getUrl = window.location;
-const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1]
+const thisUrl = window.location;
+const postUrl = thisUrl.protocol + "//" + thisUrl.host + "/" + thisUrl.pathname.split('/')[1]
 console.log("SKRAAA", baseUrl);
 
-fetch(`${baseUrl}`)
+fetch(`${postUrl}`)
 .then(res => {
   console.log("The webmentions data: ", res)
 })
