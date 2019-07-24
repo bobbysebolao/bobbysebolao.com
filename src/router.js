@@ -18,6 +18,7 @@ const router = (request, response) => {
     } else if (endpoint === "/blog/main-images") {
       handler.mainImagesHandler(response);
     } else if (endpoint === "/blog/comments") {
+      console.log("xhr request working");
       handler.getCommentsHandler(request, response);
     } else if (endpoint === "/blog/author") {
       handler.getAuthorHandler(request, response, endpoint);

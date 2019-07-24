@@ -12,9 +12,11 @@ fetch("/blog/check-login-status")
   .then(res => res.json())
   .then(userData => {
     if (userData.loginStatus !== true) {
+      console.log("comments login logic working");
       userCommentsForm.style.display = "none";
       loginToComment.style.display = "block";
     } else {
+      console.log("comments login logic working");
       userCommentsForm.style.display = "block";
       loginToComment.style.display = "none";
     }
@@ -46,6 +48,7 @@ document.onreadystatechange = function() {
         var data = JSON.parse(xhr.responseText);
         console.log("These are the post comments: ", data);
 
+        if (data) {
         for (let comment in data) {
           console.log("MEMEME", data[comment]);
           let commentContainer = document.createElement("div");
@@ -90,6 +93,7 @@ document.onreadystatechange = function() {
           commentContainer.appendChild(commentBody);
           userComments.appendChild(commentContainer);
         }
+      }
       }
       //  else {
       //   console.error(xhr.responseText);
