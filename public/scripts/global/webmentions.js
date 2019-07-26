@@ -1,3 +1,6 @@
+const likesSection = document.querySelector('.user-likes');
+const repostsSection = document.querySelector('user-reposts');
+
 console.log("webmentions.js is working");
 const thisUrl = window.location;
 const postUrl = thisUrl.protocol + "//" + thisUrl.host + thisUrl.pathname
@@ -27,4 +30,16 @@ fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
   console.log("LIKES:", likes);
   console.log("REPOSTS:", reposts);
   console.log("REPLIES:", replies);
+
+  for (let like in likes) {
+    let likeContainer = document.createElement('div');
+    likeContainer.className = "user-likes__like";
+    likesSection.appendChild(likeContainer);
+  }
+
+  for (let repost in reposts) {
+    let repostContainer = document.createElement('div');
+    repostContainer.className = "user-reposts__repost";
+    repostsSection.appendChild(repostContainer);
+  }
 })
