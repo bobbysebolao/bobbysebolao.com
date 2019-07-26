@@ -36,6 +36,7 @@ fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
     likeContainer.className = "user-likes__like";
     likeContainer.style.background = "red";
     likeContainer.style.backgroundImage = `url(${like['author']['photo']})`;
+    likeContainer.textContent = `${like['author']['name']}`;
     likesSection.appendChild(likeContainer);
   }
 
