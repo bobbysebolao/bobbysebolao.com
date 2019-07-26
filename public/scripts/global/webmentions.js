@@ -34,6 +34,8 @@ fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
   for (let like in likes) {
     let likeContainer = document.createElement('div');
     likeContainer.className = "user-likes__like";
+    likeContainer.style.background = "red";
+    likeContainer.style.backgroundImage = `url(${like['author']['photo']})`;
     likesSection.appendChild(likeContainer);
   }
 
