@@ -32,13 +32,13 @@ fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
   console.log("REPLIES:", replies);
 
   for (let i = 0; i < likes.length; i++) {
-    console.log("The like author: ", likes[0]['author'])
-    // let likeContainer = document.createElement('div');
-    // likeContainer.className = "user-likes__like";
-    // likeContainer.style.background = "red";
-    // likeContainer.style.backgroundImage = `url(${likes[0]['author']['photo']})`;
-    // likeContainer.textContent = `${likes[0]['author']['name']}`;
-    // likesSection.appendChild(likeContainer);
+    console.log("The like author: ", likes[i]['author'])
+    let likeContainer = document.createElement('div');
+    likeContainer.className = "user-likes__like";
+    likeContainer.style.background = "red";
+    likeContainer.style.backgroundImage = `url(${likes[i]['author']['photo']})`;
+    likeContainer.textContent = `${likes[i]['author']['name']}`;
+    likesSection.appendChild(likeContainer);
   }
 
   for (let repost in reposts) {
