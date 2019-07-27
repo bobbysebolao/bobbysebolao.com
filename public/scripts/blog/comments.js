@@ -149,11 +149,15 @@ document.onreadystatechange = function() {
                   userAvatarLink.appendChild(userAvatar);
                   commentUsernameLink.appendChild(commentUsername);
                   userContainer.appendChild(userAvatarLink);
-                  userContainer.appendChild(commentUsernameLink);
+                  usernameContainer.appendChild(commentUsernameLink);
+                  userContainer.appendChild(userAvatarLink);
                 } else {
                   usernameContainer.appendChild(commentUsername);
-                  usernameContainer.appendChild(commentDate);
                   userContainer.appendChild(userAvatar);
+                }
+
+                  usernameContainer.appendChild(commentDate);
+                  // userContainer.appendChild(userAvatar);
                   userContainer.appendChild(usernameContainer);
                   // commentContainer.appendChild(userAvatar);
                   // commentContainer.appendChild(commentUsername);
@@ -162,7 +166,7 @@ document.onreadystatechange = function() {
                   // commentContainer.appendChild(usernameContainer);
                   commentContainer.appendChild(commentBody);
                   userComments.appendChild(commentContainer);
-                }
+
               }
             }
           });
