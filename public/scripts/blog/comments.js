@@ -126,6 +126,8 @@ document.onreadystatechange = function() {
                 // `https://s3.eu-west-2.amazonaws.com/console-blog/blog-images/${data[comment]["avatar_name".split(".")[0]}-user-image.${data[comment]["avatar_name".split(".")[1]}`
                 commentUsername.textContent = data[comment]["username"];
 
+                console.log("GOOOOOOAAAAALASSO", data[comment]["com_date"].split(" "));
+
                 if (data[comment]["com_date"].split(" ").length === 1) {
                   commentDate.textContent = data[comment]["com_date"]
                     .split("")
