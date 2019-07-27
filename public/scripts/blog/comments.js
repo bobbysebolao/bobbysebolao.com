@@ -51,14 +51,14 @@ document.onreadystatechange = function() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
-
+        var data = JSON.parse(xhr.responseText);
 
 
         fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
         .then(res => res.json())
-        .then(data => {
-          let webmentions = data['children'];
-          console.log("The webmentions response object: ", data);
+        .then(webmentionsData => {
+          let webmentions = webmentionsData['children'];
+          console.log("The webmentions response object: ", webmentionsData);
 
           for (let i = 0; i < webmentions.length; i++) {
             if (webmentions[i]['wm-property'] === "like-of") {
@@ -66,7 +66,12 @@ document.onreadystatechange = function() {
             } else if (webmentions[i]['wm-property'] === "repost-of") {
               reposts.push(webmentions[i]);
             } else if (webmentions[i]['wm-property'] === "in-reply-to") {
-              replies.push(webmentions[i]);
+              data.push({
+                avatar_filepath: webmentions[i]["author"]["photo"],
+                username: webmentions[i]["author"]["name"],
+                com_date: webmentions[i]["published"],
+                body: webmentions[i]["content"]["text"]
+              });
             }
           }
           console.log("LIKES:", likes);
@@ -96,7 +101,7 @@ document.onreadystatechange = function() {
 
 
 
-        var data = JSON.parse(xhr.responseText);
+        // var data = JSON.parse(xhr.responseText);
         console.log("These are the post comments: ", data);
 
         if (data) {
