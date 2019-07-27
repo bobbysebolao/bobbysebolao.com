@@ -70,7 +70,7 @@ document.onreadystatechange = function() {
                   username: webmentions[i]["author"]["name"],
                   com_date: webmentions[i]["published"],
                   body: webmentions[i]["content"]["text"],
-                  link: webmentions[i]["url"]
+                  link: webmentions[i]["author"]["url"]
                 });
               }
             }
@@ -140,12 +140,12 @@ document.onreadystatechange = function() {
                 commentBody.textContent = data[comment]["body"];
                 // userContainer.appendChild(userAvatar);
 
-                if (data[comment]["url"]) {
+                if (data[comment]["link"]) {
                   let userAvatarLink = document.createElement("a");
                   userAvatarLink.href = `${data[comment]["url"]}`;
                   let commentUsernameLink = document.createElement("a");
                   commentUsernameLink.href = `${data[comment]["url"]}`;
-                  
+
                   userAvatarLink.appendChild(userAvatar);
                   commentUsernameLink.appendChild(commentUsername);
                   userContainer.appendChild(userAvatarLink);
