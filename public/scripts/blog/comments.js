@@ -129,9 +129,8 @@ document.onreadystatechange = function() {
                 console.log("GOOOOOOAAAAALASSO", data[comment]["com_date"].split(" "));
 
                 if (data[comment]["com_date"].split(" ").length === 1) {
-                  commentDate.textContent = data[comment]["com_date"]
-                    .split("")
-                    .slice(0, 11);
+                  commentDate.textContent = twitterDateConverter(data[comment]["com_date"]
+                    .split("-"))
                 } else {
                   commentDate.textContent = data[comment]["com_date"]
                     .split(" ")
@@ -176,3 +175,15 @@ document.onreadystatechange = function() {
   // xhr.open("GET", "/blog/comments", true);
   // xhr.send();
 };
+
+const twitterDateConverter = (date) => {
+  let months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+  let selectedDay = date[2].split("").slice(0, 2).join("")
+  let selectedMonth = months[parseInt((date[1])-1)];
+  let selectedYear = date[0];
+
+  let convertedDate = `${selectedMonth} ${selectedDay} ${selectedYear}`;
+  return convertedDate;
+}
