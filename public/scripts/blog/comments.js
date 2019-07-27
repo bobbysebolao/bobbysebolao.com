@@ -1,10 +1,16 @@
+const likesSection = document.querySelector('.user-likes');
+const repostsSection = document.querySelector('user-reposts');
+const thisUrl = window.location;
+const postUrl = thisUrl.protocol + "//" + thisUrl.host + thisUrl.pathname
+console.log("SKRAAA", postUrl);
+
 const userComments = document.querySelector(".user-comments");
 const userCommentsForm = document.querySelector(".createComment");
 const loginToComment = document.querySelector(".loginToComment");
 
-// const fileDivider = document.querySelector(".fileDivider");
-
-// const authorDetails = document.querySelector(".blog-post__author-details");
+let likes = [];
+let reposts = [];
+let replies = [];
 
 console.log("wee bey");
 
@@ -45,6 +51,51 @@ document.onreadystatechange = function() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
+
+
+
+        fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
+        .then(res => res.json())
+        .then(data => {
+          let webmentions = data['children'];
+          console.log("The webmentions response object: ", data);
+
+          for (let i = 0; i < webmentions.length; i++) {
+            if (webmentions[i]['wm-property'] === "like-of") {
+              likes.push(webmentions[i]);
+            } else if (webmentions[i]['wm-property'] === "repost-of") {
+              reposts.push(webmentions[i]);
+            } else if (webmentions[i]['wm-property'] === "in-reply-to") {
+              replies.push(webmentions[i]);
+            }
+          }
+          console.log("LIKES:", likes);
+          console.log("REPOSTS:", reposts);
+          console.log("REPLIES:", replies);
+
+          for (let i = 0; i < likes.length; i++) {
+            console.log("The like author: ", likes[i]['author'])
+            let likeContainer = document.createElement('div');
+            likeContainer.className = "user-likes__like";
+            likeContainer.style.background = "red";
+            likeContainer.style.backgroundImage = `url(${likes[i]['author']['photo']})`;
+            likeContainer.textContent = `${likes[i]['author']['name']}`;
+            likesSection.appendChild(likeContainer);
+          }
+
+          for (let repost in reposts) {
+            let repostContainer = document.createElement('div');
+            repostContainer.className = "user-reposts__repost";
+            repostsSection.appendChild(repostContainer);
+          }
+        })
+
+
+
+
+
+
+
         var data = JSON.parse(xhr.responseText);
         console.log("These are the post comments: ", data);
 
