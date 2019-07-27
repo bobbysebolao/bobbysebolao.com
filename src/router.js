@@ -9,6 +9,9 @@ const router = (request, response) => {
   if (method === "GET") {
     if (endpoint === "/" || endpoint === "/index.html") {
       handler.homeHandler(response);
+    } else if (endpoint === "https://www.bobbysebolao.com/blog/posts/jamstack-conf-2019-recap.html"){
+      response.writeHead(301, {Location: "https://www.bobbysebolao.com/posts/jamstack-conf-2019-recap.html"});
+      response.end();
     } else if (endpoint === "/blog/all-posts") {
       handler.allPostsHandler(request, response);
     } else if (endpoint === "/blog/posts") {
