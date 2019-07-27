@@ -142,9 +142,9 @@ document.onreadystatechange = function() {
 
                 if (data[comment]["link"]) {
                   let userAvatarLink = document.createElement("a");
-                  userAvatarLink.href = `${data[comment]["url"]}`;
+                  userAvatarLink.href = `${data[comment]["link"]}`;
                   let commentUsernameLink = document.createElement("a");
-                  commentUsernameLink.href = `${data[comment]["url"]}`;
+                  commentUsernameLink.href = `${data[comment]["link"]}`;
 
                   userAvatarLink.appendChild(userAvatar);
                   commentUsernameLink.appendChild(commentUsername);
