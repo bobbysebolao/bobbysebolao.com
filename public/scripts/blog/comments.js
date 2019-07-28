@@ -1,5 +1,5 @@
 const likesSection = document.querySelector(".user-likes");
-const repostsSection = document.querySelector("user-reposts");
+const repostsSection = document.querySelector(".user-reposts");
 const thisUrl = window.location;
 const postUrl = thisUrl.protocol + "//" + thisUrl.host + thisUrl.pathname;
 console.log("SKRAAA", postUrl);
