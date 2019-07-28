@@ -1,5 +1,7 @@
 const likesSection = document.querySelector(".user-likes");
 const repostsSection = document.querySelector(".user-reposts");
+const likesContainer = document.querySelector(".user-likes-container");
+const repostsContainer = document.querySelector(".user-reposts-container");
 const thisUrl = window.location;
 const postUrl = thisUrl.protocol + "//" + thisUrl.host + thisUrl.pathname;
 let webmentionsUrl;
@@ -88,23 +90,23 @@ document.onreadystatechange = function() {
 
             for (let i = 0; i < likes.length; i++) {
               console.log("The like author: ", likes[i]["author"]);
-              let likeContainer = document.createElement("div");
-              likeContainer.className = "user-likes__like";
+              let like = document.createElement("div");
+              like.className = "user-likes__like";
               // likeContainer.style.background = "red";
-              likeContainer.style.backgroundImage = `url(${
+              like.style.backgroundImage = `url(${
                 likes[i]["author"]["photo"]
               })`;
               // likeContainer.textContent = `${likes[i]["author"]["name"]}`;
-              likesSection.appendChild(likeContainer);
+              likesContainer.appendChild(like);
             }
 
             for (let i = 0; i < reposts.length; i++) {
-              let repostContainer = document.createElement("div");
-              repostContainer.className = "user-reposts__repost";
-              repostContainer.style.backgroundImage = `url(${
+              let repost = document.createElement("div");
+              repost.className = "user-reposts__repost";
+              repost.style.backgroundImage = `url(${
                 reposts[i]["author"]["photo"]
               })`;
-              repostsSection.appendChild(repostContainer);
+              repostsContainer.appendChild(repost);
             }
           })
           .then(qwerty => {
