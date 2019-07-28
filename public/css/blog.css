@@ -2290,6 +2290,7 @@ figure {
   height: 32px;
   /* border: 5px solid black; */
   border-radius: 50%;
+  background-size: 100%;
 }
 
 .user-reposts__repost {
@@ -2297,6 +2298,7 @@ figure {
   height: 32px;
   /* border: 5px solid black; */
   border-radius: 50%;
+  background-size: 100%;
 }
 
 /* BLOG POST COMMENTS SECTION */
