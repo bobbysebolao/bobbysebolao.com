@@ -82,17 +82,20 @@ document.onreadystatechange = function() {
               console.log("The like author: ", likes[i]["author"]);
               let likeContainer = document.createElement("div");
               likeContainer.className = "user-likes__like";
-              likeContainer.style.background = "red";
+              // likeContainer.style.background = "red";
               likeContainer.style.backgroundImage = `url(${
                 likes[i]["author"]["photo"]
               })`;
-              likeContainer.textContent = `${likes[i]["author"]["name"]}`;
+              // likeContainer.textContent = `${likes[i]["author"]["name"]}`;
               likesSection.appendChild(likeContainer);
             }
 
-            for (let repost in reposts) {
+            for (let i = 0; i < reposts.length; i++) {
               let repostContainer = document.createElement("div");
               repostContainer.className = "user-reposts__repost";
+              repostContainer.style.backgroundImage = `url(${
+                reposts[i]["author"]["photo"]
+              })`;
               repostsSection.appendChild(repostContainer);
             }
           })
