@@ -2256,6 +2256,7 @@ figure {
 /* BLOG POST LIKES SECTION */
 
 .user-likes {
+  display: flex;
   text-align: left;
   position: relative;
   width: 100%;
@@ -2265,6 +2266,7 @@ figure {
 }
 
 .user-reposts {
+  display: flex;
   text-align: left;
   position: relative;
   width: 100%;

@@ -2,6 +2,14 @@ const likesSection = document.querySelector(".user-likes");
 const repostsSection = document.querySelector(".user-reposts");
 const thisUrl = window.location;
 const postUrl = thisUrl.protocol + "//" + thisUrl.host + thisUrl.pathname;
+let webmentionsUrl;
+
+if (postUrl === "https://www.bobbysebolao.com/posts/jamstack-conf-2019-recap.html") {
+  webmentionsUrl = `https://webmention.io/api/mentions.jf2?target[]=${postUrl}&target[]=https://www.bobbysebolao.com/blog/posts/jamstack-conf-2019-recap.html`;
+} else {
+  webmentionsUrl = `https://webmention.io/api/mentions.jf2?target=${postUrl}`;
+}
+
 console.log("SKRAAA", postUrl);
 
 const userComments = document.querySelector(".user-comments");
@@ -53,7 +61,7 @@ document.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var data = JSON.parse(xhr.responseText);
 
-        fetch(`https://webmention.io/api/mentions.jf2?target=${postUrl}`)
+        fetch(webmentionsUrl)
           .then(res => res.json())
           .then(webmentionsData => {
             let webmentions = webmentionsData["children"];
