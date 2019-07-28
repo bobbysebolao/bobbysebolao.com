@@ -2271,6 +2271,54 @@ figure {
   font-family: "Permanent Marker", cursive;
 }
 
+/* BLOG POST LIKES AND REPOSTS SECTIONS */
+
+.user-likes {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  padding: 0em 80px 0em 80px;
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
+}
+
+.user-reposts {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  padding: 0em 80px 0em 80px;
+  background: #fdfdfd;
+  box-shadow: 5px 10px 10px 0px #000000;
+}
+
+.user-likes-container {
+  display: flex;
+}
+
+.user-reposts-container {
+  display: flex;
+}
+
+.user-likes__like {
+  width: 32px;
+  height: 32px;
+  /* border: 5px solid black; */
+  border-radius: 50%;
+  background-size: 100%;
+}
+
+.user-reposts__repost {
+  width: 32px;
+  height: 32px;
+  /* border: 5px solid black; */
+  border-radius: 50%;
+  background-size: 100%;
+}
+
 /* BLOG POST COMMENTS SECTION */
 
 .loginToComment {
