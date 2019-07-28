@@ -2257,6 +2257,7 @@ figure {
 
 .user-likes {
   display: flex;
+  flex-direction: column;
   text-align: left;
   position: relative;
   width: 100%;
@@ -2267,6 +2268,7 @@ figure {
 
 .user-reposts {
   display: flex;
+  flex-direction: column;
   text-align: left;
   position: relative;
   width: 100%;
@@ -2275,16 +2277,24 @@ figure {
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
+.user-likes-container {
+  display: flex;
+}
+
+.user-reposts-container {
+  display: flex;
+}
+
 .user-likes__like {
-  width: 100px;
-  height: 100px;
+  width: 32px;
+  height: 32px;
   /* border: 5px solid black; */
   border-radius: 50%;
 }
 
 .user-reposts__repost {
-  width: 100px;
-  height: 100px;
+  width: 32px;
+  height: 32px;
   /* border: 5px solid black; */
   border-radius: 50%;
 }
