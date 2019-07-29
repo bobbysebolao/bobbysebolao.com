@@ -247,6 +247,18 @@ VALUES ('css-variables-example-640x360px.jpg', 25119, 'https://console-blog.s3.a
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('emojis-in-css-640x360px.png', 25801, 'https://console-blog.s3.amazonaws.com/blog-images/emojis-in-css-640x360px-main-image.png', 'image/png');
 
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('radio-ll-cool-j-360x360px.jpg', 38487, 'https://console-blog.s3.amazonaws.com/blog-images/radio-ll-cool-j-360x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('beats-rhymes-and-life-atcq-360x360px.jpg', 43904, 'https://console-blog.s3.amazonaws.com/blog-images/beats-rhymes-and-life-atcq-360x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('miami-pitbull-366x360px.jpg', 40743, 'https://console-blog.s3.amazonaws.com/blog-images/miami-pitbull-366x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('b4da$$-joey-badass-360x360px.jpg', 51148, 'https://console-blog.s3.amazonaws.com/blog-images/b4da$$-joey-badass-360x360px-main-image.jpg', 'image/jpeg');
+
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
