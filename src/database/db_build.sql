@@ -215,7 +215,10 @@ VALUES
 ('kubernetes'),
 ('markup'),
 ('markdown'),
-('jamstack');
+('jamstack'),
+('music'),
+('hip-hop'),
+('rap');
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
 VALUES ('1562943885875', 'Fri Jul 12 2019 15:04:45 GMT+0000 (Coordinated Universal Time)', 'JAMstack Conf 2019 Recap', 'Jam packed with reasons to come back', 4, 'Image © 2019 Markus Schork', 'A snapshot of the main breakout area at JAMstack Conf 2019', 'jamstack-conf-2019-recap.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/jamstack-conf-2019-recap.html', 'life', 'javascript api markup cms', 1, 1, 1);
