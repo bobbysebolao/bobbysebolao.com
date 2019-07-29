@@ -72,7 +72,7 @@ document.onreadystatechange = function() {
             for (let i = 0; i < webmentions.length; i++) {
               if (webmentions[i]["wm-property"] === "like-of") {
                 likes.push(webmentions[i]);
-              } else if (webmentions[i]["wm-property"] === "repost-of") {
+              } else if (webmentions[i]["wm-property"] === "repost-of" || webmentions[i]["wm-property"] === "mention-of") {
                 reposts.push(webmentions[i]);
               } else if (webmentions[i]["wm-property"] === "in-reply-to") {
                 data.push({
