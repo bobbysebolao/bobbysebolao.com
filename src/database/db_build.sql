@@ -260,7 +260,7 @@ INSERT INTO main_images (name, size, filepath, type)
 VALUES ('miami-pitbull-366x360px.jpg', 40743, 'https://console-blog.s3.amazonaws.com/blog-images/miami-pitbull-366x360px-main-image.jpg', 'image/jpeg');
 
 INSERT INTO main_images (name, size, filepath, type)
-VALUES ('b4da$$-joey-badass-360x360px.jpg', 51148, 'https://console-blog.s3.amazonaws.com/blog-images/b4da$$-joey-badass-360x360px-main-image.jpg', 'image/jpeg');
+VALUES ('b4dass-joey-badass-360x360px.jpg', 51148, 'https://console-blog.s3.amazonaws.com/blog-images/b4dass-joey-badass-360x360px-main-image.jpg', 'image/jpeg');
 
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('raps-about-coding-640x360px.jpg', 47154, 'https://console-blog.s3.amazonaws.com/blog-images/raps-about-coding-640x360px-main-image.jpg', 'image/jpeg');
