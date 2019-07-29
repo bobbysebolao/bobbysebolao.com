@@ -262,11 +262,17 @@ VALUES ('miami-pitbull-366x360px.jpg', 40743, 'https://console-blog.s3.amazonaws
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('b4da$$-joey-badass-360x360px.jpg', 51148, 'https://console-blog.s3.amazonaws.com/blog-images/b4da$$-joey-badass-360x360px-main-image.jpg', 'image/jpeg');
 
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('raps-about-coding-640x360px.jpg', 47154, 'https://console-blog.s3.amazonaws.com/blog-images/raps-about-coding-640x360px-main-image.jpg', 'image/jpeg');
+
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('emojis-in-css-210x118px.jpg', 9035, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/emojis-in-css-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('raps-about-coding-210x118px.jpg', 5472, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/raps-about-coding-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
 INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
 VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
