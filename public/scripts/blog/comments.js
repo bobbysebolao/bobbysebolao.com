@@ -127,8 +127,8 @@ fetch("/blog/comments")
       if (data) {
       data.sort((a, b) => {
         return b["com_timestamp"] - a["com_timestamp"];
-      }
       })
+    }
     })
     .then(unrelated3 => {
       if (data) {
