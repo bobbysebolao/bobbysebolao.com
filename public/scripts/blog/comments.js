@@ -71,10 +71,11 @@ document.onreadystatechange = function() {
           .then(unusedRes => {
             data = JSON.parse(xhr.responseText);
           })
-          .then(unusedRes => {
+          .then(unusedRes2 => {
             let webmentions = webmentionsData["children"];
-            console.log("The webmentions response object: ", webmentionsData);
-
+            console.log("The webmentions response object: ", webmentions);
+          })
+          .then(unusedRes3 => {
             for (let i = 0; i < webmentions.length; i++) {
               if (webmentions[i]["wm-property"] === "like-of") {
                 likes.push(webmentions[i]);
