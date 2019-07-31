@@ -62,13 +62,16 @@ document.onreadystatechange = function() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var data;
+        var webmentionsData;
 
         fetch(webmentionsUrl)
-          .then(res => res.json())
-          .then(res2 => {
+          .then(res => {
+            webmentionsData = res.json();
+          })
+          .then(unusedRes => {
             data = JSON.parse(xhr.responseText);
           })
-          .then(webmentionsData => {
+          .then(unusedRes => {
             let webmentions = webmentionsData["children"];
             console.log("The webmentions response object: ", webmentionsData);
 
