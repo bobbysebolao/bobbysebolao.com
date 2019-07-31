@@ -58,6 +58,7 @@ fetch("/blog/check-login-status")
 
 let commentsData;
 let webmentionsData;
+let allData;
 
 Promise.all([fetch("/blog/comments"), fetch(webmentionsUrl)])
 .then(res => {
@@ -68,12 +69,13 @@ Promise.all([fetch("/blog/comments"), fetch(webmentionsUrl)])
   } else {
     commentsData = res[1].json();
     webmentionsData = res[0].json();
-    return commentsData, webmentionsData
+    allData = [commentsData, webmentionsData];
+    return allData;
   }
 })
-.then(now => {
-  console.log("Comments", now);
-  console.log("Webmentions", now);
+.then(all => {
+  console.log("Comments and webmentions", all);
+
 })
 
 // document.onreadystatechange = function() {
