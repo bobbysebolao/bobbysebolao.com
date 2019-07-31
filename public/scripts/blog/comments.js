@@ -69,9 +69,9 @@ Promise.all([fetch("/blog/comments"), fetch(webmentionsUrl)])
   } else {
     commentsData = res[1].json();
     webmentionsData = res[0].json();
-    allData = [commentsData, webmentionsData];
-    return allData;
   }
+  allData = [commentsData, webmentionsData];
+  return allData;
 })
 .then(all => {
   console.log("Comments and webmentions", all);
