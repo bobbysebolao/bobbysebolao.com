@@ -93,14 +93,18 @@ fetch("/blog/comments")
 
       for (let i = 0; i < likes.length; i++) {
         console.log("The like author: ", likes[i]["author"]);
+        let likeLink = document.createElement("a");
         let like = document.createElement("div");
+        likeLink.href = `${likes[i]["author"]["url"]}`;
+        likeLink.setAttribute('target', '_blank');
         like.className = "user-likes__like";
         // likeContainer.style.background = "red";
         like.style.backgroundImage = `url(${
           likes[i]["author"]["photo"]
         })`;
         // likeContainer.textContent = `${likes[i]["author"]["name"]}`;
-        likesContainer.appendChild(like);
+        likeLink.appendChild(like);
+        likesContainer.appendChild(likeLink);
       }
 
       for (let i = 0; i < reposts.length; i++) {
@@ -119,8 +123,6 @@ fetch("/blog/comments")
       })
     })
     .then(unrelated3 => {
-      console.log('DEEBY DOO', data);
-      return;
       if (data) {
         for (let comment in data) {
           console.log("MEMEME", data[comment]);
