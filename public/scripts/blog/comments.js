@@ -72,8 +72,8 @@ Promise.all([fetch("/blog/comments"), fetch(webmentionsUrl)])
   }
 })
 .then(now => {
-  console.log("Comments", now[0]);
-  console.log("Webmentions", now[1]);
+  console.log("Comments", now);
+  console.log("Webmentions", now);
 })
 
 // document.onreadystatechange = function() {
