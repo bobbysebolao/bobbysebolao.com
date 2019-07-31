@@ -63,6 +63,7 @@ document.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var data;
         var webmentionsData;
+        let webmentions;
 
         fetch(webmentionsUrl)
           .then(res => {
@@ -72,7 +73,7 @@ document.onreadystatechange = function() {
             data = JSON.parse(xhr.responseText);
           })
           .then(unusedRes2 => {
-            let webmentions = webmentionsData["children"];
+            webmentions = webmentionsData["children"];
             console.log("The webmentions response object: ", webmentions);
           })
           .then(unusedRes3 => {
