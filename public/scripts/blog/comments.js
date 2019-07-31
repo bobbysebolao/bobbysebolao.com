@@ -63,10 +63,15 @@ document.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var data = JSON.parse(xhr.responseText);
 
-        fetch(webmentionsUrl)
-          .then(res => res.json())
-          .then(webmentionsData => {
-            let webmentions = webmentionsData["children"];
+        const webmentionsResponse = await fetch(webmentionsUrl);
+        const webmentionsData await webmentionsResponse.json();
+        let webmentions = webmentionsData["children"];
+        console.log("The webmentions yo", webmentions);
+
+        // fetch(webmentionsUrl)
+        //   .then(res => res.json())
+        //   .then(webmentionsData => {
+            // let webmentions = webmentionsData["children"];
             console.log("The webmentions response object: ", webmentionsData);
 
             for (let i = 0; i < webmentions.length; i++) {
@@ -108,8 +113,8 @@ document.onreadystatechange = function() {
               })`;
               repostsContainer.appendChild(repost);
             }
-          })
-          .then(qwerty => {
+          // })
+          // .then(qwerty => {
             // var data = JSON.parse(xhr.responseText);
             console.log("These are the post comments: ", data);
 
@@ -182,7 +187,7 @@ document.onreadystatechange = function() {
 
               }
             }
-          });
+          // });
       }
       //  else {
       //   console.error(xhr.responseText);
