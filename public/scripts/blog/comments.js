@@ -64,14 +64,16 @@ Promise.all([fetch("/blog/comments"), fetch(webmentionsUrl)])
   if (res[0]["url"] == "https://www.bobbysebolao.com/blog/comments") {
     commentsData = res[0].json();
     webmentionsData = res[1].json();
+    return commentsData, webmentionsData
   } else {
     commentsData = res[1].json();
     webmentionsData = res[0].json();
+    return commentsData, webmentionsData
   }
 })
 .then(now => {
-  console.log("Comments", commentsData);
-  console.log("Webmentions", webmentionsData);
+  console.log("Comments", now[0]);
+  console.log("Webmentions", now[1]);
 })
 
 // document.onreadystatechange = function() {
