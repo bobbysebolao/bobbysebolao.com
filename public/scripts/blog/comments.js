@@ -56,7 +56,7 @@ fetch("/blog/check-login-status")
 //     authorDetails.appendChild(authorName);
 //   });
 
-let data;
+let data = [];
 
 fetch(webmentionsUrl)
   .then(res => res.json())
