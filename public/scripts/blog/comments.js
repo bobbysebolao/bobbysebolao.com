@@ -58,61 +58,65 @@ fetch("/blog/check-login-status")
 
 let data = [];
 
-fetch(webmentionsUrl)
-  .then(res => res.json())
-  .then(webmentionsData => {
-    let webmentions = webmentionsData["children"];
-    console.log("The webmentions response object: ", webmentionsData);
-
-    for (let i = 0; i < webmentions.length; i++) {
-      if (webmentions[i]["wm-property"] === "like-of") {
-        likes.push(webmentions[i]);
-      } else if (webmentions[i]["wm-property"] === "repost-of" || webmentions[i]["wm-property"] === "mention-of") {
-        reposts.push(webmentions[i]);
-      } else if (webmentions[i]["wm-property"] === "in-reply-to") {
-        data.push({
-          avatar_filepath: webmentions[i]["author"]["photo"],
-          username: webmentions[i]["author"]["name"],
-          com_date: webmentions[i]["published"],
-          body: webmentions[i]["content"]["text"],
-          link: webmentions[i]["author"]["url"]
-        });
-      }
-    }
-    console.log("LIKES:", likes);
-    console.log("REPOSTS:", reposts);
-    // console.log("REPLIES:", replies);
-
-    for (let i = 0; i < likes.length; i++) {
-      console.log("The like author: ", likes[i]["author"]);
-      let like = document.createElement("div");
-      like.className = "user-likes__like";
-      // likeContainer.style.background = "red";
-      like.style.backgroundImage = `url(${
-        likes[i]["author"]["photo"]
-      })`;
-      // likeContainer.textContent = `${likes[i]["author"]["name"]}`;
-      likesContainer.appendChild(like);
-    }
-
-    for (let i = 0; i < reposts.length; i++) {
-      let repost = document.createElement("div");
-      repost.className = "user-reposts__repost";
-      repost.style.backgroundImage = `url(${
-        reposts[i]["author"]["photo"]
-      })`;
-      repostsContainer.appendChild(repost);
-    }
-  })
-  .then(unrelated => {
-    fetch("/blog/comments")
+fetch("/blog/comments")
+.then(res => res.json())
+.then(commentsData => {
+  console.log("These are the post comments: ", commentsData);
+  data = commentsData;
+  console.log("These are the webmentions + post comments: ", data);
+})
+.then(unrelated => {
+  fetch(webmentionsUrl)
     .then(res => res.json())
-    .then(commentsData => {
-      console.log("These are the post comments: ", commentsData);
-      data.push(commentsData);
-      console.log("These are the webmentions + post comments: ", data);
+    .then(webmentionsData => {
+      let webmentions = webmentionsData["children"];
+      console.log("The webmentions response object: ", webmentionsData);
+
+      for (let i = 0; i < webmentions.length; i++) {
+        if (webmentions[i]["wm-property"] === "like-of") {
+          likes.push(webmentions[i]);
+        } else if (webmentions[i]["wm-property"] === "repost-of" || webmentions[i]["wm-property"] === "mention-of") {
+          reposts.push(webmentions[i]);
+        } else if (webmentions[i]["wm-property"] === "in-reply-to") {
+          data.push({
+            avatar_filepath: webmentions[i]["author"]["photo"],
+            username: webmentions[i]["author"]["name"],
+            com_date: webmentions[i]["published"],
+            body: webmentions[i]["content"]["text"],
+            link: webmentions[i]["author"]["url"]
+          });
+        }
+      }
+      console.log("LIKES:", likes);
+      console.log("REPOSTS:", reposts);
+      // console.log("REPLIES:", replies);
+
+      for (let i = 0; i < likes.length; i++) {
+        console.log("The like author: ", likes[i]["author"]);
+        let like = document.createElement("div");
+        like.className = "user-likes__like";
+        // likeContainer.style.background = "red";
+        like.style.backgroundImage = `url(${
+          likes[i]["author"]["photo"]
+        })`;
+        // likeContainer.textContent = `${likes[i]["author"]["name"]}`;
+        likesContainer.appendChild(like);
+      }
+
+      for (let i = 0; i < reposts.length; i++) {
+        let repost = document.createElement("div");
+        repost.className = "user-reposts__repost";
+        repost.style.backgroundImage = `url(${
+          reposts[i]["author"]["photo"]
+        })`;
+        repostsContainer.appendChild(repost);
+      }
     })
-  })
+    .then(unrelated2 => {
+      console.log("FINAL TALLY OF COMMENTS AND WEBMENTIONS", data);
+    })
+})
+
 
 // document.onreadystatechange = function() {
 //   if (document.readyState === "complete") {
