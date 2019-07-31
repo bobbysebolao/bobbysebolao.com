@@ -65,8 +65,10 @@ document.onreadystatechange = function() {
 
         fetch(webmentionsUrl)
           .then(res => res.json())
-          .then(webmentionsData => {
+          .then(res2 => {
             data = JSON.parse(xhr.responseText);
+          })
+          .then(webmentionsData => {
             let webmentions = webmentionsData["children"];
             console.log("The webmentions response object: ", webmentionsData);
 
