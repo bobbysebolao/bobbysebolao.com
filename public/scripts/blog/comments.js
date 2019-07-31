@@ -62,7 +62,9 @@ fetch("/blog/comments")
 .then(res => res.json())
 .then(commentsData => {
   console.log("These are the post comments: ", commentsData);
+  if (commentsData) {
   data = commentsData;
+}
   console.log("These are the webmentions + post comments: ", data);
 })
 .then(unrelated => {
@@ -122,8 +124,10 @@ fetch("/blog/comments")
     })
     .then(unrelated2 => {
       console.log("FINAL TALLY OF COMMENTS AND WEBMENTIONS", data);
+      if (data) {
       data.sort((a, b) => {
         return b["com_timestamp"] - a["com_timestamp"];
+      }
       })
     })
     .then(unrelated3 => {
