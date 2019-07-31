@@ -108,12 +108,16 @@ fetch("/blog/comments")
       }
 
       for (let i = 0; i < reposts.length; i++) {
+        let repostLink = document.createElement("a");
         let repost = document.createElement("div");
+        repostLink.href = `${resposts[i]["author"]["url"]}`;
+        repostLink.setAttribute('target', '_blank');
         repost.className = "user-reposts__repost";
         repost.style.backgroundImage = `url(${
           reposts[i]["author"]["photo"]
         })`;
-        repostsContainer.appendChild(repost);
+        repostLink.appendChild(repost);
+        repostsContainer.appendChild(repostLink);
       }
     })
     .then(unrelated2 => {
