@@ -56,9 +56,17 @@ fetch("/blog/check-login-status")
 //     authorDetails.appendChild(authorName);
 //   });
 
+let commentsData;
+let webmentionsData;
+
 Promise.all([fetch("/blog/comments"), fetch(webmentionsUrl)])
 .then(res => {
-  console.log("DOOOBIE DOO", res)
+  if (res[0]["url"] == "https://www.bobbysebolao.com/blog/comments") {
+    commentsData = res[0].json();
+    webmentionsData = res[1].json();
+  }
+  console.log("Comments", commentsData);
+  console.log("Webmentions", webmentionsData);
 })
 
 // document.onreadystatechange = function() {
