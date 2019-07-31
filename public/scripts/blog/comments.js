@@ -58,7 +58,6 @@ fetch("/blog/check-login-status")
 
 Promise.all([fetch("/blog/comments"), fetch(webmentionsUrl)])
 .then(res => {
-  res = res.json();
   console.log("DOOOBIE DOO", res)
 })
 
