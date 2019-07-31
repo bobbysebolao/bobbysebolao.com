@@ -114,8 +114,13 @@ fetch("/blog/comments")
     })
     .then(unrelated2 => {
       console.log("FINAL TALLY OF COMMENTS AND WEBMENTIONS", data);
+      data.sort((a, b) => {
+        return a["com_timestamp"] - b["com_timestamp"];
+      })
     })
     .then(unrelated3 => {
+      console.log('DEEBY DOO', data);
+      return;
       if (data) {
         for (let comment in data) {
           console.log("MEMEME", data[comment]);
@@ -290,4 +295,8 @@ const twitterDateConverter = (date) => {
 
   let convertedDate = `${selectedMonth} ${selectedDay} ${selectedYear}`;
   return convertedDate;
+}
+
+function sortNumber(a, b) {
+  return a - b;
 }
