@@ -1169,7 +1169,7 @@ nav {
     height: 100px;
     /* background: red; */
     z-index: -1;
-    border: 1px solid black;
+    border: 1px solid #cccccc;
     transition: all 0.25s ease;
 }
 
@@ -1191,6 +1191,7 @@ background-image: url(../assets/desktop-icon.svg);
 background-repeat: no-repeat;
 background-size: contain;
 background-position: center;
+border: 1px solid #afec6a;
 }
 
 #contact-form-checkbox-two + label:before {
@@ -1207,6 +1208,7 @@ background-image: url(../assets/file-icon.svg);
 background-repeat: no-repeat;
 background-size: contain;
 background-position: center;
+border: 1px solid #faf557;
 }
 
 #contact-form-checkbox-three + label:before {
@@ -1223,6 +1225,7 @@ background-image: url(../assets/globe-icon.svg);
 background-repeat: no-repeat;
 background-size: contain;
 background-position: center;
+border: 1px solid #7fd9cf;
 }
 
 #contact-form-checkbox-four + label:before {
@@ -1239,12 +1242,15 @@ background-image: url(../assets/cup-icon.svg);
 background-repeat: no-repeat;
 background-size: contain;
 background-position: center;
+border: 1px solid #fe9bba;
 }
 
 #contact-form-message {
   grid-area: message-field;
   margin: 0;
   padding: 0;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
 }
 
 #contact-form-message + label{
@@ -1258,9 +1264,17 @@ background-position: center;
   font-size: 1.25em;
   padding: 12px 12px;
   border-radius: 5px;
-  /* border: 0; */
   text-transform: uppercase;
   font-family: "Permanent Marker", cursive;
+  background: black;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+#contact-form-button:hover {
+  background: white;
+  color: black;
+  cursor: pointer;
 }
 
 /* #contact-form-checkbox-one {
