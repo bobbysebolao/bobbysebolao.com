@@ -2291,6 +2291,7 @@ figure {
   /* border: 5px solid black; */
   border-radius: 50%;
   background-size: 100%;
+  margin-right: 2px;
 }
 
 .user-reposts__repost {
@@ -2299,6 +2300,7 @@ figure {
   /* border: 5px solid black; */
   border-radius: 50%;
   background-size: 100%;
+  margin-right: 2px;
 }
 
 /* BLOG POST COMMENTS SECTION */
