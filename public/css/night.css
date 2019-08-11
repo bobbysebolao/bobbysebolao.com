@@ -2282,6 +2282,7 @@ figure {
   padding: 0em 80px 0em 80px;
   background: #fdfdfd;
   box-shadow: 5px 10px 10px 0px #000000;
+  background-color: #3d465c;
 }
 
 .user-reposts {
@@ -2293,6 +2294,7 @@ figure {
   padding: 0em 80px 0em 80px;
   background: #fdfdfd;
   box-shadow: 5px 10px 10px 0px #000000;
+  background-color: #3d465c;
 }
 
 .user-likes-container {
