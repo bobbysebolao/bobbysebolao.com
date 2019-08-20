@@ -215,16 +215,67 @@ VALUES
 ('kubernetes'),
 ('markup'),
 ('markdown'),
-('jamstack');
+('jamstack'),
+('music'),
+('hip-hop'),
+('rap');
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
 VALUES ('1562943885875', 'Fri Jul 12 2019 15:04:45 GMT+0000 (Coordinated Universal Time)', 'JAMstack Conf 2019 Recap', 'Jam packed with reasons to come back', 4, 'Image © 2019 Markus Schork', 'A snapshot of the main breakout area at JAMstack Conf 2019', 'jamstack-conf-2019-recap.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/jamstack-conf-2019-recap.html', 'life', 'javascript api markup cms', 1, 1, 1);
 
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
+VALUES ('1563745544349', 'Sun Jul 21 2019 21:45:44 GMT+0000 (Coordinated Universal Time)', 'How to Use Emojis in CSS', 'Maybe the most useless thing you’ll learn this week', 1, 'Image © 2019 Bobby Sebolao', 'Happy World Emoji Day message', 'how-to-use-emojis-in-css.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/how-to-use-emojis-in-css.html', 'learn', 'css', 8, 2, 1);
+
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
+VALUES ('1564416672495', 'Mon Jul 29 2019 17:11:12 GMT+0000 (Coordinated Universal Time)', 'Raps About “The Coding Struggle”', 'Me, Myself & UI', 4, 'Images © 2019 Def Jam Records', 'Pictured: A Tribe Called Quest (top left), Joey Badass (top right), Pitbull (bottom left), LL Cool J (bottom middle), Faith Evans (bottom right)', 'raps-about-coding.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/raps-about-coding.html', 'fun', 'hip-hop rap music', 13, 3, 1);
+
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('jamstack-2019-640x360px.jpg', 83722, 'https://console-blog.s3.amazonaws.com/blog-images/jamstack-2019-640x360px-main-image.jpg', 'image/jpeg');
 
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('derp-link-640x360px.jpg', 37243, 'https://console-blog.s3.amazonaws.com/blog-images/derp-link-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('puppy-love-original-640x360px.jpg', 57689, 'https://console-blog.s3.amazonaws.com/blog-images/puppy-love-original-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('puppy-love-my-replica-640x360px.jpg', 52004, 'https://console-blog.s3.amazonaws.com/blog-images/puppy-love-my-replica-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('winner-winner-tv-dinner-640x853px.jpg', 63441, 'https://console-blog.s3.amazonaws.com/blog-images/winner-winner-tv-dinner-640x853px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('world-emoji-day-banner-640x360px.jpg', 44296, 'https://console-blog.s3.amazonaws.com/blog-images/world-emoji-day-banner-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('css-variables-example-640x360px.jpg', 25119, 'https://console-blog.s3.amazonaws.com/blog-images/css-variables-example-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('emojis-in-css-640x360px.png', 25801, 'https://console-blog.s3.amazonaws.com/blog-images/emojis-in-css-640x360px-main-image.png', 'image/png');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('radio-ll-cool-j-360x360px.jpg', 38487, 'https://console-blog.s3.amazonaws.com/blog-images/radio-ll-cool-j-360x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('beats-rhymes-and-life-atcq-360x360px.jpg', 43904, 'https://console-blog.s3.amazonaws.com/blog-images/beats-rhymes-and-life-atcq-360x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('miami-pitbull-366x360px.jpg', 40743, 'https://console-blog.s3.amazonaws.com/blog-images/miami-pitbull-366x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('b4dass-joey-badass-360x360px.jpg', 51148, 'https://console-blog.s3.amazonaws.com/blog-images/b4dass-joey-badass-360x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('raps-about-coding-640x360px.jpg', 47154, 'https://console-blog.s3.amazonaws.com/blog-images/raps-about-coding-640x360px-main-image.jpg', 'image/jpeg');
+
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('emojis-in-css-210x118px.jpg', 9035, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/emojis-in-css-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('raps-about-coding-210x118px.jpg', 5472, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/raps-about-coding-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
 INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
 VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
