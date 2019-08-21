@@ -231,7 +231,7 @@ INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_
 VALUES ('1564416672495', 'Mon Jul 29 2019 17:11:12 GMT+0000 (Coordinated Universal Time)', 'Raps About “The Coding Struggle”', 'Me, Myself & UI', 4, 'Images © 2019 Def Jam Records', 'Pictured: A Tribe Called Quest (top left), Joey Badass (top right), Pitbull (bottom left), LL Cool J (bottom middle), Faith Evans (bottom right)', 'raps-about-coding.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/raps-about-coding.html', 'fun', 'hip-hop rap music', 13, 3, 1);
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
-VALUES ('1565938630239', 'Fri Aug 16 2019 06:57:10 GMT+0000 (Coordinated Universal Time)', 'I\'m off to Israel!', 'In search of falafel, and to mentor at a coding bootcamp (but, mainly the falafel...)', 1, 'A bowl of falafel with an Israeli flag', 'off-to-israel.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/off-to-israel.html', 'life', 'mentors', 16, 4, 1);
+VALUES ('1565938630239', 'Fri Aug 16 2019 06:57:10 GMT+0000 (Coordinated Universal Time)', 'I''m off to Israel!', 'In search of falafel, and to mentor at a coding bootcamp (but, mainly the falafel...)', 1, 'Image © 2019 Olga Samorodova', 'A bowl of falafel containing an Israeli flag', 'off-to-israel.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/off-to-israel.html', 'life', 'mentors', 16, 4, 1);
 
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('jamstack-2019-640x360px.jpg', 83722, 'https://console-blog.s3.amazonaws.com/blog-images/jamstack-2019-640x360px-main-image.jpg', 'image/jpeg');
