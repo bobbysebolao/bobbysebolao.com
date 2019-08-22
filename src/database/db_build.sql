@@ -277,9 +277,6 @@ INSERT INTO main_images (name, size, filepath, type)
 VALUES ('raps-about-coding-640x360px.jpg', 47154, 'https://console-blog.s3.amazonaws.com/blog-images/raps-about-coding-640x360px-main-image.jpg', 'image/jpeg');
 
 INSERT INTO main_images (name, size, filepath, type)
-VALUES ('squidoo-email-640x360px.png', 10647, 'https://console-blog.s3.amazonaws.com/blog-images/squidoo-email-640x360px-main-image.png', 'image/png');
-
-INSERT INTO main_images (name, size, filepath, type)
 VALUES ('first-medium-post-640x360px.png', 23363, 'https://console-blog.s3.amazonaws.com/blog-images/first-medium-post-640x360px-main-image.png', 'image/png');
 
 INSERT INTO main_images (name, size, filepath, type)
