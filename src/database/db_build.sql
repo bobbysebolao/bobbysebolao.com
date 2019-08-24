@@ -235,7 +235,7 @@ INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_
 VALUES ('1565938630239', 'Fri Aug 16 2019 06:57:10 GMT+0000 (Coordinated Universal Time)', 'I''m off to Israel!', 'In search of falafel, and to mentor at a coding bootcamp (but, mainly the falafel...)', 1, 'Image © 2019 Olga Samorodova', 'A bowl of falafel containing an Israeli flag', 'off-to-israel.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/off-to-israel.html', 'life', 'mentors', 16, 4, 1);
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
-VALUES ('1566643456873', 'Sat Aug 24 2019 10:44:16 GMT+0000 (Coordinated Universal Time)', 'My Blogging Story', 'Writing about writing. How meta.', 5, 'Image © 2019 Vectorstory', 'A speech bubble with the word "Blog", surrounded by icons representing creativity', 'my-blogging-story.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/my-blogging-story.html', 'life', 'update', 17, 5, 1);
+VALUES ('1566643456873', 'Sat Aug 24 2019 10:44:16 GMT+0000 (Coordinated Universal Time)', 'My Blogging Anniversary', 'Ten years of writing on the web!', 5, 'Image © 2019 Vectorstory', 'A speech bubble with the word "Blog", surrounded by icons representing creativity', 'my-blogging-story.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/my-blogging-story.html', 'life', 'update', 17, 5, 1);
 
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('jamstack-2019-640x360px.jpg', 83722, 'https://console-blog.s3.amazonaws.com/blog-images/jamstack-2019-640x360px-main-image.jpg', 'image/jpeg');
