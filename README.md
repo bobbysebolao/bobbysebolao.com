@@ -1,9 +1,18 @@
-# portfolio-website
-My one-page portfolio website. Includes:
+# My Portfolio Website
+My portfolio website. Includes:
 
-- HTML, CSS and vanilla Javascript - no frameworks or libraries used
-- Links to my Github repo, FreeCodeCamp and Codewars profiles, and Twitter and LinkedIn pages
-- An embedded version of my responsive image carousel, and links to the standalone Github Page
-- Links to external webpages that are relevant to my application
+## Built with:
+- Vanilla HTML, CSS and JavaScript
+- PostgreSQL database
+- Airtable content management system
+- Custom content management system
+- Amazon S3 storage
 
-This website has been optimised for browsing in Google Chrome (Version 71) for desktop and mobile devices. Please note that it hasn't yet been tested in other browsers.
+## Special features:
+- Email contact form
+- A blog!
+- Image carousel
+- Content tagging system
+- Night/knight/sprite mode
+
+**This website has been optimised for browsing in Google Chrome (Version 71) for desktop and mobile devices. Please note that it hasn't yet been tested in other browsers.**
