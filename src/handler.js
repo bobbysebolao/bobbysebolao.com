@@ -5,6 +5,7 @@ const querystring = require("query-string");
 const path = require("path");
 const formidable = require("formidable");
 const cookie = require("cookie");
+const request = require("request");
 
 // const mime = require("mime");
 // const util = require('util');
@@ -375,6 +376,12 @@ const getProjectsHandler = (req, res) => {
       console.log(error);
     });
 };
+
+const getMangosHandler = (req, res) => {
+  request("https://mango-metrics-api.azurewebsites.net/api/mangos", (err, resp, body) => {
+    console.log("Here are the mangos", resp.body);
+  })
+}
 
 const getCommentsHandler = (req, res) => {
   console.log("yo, da comments");
@@ -1018,6 +1025,7 @@ module.exports = {
   publicHandler,
   loginPageHandler,
   checkLoginStatusHandler,
+  getMangosHandler,
   getProjectsHandler,
   getCommentsHandler,
   getAuthorHandler,

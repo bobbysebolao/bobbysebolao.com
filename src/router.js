@@ -55,6 +55,9 @@ const router = (request, response) => {
     else if (endpoint === "/projects") {
       handler.getProjectsHandler(request, response);
     }
+    else if (endpoint === "/mangos") {
+      handler.getMangosHandler(request, response);
+    }
     // else if (endpoint.includes("/scripts")) {
     //   handler.domScriptsHandler(response, endpoint, extension);
     // }
