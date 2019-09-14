@@ -220,8 +220,9 @@ document.onreadystatechange = function() {
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
               // blockT[lifeCount].style.border = "none";
-              blockT[lifeCount].closest(".blogPostLink").href =
-                posts[blogPost]["filename"];
+              blockT[lifeCount].closest(".blogPostLink").href =`/posts/${
+              posts[blogPost]["filename"]
+            }`;
               lifeCount--;
             }
           } else if (
@@ -242,8 +243,9 @@ document.onreadystatechange = function() {
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
               // blockL[learnCount].style.border = "none";
-              blockL[learnCount].closest(".blogPostLink").href =
-                posts[blogPost]["filename"];
+              blockL[learnCount].closest(".blogPostLink").href = `/posts/${
+                posts[blogPost]["filename"]
+              }`;
               learnCount--;
             }
           } else if (
@@ -267,8 +269,9 @@ document.onreadystatechange = function() {
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
               // blockS[funCount].style.border = "none";
-              blockL[funCount].closest(".blogPostLink").href =
-                posts[blogPost]["filename"];
+              blockL[funCount].closest(".blogPostLink").href = `/posts/${
+                posts[blogPost]["filename"]
+              }`;
               funCount--;
             }
           }
