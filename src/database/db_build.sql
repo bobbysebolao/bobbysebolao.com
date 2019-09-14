@@ -240,6 +240,9 @@ VALUES ('1566643456873', 'Sat Aug 24 2019 10:44:16 GMT+0000 (Coordinated Univers
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
 VALUES ('1568294838231', 'Thu Sep 12 2019 13:27:18 GMT+0000 (Coordinated Universal Time)', '3 Reasons to Build in Black and White', 'There is a method to the monochrome...', 3, 'Image © 2019 Disney', 'Old black and white Mickey Mouse cartoon', 'why-build-in-black-and-white.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/why-build-in-black-and-white.html', 'learn', 'design-patterns', 19, 6, 1);
 
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
+VALUES ('1568911721876', 'Thu Sep 19 2019 16:48:42 GMT+0000 (Coordinated Universal Time)', 'Making Sense of ‘Serverless’', 'The reports of my server’s death have been greatly exaggerated', 2, 'Image © 2019 Bobby Sebolao', 'The Serverless framework logo juxtaposed with a thinking face emoji', 'making-sense-of-serverless.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/making-sense-of-serverless.html ', 'learn', 'jamstack', 21, 7, 1);
+
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('jamstack-2019-640x360px.jpg', 83722, 'https://console-blog.s3.amazonaws.com/blog-images/jamstack-2019-640x360px-main-image.jpg', 'image/jpeg');
 
@@ -297,6 +300,12 @@ VALUES ('mango-metrics-monochrome-327x596px.png', 12139, 'https://console-blog.s
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('mickey-mouse-black-and-white-640x360px.jpg', 55044, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/mickey-mouse-black-and-white-640x360px-main-image.jpg', 'image/jpeg');
 
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('serverless-snape-640x360px.jpg', 40873, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/serverless-snape-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('serverless-really-640x360px.jpg', 16744, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/serverless-really-640x360px-main-image.jpg', 'image/jpeg');
+
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
@@ -314,6 +323,9 @@ VALUES ('blogging-story-210x118px.jpg', 10172, 'https://console-blog.s3.amazonaw
 
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('mickey-mouse-black-and-white-210x118px.jpg', 10181, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/mickey-mouse-black-and-white-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('serverless-icon-210x118px.jpg', 3396, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/serverless-icon-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
 INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
 VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
