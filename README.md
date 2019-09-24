@@ -1,4 +1,6 @@
 # My Portfolio Website
+[![Build Status](https://travis-ci.com/bobbysebolao/bobbysebolao.github.io.svg?branch=master)](https://travis-ci.com/bobbysebolao/bobbysebolao.github.io)
+
 My portfolio website. Includes:
 
 ## Built with:
