@@ -4,8 +4,8 @@
   "description": "My one-page portfolio website. Includes:",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test jest && codecov --token=7a4ed0f7-6fce-404d-ae1c-b83fa38ba372",
-    "coverage": "NODE_ENV=test jest && coverage",
+    "test": "NODE_ENV=test jest",
+    "coverage": "NODE_ENV=test jest && codecov --token=7a4ed0f7-6fce-404d-ae1c-b83fa38ba372",
     "tape-test": "NODE_ENV=test tape src/tests/*.test.js | tap-spec",
     "local": "NODE_ENV=local nodemon server.js",
     "start": "NODE_ENV=start node server.js",
