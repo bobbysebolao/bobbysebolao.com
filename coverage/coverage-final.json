@@ -1,1 +1,2 @@
-{}
+{"/Users/bobbysebolao/Documents/github/bobbysebolao.github.io/src/readingTimeCalculator.js": {"path":"/Users/bobbysebolao/Documents/github/bobbysebolao.github.io/src/readingTimeCalculator.js","statementMap":{"0":{"start":{"line":1,"column":30},"end":{"line":3,"column":1}},"1":{"start":{"line":2,"column":2},"end":{"line":2,"column":51}},"2":{"start":{"line":5,"column":0},"end":{"line":5,"column":39}}},"fnMap":{"0":{"name":"(anonymous_0)","decl":{"start":{"line":1,"column":30},"end":{"line":1,"column":31}},"loc":{"start":{"line":1,"column":40},"end":{"line":3,"column":1}},"line":1}},"branchMap":{},"s":{"0":1,"1":1,"2":1},"f":{"0":1},"b":{},"_coverageSchema":"43e27e138ebf9cfc5966b082cf9a028302ed4184","hash":"eff8b191d1468bd2489ccb8d5f237da43fcf8a18"}
+}
