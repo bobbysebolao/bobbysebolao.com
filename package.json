@@ -4,7 +4,8 @@
   "description": "My one-page portfolio website. Includes:",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test tape src/tests/*.test.js | tap-spec",
+    "tape-test": "NODE_ENV=test tape src/tests/*.test.js | tap-spec",
+    "jest-test": "NODE_ENV=test jest",
     "local": "NODE_ENV=local nodemon server.js",
     "start": "NODE_ENV=start node server.js",
     "live": "NODE_ENV=start nodemon server.js",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/bobbysebolao/bobbysebolao.github.io#readme",
   "devDependencies": {
     "istanbul": "^0.4.5",
+    "jest": "^24.9.0",
     "nodemon": "^1.18.10",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
