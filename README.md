@@ -12,7 +12,7 @@ My portfolio website.
 
 ## Special features:
 - Email contact form
-- A blog!
+- A blog
 - Image carousel
 - Content tagging system
 - Night/knight/sprite mode
