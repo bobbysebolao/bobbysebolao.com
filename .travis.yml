@@ -10,7 +10,7 @@ cache:
 before_install:
   - npm update
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t 7a4ed0f7-6fce-404d-ae1c-b83fa38ba372
+  - bash <(curl -s https://codecov.io/bash)
   script:
 - npm test
 - codecov
