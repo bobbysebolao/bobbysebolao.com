@@ -269,7 +269,7 @@ document.onreadystatechange = function() {
                 posts[blogPost]["thumbnail"]["filepath"]
               }")`;
               // blockS[funCount].style.border = "none";
-              blockL[funCount].closest(".blogPostLink").href = `/posts/${
+              blockS[funCount].closest(".blogPostLink").href = `/posts/${
                 posts[blogPost]["filename"]
               }`;
               funCount--;
