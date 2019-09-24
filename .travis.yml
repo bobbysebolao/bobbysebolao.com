@@ -1,8 +1,13 @@
 language: node_js
-node_js: 
+node_js:
   - "stable"
+branches:
+  only:
+    - master
 cache:
   directories:
     - "node_modules"
+before_install:
+  - npm update
 after_success:
-    - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
