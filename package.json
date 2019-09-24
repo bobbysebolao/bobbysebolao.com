@@ -4,7 +4,7 @@
   "description": "My one-page portfolio website. Includes:",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest && codecov",
     "tape-test": "NODE_ENV=test tape src/tests/*.test.js | tap-spec",
     "local": "NODE_ENV=local nodemon server.js",
     "start": "NODE_ENV=start node server.js",
@@ -42,5 +42,9 @@
     "query-string": "^6.4.2",
     "request": "^2.88.0",
     "xmlhttprequest": "^1.8.0"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
