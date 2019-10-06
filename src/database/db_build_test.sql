@@ -222,6 +222,9 @@ VALUES
 ('update'),
 ('serverless'),
 ('mangoes'),
+('code-coverage'),
+('documentation'),
+('jargon'),
 ('rap');
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
@@ -243,10 +246,16 @@ INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_
 VALUES ('1568294838231', 'Thu Sep 12 2019 13:27:18 GMT+0000 (Coordinated Universal Time)', '3 Reasons to Build in Black and White', 'There is a method to the monochrome...', 3, 'Image © 2019 Disney', 'Old black and white Mickey Mouse cartoon', 'why-build-in-black-and-white.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/why-build-in-black-and-white.html', 'learn', 'design-patterns', 19, 6, 1);
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
-VALUES ('1568911721876', 'Thu Sep 19 2019 16:48:42 GMT+0000 (Coordinated Universal Time)', 'Making Sense of ‘Serverless’', 'The reports of the server’s death have been greatly exaggerated', 2, 'Image © 2019 Bobby Sebolao', 'The Serverless framework logo juxtaposed with a thinking face emoji', 'making-sense-of-serverless.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/making-sense-of-serverless.html', 'learn', 'jamstack serverless', 21, 7, 1);
+VALUES ('1569431643105', 'Wed Sep 25 2019 17:14:03 GMT+0000 (Coordinated Universal Time)', 'Making Sense of ‘Serverless’', 'The reports of the server’s death have been greatly misinterpreted', 2, 'Image © 2019 Bobby Sebolao', 'The Serverless framework logo juxtaposed with a thinking face emoji', 'making-sense-of-serverless.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/making-sense-of-serverless.html', 'learn', 'jamstack serverless', 21, 7, 1);
 
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
-VALUES ('1569520830417', 'Thu Sep 26 2019 18:00:30 GMT+0000 (Coordinated Universal Time)', 'Mango Musings', 'The best things in life grow on trees', 4, 'Image © 2019 rawpixel.com', 'Illustrated mangoes overlaid on a blue background', 'mango-musings.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/mango-musings.html', 'fun', 'mangoes', 25, 8, 1);
+VALUES ('1569520830417', 'Thu Sep 26 2019 18:00:30 GMT+0000 (Coordinated Universal Time)', 'Musings About Mangoes', 'The best things in life grow on trees', 4, 'Image © 2019 rawpixel.com', 'Illustrated mangoes overlaid on a blue background', 'mango-musings.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/mango-musings.html', 'fun', 'mangoes', 25, 8, 1);
+
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
+VALUES ('1569759091219', 'Sun Sep 29 2019 12:11:31 GMT+0000 (Coordinated Universal Time)', 'How to Add a Code Coverage Badge To Your Readme', 'Simple steps to show off spotless code coverage', 3, 'Image © 2019 Bobby Sebolao', 'A code coverage grid containing green, yellow, and red squares', 'how-to-add-a-readme-code-coverage-badge.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/how-to-add-a-readme-code-coverage-badge.html', 'learn', 'code-coverage testing documentation', 26, 9, 1);
+
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
+VALUES ('1570171063887', 'Fri Oct 04 2019 06:37:43 GMT+0000 (Coordinated Universal Time)', 'Dev Jargon Decoded', 'Do you know your grok from your grep?', 4, 'Image © 2019 Bobby Sebolao', 'A wordcloud containing different coding jargon terms', 'dev-jargon-decoded.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/dev-jargon-decoded.html', 'fun', 'jargon', 35, 10, 1);
 
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('jamstack-2019-640x360px.jpg', 83722, 'https://console-blog.s3.amazonaws.com/blog-images/jamstack-2019-640x360px-main-image.jpg', 'image/jpeg');
@@ -323,6 +332,36 @@ VALUES ('dennis-system-mangoes-640x360px.jpg', 44257, 'https://console-blog.s3.e
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('mango-musings-640x360px.jpg', 15116, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/mango-musings-640x360px-main-image.jpg', 'image/jpeg');
 
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('code-coverage-grid-640x360px.jpg', 36792, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/code-coverage-grid-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('readme-badges-640x360px.jpg', 21138, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/readme-badges-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('codecov-badge-119x29px.png', 1748, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/codecov-badge-119x29px-main-image.png', 'image/png');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('codecov-sign-up-640x360px.jpg', 30334, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/codecov-sign-up-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('codecov-auth-github-640x539px.jpg', 22132, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/codecov-auth-github-640x539px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('codecov-repo-select-640x360px.jpg', 18121, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/codecov-repo-select-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('codecov-badge-snippet-640x360px.jpg', 31308, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/codecov-badge-snippet-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('codecov-token-640x360px.jpg', 29776, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/codecov-token-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('travis-codecov-runtime-640x400px.jpg', 36391, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/travis-codecov-runtime-640x400px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('coding-jargon-wordcloud-640x360px.jpg', 36402, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/coding-jargon-wordcloud-640x360px-main-image.jpg', 'image/jpeg');
+
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
@@ -345,7 +384,13 @@ INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('serverless-icon-210x118px.jpg', 3396, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/serverless-icon-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
 INSERT INTO thumbnails (name, size, filepath, type)
-VALUES ('mango-musings-210x118px.jpg ', 4274, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/mango-musings-210x118px-thumbnail-image.jpg', 'image/jpeg');
+VALUES ('mango-musings-210x118px.jpg', 4274, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/mango-musings-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('code-coverage-grid-210x118px.jpg', 9788, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-thumbnails/code-coverage-grid-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('coding-jargon-wordcloud-210x118px.jpg', 5716, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-thumbnails/coding-jargon-wordcloud-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
 INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
 VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
