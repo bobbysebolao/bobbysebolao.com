@@ -25,6 +25,14 @@ nightMode.addEventListener("click", () => {
     standardStylesheet.href = "/css/work.css";
     sessionStorage.removeItem("autosave");
   }
+  else if (standardStylesheet.href.match("/css/about.css")){
+    standardStylesheet.href = "/css/about-night.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  }
+  else if (standardStylesheet.href.match("/css/about-night.css")){
+    standardStylesheet.href = "/css/about.css";
+    sessionStorage.removeItem("autosave");
+  }
   else {
     standardStylesheet.href = "/css/blog.css";
     sessionStorage.removeItem("autosave");
