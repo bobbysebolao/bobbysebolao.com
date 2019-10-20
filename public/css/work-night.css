@@ -1160,6 +1160,14 @@ html {
     width: 100%;
     height: 100%;
   }
+
+  #twitterIconForeground {
+    fill: #3d465c; 
+  }
+  
+  #freecodecampIconForeground {
+    fill: #3d465c; 
+  }
   
   .codewarsIcon {
     fill: #111;
