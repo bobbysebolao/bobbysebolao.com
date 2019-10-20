@@ -1043,6 +1043,14 @@ nav {
   height: 100%;
 }
 
+#twitterIconForeground {
+  fill: #FFFFFF; 
+}
+
+#freecodecampIconForeground {
+  fill: #FFFFFF; 
+}
+
 .codewarsIcon {
   fill: #111;
   opacity: 0.5;
