@@ -2404,7 +2404,7 @@ figure {
 /*===============MEDIA QUERIES================*/
 /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 640px) {
   body {
     margin: auto;
     text-align: center;
@@ -2636,5 +2636,24 @@ figure {
     background: url(../assets/pink_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 800px) {
+  /* .header {
+    background: red;
+  } */
+  .post-container {
+    font-family: "Permanent Marker", cursive;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 210px 210px;
+    grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    justify-content: center;
+    margin-bottom: 40px;
+    /* background: red; */
+    /* align-items: center; */
   }
 }
