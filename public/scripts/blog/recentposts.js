@@ -1,6 +1,8 @@
 //Great Heroku guide on how to handle image uploads, with AWS integration:
 //https://devcenter.heroku.com/articles/s3-upload-node
 
+var postContainer = document.querySelector(".post-container");
+
 let blockO = document.getElementsByClassName("blockO");
 let blockT = document.getElementsByClassName("blockT");
 let blockL = document.getElementsByClassName("blockL");
@@ -180,7 +182,7 @@ document.onreadystatechange = function() {
           var postTitle = document.createElement("h3");
           let shine = document.createElement("div");
           shine.className = "shine";
-          var postContainer = document.querySelector(".post-container");
+          // var postContainer = document.querySelector(".post-container");
 
           postTitle.textContent = posts[blogPost]["title"];
 
