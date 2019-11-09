@@ -1,13 +1,14 @@
-console.log("hey");
+console.log("knights ahoy");
 
-let nightMode = document.querySelector(".nightMode");
+let knightMode = document.querySelector(".knightMode");
 
 if (typeof standardStylesheet === 'undefined') {
 let standardStylesheet = document.querySelector("#standardStylesheet");
 }
 
-//ACTIVATING NIGHT mode
-nightMode.addEventListener("click", () => {
+//ACTIVATING KNIGHT mode
+
+knightMode.addEventListener("click", () => {
   console.log("Tyler", standardStylesheet)
 
   let homeTitleWordOne = document.querySelector(".home-title__wordone");
@@ -17,39 +18,39 @@ nightMode.addEventListener("click", () => {
   const homeSubtitle = document.querySelector(".home-subtitle");
 
   if (standardStylesheet.href.match("/css/blog.css")) {
-    standardStylesheet.href = "/css/night.css";
+    standardStylesheet.href = "/css/knight.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } 
-  else if (standardStylesheet.href.match("/css/night.css")){
+  else if (standardStylesheet.href.match("/css/knight.css")){
     standardStylesheet.href = "/css/blog.css";
     sessionStorage.removeItem("autosave");
   }
   else if (standardStylesheet.href.match("/css/work.css")){
-    standardStylesheet.href = "/css/work-night.css";
+    standardStylesheet.href = "/css/work-knight.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   }
-  else if (standardStylesheet.href.match("/css/work-night.css")){
+  else if (standardStylesheet.href.match("/css/work-knight.css")){
     standardStylesheet.href = "/css/work.css";
     sessionStorage.removeItem("autosave");
   }
   else if (standardStylesheet.href.match("/css/about.css")){
-    standardStylesheet.href = "/css/about-night.css";
+    standardStylesheet.href = "/css/about-knight.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   }
-  else if (standardStylesheet.href.match("/css/about-night.css")){
+  else if (standardStylesheet.href.match("/css/about-knight.css")){
     standardStylesheet.href = "/css/about.css";
     sessionStorage.removeItem("autosave");
   }
   else if (standardStylesheet.href.match("/css/home.css")){
-    homeTitleWordOne.textContent = "Shhh ";
-    homeTitleWordTwo.textContent = " I'm";
-    homeTitleWordThree.textContent = "Sleeping!";
+    standardStylesheet.href = "/css/home-knight.css";
+    homeTitleWordOne.textContent = "Hail ";
+    homeTitleWordTwo.textContent = " 'Tis";
+    homeTitleWordThree.textContent = "Bobby";
 
-    homeSubtitle.textContent = "I sometimes dream in black and white";
-    standardStylesheet.href = "/css/home-night.css";
+    homeSubtitle.textContent = "My surname means 'big onion' in Portuguese";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   }
-  else if (standardStylesheet.href.match("/css/home-night.css")){
+  else if (standardStylesheet.href.match("/css/home-knight.css")){
     homeTitleWordOne.textContent = "Hi ";
     homeTitleWordTwo.textContent = " I'm";
     homeTitleWordThree.textContent = "Bobby";
