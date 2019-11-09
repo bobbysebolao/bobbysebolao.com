@@ -44,6 +44,8 @@ spriteMode.addEventListener("click", () => {
   let homeTitleWordTwo = document.querySelector(".home-title__wordtwo");
   let homeTitleWordThree = document.querySelector(".home-title__wordthree");
 
+  const homeSubtitle = document.querySelector(".home-subtitle");
+
   if (standardStylesheet.href.match("/css/blog.css")) {
     standardStylesheet.href = "/css/sprite.css";
     console.log("Ocean", standardStylesheet);
@@ -55,12 +57,16 @@ spriteMode.addEventListener("click", () => {
     homeTitleWordOne.textContent = "Hi";
     homeTitleWordTwo.textContent = "Score";
     homeTitleWordThree.textContent = "80884";
+
+    homeSubtitle.textContent = "I love playing games and making pixel art"
     standardStylesheet.href = "/css/home-sprite.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (standardStylesheet.href.match("/css/home-sprite.css")) {
     homeTitleWordOne.textContent = "Hi ";
     homeTitleWordTwo.textContent = " I'm";
     homeTitleWordThree.textContent = "Bobby";
+
+    homeSubtitle.textContent = "I tell stories with prose and code";
     standardStylesheet.href = "/css/home.css";
     sessionStorage.removeItem("autosave");
   }
