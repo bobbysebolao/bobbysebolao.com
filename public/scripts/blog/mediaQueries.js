@@ -1,4 +1,8 @@
-const windowWidth = window.matchMedia("(min-width: 640px) and (max-width: 800px)");
+// window.addEventListener("resize", () => console.log("HAYOOOO", window.innerWidth));
+const tabletWindowWidth = window.matchMedia("(min-width: 640px) and (max-width: 800px)");
+const desktopWindowWidth = window.matchMedia("(min-width: 801px)");
+const mobileWindowWidth = window.matchMedia("(min-width: 390px) and (max-width: 639px)");
+const headertest = document.querySelector(".header");
 
 const blocks = document.getElementsByClassName("block");
 
@@ -25,7 +29,9 @@ const blockTwenty = document.getElementById("blockTwenty");
 const blockTwentyOne = document.getElementById("blockTwentyOne");
 
 const updateTetrisLayout = (minMaxWidth) => {
-    if (minMaxWidth.matches) {
+    if (minMaxWidth.matches && tabletWindowWidth.matches) {
+        // console.log(minMaxWidth.media)
+        // headertest.style.backgroundColor = "green";
         blocks[3].parentNode.insertBefore(blocks[3], blocks[6]);
         blocks[8].parentNode.insertBefore(blocks[8], blocks[5]);
         blocks[13].parentNode.insertBefore(blocks[13], blocks[10]);
@@ -35,7 +41,9 @@ const updateTetrisLayout = (minMaxWidth) => {
 
         blocks[20].style.gridColumn = "1 / 3";
     }
-    else {
+    else if (minMaxWidth.matches && desktopWindowWidth.matches) {
+        // console.log(minMaxWidth.media)
+        // headertest.style.backgroundColor = "red";
         postContainer.prepend(blockOne);
         blockOne.parentNode.insertBefore(blockTwo, blockOne.nextSibling);
         blockTwo.parentNode.insertBefore(blockThree, blockTwo.nextSibling);
@@ -60,7 +68,36 @@ const updateTetrisLayout = (minMaxWidth) => {
 
         blockTwentyOne.style.gridColumn = "3 / 4";
     }
+    else if (minMaxWidth.matches && mobileWindowWidth.matches) {
+        // headertest.style.backgroundColor = "yellow";
+        postContainer.prepend(blockOne);
+        postContainer.appendChild(blockTwo);
+        postContainer.appendChild(blockThree);
+        postContainer.appendChild(blockFive);
+        postContainer.appendChild(blockSix);
+        postContainer.appendChild(blockNine);
+        postContainer.appendChild(blockFour);
+        postContainer.appendChild(blockSeven);
+        postContainer.appendChild(blockEight);
+        postContainer.appendChild(blockTen);
+        postContainer.appendChild(blockFourteen);
+        postContainer.appendChild(blockEleven);
+        postContainer.appendChild(blockTwelve);
+        postContainer.appendChild(blockFifteen);
+        postContainer.appendChild(blockEighteen);
+        postContainer.appendChild(blockNineteen);
+        postContainer.appendChild(blockThirteen);
+        postContainer.appendChild(blockSixteen);
+        postContainer.appendChild(blockSeventeen);
+        postContainer.appendChild(blockTwenty);
+        postContainer.appendChild(blockTwentyOne);
+        blockTwentyOne.style.gridColumn = "1 / 2";
+    }
 };
 
-updateTetrisLayout(windowWidth);
-windowWidth.addListener(updateTetrisLayout);
+updateTetrisLayout(desktopWindowWidth);
+updateTetrisLayout(tabletWindowWidth);
+updateTetrisLayout(mobileWindowWidth);
+desktopWindowWidth.addListener(updateTetrisLayout);
+tabletWindowWidth.addListener(updateTetrisLayout);
+mobileWindowWidth.addListener(updateTetrisLayout);
