@@ -2645,3 +2645,43 @@ figure {
     background-size: 100% auto;
   }
 }
+
+/* Media queries */
+
+@media only screen and (min-width: 640px) and (max-width: 800px) {
+  /* .header {
+    background: red;
+  } */
+  .post-container {
+    font-family: "Permanent Marker", cursive;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 210px 210px;
+    grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    justify-content: center;
+    margin-bottom: 40px;
+    /* background: red; */
+    /* align-items: center; */
+  }
+}
+
+@media only screen and (min-width: 390px) and (max-width: 639px) {
+  /* .header {
+    background: green;
+  } */
+  .post-container {
+    font-family: "Permanent Marker", cursive;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 210px;
+    grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    justify-content: center;
+    margin-bottom: 40px;
+    /* background: red; */
+    /* align-items: center; */
+  }
+}
