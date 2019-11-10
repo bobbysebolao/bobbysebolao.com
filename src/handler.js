@@ -329,6 +329,13 @@ const loginPageHandler = res => {
 };
 
 const checkLoginStatusHandler = (req, res) => {
+  if (!req.headers.hasOwnProperty(cookie) || !cookie.parse(req.headers.cookie).hasOwnProperty(jwt)) {
+    res.end(false);
+    return;
+  }
+
+  // console.log("headers", req.headers)
+  // return;
   // console.log("at my wits end: ", req.headers.cookie);
   let jwt = cookie.parse(req.headers.cookie).jwt;
   if (jwt !== undefined) {
@@ -355,7 +362,7 @@ const checkLoginStatusHandler = (req, res) => {
               user.avatar = response.avatar_filepath;
               user.role = response.role;
               console.log("JOKER", user)
-              return;
+              // return;
               res.end(JSON.stringify(user));
             })
             .catch(error => console.log(error));
