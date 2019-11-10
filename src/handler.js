@@ -329,9 +329,11 @@ const loginPageHandler = res => {
 };
 
 const checkLoginStatusHandler = (req, res) => {
-  let jwt;
+  // console.log("at my wits end: ", req.headers.cookie);
+  let jwt = cookie.parse(req.headers.cookie).jwt;
   if (jwt !== undefined) {
-    jwt = cookie.parse(req.headers.cookie).jwt;
+    console.log("This is my login cookie: ", jwt);
+    // return;
     // console.log("Biggie");
     // return;
     let user = {};
@@ -341,6 +343,8 @@ const checkLoginStatusHandler = (req, res) => {
       .then(decodedToken => {
         user.loginStatus = decodedToken.logged_in;
         user.id = decodedToken.user_id;
+        console.log("This is the decoded login cookie: ", user)
+        // return;
       })
       .then(unusedResult => {
         if (user.loginStatus === true) {
@@ -350,8 +354,8 @@ const checkLoginStatusHandler = (req, res) => {
               user.username = response.username;
               user.avatar = response.avatar_filepath;
               user.role = response.role;
-              // console.log("JOKER", response)
-              // return;
+              console.log("JOKER", user)
+              return;
               res.end(JSON.stringify(user));
             })
             .catch(error => console.log(error));
@@ -882,6 +886,8 @@ const awsSignatureHandler = (req, endpoint, res) => {
 };
 
 const loginSubmitHandler = (req, res) => {
+  // console.log("Submitting login...")
+  // return;
   let allTheData = "";
   req.on("data", chunk => {
     allTheData += chunk;
@@ -899,6 +905,7 @@ const loginSubmitHandler = (req, res) => {
     // console.log("The account is verified, proceeding with login...")
     getUser(loginData.username)
       .then(user => {
+        console.log("This is meh username: ", user);
         storedUserDetails = user;
         if (storedUserDetails.is_verified !== true) {
           res.writeHead(302, { Location: "/blog/validate-account.html" });
@@ -908,6 +915,7 @@ const loginSubmitHandler = (req, res) => {
             .comparePassword(loginData.password, storedUserDetails.password)
             .then(pass => {
               if (pass === true) {
+                console.log("The correct password was entered");
                 generateJSONWebToken({
                   user_id: storedUserDetails.pk_user_id,
                   username: storedUserDetails.username,
@@ -915,6 +923,7 @@ const loginSubmitHandler = (req, res) => {
                   role: storedUserDetails.role
                 })
                   .then(token => {
+                    console.log("Bobby's login has been successful");
                     res.writeHead(302, {
                       "Set-Cookie": `jwt=${token}; max-age=9000; path=/; domain=; HttpOnly`,
                       Location: "/blog/blog.html"
