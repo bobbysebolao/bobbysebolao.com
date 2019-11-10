@@ -329,8 +329,9 @@ const loginPageHandler = res => {
 };
 
 const checkLoginStatusHandler = (req, res) => {
-  let jwt = cookie.parse(req.headers.cookie).jwt;
+  let jwt;
   if (jwt !== undefined) {
+    jwt = cookie.parse(req.headers.cookie).jwt;
     // console.log("Biggie");
     // return;
     let user = {};

@@ -1,7 +1,7 @@
 // window.addEventListener("resize", () => console.log("HAYOOOO", window.innerWidth));
-const tabletWindowWidth = window.matchMedia("(min-width: 640px) and (max-width: 800px)");
 const desktopWindowWidth = window.matchMedia("(min-width: 801px)");
-const mobileWindowWidth = window.matchMedia("(min-width: 390px) and (max-width: 639px)");
+const tabletWindowWidth = window.matchMedia("(min-width: 600px) and (max-width: 800px)");
+const mobileWindowWidth = window.matchMedia("(min-width: 320px) and (max-width: 599px)");
 const headertest = document.querySelector(".header");
 
 const blocks = document.getElementsByClassName("block");
