@@ -329,12 +329,21 @@ const loginPageHandler = res => {
 };
 
 const checkLoginStatusHandler = (req, res) => {
-  if (!req.headers.hasOwnProperty(cookie) || !cookie.parse(req.headers.cookie).hasOwnProperty(jwt)) {
-    res.end(false);
+  console.log(req.headers.cookie)
+
+  if (!req.headers.cookie) {
+    console.log(req.headers.hasOwnProperty(cookie))
+    // console.log(!cookie.parse(req.headers.cookie).hasOwnProperty(jwt))
+    console.log("No login cookie in sight...");
+    // return;
+    let user = {};
+    user.loginStatus = false;
+    res.end(JSON.stringify(user));
     return;
   }
 
-  // console.log("headers", req.headers)
+else {
+    // console.log("headers", req.headers)
   // return;
   // console.log("at my wits end: ", req.headers.cookie);
   let jwt = cookie.parse(req.headers.cookie).jwt;
@@ -372,8 +381,12 @@ const checkLoginStatusHandler = (req, res) => {
       })
       .catch(error => console.log(error));
   } else {
-    res.end("false");
+    let user = {};
+    user.loginStatus = false;
+    res.end(JSON.stringify(user));
+    // res.end("false");
   }
+}
 };
 
 const getProjectsHandler = (req, res) => {
