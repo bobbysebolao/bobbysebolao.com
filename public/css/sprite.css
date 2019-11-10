@@ -2454,9 +2454,11 @@ figure {
   }
 }
 
-/* Media queries */
+/* MEDIA QUERIES */
 
-@media only screen and (min-width: 640px) and (max-width: 800px) {
+/* For resizing the browser window on desktop devices*/
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
   /* .header {
     background: red;
   } */
@@ -2475,7 +2477,7 @@ figure {
   }
 }
 
-@media only screen and (min-width: 390px) and (max-width: 639px) {
+@media only screen and (min-width: 320px) and (max-width: 599px) {
   /* .header {
     background: green;
   } */
@@ -2491,5 +2493,51 @@ figure {
     margin-bottom: 40px;
     /* background: red; */
     /* align-items: center; */
+  }
+}
+
+/* For mobile and tablet devices */
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
+
+  .post-container {
+    /* font-family: "Permanent Marker", cursive; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 210px 210px;
+    grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 599px) {
+  /* This .menuTabs section is just to prevent the screen from 
+  going out of whack. Find a better solution */
+  .menuTabs {
+    display: none;
+  }
+
+  /* END */
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .tabRow, .menuTabs {
+    font-size: 5vw;
+  }
+
+  .tabRow li {
+    width: calc(25vw - 10px);
+  }
+
+  .post-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 210px;
+    grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+    justify-content: center;
+    margin-bottom: 40px;
   }
 }
