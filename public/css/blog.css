@@ -190,6 +190,7 @@ nav {
   border-top-right-radius: 6px;
   z-index: 0;
   box-shadow: 5px 10px 10px 0px #000000;
+  width: 100px;
 }
 
 .tabRow li:before,
