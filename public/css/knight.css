@@ -58,7 +58,7 @@ html {
     background-position: center center;
   
     /* background-size: cover; */
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
   }
   
   p {
@@ -562,7 +562,7 @@ html {
     justify-content: space-between;
     align-items: center;
     background: #f8e098;
-    border-radius: 5px 5px 0 0;
+    border-radius: 0;
     padding: 10px 25px 10px 25px;
     min-height: 52px;
     z-index: 0;
@@ -698,6 +698,20 @@ html {
     height: 80px;
     box-shadow: 5px 10px 10px 0px #000000;
   }
+
+  .page-corner-nav:before {
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    content: "";
+    width: calc(100% - 100px);
+    height: 20px;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge.svg');
+    /* background-size: 100% auto; */
+    transform: rotate(180deg);
+  }
   
   .page-corner-nav svg {
     position: absolute;
@@ -759,7 +773,7 @@ html {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('../assets/patreon_corner.svg');
+    background: url('../assets/patreon_corner_knight.svg');
     background-color: #f8e098;
     background-repeat: no-repeat;
     background-position: top right;
@@ -1089,6 +1103,35 @@ html {
     /* padding: 2.5em 5vw 0em 5vw; */
     box-shadow: 5px 10px 10px 0px #000000;
     /* z-index: -1; */
+  }
+
+  .header:before {
+    display: inline-block;
+    position: absolute;
+    top: -60px;
+    left: 100%;
+    content: "";
+    width: 20px;
+    height: calc(100% + 60px);
+    /* background: red; */
+    background-image: url('../assets/parchment-edge-side.svg');
+    background-size: 100% auto;
+    /* transform: rotate(90deg); */
+    /* transform-origin: bottom left; */
+    /* z-index: 10; */
+  }
+
+  .header:after {
+    display: inline-block;
+    position: absolute;
+    top: -52px;
+    left: -20px;
+    content: "";
+    width: 20px;
+    height: calc(100% + 140px);
+    background-image: url('../assets/parchment-edge-side.svg');
+    background-size: 100% auto;
+    transform: rotate(180deg);
   }
   
   .hiddenHeader {
