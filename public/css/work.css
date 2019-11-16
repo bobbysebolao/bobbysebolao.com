@@ -171,6 +171,7 @@ nav {
   border-top-right-radius: 6px;
   z-index: 0;
   box-shadow: 5px 10px 10px 0px #000000;
+  width: 100px;
 }
 
 .tabRow li:before,
@@ -279,7 +280,7 @@ nav {
   position: relative;
   top: 3px;
   margin: 0 2px;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 20px 10px 20px;
   background: #7fd9cf;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -1044,11 +1045,11 @@ nav {
 }
 
 #twitterIconForeground {
-  fill: #FFFFFF; 
+  fill: #ffffff;
 }
 
 #freecodecampIconForeground {
-  fill: #FFFFFF; 
+  fill: #ffffff;
 }
 
 .codewarsIcon {

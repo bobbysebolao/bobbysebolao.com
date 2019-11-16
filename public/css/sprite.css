@@ -175,6 +175,7 @@ nav {
   border-top-right-radius: 6px;
   z-index: 0;
   box-shadow: 5px 10px 10px 0px #000000;
+  width: 100px;
 }
 
 .tabRow li:before,
@@ -274,7 +275,7 @@ nav {
   display: block;
   color: #111;
   text-decoration: none;
-  padding: 15px 10px 15px 10px;
+  padding: 20px 10px 15px 10px;
   line-height: inherit;
 }
 
@@ -283,7 +284,7 @@ nav {
   position: relative;
   top: 3px;
   margin: 0 2px;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 20px 10px 20px;
   background: #fe9bba;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -369,7 +370,7 @@ nav {
   background: #fe9bba;
   border-radius: 5px 5px 0 0;
   padding: 10px 25px 10px 25px;
-  /* max-height: 52px; */
+  min-height: 52px;
   z-index: 0;
   box-shadow: 5px 10px 10px 0px #000000;
 }
@@ -455,7 +456,7 @@ nav {
   width: 50%;
   height: 100%;
   transform: scaleX(-1);
-  background: url('../assets/page_corner.svg');
+  background: url("../assets/page_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -465,7 +466,7 @@ nav {
   position: relative;
   width: 50%;
   height: 100%;
-  background: url('../assets/page_corner.svg');
+  background: url("../assets/page_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -501,7 +502,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url('../assets/patreon_corner.svg');
+  background: url("../assets/patreon_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -2499,7 +2500,6 @@ figure {
 /* For mobile and tablet devices */
 
 @media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
-
   .post-container {
     /* font-family: "Permanent Marker", cursive; */
     width: 100%;
@@ -2524,7 +2524,8 @@ figure {
     font-size: 2.5em;
   }
 
-  .tabRow, .menuTabs {
+  .tabRow,
+  .menuTabs {
     font-size: 5vw;
   }
 

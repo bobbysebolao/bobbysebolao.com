@@ -532,7 +532,7 @@ html {
     display: inline-block;
     position: absolute;
     left: 10px;
-    top: 40px;
+    top: 50px;
     content: "";
     width: 80px;
     height: 20px;
@@ -559,7 +559,7 @@ html {
     display: block;
     color: #111;
     text-decoration: none;
-    padding: 15px 10px 15px 10px;
+    padding: 25px 10px 15px 10px;
     line-height: inherit;
   }
   
@@ -568,13 +568,17 @@ html {
     position: relative;
     top: 3px;
     margin: 0 2px;
-    padding: 10px 10px 10px 10px;
+    padding: 20px 20px 20px 20px;
     background: #fe9bba;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     /* z-index: 0; */
     cursor: pointer;
     box-shadow: 5px 0px 10px 1px #000000;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 0px 10px white;
+    outline: 5px solid #fe9bba;
+    outline-offset: -5px;
   }
 
   /* .menuTabs li:nth-child(1):before {
@@ -592,8 +596,8 @@ html {
     width: 0px;
     height: 0px;
     border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 50px solid #fe9bba;
+    border-bottom: 0px solid transparent;
+    border-left: 35px solid #fe9bba;
     /* box-shadow: 5px 10px 10px 0px #000000; */
     /* z-index: -1; */
   }
@@ -601,14 +605,14 @@ html {
   .nightMode::after, .knightMode::after, .spriteMode::after {
     display: inline-block;
     position: absolute;
-    left: 0px;
+    left: 35px;
     top: -15px;
     content: "";
     width: 0px;
     height: 0px;
     border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-right: 50px solid #fe9bba;
+    border-bottom: 0px solid transparent;
+    border-right: 35px solid #fe9bba;
     /* box-shadow: 5px 10px 10px 0px #000000; */
     /* z-index: -1; */
   }
@@ -639,6 +643,73 @@ html {
     border-bottom: 15px solid transparent;
     border-left: 25px solid transparent;
     z-index: 5;
+  }
+
+  .menuTabs li .tabRibbonStylingOuter:before {
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: -8px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 35px solid white;
+  }
+
+  .menuTabs li .tabRibbonStylingOuter:after {
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 35px solid white;
+    z-index: 10;
+  }
+
+  .menuTabs li .tabRibbonStylingInner:before {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: -1px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 35px solid #fe9bba;
+    /* background: red; */
+  }
+
+  .menuTabs li .tabRibbonStylingInner:after {
+    display: inline-block;
+    position: absolute;
+    left: 25px;
+    top: -1px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 35px solid #fe9bba;
+    z-index: 10;
+  }
+
+  .menuTabs li .tabRibbonStylingBottom:before {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    content: "";
+    width: 50px;
+    height: 20px;
+    /* z-index: 3; */
+    background: #fe9bba;
   }
    
   .menuTabs svg {

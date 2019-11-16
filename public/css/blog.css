@@ -120,16 +120,16 @@ li {
 }
 
 pre {
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
   background-color: #f0f0f0;
   width: 100%;
- }
+}
 
- /* code {
+/* code {
    background-color: #757575;
  } */
 
@@ -299,7 +299,7 @@ nav {
   position: relative;
   top: 3px;
   margin: 0 2px;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 20px 10px 20px;
   background: #fe9bba;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -524,7 +524,7 @@ nav {
   width: 50%;
   height: 100%;
   transform: scaleX(-1);
-  background: url('../assets/page_corner.svg');
+  background: url("../assets/page_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -534,7 +534,7 @@ nav {
   position: relative;
   width: 50%;
   height: 100%;
-  background: url('../assets/page_corner.svg');
+  background: url("../assets/page_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -570,7 +570,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url('../assets/patreon_corner.svg');
+  background: url("../assets/patreon_corner.svg");
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -2646,7 +2646,6 @@ figure {
 /* For resizing the browser window on desktop devices*/
 
 @media only screen and (min-width: 600px) and (max-width: 800px) {
-
   .post-container {
     font-family: "Permanent Marker", cursive;
     width: 100%;
@@ -2661,7 +2660,6 @@ figure {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 599px) {
-
   .post-container {
     font-family: "Permanent Marker", cursive;
     width: 100%;
@@ -2678,7 +2676,6 @@ figure {
 /* For mobile and tablet devices */
 
 @media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
-
   .post-container {
     font-family: "Permanent Marker", cursive;
     width: 100%;
@@ -2701,7 +2698,8 @@ figure {
 
   /* END */
 
-  .tabRow, .menuTabs {
+  .tabRow,
+  .menuTabs {
     font-size: 5vw;
   }
 

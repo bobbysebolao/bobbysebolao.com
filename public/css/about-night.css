@@ -180,6 +180,7 @@ html {
     border-top-right-radius: 6px;
     z-index: 0;
     box-shadow: 5px 10px 10px 0px #000000;
+    width: 100px;
   }
   
   .tabRow li:before,
@@ -288,7 +289,7 @@ html {
     position: relative;
     top: 3px;
     margin: 0 2px;
-    padding: 10px 10px 10px 10px;
+    padding: 20px 20px 10px 20px;
     background: #252d3e;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
