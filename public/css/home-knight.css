@@ -186,7 +186,7 @@ html {
     outline-offset: -5px;
   }
   
-  /* .tabRow li:before,
+  .tabRow li:before,
   .tabRow li:after,
   .menuTabs li:before,
   .menuTabs li:after {
@@ -195,7 +195,7 @@ html {
     width: 6px;
     height: 6px;
     content: " ";
-  } */
+  }
   
   /* .tabRow li:before,
   .menuTabs li:before {
@@ -211,18 +211,19 @@ html {
     box-shadow: -2px 2px 0 #ffffff;
   } */
   
-  /* .tabRow li:hover,
+  .tabRow li:hover,
   .menuTabs li:hover {
     transform: translateY(-3px);
-  } */
+    margin: 0px 2px -30px 2px;
+  }
   
   /* .tabRow li:hover:before,
   .menuTabs li:hover:before {
     box-shadow: 2px 2px 0;
     transform: translateY(3px);
-  } */
+  }
   
-  /* .tabRow li:hover:after,
+  .tabRow li:hover:after,
   .menuTabs li:hover:after {
     box-shadow: -2px 2px 0;
     transform: translateY(3px);
@@ -557,9 +558,9 @@ html {
     display: block;
     position: relative;
     top: 3px;
-    margin: 0 2px;
+    margin: 0px 2px 0px 2px;
     padding: 20px 20px 20px 20px;
-    background: #fe9bba;
+    background: #afec6a;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     /* z-index: 0; */
@@ -567,7 +568,7 @@ html {
     box-shadow: 5px 0px 10px 1px #000000;
     box-sizing: border-box;
     box-shadow: inset 0px 0px 0px 10px white;
-    outline: 5px solid #fe9bba;
+    outline: 5px solid #afec6a;
     outline-offset: -5px;
   }
 
@@ -587,7 +588,7 @@ html {
     height: 0px;
     border-top: 15px solid transparent;
     border-bottom: 0px solid transparent;
-    border-left: 35px solid #fe9bba;
+    border-left: 35px solid #afec6a;
     /* box-shadow: 5px 10px 10px 0px #000000; */
     /* z-index: -1; */
   }
@@ -602,7 +603,7 @@ html {
     height: 0px;
     border-top: 15px solid transparent;
     border-bottom: 0px solid transparent;
-    border-right: 35px solid #fe9bba;
+    border-right: 35px solid #afec6a;
     /* box-shadow: 5px 10px 10px 0px #000000; */
     /* z-index: -1; */
   }
@@ -672,7 +673,7 @@ html {
     height: 0px;
     border-top: 15px solid transparent;
     border-bottom: 0px solid transparent;
-    border-left: 35px solid #fe9bba;
+    border-left: 35px solid #afec6a;
     /* background: red; */
   }
 
@@ -686,7 +687,7 @@ html {
     height: 0px;
     border-top: 15px solid transparent;
     border-bottom: 0px solid transparent;
-    border-right: 35px solid #fe9bba;
+    border-right: 35px solid #afec6a;
     z-index: 10;
   }
 
@@ -699,7 +700,7 @@ html {
     width: 50px;
     height: 20px;
     /* z-index: 3; */
-    background: #fe9bba;
+    background: #afec6a;
   }
    
   .menuTabs svg {
@@ -1295,6 +1296,7 @@ html {
     background-image: url('../assets/parchment-edge-side.svg');
     background-size: 100% auto;
     transform: rotate(180deg);
+    z-index: 5;
   }
   
   .home-subtitle {

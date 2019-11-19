@@ -21,7 +21,11 @@
       <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
       <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	  <link
+      href="https://fonts.googleapis.com/css?family=MedievalSharp&display=swap"
+      rel="stylesheet"
+    />
 
     </head>
 
@@ -423,32 +427,49 @@
     <nav>
       <div class="tabs">
         <ul class="tabRow">
-            <li><a href="../">HOME</a></li>
-            <li><a href="/about/about.html">ABOUT</a></li>
-            <li><a href="../work/work.html">WORK</a></li>
-            <li><a href="../blog/blog.html">BLOG</a></li>
+            <li><a href="../">HOME</a><div class="tabRibbonStylingOuter"></div>
+				<div class="tabRibbonStylingInner"></div>
+				<div class="tabRibbonStylingBottom"></div></li>
+            <li><a href="/about/about.html">ABOUT</a><div class="tabRibbonStylingOuter"></div>
+				<div class="tabRibbonStylingInner"></div>
+				<div class="tabRibbonStylingBottom"></div></li>
+            <li><a href="../work/work.html">WORK</a><div class="tabRibbonStylingOuter"></div>
+				<div class="tabRibbonStylingInner"></div>
+				<div class="tabRibbonStylingBottom"></div></li>
+            <li><a href="../blog/blog.html">BLOG</a><div class="tabRibbonStylingOuter"></div>
+				<div class="tabRibbonStylingInner"></div>
+				<div class="tabRibbonStylingBottom"></div></li>
         </ul>
         <ul class="menuTabs">
             <li class="nightMode">
-              <a>
+              <!-- <a> -->
               <svg class="moonIcon">
                 <use xlink:href="#moonIcon"></use>
-              </svg>
-            </a>
+			  </svg>
+			  <div class="tabRibbonStylingOuter"></div>
+              <div class="tabRibbonStylingInner"></div>
+              <div class="tabRibbonStylingBottom"></div>
+            <!-- </a> -->
             </li>
             <li class="knightMode">
-              <a>
+              <!-- <a> -->
               <svg class="knightIcon">
                 <use xlink:href="#knightIcon"></use>
-              </svg>
-            </a>
+			  </svg>
+			  <div class="tabRibbonStylingOuter"></div>
+              <div class="tabRibbonStylingInner"></div>
+              <div class="tabRibbonStylingBottom"></div>
+            <!-- </a> -->
             </li>
             <li class="spriteMode">
-              <a>
+              <!-- <a> -->
                 <svg class="tetrisSprite">
                   <use xlink:href="#tetrisSprite"></use>
-                </svg>
-              </a>
+				</svg>
+				<div class="tabRibbonStylingOuter"></div>
+              <div class="tabRibbonStylingInner"></div>
+              <div class="tabRibbonStylingBottom"></div>
+              <!-- </a> -->
             </li>
         </ul>
       </div>
@@ -19667,7 +19688,8 @@ workshop</li>
 
     <script src="../scripts/about/about.js" type="text/javascript"></script>
     <script src="../scripts/global/nightMode.js" type="text/javascript"></script>
-    <script src="../scripts/global/spriteMode.js" type="text/javascript"></script>
+	<script src="../scripts/global/spriteMode.js" type="text/javascript"></script>
+	<script src="../scripts/global/knightMode.js" type="text/javascript"></script>
     </body>
 
     </html>
