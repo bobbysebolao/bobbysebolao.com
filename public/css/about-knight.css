@@ -58,7 +58,7 @@ html {
     background-position: center center;
   
     /* background-size: cover; */
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
   }
   
   p {
@@ -964,6 +964,7 @@ html {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    /* overflow: hidden; */
   }
   
   .pageBreak {
@@ -1140,7 +1141,7 @@ html {
   }
   
   .pageBreak:hover .rippedPaperEdgePath {
-    stroke: #2f2f2f;
+    stroke: hsl(0, 0%, 18%);
     stroke-width: 2;
     fill: none;
     stroke-dasharray: 870;
@@ -1187,7 +1188,7 @@ html {
     left: 100%;
     content: "";
     width: 20px;
-    height: calc(100% + 32px);
+    height: calc(100% + 15px);
     /* background: red; */
     background-image: url('../assets/parchment-edge-side.svg');
     background-size: 100% auto;
@@ -1203,7 +1204,7 @@ html {
     left: -20px;
     content: "";
     width: 20px;
-    height: calc(100% + 32px);
+    height: calc(100% + 15px);
     background-image: url('../assets/parchment-edge-side.svg');
     background-size: 100% auto;
     transform: rotate(180deg);
@@ -1330,7 +1331,7 @@ html {
     left: 100%;
     content: "";
     width: 20px;
-    height: 100%;
+    height: calc(100% - 20px);
     /* background: red; */
     background-image: url('../assets/parchment-edge-side.svg');
     background-size: 100% auto;
@@ -1346,7 +1347,7 @@ html {
     left: -20px;
     content: "";
     width: 20px;
-    height: 100%;
+    height: calc(100% - 20px);
     background-image: url('../assets/parchment-edge-side.svg');
     background-size: 100% auto;
     transform: rotate(180deg);
@@ -1542,11 +1543,11 @@ html {
   }
   
   #twitterIconForeground {
-    fill: #ffffff;
+    fill: #f8e098;
   }
   
   #freecodecampIconForeground {
-    fill: #ffffff;
+    fill: #f8e098;
   }
   
   .codewarsIcon {
