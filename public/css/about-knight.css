@@ -753,7 +753,7 @@ html {
     /* box-shadow: 5px 10px 10px 0px #000000; */
   }
 
-  .fileDivider:before {
+  /* .fileDivider:before {
     content: "";
     display: inline-block;
     position: absolute;
@@ -764,6 +764,20 @@ html {
     background: transparent;
     background-image: url('../assets/parchment-edge.svg');
     background-size: 100% auto;
+  } */
+
+  .fileDivider:before {
+    display: inline-block;
+    position: absolute;
+    top: -15px;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge.svg');
+    /* background-size: 100% auto; */
+    /* transform: rotate(180deg); */
   }
   
   .blog__create-options {
@@ -965,6 +979,21 @@ html {
     justify-content: space-between;
     width: 100%;
     /* overflow: hidden; */
+  }
+
+  .page:before {
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge.svg');
+    /* background-size: 100% auto; */
+    transform: rotate(180deg);
+    z-index: 100;
   }
   
   .pageBreak {
