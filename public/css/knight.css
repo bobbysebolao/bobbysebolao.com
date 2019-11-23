@@ -1037,7 +1037,7 @@ html {
   }
   
   .landing-screen__intro {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
   }
   
   .landing-screen__intro--typed {
@@ -1301,7 +1301,7 @@ html {
     position: relative;
     background: #f8e098;
     /* padding: 5em 5em 0em 5em; */
-    padding: 80px 80px 0em 80px;
+    padding: 70px 80px 0em 80px;
     /* padding: 2.5em 5vw 0em 5vw; */
     box-shadow: 5px 10px 10px 0px #000000;
     /* z-index: -1; */
@@ -1638,7 +1638,7 @@ html {
   }
   
   .caption {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
     font-size: 28px;
     font-weight: 400;
     margin-top: -50px;
@@ -2500,7 +2500,7 @@ html {
   /* RECENT POSTS SECTION*/
   
   .post-container {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
     width: 100%;
     display: grid;
     grid-template-columns: 210px 210px 210px;
@@ -2525,7 +2525,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
     box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
     border-radius: 10px;
   }
@@ -2700,7 +2700,7 @@ html {
   }
   
   .blog-post__headers {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
   }
   
   /* BLOG POST LIKES AND REPOSTS SECTIONS */
@@ -3082,7 +3082,7 @@ html {
   @media only screen and (min-width: 600px) and (max-width: 800px) {
   
     .post-container {
-      font-family: "Permanent Marker", cursive;
+      font-family: 'MedievalSharp', cursive;
       width: 100%;
       display: grid;
       grid-template-columns: 210px 210px;
@@ -3097,7 +3097,7 @@ html {
   @media only screen and (min-width: 320px) and (max-width: 599px) {
   
     .post-container {
-      font-family: "Permanent Marker", cursive;
+      font-family: 'MedievalSharp', cursive;
       width: 100%;
       display: grid;
       grid-template-columns: 210px;
@@ -3114,7 +3114,7 @@ html {
   @media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
   
     .post-container {
-      font-family: "Permanent Marker", cursive;
+      font-family: 'MedievalSharp', cursive;
       width: 100%;
       display: grid;
       grid-template-columns: 210px 210px;
@@ -3144,7 +3144,7 @@ html {
     }
   
     .post-container {
-      font-family: "Permanent Marker", cursive;
+      font-family: 'MedievalSharp', cursive;
       width: 100%;
       display: grid;
       grid-template-columns: 210px;
