@@ -51,7 +51,7 @@ html {
     background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
     display: flex;
     flex-direction: column;
-    background-color: #10161D;
+    background-color: red;
     background-image: url(/assets/desk_background_night.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -82,7 +82,6 @@ html {
   h2,
   h3,
   h4 {
-    font-family: "Permanent Marker", cursive;
     margin: 1.414em 0 0.5em;
     line-height: 1.35;
     color: #fdfdfd;
@@ -252,28 +251,28 @@ html {
   }
   
   .tabRow li:nth-child(3) {
-    background: #252d3e;
+    background: #707993;
   }
   
   .tabRow li:nth-child(3):before {
-    box-shadow: 2px 2px 0 #252d3e;
+    box-shadow: 2px 2px 0 #707993;
   }
   
   .tabRow li:nth-child(3):after {
-    box-shadow: -2px 2px 0 #252d3e;
+    box-shadow: -2px 2px 0 #707993;
   }
   
   .tabRow li:nth-child(4) {
-    background: #707993;
+    background: #252d3e;
     margin-right: 15px;
   }
   
   .tabRow li:nth-child(4):before {
-    box-shadow: 2px 2px 0 #707993;
+    box-shadow: 2px 2px 0 #252d3e;
   }
   
   .tabRow li:nth-child(4):after {
-    box-shadow: -2px 2px 0 #707993;
+    box-shadow: -2px 2px 0 #252d3e;
   }
   
   .tabRow a {
@@ -302,12 +301,17 @@ html {
     fill: #fff197;
     transform: translateY(-3px);
   }
+
+  .menuTabs li:nth-child(3) {
+    fill: #b500fa;
+    transform: translateY(-3px);
+  }
   
-  .menuTabs li:nth-child(1):before {
+  .menuTabs li:nth-child(1):before, .menuTabs li:nth-child(3):before {
     transform: translateY(3px);
   }
   
-  .menuTabs li:nth-child(1):after {
+  .menuTabs li:nth-child(1):after, .menuTabs li:nth-child(3):after {
     transform: translateY(3px);
   }
   
@@ -381,7 +385,10 @@ html {
     background: #252d3e;
     border-radius: 5px 5px 0 0;
     padding: 10px 25px 10px 25px;
+    min-height: 52px;
+    /* max-height: 52px; */
     z-index: 0;
+    /* box-shadow: 5px 10px 10px 0px #000000; */
   }
   
   /* .fileDivider:before {
@@ -465,7 +472,7 @@ html {
     width: 50%;
     height: 100%;
     transform: scaleX(-1);
-    background: url('../assets/page_corner_night.svg');
+    background: url("../assets/page_corner_night.svg");
     background-color: #3d465c;
     background-repeat: no-repeat;
     background-position: top right;
@@ -475,7 +482,7 @@ html {
     position: relative;
     width: 50%;
     height: 100%;
-    background: url('../assets/page_corner_night.svg');
+    background: url("../assets/page_corner_night.svg");
     background-color: #3d465c;
     background-repeat: no-repeat;
     background-position: top right;
@@ -514,7 +521,7 @@ html {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('../assets/patreon_corner_night.svg');
+    background: url("../assets/patreon_corner_night.svg");
     background-color: #3d465c;
     background-repeat: no-repeat;
     background-position: top right;
@@ -1173,14 +1180,6 @@ html {
     margin-right: 1em;
     width: 100%;
     height: 100%;
-  }
-
-  #twitterIconForeground {
-    fill: #3d465c; 
-  }
-  
-  #freecodecampIconForeground {
-    fill: #3d465c; 
   }
   
   .codewarsIcon {
@@ -2663,6 +2662,93 @@ html {
       background: url(pink_postit.svg) bottom center;
       background-repeat: no-repeat;
       background-size: 100% auto;
+    }
+  }
+  
+  /* MEDIA QUERIES */
+  
+  /* For resizing the browser window on desktop devices*/
+  
+  @media only screen and (min-width: 600px) and (max-width: 800px) {
+    .post-container {
+      font-family: "Permanent Marker", cursive;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 210px 210px;
+      grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+      grid-row-gap: 5px;
+      grid-column-gap: 5px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+  }
+  
+  @media only screen and (min-width: 320px) and (max-width: 599px) {
+    .post-container {
+      font-family: "Permanent Marker", cursive;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 210px;
+      grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+      grid-row-gap: 5px;
+      grid-column-gap: 5px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+  }
+  
+  /* For mobile and tablet devices */
+  
+  @media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
+    .post-container {
+      font-family: "Permanent Marker", cursive;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 210px 210px;
+      grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+      grid-row-gap: 5px;
+      grid-column-gap: 5px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+  }
+  
+  @media only screen and (min-device-width: 320px) and (max-device-width: 599px) {
+    /* This .menuTabs section is just to prevent the screen from 
+    going out of whack. Find a better solution */
+    .menuTabs {
+      display: none;
+    }
+  
+    /* END */
+  
+    body {
+      background: #10161d;
+    }
+  
+    .header {
+      background: #3d465c;
+    }
+  
+    .tabRow,
+    .menuTabs {
+      font-size: 5vw;
+    }
+  
+    .tabRow li {
+      width: calc(25vw - 10px);
+    }
+  
+    .post-container {
+      font-family: "Permanent Marker", cursive;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 210px;
+      grid-template-rows: 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px 210px;
+      grid-row-gap: 5px;
+      grid-column-gap: 5px;
+      justify-content: center;
+      margin-bottom: 40px;
     }
   }
   

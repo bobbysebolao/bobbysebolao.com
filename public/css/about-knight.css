@@ -564,6 +564,11 @@ html {
     outline-offset: -5px;
   }
 
+  .menuTabs li:nth-child(2) {
+    fill: #a24500;
+    transform: translateY(-3px);
+  }
+
   /* .menuTabs li:nth-child(1):before {
     width: 100px;
     height: 100px;

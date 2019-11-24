@@ -298,6 +298,19 @@ html {
     cursor: pointer;
     box-shadow: 5px 10px 10px 0px #000000;
   }
+
+  .menuTabs li:nth-child(1) {
+    fill: #fff197;
+    transform: translateY(-3px);
+  }
+  
+  .menuTabs li:nth-child(1):before {
+    transform: translateY(3px);
+  }
+  
+  .menuTabs li:nth-child(1):after {
+    transform: translateY(3px);
+  }
   
   /* .menuTabs li:nth-child(1) {
     background: red;
