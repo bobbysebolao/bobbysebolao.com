@@ -59,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #c18e67;
-  background-image: url(/assets/desk_background.svg);
+  background-image: url(/assets/desk_background_pixellated.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -294,6 +294,19 @@ nav {
   z-index: 0;
   cursor: pointer;
   box-shadow: 5px 10px 10px 0px #000000;
+}
+
+.menuTabs li:nth-child(3) {
+  fill: #b500fa;
+  transform: translateY(-3px);
+}
+
+.menuTabs li:nth-child(3):before {
+  transform: translateY(3px);
+}
+
+.menuTabs li:nth-child(3):after {
+  transform: translateY(3px);
 }
 
 /* .menuTabs li:nth-child(1) {
@@ -2773,7 +2786,8 @@ figure {
     margin: auto;
     text-align: center;
     background-color: #c18e67;
-    background-image: url(/assets/desk_background.svg);
+    background-image: url(/assets/desk_background_pixellated.jpg);
+    /* image-rendering: pixelated; */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
