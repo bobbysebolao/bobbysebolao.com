@@ -2251,6 +2251,15 @@ figure {
   margin: 0;
 }
 
+figure img {
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+  max-height: 360px;
+}
+
 .blog-post__main-image {
   object-fit: contain;
   width: 100%;
