@@ -2697,6 +2697,10 @@ html {
   figure {
     margin: 0;
   }
+
+  figure img {
+    width: 100%;
+  }
   
   .blog-post__main-image {
     object-fit: contain;

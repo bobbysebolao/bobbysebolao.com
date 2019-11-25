@@ -965,7 +965,7 @@ nav {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: -2em;
+  top: 0em;
   right: 0;
   width: 280px;
   z-index: 0;
@@ -2757,6 +2757,53 @@ figure {
 
 /*===============MEDIA QUERIES================*/
 /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
+
+@media only screen and (max-width: 839px) {
+  .portfolio-project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+    position: initial;
+  }
+
+  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+    width: 100%;
+  }
+
+  .portfolio-project__image {
+    border-radius: 5px 5px 0 0;
+  }
+
+  .portfolio-project__background {
+    border-radius: 0 0 5px 5px;
+    height: calc(auto + 24px);
+  }
+
+  .portfolio-project__description {
+    padding: 2em 2em 0em 2em;
+  }
+
+  .portfolio-project__read-more {
+    bottom: -24px;
+  }
+}
+
+@media only screen and (max-device-width: 839px) {
+  .portfolio-project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+    position: initial;
+  }
+
+  .portfolio-project__image {
+    width: 100%;
+  }
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
   body {

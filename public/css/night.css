@@ -2254,6 +2254,10 @@ figure {
   margin: 0;
 }
 
+figure img {
+  width: 100%;
+}
+
 .blog-post__main-image {
   mix-blend-mode: multiply;
   object-fit: contain;
