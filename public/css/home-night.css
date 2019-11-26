@@ -974,11 +974,12 @@ html {
     width: 360px;
     height: 448px;
     margin-top: 0px;
-    background: #cccccc;
+    background-color: #707993;
     background-repeat: no-repeat;
     background-position: center center;
     z-index: 1;
     border-radius: 5px;
+    background-blend-mode: multiply;
   }
   
   .portfolio-project__background {
@@ -989,29 +990,14 @@ html {
     height: 448px;
     z-index: -1;
     border-radius: 5px;
-  }
-  
-  .portfolio-project__bg-one {
-    background: #afec6a;
-  }
-  
-  .portfolio-project__bg-two {
-    background: #faf557;
-  }
-  
-  .portfolio-project__bg-three {
-    background: #7fd9cf;
-  }
-  
-  .portfolio-project__bg-four {
-    background: #fe9bba;
+    background: #252d3e;
   }
   
   .portfolio-project__description {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: -2em;
+    top: 0em;
     right: 0;
     width: 280px;
     z-index: 0;
@@ -1058,24 +1044,9 @@ html {
     border-radius: 5px;
   }
   
-  .portfolio-project__read-more-one:hover {
-    background: hsl(88, 77%, 77%);
-    color: black;
-  }
-  
-  .portfolio-project__read-more-two:hover {
-    background: hsl(58, 94%, 76%);
-    color: black;
-  }
-  
-  .portfolio-project__read-more-three:hover {
-    background: hsl(173, 54%, 77%);
-    color: black;
-  }
-  
-  .portfolio-project__read-more-four:hover {
-    background: hsl(341, 98%, 90%);
-    color: black;
+  .portfolio-project__read-more:hover {
+    background: #707993;
+    color: #10161d;
   }
   
   /* CONTACT FORM STYLING */
@@ -1239,12 +1210,12 @@ html {
   
   #contact-form-checkbox-one:checked + label:before {
   /* Your checked background color */
-  background: #afec6a;
+  background: #252d3e;
   background-image: url(../assets/desktop-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  border: 1px solid #afec6a;
+  border: 1px solid #252d3e;
   }
   
   #contact-form-checkbox-two + label:before {
@@ -1257,12 +1228,12 @@ html {
   
   #contact-form-checkbox-two:checked + label:before {
   /* Your checked background color */
-  background: #faf557;
+  background: #252d3e;
   background-image: url(../assets/file-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  border: 1px solid #faf557;
+  border: 1px solid #252d3e;
   }
   
   #contact-form-checkbox-three + label:before {
@@ -1275,12 +1246,12 @@ html {
   
   #contact-form-checkbox-three:checked + label:before {
   /* Your checked background color */
-  background: #7fd9cf;
+  background: #252d3e;
   background-image: url(../assets/globe-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  border: 1px solid #7fd9cf;
+  border: 1px solid #252d3e;
   }
   
   #contact-form-checkbox-four + label:before {
@@ -1293,12 +1264,12 @@ html {
   
   #contact-form-checkbox-four:checked + label:before {
   /* Your checked background color */
-  background: #fe9bba;
+  background: #252d3e;
   background-image: url(../assets/cup-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  border: 1px solid #fe9bba;
+  border: 1px solid #252d3e;
   }
   
   #contact-form-message {
@@ -1306,7 +1277,9 @@ html {
     margin: 0;
     padding: 0;
     border: 1px solid #707993;
-    border-radius: 5px;
+    border-radius: 0px 10px 0px 10px;
+    background: #252d3e;
+    color: #fdfdfd;
   }
   
   #contact-form-message + label{
@@ -1329,9 +1302,9 @@ html {
   }
   
   #contact-form-button:hover {
-    background: #fdfdfd;
+    background: #707993;
     color: #10161d;
-    border-color: #fdfdfd;
+    border-color: #707993;
     cursor: pointer;
   }
   

@@ -97,11 +97,10 @@ knightMode.addEventListener("click", () => {
   } else if (standardStylesheet.href.match("/css/home.css")) {
     standardStylesheet.href = "/css/home-knight.css";
     homeTitleWordOne.textContent = "Hail ";
-    homeTitleWordTwo.textContent = " 'Tis";
+    homeTitleWordTwo.textContent = " 'tis";
     homeTitleWordThree.textContent = "Bobby";
 
-    homeSubtitle.textContent =
-      "My surname is a homonym for 'big onion' in Portuguese";
+    homeSubtitle.textContent = "My surname means 'big onion' in Portuguese";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (standardStylesheet.href.match("/css/home-knight.css")) {
     homeTitleWordOne.textContent = "Hi ";
