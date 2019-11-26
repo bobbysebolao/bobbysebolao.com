@@ -2760,7 +2760,29 @@ figure {
 /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
 
 @media only screen and (max-width: 749px) {
+
+  .contact-form {
+    grid-template-rows: 23px 23px 217px 103px 55px;
+  }
+
+  .contact-form-about {
+    height: auto;
+  }
+
   .contact-form-about legend {
+    top: calc(50% - 50px);
+  }
+
+  .contact-form-checkboxes {
+    position: initial;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 100px 100px;
+    grid-row-gap: 17px;
+    grid-column-gap: 17px;
+  }
+
+  /* .contact-form-about legend {
     position: initial;
     margin: 0;
   }
@@ -2771,13 +2793,7 @@ figure {
     height: 0px;
   }
 
-  /* .contact-form-about {
-    display: grid;
-    grid-template-columns: 2fr 9fr;
-  } */
-
   .contact-form-checkboxes {
-    /* background: red; */
     display: grid;
     grid-template-columns: repeat(2, 100px);
     justify-items: center;
@@ -2787,29 +2803,8 @@ figure {
     height: auto;
     width: 100%;
     margin-left: 100px;
-  }
+  } */
 
-  .contact-form {
-    grid-template-areas:
-    "name-label name-field"
-    "email-label email-field"
-    "about about"
-    ". ."
-    ". ."
-    "message-label message-field"
-    ". contact-button";
-  }
-
-  /* .contact-form-checkbox {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-} */
 }
 
 @media only screen and (max-width: 839px) {
