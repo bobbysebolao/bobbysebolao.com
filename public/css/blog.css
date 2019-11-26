@@ -2654,6 +2654,12 @@ iframe {
 
 /* For resizing the browser window on desktop devices*/
 
+@media only screen and (max-width: 731px) {
+  .menuTabs {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 600px) and (max-width: 800px) {
   .post-container {
     font-family: "Permanent Marker", cursive;

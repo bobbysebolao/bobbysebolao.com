@@ -2257,6 +2257,12 @@ html {
   
   /*===============MEDIA QUERIES================*/
   /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
+
+  @media only screen and (max-width: 731px) {
+    .menuTabs {
+      display: none;
+    }
+  }
   
   @media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
     body {

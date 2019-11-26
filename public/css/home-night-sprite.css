@@ -1090,7 +1090,8 @@ nav {
   "message-label message-field"
   ". contact-button";
   grid-row-gap: 3em;
-  width: 550px;
+  width: 100%;
+  max-width: 550px;
   margin-top: 4em;
 }
 
@@ -2785,6 +2786,121 @@ figure {
 
 /*===============MEDIA QUERIES================*/
 /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
+
+@media only screen and (max-width: 731px) {
+  .menuTabs {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 749px) {
+
+  .contact-form {
+    grid-template-rows: 23px 23px 217px 103px 55px;
+    grid-template-columns: 2.5fr 7.5fr;
+    grid-template-areas:
+  "name-label name-field"
+  "email-label email-field"
+  "about about"
+  "message-label message-field"
+  "contact-button contact-button";
+  }
+
+  .contact-form-about {
+    height: auto;
+  }
+
+  .contact-form-about legend {
+    top: calc(50% - 50px);
+  }
+
+  .contact-form-checkboxes {
+    position: initial;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 100px 100px;
+    grid-row-gap: 17px;
+    grid-column-gap: 17px;
+    margin-left: 25%;
+  }
+
+  /* .contact-form-about legend {
+    position: initial;
+    margin: 0;
+  }
+
+  .contact-form-about {
+    display: flex;
+    flex-direction: row;
+    height: 0px;
+  }
+
+  .contact-form-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    justify-items: center;
+    grid-template-rows: 100px 100px;
+    grid-row-gap: 17px;
+    grid-column-gap: 17px;
+    height: auto;
+    width: 100%;
+    margin-left: 100px;
+  } */
+
+}
+
+@media only screen and (max-width: 839px) {
+  .portfolio-project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+    position: initial;
+  }
+
+  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+    width: 100%;
+  }
+
+  .portfolio-project__image {
+    border-radius: 5px 5px 0 0;
+  }
+
+  .portfolio-project__background {
+    border-radius: 0 0 5px 5px;
+    height: auto;
+  }
+
+  .portfolio-project__tech-stack {
+    /* font-family: "Lato", sans-serif; */
+    /* text-align: left; */
+    padding-bottom: 2em;
+  }
+
+  .portfolio-project__description {
+    padding: 2em 2em 0em 2em;
+  }
+
+  .portfolio-project__read-more {
+    bottom: -24px;
+  }
+}
+
+@media only screen and (max-device-width: 839px) {
+  .portfolio-project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+    position: initial;
+  }
+
+  .portfolio-project__image {
+    width: 100%;
+  }
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
   body {
