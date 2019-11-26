@@ -1052,7 +1052,8 @@ nav {
   "message-label message-field"
   ". contact-button";
   grid-row-gap: 3em;
-  width: 550px;
+  width: 100%;
+  max-width: 550px;
   margin-top: 4em;
 }
 
@@ -2758,6 +2759,59 @@ figure {
 /*===============MEDIA QUERIES================*/
 /* https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/ - this article explains the difference between 'device-width' and 'width' for setting media query breakpoints*/
 
+@media only screen and (max-width: 749px) {
+  .contact-form-about legend {
+    position: initial;
+    margin: 0;
+  }
+
+  .contact-form-about {
+    display: flex;
+    flex-direction: row;
+    height: 0px;
+  }
+
+  /* .contact-form-about {
+    display: grid;
+    grid-template-columns: 2fr 9fr;
+  } */
+
+  .contact-form-checkboxes {
+    /* background: red; */
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    justify-items: center;
+    grid-template-rows: 100px 100px;
+    grid-row-gap: 17px;
+    grid-column-gap: 17px;
+    height: auto;
+    width: 100%;
+    margin-left: 100px;
+  }
+
+  .contact-form {
+    grid-template-areas:
+    "name-label name-field"
+    "email-label email-field"
+    "about about"
+    ". ."
+    ". ."
+    "message-label message-field"
+    ". contact-button";
+  }
+
+  /* .contact-form-checkbox {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+} */
+}
+
 @media only screen and (max-width: 839px) {
   .portfolio-project {
     display: flex;
@@ -2778,7 +2832,13 @@ figure {
 
   .portfolio-project__background {
     border-radius: 0 0 5px 5px;
-    height: calc(auto + 24px);
+    height: auto;
+  }
+
+  .portfolio-project__tech-stack {
+    /* font-family: "Lato", sans-serif; */
+    /* text-align: left; */
+    padding-bottom: 2em;
   }
 
   .portfolio-project__description {
