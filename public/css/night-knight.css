@@ -804,6 +804,7 @@ html {
     background: transparent;
     background-image: url('../assets/parchment-edge-night-knight.svg');
     background-size: 100% auto;
+    background-position: bottom;
   }
   
   .blog__create-options {

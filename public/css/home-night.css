@@ -1087,7 +1087,7 @@ html {
   }
   
   .contact-form input:hover {
-    border-color: black;
+    border-color: #10161d;
   }
 
   .contact-form input::placeholder {

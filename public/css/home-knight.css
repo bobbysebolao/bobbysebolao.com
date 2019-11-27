@@ -777,6 +777,7 @@ html {
     background: transparent;
     background-image: url('../assets/parchment-edge.svg');
     background-size: 100% auto;
+    background-position: bottom;
   }
   
   .blog__create-options {
@@ -1403,7 +1404,7 @@ html {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: -2em;
+    top: 0em;
     right: 0;
     width: 280px;
     z-index: 0;

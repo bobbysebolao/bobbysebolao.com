@@ -372,6 +372,21 @@ html {
     z-index: 0;
     box-shadow: 5px 10px 10px 0px #000000;
   }
+
+  .fileDivider:before {
+    display: inline-block;
+    position: absolute;
+    top: -15px;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge.svg');
+    /* background-size: 100% auto; */
+    /* transform: rotate(180deg); */
+    background-position: bottom;
+  }
   
   .blog__create-options {
     display: flex;

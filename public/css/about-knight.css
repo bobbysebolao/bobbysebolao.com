@@ -783,6 +783,7 @@ html {
     background-image: url('../assets/parchment-edge.svg');
     /* background-size: 100% auto; */
     /* transform: rotate(180deg); */
+    background-position: bottom;
   }
   
   .blog__create-options {
