@@ -51,8 +51,8 @@ html {
     background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
     display: flex;
     flex-direction: column;
-    background-color: #c18e67;
-    background-image: url(/assets/desk_background.svg);
+    background-color: #10161d;
+    background-image: url(/assets/desk_background_night_knight.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
@@ -2261,7 +2261,7 @@ html {
       margin: auto;
       text-align: center;
       background-color: #c18e67;
-      background-image: url(/assets/desk_background.svg);
+      background-image: url(/assets/desk_background_night_knight.svg);
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center center;
