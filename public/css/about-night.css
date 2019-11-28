@@ -891,7 +891,7 @@ html {
   }
   
   .active svg {
-    fill: #ccc;
+    fill: #707993;
     animation-name: none;
   }
   
@@ -927,7 +927,7 @@ html {
     padding: 0em 3em 2em 3em;
     display: flex;
     flex-direction: column;
-    background: #f9f4ab;
+    background: #3d465c;
   }
   
   .introNote:before {
@@ -979,6 +979,12 @@ html {
     position: relative;
     width: 30%;
     order: 1;
+    background-color: #3d465c;
+    /* background-blend-mode: multiply; */
+  }
+
+  .introIconOne img {
+    mix-blend-mode: multiply;
   }
   
   .introTextOne {
@@ -999,6 +1005,11 @@ html {
     position: relative;
     width: 30%;
     order: 2;
+    background: #3d465c;
+  }
+
+  .introIconTwo img {
+    mix-blend-mode: multiply;
   }
   
   .introTextTwo {
@@ -1230,11 +1241,12 @@ html {
     preserveaspectratio: xMidYMid meet;
     max-width: 390px;
     max-height: 285px;
-    border-top: 25px solid white;
-    border-left: 15px solid white;
-    border-right: 15px solid white;
-    border-bottom: 70px solid white;
+    border-top: 25px solid #fdfdfd;
+    border-left: 15px solid #fdfdfd;
+    border-right: 15px solid #fdfdfd;
+    border-bottom: 70px solid #fdfdfd;
     box-sizing: content-box;
+    mix-blend-mode: multiply;
     /* width: 297.640px;
     height: 223.289px; */
   }
@@ -1249,6 +1261,7 @@ html {
     margin-top: 20px;
     transform: rotate(2deg);
     order: 1;
+    background: #707993;
   }
   
   .storyOne {
@@ -1258,7 +1271,7 @@ html {
     width: 50%;
     height: 100%;
     padding: 0em 1em 0em 1em;
-    background: #a1d350;
+    background: #3d465c;
     order: 2;
     margin-right: 10px;
     transform: rotate(-2deg);
