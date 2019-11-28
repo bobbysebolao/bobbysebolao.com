@@ -1121,11 +1121,13 @@ html {
     justify-content: center;
     align-items: center;
     /* flex-wrap: wrap; */
+    background-color: #707993;
   }
   
   .helloWorldScreengrab {
     width: 31.3%;
     height: auto;
+    mix-blend-mode: multiply;
     /* margin-right: 5%; */
   }
   
@@ -1138,6 +1140,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    mix-blend-mode: multiply;
     /* object-fit: contain; */
   }
   
@@ -1299,6 +1302,7 @@ html {
     border-right: 15px solid white;
     border-bottom: 70px solid white;
     box-sizing: content-box;
+    mix-blend-mode: multiply;
     /* width: 297.640px;
     height: 223.289px; */
   }
@@ -1313,6 +1317,7 @@ html {
     margin-top: -10px;
     transform: rotate(-2deg);
     order: 2;
+    background: #707993;
   }
   
   .storyTwo {
@@ -1325,7 +1330,7 @@ html {
     width: 50%;
     height: 100%;
     padding: 0px 20px 0px 20px;
-    background: #ffff00;
+    background: #3d465c;
     margin-left: 10px;
     transform: rotate(2deg);
     order: 1;
@@ -1352,6 +1357,7 @@ html {
     border-right: 15px solid white;
     border-bottom: 70px solid white;
     box-sizing: content-box;
+    mix-blend-mode: multiply;
     /* width: 297.640px;
     height: 223.289px; */
     /* z-index: 3; */
@@ -1367,7 +1373,7 @@ html {
     width: 50%;
     height: 100%;
     padding: 0px 20px 0px 20px;
-    background: #95d5cd;
+    background: #3d465c;
     order: 2;
     margin-left: -10px;
     transform: rotate(-2deg);
@@ -1395,6 +1401,7 @@ html {
     border-right: 15px solid white;
     border-bottom: 70px solid white;
     box-sizing: content-box;
+    mix-blend-mode: multiply;
     /* width: 297.640px;
     height: 223.289px; */
   }
@@ -1409,7 +1416,7 @@ html {
     width: 50%;
     height: 100%;
     padding: 0px 20px 0px 20px;
-    background: #d277b0;
+    background: #3d465c;
     margin-left: 10px;
     transform: rotate(2deg);
     order: 1;
@@ -1683,6 +1690,7 @@ html {
     width: 100%;
     max-width: 750px;
     height: auto;
+    margin: auto;
   }
   
   #carousel-container {
@@ -1892,7 +1900,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #fdfdfd;
+    background: #707993;
     opacity: 0.8;
     transition: all 0.25s ease;
   }
@@ -1914,9 +1922,9 @@ html {
   
   #leftButton,
   #rightButton {
-    background-color: #fdfdfd;
+    background-color: #707993;
     font-size: 2em;
-    color: #2f2f2f;
+    color: #fdfdfd;
     width: 100%;
     height: 3em;
     opacity: 0.5;
@@ -1926,8 +1934,8 @@ html {
   
   #leftButton:hover,
   #rightButton:hover {
-    background-color: #2f2f2f;
-    color: white;
+    background-color: #3d465c;
+    color: #fdfdfd;
     cursor: pointer;
   }
   
@@ -1943,7 +1951,7 @@ html {
   #autoplay + label {
     width: 100%;
     height: 100%;
-    background: url(play.svg);
+    background: url(../assets/play.svg);
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;
@@ -1953,7 +1961,7 @@ html {
   #autoplay:checked + label {
     width: 100%;
     height: 100%;
-    background: url(pause.svg);
+    background: url(../assets/pause.svg);
     background-repeat: no-repeat;
     background-attachment: cover;
     background-position: center center;
@@ -2000,6 +2008,7 @@ html {
     object-position: center center;
     background-color: rgba(255, 255, 255, 0.3);
     width: 100%;
+    mix-blend-mode: multiply;
   }
   
   /*CREATE NEW BLOG POST SECTION*/
