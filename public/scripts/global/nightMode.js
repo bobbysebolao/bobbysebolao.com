@@ -79,6 +79,12 @@ nightMode.addEventListener("click", () => {
   } else if (standardStylesheet.href.match("/css/about-night.css")) {
     standardStylesheet.href = "/css/about.css";
     sessionStorage.removeItem("autosave");
+  } else if (standardStylesheet.href.match("/css/about-knight.css")) {
+    standardStylesheet.href = "/css/about-night-knight.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (standardStylesheet.href.match("/css/about-night-knight.css")) {
+    standardStylesheet.href = "/css/about-knight.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (standardStylesheet.href.match("/css/about-sprite.css")) {
     standardStylesheet.href = "/css/about-night-sprite.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);

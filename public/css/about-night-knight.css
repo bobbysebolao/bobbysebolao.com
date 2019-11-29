@@ -375,7 +375,7 @@ html {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #252d3e;
+    background: #41484d;
     border-radius: 5px 5px 0 0;
     padding: 10px 25px 10px 25px;
     z-index: 0;
@@ -390,7 +390,7 @@ html {
     width: 100%;
     height: 20px;
     /* background: red; */
-    background-image: url('../assets/parchment-edge.svg');
+    background-image: url('../assets/parchment-edge-night-knight.svg');
     /* background-size: 100% auto; */
     /* transform: rotate(180deg); */
     background-position: bottom;
@@ -696,13 +696,18 @@ html {
   }
   
   .page:before {
-    content: "";
-    box-shadow: 5px 10px 10px 0px #000000;
+    display: inline-block;
     position: absolute;
-    top: -52px;
-    left: 0;
+    top: 100%;
+    left: 0px;
+    content: "";
     width: 100%;
-    height: 52px;
+    height: 20px;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge-night-knight.svg');
+    /* background-size: 100% auto; */
+    transform: rotate(180deg);
+    z-index: 100;
   }
   
   .pageBreak {
@@ -728,13 +733,13 @@ html {
   
   @keyframes pulseInstruction {
     0% {
-      color: #3d465c;
+      color: #41484d;
     }
     50% {
       color: #3d465c;
     }
     100% {
-      color: #3d465c;
+      color: #41484d;
     }
   }
   
@@ -787,29 +792,29 @@ html {
   
   @keyframes pulseSVG {
     0% {
-      background: #707993;
-      fill: #707993;
+      background: #41484d;
+      fill: #41484d;
     }
     50% {
-      background: #3d465c;
-      fill: #3d465c;
-    }
-    100% {
       background: #707993;
       fill: #707993;
+    }
+    100% {
+      background: #41484d;
+      fill: #41484d;
     }
   }
   
   .pageBreak:hover .rippedPaperBottom,
   .pageBreak:hover .rippedPaperTop {
-    fill: #3d465c;
+    fill: #41484d;
     animation-name: none;
   }
   
   .fillGap {
     position: absolute;
     display: block;
-    background: #3d465c;
+    background: #41484d;
     top: 0;
     left: 0;
     width: 100%;
@@ -884,7 +889,7 @@ html {
   .pageBreak:hover .rippedPaperEdgePath {
     stroke: #10161d;
     stroke-width: 2;
-    fill: #3d465c;
+    fill: #41484d;
     stroke-dasharray: 870;
     stroke-dashoffset: 870;
     animation: dash 1.5s forwards linear;
@@ -915,11 +920,41 @@ html {
   .header {
     width: 100%;
     position: relative;
-    background: #3d465c;
+    background: #41484d;
     /* padding: 5em 5em 0em 5em; */
     padding: 80px 80px 0em 80px;
     /* padding: 2.5em 5vw 0em 5vw; */
     box-shadow: 5px 10px 10px 0px #000000;
+  }
+
+  .header:before {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: 100%;
+    content: "";
+    width: 20px;
+    height: calc(100% + 15px);
+    /* background: red; */
+    background-image: url('../assets/parchment-edge-side-night-knight.svg');
+    background-size: 100% auto;
+    /* transform: rotate(90deg); */
+    /* transform-origin: bottom left; */
+    z-index: 10;
+  }
+
+  .header:after {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    content: "";
+    width: 20px;
+    height: calc(100% + 15px);
+    background-image: url('../assets/parchment-edge-side-night-knight.svg');
+    background-size: 100% auto;
+    transform: rotate(180deg);
+    z-index: 5;
   }
   
   .hiddenHeader {
@@ -1031,8 +1066,68 @@ html {
     position: relative;
     width: 100%;
     padding: 0em 5em 0em 5em;
-    background: #3d465c;
+    background: #41484d;
     box-shadow: 5px 10px 10px 0px #000000;
+  }
+
+  .education:before, .experience:before, .skills:before, .interests:before, .whyCoding:before, .whyFAC:before {
+    display: inline-block;
+    position: absolute;
+    top: 11px;
+    left: 100%;
+    content: "";
+    width: 20px;
+    height: calc(100% - 20px);
+    /* background: red; */
+    background-image: url('../assets/parchment-edge-side-night-knight.svg');
+    background-size: 100% auto;
+    /* transform: rotate(90deg); */
+    /* transform-origin: bottom left; */
+    z-index: 10;
+  }
+
+  .education:after, .experience:after, .skills:after, .interests:after, .whyCoding:after, .whyFAC:after {
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    left: -20px;
+    content: "";
+    width: 20px;
+    height: calc(100% - 20px);
+    background-image: url('../assets/parchment-edge-side-night-knight.svg');
+    background-size: 100% auto;
+    transform: rotate(180deg);
+    z-index: 5;
+  }
+
+  .footer:before {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    content: "";
+    width: 20px;
+    height: 100%;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge-side-night-knight.svg');
+    background-size: 100% auto;
+    /* transform: rotate(90deg); */
+    /* transform-origin: bottom left; */
+    z-index: 10;
+  }
+
+  .footer:after {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    content: "";
+    width: 20px;
+    height: 100%;
+    background-image: url('../assets/parchment-edge-side-night-knight.svg');
+    background-size: 100% auto;
+    transform: rotate(180deg);
+    z-index: 5;
   }
   
   .hiddenEducation {
@@ -1155,7 +1250,7 @@ html {
   .footer {
     width: 100%;
     position: relative;
-    background: #3d465c;
+    background: #41484d;
     box-shadow: 5px 10px 10px 0px #000000;
   }
   
@@ -1194,11 +1289,11 @@ html {
   }
 
   #twitterIconForeground {
-    fill: #3d465c; 
+    fill: #41484d; 
   }
 
   #freecodecampIconForeground {
-    fill: #3d465c; 
+    fill: #41484d; 
   }
   
   .codewarsIcon {
@@ -2479,7 +2574,6 @@ html {
     .header {
       width: 100%;
       position: relative;
-      background: #fdfdfd;
       padding: 2.5em 2.5em 0em 2.5em;
     }
   
@@ -2494,13 +2588,11 @@ html {
       position: relative;
       width: 100%;
       padding: 0em 2.5em 0em 2.5em;
-      background: #fdfdfd;
     }
   
     .footer {
       width: 100%;
       position: relative;
-      background: #fdfdfd;
       padding: 2.5em 2.5em 1em 2.5em;
     }
   
