@@ -104,7 +104,7 @@ nightMode.addEventListener("click", () => {
     homeTitleWordTwo.textContent = " I'm";
     homeTitleWordThree.textContent = "Sleeping!";
 
-    homeSubtitle.textContent = "I sometimes dream in black and white";
+    homeSubtitle.textContent = "I prototype in black and white";
     standardStylesheet.href = "/css/home-night.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (standardStylesheet.href.match("/css/home-night.css")) {

@@ -69,6 +69,10 @@ knightMode.addEventListener("click", () => {
     standardStylesheet.href = "/css/work-night-sprite.css";
     sessionStorage.removeItem("autosave");
   } else if (standardStylesheet.href.match("/css/about.css")) {
+    const introTextOne = document.querySelector(".introTextOne p");
+    introTextOne.textContent =
+      "Greetings - 'tis SVG me! Thanking ye for considering mine Founders & Coders application. One hopes you enjoy reading it as much as I enjoyed making it!";
+
     standardStylesheet.href = "/css/about-knight.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (standardStylesheet.href.match("/css/about-knight.css")) {
@@ -100,7 +104,8 @@ knightMode.addEventListener("click", () => {
     homeTitleWordTwo.textContent = " 'tis";
     homeTitleWordThree.textContent = "Bobby";
 
-    homeSubtitle.textContent = "My surname means 'big onion' in Portuguese";
+    homeSubtitle.textContent =
+      "Mine surname doth mean 'big onion' in Portuguese";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (standardStylesheet.href.match("/css/home-knight.css")) {
     homeTitleWordOne.textContent = "Hi ";

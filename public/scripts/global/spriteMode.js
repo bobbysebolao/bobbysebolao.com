@@ -61,7 +61,7 @@ spriteMode.addEventListener("click", () => {
     homeTitleWordTwo.textContent = "Score";
     homeTitleWordThree.textContent = "80884";
 
-    homeSubtitle.textContent = "I love playing games and making pixel art";
+    homeSubtitle.textContent = "I'm learning how to make pixel art";
     standardStylesheet.href = "/css/home-sprite.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (standardStylesheet.href.match("/css/home-sprite.css")) {
