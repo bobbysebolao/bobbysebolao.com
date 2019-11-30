@@ -11,10 +11,10 @@ width of an element) */
 /* ======================= TOP LEVEL STYLING======================= */
 
 @font-face {
-    font-family: 'Calculator';
-    src: url('fonts/calculator.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Calculator";
+  src: url(/css/fonts/calculator.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* 1. Set font. */
@@ -306,11 +306,13 @@ nav {
   transform: translateY(-3px);
 }
 
-.menuTabs li:nth-child(1):before, .menuTabs li:nth-child(3):before {
+.menuTabs li:nth-child(1):before,
+.menuTabs li:nth-child(3):before {
   transform: translateY(3px);
 }
 
-.menuTabs li:nth-child(1):after, .menuTabs li:nth-child(3):after {
+.menuTabs li:nth-child(1):after,
+.menuTabs li:nth-child(3):after {
   transform: translateY(3px);
 }
 
@@ -459,7 +461,7 @@ nav {
   width: 50%;
   height: 100%;
   transform: scaleX(-1);
-  background: url("../assets/page_corner.svg");
+  background: url(/assets/page_corner.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -469,7 +471,7 @@ nav {
   position: relative;
   width: 50%;
   height: 100%;
-  background: url("../assets/page_corner.svg");
+  background: url(/assets/page_corner.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -505,7 +507,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("../assets/patreon_corner.svg");
+  background: url(/assets/patreon_corner.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -532,12 +534,12 @@ nav {
 }
 
 .blog__login-options summary {
-  list-style-image: url('../assets/down-arrow.svg');
+  list-style-image: url(/assets/down-arrow.svg);
   position: absolute;
   top: 0px;
 }
 .blog__login-options details[open] summary {
-  list-style-image: url('../assets/up-arrow.svg');
+  list-style-image: url(/assets/up-arrow.svg);
   position: absolute;
   top: 5px;
 }
@@ -546,14 +548,14 @@ nav {
 }
 
 .blog__login-options summary::-webkit-details-marker {
-  background: url('../assets/down-arrow.svg');
+  background: url(/assets/down-arrow.svg);
   color: transparent;
   position: absolute;
   top: 0px;
 }
 
 .blog__login-options details[open] summary::-webkit-details-marker {
-  background: url('../assets/up-arrow.svg');
+  background: url(/assets/up-arrow.svg);
   position: absolute;
   top: 5px;
 } */
@@ -910,7 +912,7 @@ nav {
 
 .home-title__wordthree {
   font-size: 1.5em;
-  font-family: 'Calculator';
+  font-family: "Calculator";
   font-weight: bold;
 }
 
@@ -931,23 +933,23 @@ nav {
 }
 
 .aliens__one {
-  background: url("../assets/alien_1.svg");
+  background: url(/assets/alien_1.svg);
 }
 
 .aliens__two {
-  background: url("../assets/alien_2.svg");
+  background: url(/assets/alien_2.svg);
 }
 
 .aliens__three {
-  background: url("../assets/alien_3.svg");
+  background: url(/assets/alien_3.svg);
 }
 
 .aliens__defense {
-  background: url("../assets/defense.svg");
+  background: url(/assets/defense.svg);
 }
 
 .aliens__player {
-  background: url("../assets/player.svg");
+  background: url(/assets/player.svg);
 }
 
 @keyframes alienAnim {
@@ -1084,11 +1086,11 @@ nav {
   align-items: center;
   text-align: left;
   grid-template-areas:
-  "name-label name-field"
-  "email-label email-field"
-  "about about"
-  "message-label message-field"
-  ". contact-button";
+    "name-label name-field"
+    "email-label email-field"
+    "about about"
+    "message-label message-field"
+    ". contact-button";
   grid-row-gap: 3em;
   width: 100%;
   max-width: 550px;
@@ -1115,7 +1117,7 @@ nav {
   grid-area: name-field;
 }
 
-#contact-form-name + label{
+#contact-form-name + label {
   grid-area: name-label;
 }
 
@@ -1167,50 +1169,46 @@ nav {
 
 /* visually hide the default radio button */
 .contact-form-checkbox {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 /* make the label relative, add padding to the left for adding the custom radio button */
 .contact-form-checkbox + label {
-    cursor: pointer;
-    position: relative;
-    width: 100px;
-    height: 23px;
-    text-align: center;
-    margin-right: 17px;
-    /* display: inline-block; */
-    z-index: 0;
-    font-family: "Lato", sans-serif;
+  cursor: pointer;
+  position: relative;
+  width: 100px;
+  height: 23px;
+  text-align: center;
+  margin-right: 17px;
+  /* display: inline-block; */
+  z-index: 0;
+  font-family: "Lato", sans-serif;
 }
 
 .contact-form-checkbox + label:before {
-    content: "";
-    position: absolute;
-    top: -77px;
-    left: calc(50% - 50px);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition(background 250ms ease-in-out);
-    -moz-transition(background 250ms ease-in-out);
-    -o-transition(background 250ms ease-in-out);
-    transition(background 250ms ease-in-out);
-    width: 100px;
-    height: 100px;
-    /* background: red; */
-    z-index: -1;
-    border: 1px solid #cccccc;
-    transition: all 0.25s ease;
+  content: "";
+  position: absolute;
+  top: -77px;
+  left: calc(50% - 50px);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  /* background: red; */
+  z-index: -1;
+  border: 1px solid #cccccc;
+  transition: all 0.25s ease;
 }
 
 .contact-form-checkbox + label:hover:before {
@@ -1218,71 +1216,71 @@ nav {
 }
 
 #contact-form-checkbox-one + label:before {
-  background-image: url(../assets/desktop-icon.svg);
+  background-image: url(/assets/desktop-icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 #contact-form-checkbox-one:checked + label:before {
-/* Your checked background color */
-background: #afec6a;
-background-image: url(../assets/desktop-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #afec6a;
+  /* Your checked background color */
+  background: #afec6a;
+  background-image: url(/assets/desktop-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #afec6a;
 }
 
 #contact-form-checkbox-two + label:before {
-  background-image: url(../assets/file-icon.svg);
+  background-image: url(/assets/file-icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 #contact-form-checkbox-two:checked + label:before {
-/* Your checked background color */
-background: #faf557;
-background-image: url(../assets/file-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #faf557;
+  /* Your checked background color */
+  background: #faf557;
+  background-image: url(/assets/file-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #faf557;
 }
 
 #contact-form-checkbox-three + label:before {
-  background-image: url(../assets/globe-icon.svg);
+  background-image: url(/assets/globe-icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 #contact-form-checkbox-three:checked + label:before {
-/* Your checked background color */
-background: #7fd9cf;
-background-image: url(../assets/globe-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #7fd9cf;
+  /* Your checked background color */
+  background: #7fd9cf;
+  background-image: url(/assets/globe-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #7fd9cf;
 }
 
 #contact-form-checkbox-four + label:before {
-  background-image: url(../assets/cup-icon.svg);
+  background-image: url(/assets/cup-icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 #contact-form-checkbox-four:checked + label:before {
-/* Your checked background color */
-background: #fe9bba;
-background-image: url(../assets/cup-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #fe9bba;
+  /* Your checked background color */
+  background: #fe9bba;
+  background-image: url(/assets/cup-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #fe9bba;
 }
 
 #contact-form-message {
@@ -1293,7 +1291,7 @@ border: 1px solid #fe9bba;
   border-radius: 5px;
 }
 
-#contact-form-message + label{
+#contact-form-message + label {
   grid-area: message-label;
 }
 
@@ -1513,7 +1511,7 @@ border: 1px solid #fe9bba;
   max-width: 90%;
   height: 500px;
   margin: 0 auto;
-  background: url(../assets/calculator.svg);
+  background: url(/assets/calculator.svg);
   background-repeat: no-repeat;
   background-position: top center;
 }
@@ -1693,7 +1691,7 @@ border: 1px solid #fe9bba;
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(../assets/green_postit.svg) bottom center;
+  background: url(/assets/green_postit.svg) bottom center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -1747,7 +1745,7 @@ border: 1px solid #fe9bba;
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(../assets/yellow_postit.svg) bottom center;
+  background: url(/assets/yellow_postit.svg) bottom center;
   background-size: 100% 100%;
 }
 
@@ -1790,7 +1788,7 @@ border: 1px solid #fe9bba;
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(../assets/blue_postit.svg) bottom center;
+  background: url(/assets/blue_postit.svg) bottom center;
   background-size: 100% 100%;
 }
 
@@ -1831,7 +1829,7 @@ border: 1px solid #fe9bba;
   height: 50px;
   width: 100%;
   margin-top: -13px;
-  background: url(../assets/pink_postit.svg) bottom center;
+  background: url(/assets/pink_postit.svg) bottom center;
   background-size: 100% 100%;
 }
 /*====================== SCENE ONE ANIMATIONS ================*/
@@ -2351,7 +2349,7 @@ g.boardroom .audience .clackTwo {
 #autoplay + label {
   width: 100%;
   height: 100%;
-  background: url(../assets/play.svg);
+  background: url(/assets/play.svg);
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;
@@ -2361,7 +2359,7 @@ g.boardroom .audience .clackTwo {
 #autoplay:checked + label {
   width: 100%;
   height: 100%;
-  background: url(../assets/pause.svg);
+  background: url(/assets/pause.svg);
   background-repeat: no-repeat;
   background-attachment: cover;
   background-position: center center;
@@ -2794,16 +2792,15 @@ figure {
 }
 
 @media only screen and (max-width: 749px) {
-
   .contact-form {
     grid-template-rows: 23px 23px 217px 103px 55px;
     grid-template-columns: 2.5fr 7.5fr;
     grid-template-areas:
-  "name-label name-field"
-  "email-label email-field"
-  "about about"
-  "message-label message-field"
-  "contact-button contact-button";
+      "name-label name-field"
+      "email-label email-field"
+      "about about"
+      "message-label message-field"
+      "contact-button contact-button";
   }
 
   .contact-form-about {
@@ -2846,7 +2843,6 @@ figure {
     width: 100%;
     margin-left: 100px;
   } */
-
 }
 
 @media only screen and (max-width: 839px) {
@@ -2855,11 +2851,15 @@ figure {
     flex-direction: column;
   }
 
-  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+  .portfolio-project__image,
+  .portfolio-project__background,
+  .portfolio-project__description {
     position: initial;
   }
 
-  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+  .portfolio-project__image,
+  .portfolio-project__background,
+  .portfolio-project__description {
     width: 100%;
   }
 
@@ -2893,7 +2893,9 @@ figure {
     flex-direction: column;
   }
 
-  .portfolio-project__image, .portfolio-project__background, .portfolio-project__description {
+  .portfolio-project__image,
+  .portfolio-project__background,
+  .portfolio-project__description {
     position: initial;
   }
 
@@ -3034,7 +3036,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/green_postit.svg) bottom center;
+    background: url(/assets/green_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
@@ -3072,7 +3074,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/yellow_postit.svg) bottom center;
+    background: url(/assets/yellow_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
@@ -3102,7 +3104,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/blue_postit.svg) bottom center;
+    background: url(/assets/blue_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
@@ -3131,7 +3133,7 @@ figure {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/pink_postit.svg) bottom center;
+    background: url(/assets/pink_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% auto;
   }

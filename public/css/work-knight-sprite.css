@@ -433,12 +433,12 @@ html {
   }
   
   .blog__login-options summary {
-    list-style-image: url('../assets/down-arrow.svg');
+    list-style-image: url(/assets/down-arrow.svg);
     position: absolute;
     top: 0px;
   }
   .blog__login-options details[open] summary {
-    list-style-image: url('../assets/up-arrow.svg');
+    list-style-image: url(/assets/up-arrow.svg);
     position: absolute;
     top: 5px;
   }
@@ -447,14 +447,14 @@ html {
   }
   
   .blog__login-options summary::-webkit-details-marker {
-    background: url('../assets/down-arrow.svg');
+    background: url(/assets/down-arrow.svg);
     color: transparent;
     position: absolute;
     top: 0px;
   }
   
   .blog__login-options details[open] summary::-webkit-details-marker {
-    background: url('../assets/up-arrow.svg');
+    background: url(/assets/up-arrow.svg);
     position: absolute;
     top: 5px;
   } */
@@ -957,7 +957,7 @@ html {
     max-width: 90%;
     height: 500px;
     margin: 0 auto;
-    background: url(../assets/calculator.svg);
+    background: url(/assets/calculator.svg);
     background-repeat: no-repeat;
     background-position: top center;
   }
@@ -1145,7 +1145,7 @@ html {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/green_postit.svg) bottom center;
+    background: url(/assets/green_postit.svg) bottom center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -1199,7 +1199,7 @@ html {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/yellow_postit.svg) bottom center;
+    background: url(/assets/yellow_postit.svg) bottom center;
     background-size: 100% 100%;
   }
   
@@ -1242,7 +1242,7 @@ html {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/blue_postit.svg) bottom center;
+    background: url(/assets/blue_postit.svg) bottom center;
     background-size: 100% 100%;
   }
   
@@ -1283,7 +1283,7 @@ html {
     height: 50px;
     width: 100%;
     margin-top: -13px;
-    background: url(../assets/pink_postit.svg) bottom center;
+    background: url(/assets/pink_postit.svg) bottom center;
     background-size: 100% 100%;
   }
   /*====================== SCENE ONE ANIMATIONS ================*/
@@ -1803,7 +1803,7 @@ html {
   #autoplay + label {
     width: 100%;
     height: 100%;
-    background: url(../assets/play.svg);
+    background: url(/assets/play.svg);
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;
@@ -1813,7 +1813,7 @@ html {
   #autoplay:checked + label {
     width: 100%;
     height: 100%;
-    background: url(../assets/pause.svg);
+    background: url(/assets/pause.svg);
     background-repeat: no-repeat;
     background-attachment: cover;
     background-position: center center;
@@ -2387,7 +2387,7 @@ html {
       height: 50px;
       width: 100%;
       margin-top: -13px;
-      background: url(../assets/green_postit.svg) bottom center;
+      background: url(/assets/green_postit.svg) bottom center;
       background-repeat: no-repeat;
       background-size: 100% auto;
     }
@@ -2425,7 +2425,7 @@ html {
       height: 50px;
       width: 100%;
       margin-top: -13px;
-      background: url(../assets/yellow_postit.svg) bottom center;
+      background: url(/assets/yellow_postit.svg) bottom center;
       background-repeat: no-repeat;
       background-size: 100% auto;
     }
@@ -2455,7 +2455,7 @@ html {
       height: 50px;
       width: 100%;
       margin-top: -13px;
-      background: url(../assets/blue_postit.svg) bottom center;
+      background: url(/assets/blue_postit.svg) bottom center;
       background-repeat: no-repeat;
       background-size: 100% auto;
     }
@@ -2484,7 +2484,7 @@ html {
       height: 50px;
       width: 100%;
       margin-top: -13px;
-      background: url(../assets/pink_postit.svg) bottom center;
+      background: url(/assets/pink_postit.svg) bottom center;
       background-repeat: no-repeat;
       background-size: 100% auto;
     }

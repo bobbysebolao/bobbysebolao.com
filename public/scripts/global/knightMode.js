@@ -18,84 +18,144 @@ knightMode.addEventListener("click", () => {
 
   const homeSubtitle = document.querySelector(".home-subtitle");
 
-  if (standardStylesheet.href.match("/css/blog.css")) {
-    standardStylesheet.href = "/css/knight.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/knight.css")) {
-    standardStylesheet.href = "/css/blog.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/night.css")) {
-    standardStylesheet.href = "/css/night-knight.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/night-knight.css")) {
-    standardStylesheet.href = "/css/night.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/sprite.css")) {
-    standardStylesheet.href = "/css/knight-sprite.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/knight-sprite.css")) {
-    standardStylesheet.href = "/css/sprite.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/night-sprite.css")) {
-    standardStylesheet.href = "/css/night-knight-sprite.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/night-knight-sprite.css")) {
-    standardStylesheet.href = "/css/night-sprite.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/work.css")) {
-    standardStylesheet.href = "/css/work-knight.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/work-knight.css")) {
-    standardStylesheet.href = "/css/work.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/work-night.css")) {
-    standardStylesheet.href = "/css/work-night-knight.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/work-night-knight.css")) {
-    standardStylesheet.href = "/css/work-night.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/work-sprite.css")) {
-    standardStylesheet.href = "/css/work-knight-sprite.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/work-knight-sprite.css")) {
-    standardStylesheet.href = "/css/work-sprite.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/work-night-sprite.css")) {
-    standardStylesheet.href = "/css/work-night-knight-sprite.css";
+  if (standardStylesheet.href.match("/css/minified/blog/blog.min.css")) {
+    standardStylesheet.href = "/css/minified/blog/knight.min.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
-    standardStylesheet.href.match("/css/work-night-knight-sprite.css")
+    standardStylesheet.href.match("/css/minified/blog/knight.min.css")
   ) {
-    standardStylesheet.href = "/css/work-night-sprite.css";
+    standardStylesheet.href = "/css/minified/blog/blog.min.css";
     sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/about.css")) {
-    standardStylesheet.href = "/css/about-knight.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/about-knight.css")) {
-    standardStylesheet.href = "/css/about.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/about-night.css")) {
-    standardStylesheet.href = "/css/about-night-knight.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/about-night-knight.css")) {
-    standardStylesheet.href = "/css/about-night.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/about-sprite.css")) {
-    standardStylesheet.href = "/css/about-knight-sprite.css";
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/about-knight-sprite.css")) {
-    standardStylesheet.href = "/css/about-sprite.css";
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/about-night-sprite.css")) {
-    standardStylesheet.href = "/css/about-night-knight-sprite.css";
+  } else if (
+    standardStylesheet.href.match("/css/minified/blog/night.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/blog/night-knight.min.css";
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
-    standardStylesheet.href.match("/css/about-night-knight-sprite.css")
+    standardStylesheet.href.match("/css/minified/blog/night-knight.min.css")
   ) {
-    standardStylesheet.href = "/css/about-night-sprite.css";
+    standardStylesheet.href = "/css/minified/blog/night.min.css";
     sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/home.css")) {
-    standardStylesheet.href = "/css/home-knight.css";
+  } else if (
+    standardStylesheet.href.match("/css/minified/blog/sprite.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/blog/knight-sprite.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match("/css/minified/blog/knight-sprite.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/blog/sprite.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match("/css/minified/blog/night-sprite.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/blog/night-knight-sprite.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/blog/night-knight-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/blog/night-sprite.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (standardStylesheet.href.match("/css/minified/work/work.min.css")) {
+    standardStylesheet.href = "/css/minified/work/work-knight.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match("/css/minified/work/work-knight.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/work/work.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match("/css/minified/work/work-night.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/work/work-night-knight.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/work/work-night-knight.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/work/work-night.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match("/css/minified/work/work-sprite.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/work/work-knight-sprite.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/work/work-knight-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/work/work-sprite.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/work/work-night-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href =
+      "/css/minified/work/work-night-knight-sprite.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/work/work-night-knight-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/work/work-night-sprite.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match("/css/minified/about/about.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/about/about-knight.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match("/css/minified/about/about-knight.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/about/about.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match("/css/minified/about/about-night.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/about/about-night-knight.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/about/about-night-knight.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/about/about-night.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match("/css/minified/about/about-sprite.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/about/about-knight-sprite.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/about/about-knight-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/about/about-sprite.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/about/about-night-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href =
+      "/css/minified/about/about-night-knight-sprite.min.css";
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/about/about-night-knight-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/about/about-night-sprite.min.css";
+    sessionStorage.removeItem("autosave");
+  } else if (standardStylesheet.href.match("/css/minified/home/home.min.css")) {
+    standardStylesheet.href = "/css/minified/home/home-knight.min.css";
     homeTitleWordOne.textContent = "Hail ";
     homeTitleWordTwo.textContent = " 'tis";
     homeTitleWordThree.textContent = "Bobby";
@@ -103,42 +163,63 @@ knightMode.addEventListener("click", () => {
     homeSubtitle.textContent =
       "Mine surname doth mean 'big onion' in Portuguese";
     sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/home-knight.css")) {
+  } else if (
+    standardStylesheet.href.match("/css/minified/home/home-knight.min.css")
+  ) {
     homeTitleWordOne.textContent = "Hi ";
     homeTitleWordTwo.textContent = " I'm";
     homeTitleWordThree.textContent = "Bobby";
 
     homeSubtitle.textContent = "I tell stories with prose and code";
-    standardStylesheet.href = "/css/home.css";
+    standardStylesheet.href = "/css/minified/home/home.min.css";
     sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/home-night.css")) {
-    standardStylesheet.href = "/css/home-night-knight.css";
-    // console.log("Ocean", standardStylesheet);
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/home-night-knight.css")) {
-    standardStylesheet.href = "/css/home-night.css";
-    // console.log("Ocean", standardStylesheet);
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/home-sprite.css")) {
-    standardStylesheet.href = "/css/home-knight-sprite.css";
-    // console.log("Ocean", standardStylesheet);
-    sessionStorage.setItem("autosave", standardStylesheet.href);
-  } else if (standardStylesheet.href.match("/css/home-knight-sprite.css")) {
-    standardStylesheet.href = "/css/home-sprite.css";
-    // console.log("Ocean", standardStylesheet);
-    sessionStorage.removeItem("autosave");
-  } else if (standardStylesheet.href.match("/css/home-night-sprite.css")) {
-    standardStylesheet.href = "/css/home-night-knight-sprite.css";
+  } else if (
+    standardStylesheet.href.match("/css/minified/home/home-night.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/home/home-night-knight.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
-    standardStylesheet.href.match("/css/home-night-knight-sprite.css")
+    standardStylesheet.href.match(
+      "/css/minified/home/home-night-knight.min.css"
+    )
   ) {
-    standardStylesheet.href = "/css/home-night-sprite.css";
+    standardStylesheet.href = "/css/minified/home/home-night.min.css";
+    // console.log("Ocean", standardStylesheet);
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match("/css/minified/home/home-sprite.min.css")
+  ) {
+    standardStylesheet.href = "/css/minified/home/home-knight-sprite.min.css";
+    // console.log("Ocean", standardStylesheet);
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/home/home-knight-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/home/home-sprite.min.css";
+    // console.log("Ocean", standardStylesheet);
+    sessionStorage.removeItem("autosave");
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/home/home-night-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href =
+      "/css/minified/home/home-night-knight-sprite.min.css";
+    // console.log("Ocean", standardStylesheet);
+    sessionStorage.setItem("autosave", standardStylesheet.href);
+  } else if (
+    standardStylesheet.href.match(
+      "/css/minified/home/home-night-knight-sprite.min.css"
+    )
+  ) {
+    standardStylesheet.href = "/css/minified/home/home-night-sprite.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else {
-    standardStylesheet.href = "/css/blog.css";
+    standardStylesheet.href = "/css/minified/blog/blog.min.css";
     sessionStorage.removeItem("autosave");
   }
 });

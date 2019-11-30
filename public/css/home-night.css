@@ -466,7 +466,7 @@ html {
     width: 50%;
     height: 100%;
     transform: scaleX(-1);
-    background: url('../assets/page_corner_night.svg');
+    background: url(/assets/page_corner_night.svg);
     background-color: #3d465c;
     background-repeat: no-repeat;
     background-position: top right;
@@ -476,7 +476,7 @@ html {
     position: relative;
     width: 50%;
     height: 100%;
-    background: url('../assets/page_corner_night.svg');
+    background: url(/assets/page_corner_night.svg);
     background-color: #3d465c;
     background-repeat: no-repeat;
     background-position: top right;
@@ -515,7 +515,7 @@ html {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('../assets/patreon_corner_night.svg');
+    background: url(/assets/patreon_corner_night.svg);
     background-color: #3d465c;
     background-repeat: no-repeat;
     background-position: top right;
@@ -542,12 +542,12 @@ html {
   }
   
   .blog__login-options summary {
-    list-style-image: url('../assets/down-arrow.svg');
+    list-style-image: url(/assets/down-arrow.svg);
     position: absolute;
     top: 0px;
   }
   .blog__login-options details[open] summary {
-    list-style-image: url('../assets/up-arrow.svg');
+    list-style-image: url(/assets/up-arrow.svg);
     position: absolute;
     top: 5px;
   }
@@ -556,14 +556,14 @@ html {
   }
   
   .blog__login-options summary::-webkit-details-marker {
-    background: url('../assets/down-arrow.svg');
+    background: url(/assets/down-arrow.svg);
     color: transparent;
     position: absolute;
     top: 0px;
   }
   
   .blog__login-options details[open] summary::-webkit-details-marker {
-    background: url('../assets/up-arrow.svg');
+    background: url(/assets/up-arrow.svg);
     position: absolute;
     top: 5px;
   } */
@@ -938,23 +938,23 @@ html {
   }
   
   .aliens__one {
-    background: url("../assets/alien_1.svg");
+    background: url(/assets/alien_1.svg);
   }
   
   .aliens__two {
-    background: url("../assets/alien_2.svg");
+    background: url(/assets/alien_2.svg);
   }
   
   .aliens__three {
-    background: url("../assets/alien_3.svg");
+    background: url(/assets/alien_3.svg);
   }
   
   .aliens__defense {
-    background: url("../assets/defense.svg");
+    background: url(/assets/defense.svg);
   }
   
   .aliens__player {
-    background: url("../assets/player.svg");
+    background: url(/assets/player.svg);
   }
   
   @keyframes alienAnim {
@@ -1184,10 +1184,6 @@ html {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      -webkit-transition(background 250ms ease-in-out);
-      -moz-transition(background 250ms ease-in-out);
-      -o-transition(background 250ms ease-in-out);
-      transition(background 250ms ease-in-out);
       width: 100px;
       height: 100px;
       /* background: red; */
@@ -1201,7 +1197,7 @@ html {
   }
   
   #contact-form-checkbox-one + label:before {
-    background-image: url(../assets/desktop-icon-night.svg);
+    background-image: url(/assets/desktop-icon-night.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1211,7 +1207,7 @@ html {
   #contact-form-checkbox-one:checked + label:before {
   /* Your checked background color */
   background: #252d3e;
-  background-image: url(../assets/desktop-icon-night.svg);
+  background-image: url(/assets/desktop-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1219,7 +1215,7 @@ html {
   }
   
   #contact-form-checkbox-two + label:before {
-    background-image: url(../assets/file-icon-night.svg);
+    background-image: url(/assets/file-icon-night.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1229,7 +1225,7 @@ html {
   #contact-form-checkbox-two:checked + label:before {
   /* Your checked background color */
   background: #252d3e;
-  background-image: url(../assets/file-icon-night.svg);
+  background-image: url(/assets/file-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1237,7 +1233,7 @@ html {
   }
   
   #contact-form-checkbox-three + label:before {
-    background-image: url(../assets/globe-icon-night.svg);
+    background-image: url(/assets/globe-icon-night.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1247,7 +1243,7 @@ html {
   #contact-form-checkbox-three:checked + label:before {
   /* Your checked background color */
   background: #252d3e;
-  background-image: url(../assets/globe-icon-night.svg);
+  background-image: url(/assets/globe-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1255,7 +1251,7 @@ html {
   }
   
   #contact-form-checkbox-four + label:before {
-    background-image: url(../assets/cup-icon-night.svg);
+    background-image: url(/assets/cup-icon-night.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1265,7 +1261,7 @@ html {
   #contact-form-checkbox-four:checked + label:before {
   /* Your checked background color */
   background: #252d3e;
-  background-image: url(../assets/cup-icon-night.svg);
+  background-image: url(/assets/cup-icon-night.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1504,7 +1500,7 @@ html {
     max-width: 90%;
     height: 500px;
     margin: 0 auto;
-    background: url(../assets/calculator.svg);
+    background: url(/assets/calculator.svg);
     background-repeat: no-repeat;
     background-position: top center;
   }

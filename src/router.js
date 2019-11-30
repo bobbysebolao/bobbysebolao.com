@@ -3,14 +3,17 @@ const cookie = require("cookie");
 
 const router = (request, response) => {
   const endpoint = request.url;
-  const extension = endpoint.split(".")[1];
+  let extension = endpoint.split(".")[1];
+
   const method = request.method;
 
   if (method === "GET") {
     if (endpoint === "/" || endpoint === "/index.html") {
       handler.homeHandler(response);
-    } else if (endpoint === "/blog/posts/jamstack-conf-2019-recap.html"){
-      response.writeHead(301, {Location: "/posts/jamstack-conf-2019-recap.html"});
+    } else if (endpoint === "/blog/posts/jamstack-conf-2019-recap.html") {
+      response.writeHead(301, {
+        Location: "/posts/jamstack-conf-2019-recap.html"
+      });
       response.end();
     } else if (endpoint === "/blog/all-posts") {
       handler.allPostsHandler(request, response);
@@ -51,11 +54,9 @@ const router = (request, response) => {
       // else {
       //   response.end("false")
       // }
-    }
-    else if (endpoint === "/projects") {
+    } else if (endpoint === "/projects") {
       handler.getProjectsHandler(request, response);
-    }
-    else if (endpoint === "/mangos") {
+    } else if (endpoint === "/mangos") {
       handler.getMangosHandler(request, response);
     }
     // else if (endpoint.includes("/scripts")) {
@@ -71,10 +72,7 @@ const router = (request, response) => {
       // console.log("BAM", request);
       // return;
       handler.awsSignatureHandler(request, endpoint, response);
-    } else if (
-      endpoint.includes("/posts/") &&
-      endpoint.includes(".html")
-    ) {
+    } else if (endpoint.includes("/posts/") && endpoint.includes(".html")) {
       console.log("Creating temp blog post file on local filesystem...");
       handler.specificPostHandler(request, response, endpoint);
       // console.log(request.headers.referer.split("/")[4])
@@ -88,6 +86,14 @@ const router = (request, response) => {
     //   return;
     // }
     else {
+      // let extension;
+      // if (endpoint.includes(".min.css")) {
+      //   extension = endpoint.split(".")[2];
+      //   console.log(extension, "here ya go");
+      //   return;
+      // } else {
+      //   extension = endpoint.split(".")[1];
+      // }
       handler.publicHandler(response, endpoint, extension);
     }
   }

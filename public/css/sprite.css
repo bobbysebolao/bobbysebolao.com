@@ -469,7 +469,7 @@ nav {
   width: 50%;
   height: 100%;
   transform: scaleX(-1);
-  background: url("../assets/page_corner.svg");
+  background: url(/assets/page_corner.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -479,7 +479,7 @@ nav {
   position: relative;
   width: 50%;
   height: 100%;
-  background: url("../assets/page_corner.svg");
+  background: url(/assets/page_corner.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -515,7 +515,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("../assets/patreon_corner.svg");
+  background: url(/assets/patreon_corner.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -542,12 +542,12 @@ nav {
 }
 
 .blog__login-options summary {
-  list-style-image: url('../assets/down-arrow.svg');
+  list-style-image: url(/assets/down-arrow.svg);
   position: absolute;
   top: 0px;
 }
 .blog__login-options details[open] summary {
-  list-style-image: url('../assets/up-arrow.svg');
+  list-style-image: url(/assets/up-arrow.svg);
   position: absolute;
   top: 5px;
 }
@@ -556,14 +556,14 @@ nav {
 }
 
 .blog__login-options summary::-webkit-details-marker {
-  background: url('../assets/down-arrow.svg');
+  background: url(/assets/down-arrow.svg);
   color: transparent;
   position: absolute;
   top: 0px;
 }
 
 .blog__login-options details[open] summary::-webkit-details-marker {
-  background: url('../assets/up-arrow.svg');
+  background: url(/assets/up-arrow.svg);
   position: absolute;
   top: 5px;
 } */
