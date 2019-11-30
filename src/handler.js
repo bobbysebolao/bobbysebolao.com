@@ -78,7 +78,7 @@ const specificPostHandler = (req, res, endpoint) => {
   generateAWSSignature
     .getAwsFile(filename)
     .then(response => {
-      console.log("Simba", response)
+      console.log("Simba", response);
       let fileContents = response["Body"].toString();
       fs.writeFile(
         __dirname + "/../public" + "/posts/" + filename,
@@ -97,17 +97,20 @@ const specificPostHandler = (req, res, endpoint) => {
                 console.log(error);
                 return;
               }
-              fs.unlink(__dirname + "/../public" + "/posts/" + filename, err => {
-                if (err) {
-                  console.log(err);
-                  return;
+              fs.unlink(
+                __dirname + "/../public" + "/posts/" + filename,
+                err => {
+                  if (err) {
+                    console.log(err);
+                    return;
+                  }
+                  console.log(
+                    "Blog post successfully deleted from local filesystem"
+                  );
+                  res.writeHead(200, { "Content-Type": "text/html" });
+                  res.end(file);
                 }
-                console.log(
-                  "Blog post successfully deleted from local filesystem"
-                );
-                res.writeHead(200, { "Content-Type": "text/html" });
-                res.end(file);
-              });
+              );
             }
           );
         }
@@ -284,8 +287,14 @@ const domScriptsHandler = (res, endpoint, extension) => {
 };
 
 const publicHandler = (res, endpoint, extension) => {
-  console.log("RODNEY", endpoint)
-  console.log("GIGI", __dirname + "/../public" + endpoint)
+  console.log("RODNEY", endpoint);
+  console.log("GIGI", __dirname + "/../public" + endpoint);
+  let mimeType;
+  if (extension === "min") {
+    mimeType = "css";
+  } else {
+    mimeType = extension;
+  }
   const extensionType = {
     html: "text/html",
     css: "text/css",
@@ -308,7 +317,7 @@ const publicHandler = (res, endpoint, extension) => {
       console.log(endpoint);
       return;
     }
-    res.writeHead(200, { "Content-Type": extensionType[extension] });
+    res.writeHead(200, { "Content-Type": extensionType[mimeType] });
     res.end(file);
   });
 };
@@ -329,10 +338,10 @@ const loginPageHandler = res => {
 };
 
 const checkLoginStatusHandler = (req, res) => {
-  console.log(req.headers.cookie)
+  console.log(req.headers.cookie);
 
   if (!req.headers.cookie) {
-    console.log(req.headers.hasOwnProperty(cookie))
+    console.log(req.headers.hasOwnProperty(cookie));
     // console.log(!cookie.parse(req.headers.cookie).hasOwnProperty(jwt))
     console.log("No login cookie in sight...");
     // return;
@@ -340,53 +349,51 @@ const checkLoginStatusHandler = (req, res) => {
     user.loginStatus = false;
     res.end(JSON.stringify(user));
     return;
-  }
-
-else {
-    // console.log("headers", req.headers)
-  // return;
-  // console.log("at my wits end: ", req.headers.cookie);
-  let jwt = cookie.parse(req.headers.cookie).jwt;
-  if (jwt !== undefined) {
-    console.log("This is my login cookie: ", jwt);
-    // return;
-    // console.log("Biggie");
-    // return;
-    let user = {};
-    // let loginStatus;
-    // let userId;
-    decodeJSONWebToken(jwt)
-      .then(decodedToken => {
-        user.loginStatus = decodedToken.logged_in;
-        user.id = decodedToken.user_id;
-        console.log("This is the decoded login cookie: ", user)
-        // return;
-      })
-      .then(unusedResult => {
-        if (user.loginStatus === true) {
-          console.log("Commenter is logged in, display the gated content");
-          getUsername(user.id)
-            .then(response => {
-              user.username = response.username;
-              user.avatar = response.avatar_filepath;
-              user.role = response.role;
-              console.log("JOKER", user)
-              // return;
-              res.end(JSON.stringify(user));
-            })
-            .catch(error => console.log(error));
-          // res.writeHead(302, { Location: `/blog/${postName}` });
-          // res.end("true");
-        }
-      })
-      .catch(error => console.log(error));
   } else {
-    let user = {};
-    user.loginStatus = false;
-    res.end(JSON.stringify(user));
-    // res.end("false");
+    // console.log("headers", req.headers)
+    // return;
+    // console.log("at my wits end: ", req.headers.cookie);
+    let jwt = cookie.parse(req.headers.cookie).jwt;
+    if (jwt !== undefined) {
+      console.log("This is my login cookie: ", jwt);
+      // return;
+      // console.log("Biggie");
+      // return;
+      let user = {};
+      // let loginStatus;
+      // let userId;
+      decodeJSONWebToken(jwt)
+        .then(decodedToken => {
+          user.loginStatus = decodedToken.logged_in;
+          user.id = decodedToken.user_id;
+          console.log("This is the decoded login cookie: ", user);
+          // return;
+        })
+        .then(unusedResult => {
+          if (user.loginStatus === true) {
+            console.log("Commenter is logged in, display the gated content");
+            getUsername(user.id)
+              .then(response => {
+                user.username = response.username;
+                user.avatar = response.avatar_filepath;
+                user.role = response.role;
+                console.log("JOKER", user);
+                // return;
+                res.end(JSON.stringify(user));
+              })
+              .catch(error => console.log(error));
+            // res.writeHead(302, { Location: `/blog/${postName}` });
+            // res.end("true");
+          }
+        })
+        .catch(error => console.log(error));
+    } else {
+      let user = {};
+      user.loginStatus = false;
+      res.end(JSON.stringify(user));
+      // res.end("false");
+    }
   }
-}
 };
 
 const getProjectsHandler = (req, res) => {
@@ -403,10 +410,13 @@ const getProjectsHandler = (req, res) => {
 };
 
 const getMangosHandler = (req, res) => {
-  request("https://mango-metrics-api.azurewebsites.net/api/mangos", (err, resp, body) => {
-    console.log("Here are the mangos", resp.body);
-  })
-}
+  request(
+    "https://mango-metrics-api.azurewebsites.net/api/mangos",
+    (err, resp, body) => {
+      console.log("Here are the mangos", resp.body);
+    }
+  );
+};
 
 const getCommentsHandler = (req, res) => {
   console.log("yo, da comments");
@@ -466,11 +476,7 @@ const contactFormHandler = (req, res) => {
   form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
 
   form.on("fileBegin", function(name, file) {
-    file.path = path.join(
-      __dirname,
-      "../public/assets/images/blog",
-      file.name
-    );
+    file.path = path.join(__dirname, "../public/assets/images/blog", file.name);
   });
 
   form.parse(req, (error, fields, files) => {
@@ -481,18 +487,17 @@ const contactFormHandler = (req, res) => {
       console.log("Form data parsing underway...");
       console.log("Check this out:", fields);
       Promise.all([sendEmail(fields)])
-      .then(response => {
-        res.writeHead(302, { Location: "/index.html" });
-        // res.writeHead(400, { "Content-Type": "text/html" });
-        res.end();
-      })
-      .catch(console.error)
+        .then(response => {
+          res.writeHead(302, { Location: "/index.html" });
+          // res.writeHead(400, { "Content-Type": "text/html" });
+          res.end();
+        })
+        .catch(console.error);
       // console.log("The image file: ", files);
       // return;
     }
   });
-
-}
+};
 
 const createPostHandler = (req, res, encodedJwt) => {
   console.log("POST request received");
@@ -573,19 +578,15 @@ const createPostHandler = (req, res, encodedJwt) => {
             fields["filename"] = `${fields["postUrl"]
               .toLowerCase()
               .replace(/\s/g, "-")}.html`;
-              if (process.env.NODE_ENV === "start") {
-                fields[
-                  "filepath"
-                ] = `https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/${
-                  fields["filename"]
-                }`;
-              } else if (process.env.NODE_ENV === "local") {
-                fields[
-                  "filepath"
-                ] = `https://s3.eu-west-2.amazonaws.com/console-blog/local-uploads/practice-posts/${
-                  fields["filename"]
-                }`;
-              }
+            if (process.env.NODE_ENV === "start") {
+              fields[
+                "filepath"
+              ] = `https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/${fields["filename"]}`;
+            } else if (process.env.NODE_ENV === "local") {
+              fields[
+                "filepath"
+              ] = `https://s3.eu-west-2.amazonaws.com/console-blog/local-uploads/practice-posts/${fields["filename"]}`;
+            }
 
             // console.log("Form fields: ", fields["filepath"]);
             // return;
@@ -621,9 +622,7 @@ const createPostHandler = (req, res, encodedJwt) => {
                 // return;
                 generateAWSSignature
                   .generateAWSSignature(
-                    `/sign-s3?file-name=${
-                      fields["filename"]
-                    }&file-type=text/html`
+                    `/sign-s3?file-name=${fields["filename"]}&file-type=text/html`
                   )
                   .then(response => {
                     // const result = JSON.parse(response);
@@ -821,9 +820,7 @@ const createAccountSubmitHandler = (req, res) => {
         })
         .then(token => {
           Promise.all([
-            sendEmail(
-              formData, emailToken
-            ),
+            sendEmail(formData, emailToken),
             submitEmailVerificationToken(emailToken, formData.username)
           ]).catch(console.error);
         })
