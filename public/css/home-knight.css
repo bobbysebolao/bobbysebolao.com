@@ -1362,6 +1362,34 @@ html {
     position: relative;
     z-index: 0;
   }
+
+  .portfolio-project:before {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    content: "";
+    width: 20px;
+    height: 100%;
+    background-image: url('../assets/parchment-edge-side.svg');
+    background-size: 100% auto;
+    /* transform: rotate(180deg); */
+    z-index: -1;
+  }
+
+  .portfolio-project:after {
+    display: inline-block;
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge.svg');
+    /* transform: rotate(180deg); */
+    z-index: -1;
+  }
   
   .portfolio-project__image {
     width: 360px;
@@ -1371,7 +1399,94 @@ html {
     background-repeat: no-repeat;
     background-position: center center;
     z-index: 1;
-    border-radius: 5px;
+    border-radius: 0px;
+    position: relative;
+  }
+
+  .portfolio-project__image:before {
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    content: "";
+    width: 25px;
+    height: 100%;
+    background-image: url('../assets/portfolio-edge-side.svg');
+    background-size: 100% auto;
+    z-index: 5;
+  }
+
+  .portfolio-project__image:after {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background-image: url('../assets/portfolio-edge-green.svg'); */
+    transform: rotate(180deg);
+  }
+
+  .portfolio-project__image div:before {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    content: "";
+    width: 20px;
+    height: calc(100% - 1.7em);
+    background-size: 100% auto;
+    transform: rotate(180deg);
+    z-index: 5;
+  }
+
+  .portfolio-project:nth-of-type(1) .portfolio-project__image div:before {
+    background-image: url('../assets/portfolio-edge-side-green.svg');
+  }
+
+  .portfolio-project:nth-of-type(1) .portfolio-project__image:after {
+    background-image: url('../assets/portfolio-edge-green.svg');
+  }
+
+  .portfolio-project:nth-of-type(2) .portfolio-project__image div:before {
+    background-image: url('../assets/portfolio-edge-side-yellow.svg');
+  }
+
+  .portfolio-project:nth-of-type(2) .portfolio-project__image:after {
+    background-image: url('../assets/portfolio-edge-yellow.svg');
+  }
+
+  .portfolio-project:nth-of-type(3) .portfolio-project__image div:before {
+    background-image: url('../assets/portfolio-edge-side-blue.svg');
+  }
+
+  .portfolio-project:nth-of-type(3) .portfolio-project__image:after {
+    background-image: url('../assets/portfolio-edge-blue.svg');
+  }
+
+  .portfolio-project:nth-of-type(4) .portfolio-project__image div:before {
+    background-image: url('../assets/portfolio-edge-side-pink.svg');
+  }
+
+  .portfolio-project:nth-of-type(4) .portfolio-project__image:after {
+    background-image: url('../assets/portfolio-edge-pink.svg');
+  }
+
+  .portfolio-project__image div:after {
+    /* background-image: #afec6a; */
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    content: "";
+    width: 100%;
+    height: 30px;
+    /* background-color: green; */
+    background-image: url('../assets/portfolio-edge.svg');
+    background-size: cover;
+    /* background-size: 100% auto; */
+    transform: rotate(180deg);
   }
   
   .portfolio-project__background {
@@ -1380,8 +1495,37 @@ html {
     left: 1.5em;
     width: calc(100% - 1.5em);
     height: 448px;
-    z-index: -1;
-    border-radius: 5px;
+    z-index: -2;
+    border-radius: 0px;
+  }
+
+  .portfolio-project__background:before {
+    /* background-image: #afec6a; */
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background: red; */
+    background-image: url('../assets/parchment-edge.svg');
+    /* background-size: 100% auto; */
+    transform: rotate(180deg);
+  }
+
+  .portfolio-project__background:after {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: calc(100% - 20px);
+    content: "";
+    width: 20px;
+    height: calc(100% + 160px);
+    background-image: url('../assets/parchment-edge-side.svg');
+    background-size: 100% auto;
+    transform: rotate(180deg);
+    z-index: 5;
   }
   
   .portfolio-project__bg-one {

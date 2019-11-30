@@ -1325,10 +1325,10 @@ html {
     order: 2;
   }
 
-  .introTextOne::first-letter {
+  .introTextOne p::first-letter {
     float: left;
     display: inline-block;
-    margin: .3em 0 0 0;
+    margin: .3em 0.2em 0 0;
     font-size: 3em;
     /* border: 1px solid black; */
     /* text-align: left; */
@@ -1352,6 +1352,15 @@ html {
     position: relative;
     width: 70%;
     order: 1;
+  }
+
+  .introTextTwo p::first-letter {
+    float: left;
+    display: inline-block;
+    margin: .3em 0.2em 0 0;
+    font-size: 3em;
+    /* border: 1px solid black; */
+    /* text-align: left; */
   }
   
   .education,
