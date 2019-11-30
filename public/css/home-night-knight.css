@@ -1589,10 +1589,6 @@ html {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      -webkit-transition(background 250ms ease-in-out);
-      -moz-transition(background 250ms ease-in-out);
-      -o-transition(background 250ms ease-in-out);
-      transition(background 250ms ease-in-out);
       width: 100px;
       height: 100px;
       /* background: red; */

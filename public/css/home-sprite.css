@@ -11,10 +11,10 @@ width of an element) */
 /* ======================= TOP LEVEL STYLING======================= */
 
 @font-face {
-    font-family: 'Calculator';
-    src: url('fonts/calculator.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Calculator";
+  src: url("fonts/calculator.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* 1. Set font. */
@@ -905,7 +905,7 @@ nav {
 
 .home-title__wordthree {
   font-size: 1.5em;
-  font-family: 'Calculator';
+  font-family: "Calculator";
   font-weight: bold;
 }
 
@@ -1079,11 +1079,11 @@ nav {
   align-items: center;
   text-align: left;
   grid-template-areas:
-  "name-label name-field"
-  "email-label email-field"
-  "about about"
-  "message-label message-field"
-  ". contact-button";
+    "name-label name-field"
+    "email-label email-field"
+    "about about"
+    "message-label message-field"
+    ". contact-button";
   grid-row-gap: 3em;
   width: 550px;
   margin-top: 4em;
@@ -1109,7 +1109,7 @@ nav {
   grid-area: name-field;
 }
 
-#contact-form-name + label{
+#contact-form-name + label {
   grid-area: name-label;
 }
 
@@ -1161,50 +1161,46 @@ nav {
 
 /* visually hide the default radio button */
 .contact-form-checkbox {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 /* make the label relative, add padding to the left for adding the custom radio button */
 .contact-form-checkbox + label {
-    cursor: pointer;
-    position: relative;
-    width: 100px;
-    height: 23px;
-    text-align: center;
-    margin-right: 17px;
-    /* display: inline-block; */
-    z-index: 0;
-    font-family: "Lato", sans-serif;
+  cursor: pointer;
+  position: relative;
+  width: 100px;
+  height: 23px;
+  text-align: center;
+  margin-right: 17px;
+  /* display: inline-block; */
+  z-index: 0;
+  font-family: "Lato", sans-serif;
 }
 
 .contact-form-checkbox + label:before {
-    content: "";
-    position: absolute;
-    top: -77px;
-    left: calc(50% - 50px);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition(background 250ms ease-in-out);
-    -moz-transition(background 250ms ease-in-out);
-    -o-transition(background 250ms ease-in-out);
-    transition(background 250ms ease-in-out);
-    width: 100px;
-    height: 100px;
-    /* background: red; */
-    z-index: -1;
-    border: 1px solid #cccccc;
-    transition: all 0.25s ease;
+  content: "";
+  position: absolute;
+  top: -77px;
+  left: calc(50% - 50px);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  /* background: red; */
+  z-index: -1;
+  border: 1px solid #cccccc;
+  transition: all 0.25s ease;
 }
 
 .contact-form-checkbox + label:hover:before {
@@ -1219,13 +1215,13 @@ nav {
 }
 
 #contact-form-checkbox-one:checked + label:before {
-/* Your checked background color */
-background: #afec6a;
-background-image: url(../assets/desktop-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #afec6a;
+  /* Your checked background color */
+  background: #afec6a;
+  background-image: url(../assets/desktop-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #afec6a;
 }
 
 #contact-form-checkbox-two + label:before {
@@ -1236,13 +1232,13 @@ border: 1px solid #afec6a;
 }
 
 #contact-form-checkbox-two:checked + label:before {
-/* Your checked background color */
-background: #faf557;
-background-image: url(../assets/file-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #faf557;
+  /* Your checked background color */
+  background: #faf557;
+  background-image: url(../assets/file-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #faf557;
 }
 
 #contact-form-checkbox-three + label:before {
@@ -1253,13 +1249,13 @@ border: 1px solid #faf557;
 }
 
 #contact-form-checkbox-three:checked + label:before {
-/* Your checked background color */
-background: #7fd9cf;
-background-image: url(../assets/globe-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #7fd9cf;
+  /* Your checked background color */
+  background: #7fd9cf;
+  background-image: url(../assets/globe-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #7fd9cf;
 }
 
 #contact-form-checkbox-four + label:before {
@@ -1270,13 +1266,13 @@ border: 1px solid #7fd9cf;
 }
 
 #contact-form-checkbox-four:checked + label:before {
-/* Your checked background color */
-background: #fe9bba;
-background-image: url(../assets/cup-icon.svg);
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 1px solid #fe9bba;
+  /* Your checked background color */
+  background: #fe9bba;
+  background-image: url(../assets/cup-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid #fe9bba;
 }
 
 #contact-form-message {
@@ -1287,7 +1283,7 @@ border: 1px solid #fe9bba;
   border-radius: 5px;
 }
 
-#contact-form-message + label{
+#contact-form-message + label {
   grid-area: message-label;
 }
 
