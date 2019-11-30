@@ -14,7 +14,8 @@
     "minify-css-home": "postcss public/css/home.css > public/css/minified/home/home.min.css && postcss public/css/home-night.css > public/css/minified/home/home-night.min.css && postcss public/css/home-knight.css > public/css/minified/home/home-knight.min.css && postcss public/css/home-sprite.css > public/css/minified/home/home-sprite.min.css && postcss public/css/home-night-knight.css > public/css/minified/home/home-night-knight.min.css && postcss public/css/home-night-knight-sprite.css > public/css/minified/home/home-night-knight-sprite.min.css && postcss public/css/home-night-sprite.css > public/css/minified/home/home-night-sprite.min.css && postcss public/css/home-knight-sprite.css > public/css/minified/home/home-knight-sprite.min.css",
     "minify-css-about": "postcss public/css/about.css > public/css/minified/about/about.min.css && postcss public/css/about-night.css > public/css/minified/about/about-night.min.css && postcss public/css/about-knight.css > public/css/minified/about/about-knight.min.css && postcss public/css/about-sprite.css > public/css/minified/about/about-sprite.min.css && postcss public/css/about-night-knight.css > public/css/minified/about/about-night-knight.min.css && postcss public/css/about-night-knight-sprite.css > public/css/minified/about/about-night-knight-sprite.min.css && postcss public/css/about-night-sprite.css > public/css/minified/about/about-night-sprite.min.css && postcss public/css/about-knight-sprite.css > public/css/minified/about/about-knight-sprite.min.css",
     "minify-css-work": "postcss public/css/work.css > public/css/minified/work/work.min.css && postcss public/css/work-night.css > public/css/minified/work/work-night.min.css && postcss public/css/work-knight.css > public/css/minified/work/work-knight.min.css && postcss public/css/work-sprite.css > public/css/minified/work/work-sprite.min.css && postcss public/css/work-night-knight.css > public/css/minified/work/work-night-knight.min.css && postcss public/css/work-night-knight-sprite.css > public/css/minified/work/work-night-knight-sprite.min.css && postcss public/css/work-night-sprite.css > public/css/minified/work/work-night-sprite.min.css && postcss public/css/work-knight-sprite.css > public/css/minified/work/work-knight-sprite.min.css",
-    "minify-css-blog": "postcss public/css/blog.css > public/css/minified/blog/blog.min.css && postcss public/css/night.css > public/css/minified/blog/night.min.css && postcss public/css/knight.css > public/css/minified/blog/knight.min.css && postcss public/css/sprite.css > public/css/minified/blog/sprite.min.css && postcss public/css/night-knight.css > public/css/minified/blog/night-knight.min.css && postcss public/css/night-knight-sprite.css > public/css/minified/blog/night-knight-sprite.min.css && postcss public/css/night-sprite.css > public/css/minified/blog/night-sprite.min.css && postcss public/css/knight-sprite.css > public/css/minified/blog/knight-sprite.min.css"
+    "minify-css-blog": "postcss public/css/blog.css > public/css/minified/blog/blog.min.css && postcss public/css/night.css > public/css/minified/blog/night.min.css && postcss public/css/knight.css > public/css/minified/blog/knight.min.css && postcss public/css/sprite.css > public/css/minified/blog/sprite.min.css && postcss public/css/night-knight.css > public/css/minified/blog/night-knight.min.css && postcss public/css/night-knight-sprite.css > public/css/minified/blog/night-knight-sprite.min.css && postcss public/css/night-sprite.css > public/css/minified/blog/night-sprite.min.css && postcss public/css/knight-sprite.css > public/css/minified/blog/knight-sprite.min.css",
+    "compress-js": "terser public/scripts/test.js --compress --mangle --output public/scripts/compressed/test.js && terser public/scripts/test2.js --compress --mangle --output public/scripts/compressed/test2.js"
   },
   "repository": {
     "type": "git",
@@ -35,10 +36,11 @@
     "nodemon": "^1.18.10",
     "postcss-cli": "^6.1.3",
     "tap-spec": "^5.0.0",
-    "tape": "^4.10.1"
+    "tape": "^4.10.1",
+    "terser": "^4.4.0"
   },
   "dependencies": {
-    "airtable": "^0.6.0",
+    "airtable": "^0.8.0",
     "aws-sdk": "^2.450.0",
     "bcryptjs": "^2.4.3",
     "cookie": "^0.3.1",
