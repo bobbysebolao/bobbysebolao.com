@@ -907,8 +907,12 @@ html {
   .blog-post__post-details > * {
     margin: 0 0 0 10px;
   }
+
+  .page-corner {
+    fill: #f8e098;
+  }
   
-  .page-corner-nav {
+  .page-corner-nav, .patreon-corner-nav {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -916,46 +920,75 @@ html {
     box-shadow: 5px 10px 10px 0px #000000;
   }
 
-  .page-corner-nav:before {
+  .page-corner-nav:before, .patreon-corner-nav:before {
     display: inline-block;
     position: absolute;
     top: 100%;
     left: 0px;
     content: "";
-    width: calc(100% - 100px);
     height: 20px;
     /* background: red; */
     background-image: url(/assets/parchment-edge.svg);
     /* background-size: 100% auto; */
     transform: rotate(180deg);
+    z-index: 1;
+  }
+
+  .page-corner-nav:before {
+    width: 100%;
+  }
+
+  .patreon-corner-nav:before {
+    width: calc(100% - 100px);
   }
   
-  .page-corner-nav svg {
+  .page-corner-nav svg, .patreon-corner-nav svg {
     position: absolute;
     top: 0;
     left: calc(100% - 100px);
     width: 100px;
     height: 100px;
   }
+
+  .patreon-corner-nav svg {
+    fill: #f86753;
+    opacity: 0;
+  }
   
   .prev-post {
     position: relative;
-    background: #fdfdfd;
+    background: #f8e098;
     width: 50%;
     height: 100%;
     transform: scaleX(-1);
-    background: url(/assets/page_corner.svg);
-    background-color: #fdfdfd;
+    background: url(/assets/page_corner_knight_blog_post.svg);
+    background-color: #f8e098;
     background-repeat: no-repeat;
     background-position: top right;
+  }
+
+  .page-corner-nav:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    width: calc(100% - 200px);
+    height: 20px;
+    background: transparent;
+    background-image: url(/assets/parchment-edge-blog-post.svg);
+    /* background-size: 100% auto; */
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   
   .next-post {
     position: relative;
     width: 50%;
     height: 100%;
-    background: url(/assets/page_corner.svg);
-    background-color: #fdfdfd;
+    background: url(/assets/page_corner_knight_blog_post.svg);
+    background-color: #f8e098;
     background-repeat: no-repeat;
     background-position: top right;
   }
@@ -965,8 +998,8 @@ html {
   }
   
   .page-corner-selector:hover .page-corner {
-    fill: #cccccc;
-    opacity: 0.5;
+    fill: #f8e098;
+    /* opacity: 0.5; */
     transition: all 0.25s ease;
   }
   
@@ -995,11 +1028,6 @@ html {
     background-repeat: no-repeat;
     background-position: top right;
     transform: scaleY(-1);
-  }
-  
-  .patreon-corner svg {
-    fill: #f86753;
-    opacity: 0;
   }
   
   .patreon-corner-selector {
@@ -1584,8 +1612,7 @@ html {
   .footer {
     width: 100%;
     position: relative;
-    background: #fdfdfd;
-    box-shadow: 5px 10px 10px 0px #000000;
+    background: #f8e098;
   }
   
   .socialIcons {
@@ -2676,6 +2703,36 @@ html {
       .shine:active:after {
         opacity: 0;
       } */
+
+      .blog-post-container {
+        background: #f8e098;
+        box-shadow: 5px 10px 10px 0 #000;
+      }
+    
+      .blog-post-container:before {
+        display: inline-block;
+        position: absolute;
+        top: 57px;
+        left: 100%;
+        content: "";
+        width: 20px;
+        height: calc(100% -57px);
+        background-image: url(/assets/parchment-edge-side.svg);
+        background-size: 100% auto;
+      }
+    
+      .blog-post-container:after {
+        display: inline-block;
+        position: absolute;
+        top: 57px;
+        left: -20px;
+        content: "";
+        width: 20px;
+        height: calc(100% -57px);
+        background-image: url(/assets/parchment-edge-side.svg);
+        background-size: 100% auto;
+        transform: scaleX(-1);
+      }
   
   .blog-post {
     display: flex;
@@ -2683,11 +2740,10 @@ html {
     align-items: flex-start;
     width: 100%;
     position: relative;
-    background: #fdfdfd;
+    background: #f8e098;
     /* padding: 5em 5em 0em 5em; */
     padding: 0px 80px 0em 80px;
     /* padding: 2.5em 5vw 0em 5vw; */
-    box-shadow: 5px 10px 10px 0px #000000;
     text-align: left;
   }
   
@@ -2731,8 +2787,7 @@ html {
     position: relative;
     width: 100%;
     padding: 0em 80px 0em 80px;
-    background: #fdfdfd;
-    box-shadow: 5px 10px 10px 0px #000000;
+    background: #f8e098;
   }
   
   .user-reposts {
@@ -2742,8 +2797,7 @@ html {
     position: relative;
     width: 100%;
     padding: 0em 80px 0em 80px;
-    background: #fdfdfd;
-    box-shadow: 5px 10px 10px 0px #000000;
+    background: #f8e098;
   }
   
   .user-likes-container {
@@ -2805,8 +2859,7 @@ html {
     position: relative;
     width: 100%;
     padding: 0em 80px 0em 80px;
-    background: #fdfdfd;
-    box-shadow: 5px 10px 10px 0px #000000;
+    background: #f8e098;
   }
   
   .user-comments__comment {
@@ -2909,7 +2962,7 @@ html {
     .footer {
       width: 100%;
       position: relative;
-      background: #fdfdfd;
+      background: #f8e098;
       padding: 2.5em 2.5em 1em 2.5em;
     }
   

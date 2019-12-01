@@ -502,7 +502,8 @@ nav {
   margin: 0 0 0 10px;
 }
 
-.page-corner-nav {
+.page-corner-nav,
+.patreon-corner-nav {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -510,12 +511,26 @@ nav {
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
-.page-corner-nav svg {
+.page-corner-nav:before {
+  width: 100%;
+}
+
+.patreon-corner-nav:before {
+  width: calc(100% - 100px);
+}
+
+.page-corner-nav svg,
+.patreon-corner-nav svg {
   position: absolute;
   top: 0;
   left: calc(100% - 100px);
   width: 100px;
   height: 100px;
+}
+
+.patreon-corner-nav svg {
+  fill: #f86753;
+  opacity: 0;
 }
 
 .prev-post {
@@ -1137,6 +1152,11 @@ nav {
   position: relative;
   background: #fdfdfd;
   box-shadow: 5px 10px 10px 0px #000000;
+}
+
+.footer p {
+  margin-top: 0;
+  padding: 1.414em 0;
 }
 
 .socialIcons {
@@ -2276,6 +2296,8 @@ iframe {
 
 .blog-post__headers {
   font-family: "Permanent Marker", cursive;
+  margin-top: 0;
+  padding-top: 1.414em;
 }
 
 /* BLOG POST LIKES AND REPOSTS SECTIONS */

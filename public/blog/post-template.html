@@ -321,71 +321,74 @@
           </svg>
         </div>
       </div>
-      <div class="blog-post">
-        <figure>
-          <img
-            class="blog-post__main-image"
-            src="*****insertpostmainimagehere*****"
-            alt="*****insertmainimagealttexthere*****"
-          />
-          <figcaption class="blog-post__main-image-caption">
-            *****insertmainimagecaption*****
-          </figcaption>
-        </figure>
-        <h1 class="postTitle blog-post__headers">
-          *****insertposttitlehere*****
-        </h1>
-        <p class="blog-post__subtitle">*****insertpostsubtitlehere*****</p>
-        <div class="blog-post__author-details">
-          <div class="blog-post__post-details">
-            <p class="blog-post__date-time-details">
-              <span class="blog-post__date">*****insertpostdatehere*****</span>
-              &nbsp; &nbsp;•&nbsp; &nbsp;
-              <span class="blog-post__reading-time"
-                >*****insertreadingtimehere***** minutes</span
-              >
+      <div class="blog-post-container">
+        <div class="blog-post">
+          <figure>
+            <img
+              class="blog-post__main-image"
+              src="*****insertpostmainimagehere*****"
+              alt="*****insertmainimagealttexthere*****"
+            />
+            <figcaption class="blog-post__main-image-caption">
+              *****insertmainimagecaption*****
+            </figcaption>
+          </figure>
+          <h1 class="postTitle blog-post__headers">
+            *****insertposttitlehere*****
+          </h1>
+          <p class="blog-post__subtitle">*****insertpostsubtitlehere*****</p>
+          <div class="blog-post__author-details">
+            <div class="blog-post__post-details">
+              <p class="blog-post__date-time-details">
+                <span class="blog-post__date"
+                  >*****insertpostdatehere*****</span
+                >
+                &nbsp; &nbsp;•&nbsp; &nbsp;
+                <span class="blog-post__reading-time"
+                  >*****insertreadingtimehere***** minutes</span
+                >
+              </p>
+            </div>
+          </div>
+          <hr />
+          *****insertpostbodyhere*****
+          <hr />
+        </div>
+        <section class="user-likes">
+          <h3 class="blog-post__headers">Likes</h3>
+          <div class="user-likes-container"></div>
+        </section>
+
+        <section class="user-reposts">
+          <h3 class="blog-post__headers">Reposts</h3>
+          <div class="user-reposts-container"></div>
+        </section>
+
+        <section class="user-comments">
+          <h3 class="blog-post__headers">Comments</h3>
+
+          <div class="loginToComment">
+            <p>
+              <a href="/blog/login">Login</a> or
+              <a href="/create/account">create an account</a> to leave a comment
             </p>
           </div>
-        </div>
-        <hr />
-        *****insertpostbodyhere*****
-        <hr />
-      </div>
 
-      <section class="user-likes">
-        <h3 class="blog-post__headers">Likes</h3>
-        <div class="user-likes-container"></div>
-      </section>
+          <form class="createComment" action="/create/comment" method="post">
+            <label for="writeComment">Write a comment:</label>
+            <textarea name="comment" rows="6" id="writeComment"></textarea>
 
-      <section class="user-reposts">
-        <h3 class="blog-post__headers">Reposts</h3>
-        <div class="user-reposts-container"></div>
-      </section>
+            <button type="submit" id="addComment">Comment</button>
+          </form>
+        </section>
 
-      <section class="user-comments">
-        <h3 class="blog-post__headers">Comments</h3>
-
-        <div class="loginToComment">
+        <div class="footer">
           <p>
-            <a href="/blog/login">Login</a> or
-            <a href="/create/account">create an account</a> to leave a comment
+            <sub style="opacity: 0.5;"
+              >Copyright © 2019 Bobby Sebolao All Rights Reserved.</sub
+            >
           </p>
         </div>
-
-        <form class="createComment" action="/create/comment" method="post">
-          <label for="writeComment">Write a comment:</label>
-          <textarea name="comment" rows="6" id="writeComment"></textarea>
-
-          <button type="submit" id="addComment">Comment</button>
-        </form>
-      </section>
-
-      <div class="footer">
-        <p>
-          <sub style="opacity: 0.5;"
-            >Copyright © 2019 Bobby Sebolao All Rights Reserved.</sub
-          >
-        </p>
       </div>
     </div>
 
