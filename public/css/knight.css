@@ -15,7 +15,8 @@ width of an element) */
 
 html {
     /* 1. */
-    font-family: "Lato", sans-serif;
+    /* font-family: "Lato", sans-serif; */
+    font-family: 'MedievalSharp', cursive;
     font-size: 1em;
     font-weight: 400;
     /* 2. */
@@ -794,7 +795,7 @@ html {
     height: 20px;
     background: transparent;
     background-image: url(/assets/parchment-edge.svg);
-    background-size: 100% auto;
+    /* background-size: 100% auto; */
     background-position: bottom;
   }
   
