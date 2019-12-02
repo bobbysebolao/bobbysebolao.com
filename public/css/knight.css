@@ -141,6 +141,7 @@ html {
   }
   
   nav {
+    position: relative;
     display: flex;
     flex-direction: column;
   }
@@ -149,6 +150,32 @@ html {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .tabs:before {
+    display: inline-block;
+        position: absolute;
+        top: 64px;
+        left: 100%;
+        content: "";
+        width: 20px;
+        height: 100%;
+        background-image: url(/assets/parchment-edge-side.svg);
+        background-size: 100% auto;
+        transform: scaleY(-1);
+  }
+
+  .tabs:after {
+    display: inline-block;
+    position: absolute;
+    top: 74px;
+    left: -20px;
+    content: "";
+    width: 20px;
+    height: 100%;
+    background-image: url(/assets/parchment-edge-side.svg);
+    background-size: 100% auto;
+    transform: scaleX(-1);
   }
   
   .tabRow,

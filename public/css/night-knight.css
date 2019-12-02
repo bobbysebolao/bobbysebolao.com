@@ -144,6 +144,7 @@ html {
   }
   
   nav {
+    position: relative;
     display: flex;
     flex-direction: column;
   }
@@ -152,6 +153,32 @@ html {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .tabs:before {
+    display: inline-block;
+        position: absolute;
+        top: 64px;
+        left: 100%;
+        content: "";
+        width: 20px;
+        height: 100%;
+        background-image: url(/assets/parchment-edge-side-night-knight.svg);
+        background-size: 100% auto;
+        transform: scaleY(-1);
+  }
+
+  .tabs:after {
+    display: inline-block;
+    position: absolute;
+    top: 74px;
+    left: -20px;
+    content: "";
+    width: 20px;
+    height: 100%;
+    background-image: url(/assets/parchment-edge-side-night-knight.svg);
+    background-size: 100% auto;
+    transform: scaleX(-1);
   }
   
   .tabRow,
@@ -961,24 +988,44 @@ html {
   
   .prev-post {
     position: relative;
-    background: #fdfdfd;
+    background: #41484d;
     width: 50%;
     height: 100%;
     transform: scaleX(-1);
-    background: url(/assets/page_corner.svg);
-    background-color: #fdfdfd;
+    background: url(/assets/page_corner_night_knight.svg);
+    background-color: #41484d;
     background-repeat: no-repeat;
     background-position: top right;
+  }
+
+  .page-corner-nav:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    width: calc(100% - 200px);
+    height: 20px;
+    background: transparent;
+    background-image: url(/assets/parchment-edge-blog-post-night-knight.svg);
+    /* background-size: 100% auto; */
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   
   .next-post {
     position: relative;
     width: 50%;
     height: 100%;
-    background: url(/assets/page_corner.svg);
-    background-color: #fdfdfd;
+    background: url(/assets/page_corner_night_knight.svg);
+    background-color: #41484d;
     background-repeat: no-repeat;
     background-position: top right;
+  }
+
+  .page-corner {
+    fill: #41484d;
   }
   
   .page-corner-selector {
@@ -986,12 +1033,13 @@ html {
   }
   
   .page-corner-selector:hover .page-corner {
-    fill: #cccccc;
-    opacity: 0.5;
+    /* fill: #cccccc;
+    opacity: 0.5; */
     transition: all 0.25s ease;
   }
   
   .page-arrow {
+    fill: #fdfdfd;
     width: 30px;
     height: 30px;
   }
@@ -1605,7 +1653,7 @@ html {
   .footer {
     width: 100%;
     position: relative;
-    background: #fdfdfd;
+    background: #41484d;
   }
 
   .footer p {
@@ -2690,7 +2738,7 @@ html {
       } */
 
       .blog-post-container {
-        background: #f8e098;
+        background: #41484d;
         box-shadow: 5px 10px 10px 0 #000;
       }
     
@@ -2703,7 +2751,7 @@ html {
         width: 20px;
         height: calc(100% -57px);
         /* background: red; */
-        background-image: url(/assets/parchment-edge-side.svg);
+        background-image: url(/assets/parchment-edge-side-night-knight.svg);
         background-size: 100% auto;
         /* transform: rotate(90deg); */
         /* transform-origin: bottom left; */
@@ -2718,7 +2766,7 @@ html {
         content: "";
         width: 20px;
         height: calc(100% -57px);
-        background-image: url(/assets/parchment-edge-side.svg);
+        background-image: url(/assets/parchment-edge-side-night-knight.svg);
         background-size: 100% auto;
         /* transform: rotate(180deg); */
         transform: scaleX(-1);
@@ -2730,11 +2778,15 @@ html {
     align-items: flex-start;
     width: 100%;
     position: relative;
-    background: #fdfdfd;
+    background: #41484d;
     /* padding: 5em 5em 0em 5em; */
     padding: 0px 80px 0em 80px;
     /* padding: 2.5em 5vw 0em 5vw; */
     text-align: left;
+  }
+
+  .blog-post img {
+    mix-blend-mode: multiply;
   }
   
   .blog-post figcaption {
@@ -2775,7 +2827,7 @@ html {
     position: relative;
     width: 100%;
     padding: 0em 80px 0em 80px;
-    background: #fdfdfd;
+    background: #41484d;
   }
   
   .user-reposts {
@@ -2785,7 +2837,7 @@ html {
     position: relative;
     width: 100%;
     padding: 0em 80px 0em 80px;
-    background: #fdfdfd;
+    background: #41484d;
   }
   
   .user-likes-container {
@@ -2848,7 +2900,7 @@ html {
     position: relative;
     width: 100%;
     padding: 0em 80px 0em 80px;
-    background: #fdfdfd;
+    background: #41484d;
   }
   
   .user-comments__comment {
@@ -2951,7 +3003,7 @@ html {
     .footer {
       width: 100%;
       position: relative;
-      background: #fdfdfd;
+      background: #41484d;
       padding: 2.5em 2.5em 1em 2.5em;
     }
   
