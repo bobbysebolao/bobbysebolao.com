@@ -51,8 +51,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #c18e67;
-  background-image: url(/assets/desk_background.svg);
-  background: #ccc;
+  background-image: url(/assets/desk_background_pixellated.jpg);
+  /* background: #ccc; */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -2264,7 +2264,7 @@ figure img {
     margin: auto;
     text-align: center;
     background-color: #c18e67;
-    background-image: url(/assets/desk_background.svg);
+    background-image: url(/assets/desk_background_pixellated.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
