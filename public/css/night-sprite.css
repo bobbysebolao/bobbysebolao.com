@@ -56,7 +56,7 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
-  
+    font-family: "VT323", monospace;
     /* background-size: cover; */
     padding: 20px;
   }
@@ -2199,9 +2199,11 @@ html {
   }
   
   .block-post {
+    height: 100%;
+    width: 100%;
     border-right: 15px solid black;
     border-bottom: 15px solid black;
-    background-size: contain;
+    /* background-size: contain; */
     position: relative;
   }
   
