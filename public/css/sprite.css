@@ -386,7 +386,7 @@ nav {
   box-shadow: 8px 8px 0px 0px #000000;
 }
 
-.fileDivider:before {
+/* .fileDivider:before {
   content: "";
   position: absolute;
   top: 100%;
@@ -394,7 +394,7 @@ nav {
   width: 100%;
   height: 30px;
   background: #fdfdfd;
-}
+} */
 
 .blog__create-options {
   display: flex;
@@ -482,7 +482,7 @@ nav {
   width: 50%;
   height: 100%;
   transform: scaleX(-1);
-  background: url(/assets/page_corner.svg);
+  background: url(/assets/page_corner_blog_post_sprite.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -492,7 +492,7 @@ nav {
   position: relative;
   width: 50%;
   height: 100%;
-  background: url(/assets/page_corner.svg);
+  background: url(/assets/page_corner_blog_post_sprite.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -502,11 +502,15 @@ nav {
   cursor: pointer;
 }
 
-.page-corner-selector:hover .page-corner {
+.page-corner {
+  opacity: 0;
+}
+
+/* .page-corner-selector:hover .page-corner {
   fill: #cccccc;
   opacity: 0.5;
   transition: all 0.25s ease;
-}
+} */
 
 .page-arrow {
   width: 30px;
@@ -528,7 +532,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url(/assets/patreon_corner.svg);
+  background: url(/assets/patreon_corner_sprite.svg);
   background-color: #fdfdfd;
   background-repeat: no-repeat;
   background-position: top right;
@@ -688,7 +692,7 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  z-index: 0;
+  z-index: 1;
 }
 
 .pageBreak {

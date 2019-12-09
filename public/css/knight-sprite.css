@@ -395,7 +395,7 @@ nav {
 
 .tabRow li:nth-child(4) {
   background: #fe9bba;
-  margin-right: 15px;
+  margin-right: 11px;
   outline-color: #fe9bba;
 }
 
@@ -629,6 +629,10 @@ nav {
   box-shadow: inset 0px 0px 0px 10px white;
   outline: 5px solid #fe9bba;
   outline-offset: -5px;
+}
+
+.menuTabs li:nth-child(3) {
+  margin-right: 6px;
 }
 
 .menuTabs li:nth-child(2) {

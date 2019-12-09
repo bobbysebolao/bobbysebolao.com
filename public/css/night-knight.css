@@ -398,7 +398,7 @@ html {
   
   .tabRow li:nth-child(4) {
     background: #252d3e;
-    margin-right: 15px;
+    margin-right: 11px;
     outline-color: #252d3e;
   }
   
@@ -611,6 +611,10 @@ html {
     box-shadow: inset 0px 0px 0px 10px white;
     outline: 5px solid #252d3e;
     outline-offset: -5px;
+  }
+
+  .menuTabs li:nth-child(3) {
+    margin-right: 6px;
   }
 
   .menuTabs li:nth-child(1) {
@@ -936,7 +940,8 @@ html {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    color: #757575;
+    color: #fdfdfd;
+    opacity: 0.5;
   }
   
   .blog-post__post-details > * {

@@ -275,7 +275,7 @@ nav {
 
 .tabRow li:nth-child(4) {
   background: #fe9bba;
-  margin-right: 15px;
+  margin-right: 11px;
 }
 
 .tabRow li:nth-child(4):before {
@@ -306,6 +306,10 @@ nav {
   z-index: 0;
   cursor: pointer;
   box-shadow: 5px 10px 10px 0px #000000;
+}
+
+.menuTabs li:nth-child(3) {
+  margin-right: 6px;
 }
 
 /* .menuTabs li:nth-child(1) {
@@ -559,11 +563,15 @@ nav {
   cursor: pointer;
 }
 
-.page-corner-selector:hover .page-corner {
+.page-corner {
+  opacity: 0;
+}
+
+/* .page-corner-selector:hover .page-corner {
   fill: #cccccc;
   opacity: 0.5;
   transition: all 0.25s ease;
-}
+} */
 
 .page-arrow {
   width: 30px;

@@ -16,12 +16,13 @@ width of an element) */
 html {
   /* 1. */
   font-family: "Lato", sans-serif;
-  font-size: 1em;
+  font-size: 1.125em;
   font-weight: 400;
   /* 2. */
   scroll-behavior: smooth;
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.84);
+  /* color: rgba(0, 0, 0, 0.84); */
+  color: #fdfdfd;
 }
 
 *,
@@ -80,7 +81,7 @@ h3,
 h4 {
   margin: 1.414em 0 0.5em;
   line-height: 1.35;
-  color: #111;
+  color: #fdfdfd;
   font-weight: 400;
 }
 
@@ -394,7 +395,7 @@ nav {
 
 .tabRow li:nth-child(4) {
   background: #fe9bba;
-  margin-right: 15px;
+  margin-right: 11px;
   outline-color: #fe9bba;
 }
 
@@ -628,6 +629,10 @@ nav {
   box-shadow: inset 0px 0px 0px 10px white;
   outline: 5px solid #fe9bba;
   outline-offset: -5px;
+}
+
+.menuTabs li:nth-child(3) {
+  margin-right: 6px;
 }
 
 .menuTabs li:nth-child(1) {
@@ -958,7 +963,8 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  color: #757575;
+  color: #fdfdfd;
+  opacity: 0.5;
 }
 
 .blog-post__post-details > * {
@@ -1064,6 +1070,7 @@ nav {
 }
 
 .page-arrow {
+  fill: #fdfdfd;
   width: 30px;
   height: 30px;
 }
@@ -2848,6 +2855,7 @@ figure {
 }
 
 .blog-post__headers {
+  color: #fdfdfd;
   font-family: "MedievalSharp", cursive;
   margin-top: 0;
   padding-top: 1.414em;

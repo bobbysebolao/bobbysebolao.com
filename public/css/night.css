@@ -264,7 +264,7 @@ nav {
 
 .tabRow li:nth-child(4) {
   background: #252d3e;
-  margin-right: 15px;
+  margin-right: 11px;
 }
 
 .tabRow li:nth-child(4):before {
@@ -295,6 +295,10 @@ nav {
   z-index: 0;
   cursor: pointer;
   box-shadow: 5px 10px 10px 0px #000000;
+}
+
+.menuTabs li:nth-child(3) {
+  margin-right: 6px;
 }
 
 .menuTabs li:nth-child(1) {
