@@ -12,7 +12,7 @@ width of an element) */
 
 @font-face {
   font-family: "Calculator";
-  src: url("fonts/calculator.ttf") format("truetype");
+  src: url(/css/fonts/calculator.ttf) format("truetype");
   font-weight: normal;
   font-style: normal;
 }
