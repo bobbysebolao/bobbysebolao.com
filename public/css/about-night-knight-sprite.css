@@ -167,14 +167,14 @@ html {
     margin: 0 2px;
     padding: 0 0 0 0;
     background: #ffffff;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     z-index: 0;
-    box-shadow: 5px 10px 10px 0px #000000;
+    box-shadow: 8px 8px 0px 0px #000000;
     width: 100px;
   }
   
-  .tabRow li:before,
+  /* .tabRow li:before,
   .tabRow li:after,
   .menuTabs li:before,
   .menuTabs li:after {
@@ -183,7 +183,6 @@ html {
     width: 6px;
     height: 6px;
     content: " ";
-    /* border: 1px solid #AAA; */
   }
   
   .tabRow li:before,
@@ -191,15 +190,14 @@ html {
     left: -5.5px;
     border-bottom-right-radius: 6px;
     box-shadow: 2px 2px 0 #ffffff;
-    /* transform: translateY(-3px); */
   }
+
   .tabRow li:after,
   .menuTabs li:after {
     right: -5.7px;
     border-bottom-left-radius: 6px;
     box-shadow: -2px 2px 0 #ffffff;
-    /* transform: translateY(-3px); */
-  }
+  } */
   
   .tabRow li:hover,
   .menuTabs li:hover {
@@ -282,11 +280,11 @@ html {
     margin: 0 2px;
     padding: 20px 20px 10px 20px;
     background: #faf557;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     z-index: 0;
     cursor: pointer;
-    box-shadow: 5px 10px 10px 0px #000000;
+    box-shadow: 8px 8px 0px 0px #000000;
   }
 
   .menuTabs li:nth-child(1) {
@@ -371,11 +369,11 @@ html {
     justify-content: space-between;
     align-items: center;
     background: #faf557;
-    border-radius: 5px 5px 0 0;
+    border-radius: 0 0 0 0;
     padding: 10px 25px 10px 25px;
     /* max-height: 52px; */
     z-index: 0;
-    box-shadow: 5px 10px 10px 0px #000000;
+    box-shadow: 8px 8px 0px 0px #000000;
   }
   
   .blog__create-options {
@@ -788,7 +786,7 @@ html {
     /* padding: 5em 5em 0em 5em; */
     padding: 80px 80px 0em 80px;
     /* padding: 2.5em 5vw 0em 5vw; */
-    box-shadow: 5px 10px 10px 0px #000000;
+    box-shadow: 8px 8px 0px 0px #000000;
   }
   
   .hiddenHeader {
@@ -1025,7 +1023,7 @@ html {
     width: 100%;
     position: relative;
     background: #fdfdfd;
-    box-shadow: 5px 10px 10px 0px #000000;
+    box-shadow: 8px 8px 0px 0px #000000;
   }
   
   .socialIcons {

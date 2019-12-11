@@ -289,6 +289,10 @@ nav {
   box-shadow: 5px 10px 10px 0px #000000;
 }
 
+.menuTabs li:nth-child(3) {
+  margin-right: 6px;
+}
+
 /* .menuTabs li:nth-child(1) {
   background: red;
 }

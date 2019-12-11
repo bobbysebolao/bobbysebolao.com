@@ -174,14 +174,14 @@ nav {
   margin: 0 2px;
   padding: 0 0 0 0;
   background: #ffffff;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   z-index: 0;
-  box-shadow: 5px 10px 10px 0px #000000;
+  box-shadow: 8px 8px 0px 0px #000000;
   width: 100px;
 }
 
-.tabRow li:before,
+/* .tabRow li:before,
 .tabRow li:after,
 .menuTabs li:before,
 .menuTabs li:after {
@@ -190,7 +190,6 @@ nav {
   width: 6px;
   height: 6px;
   content: " ";
-  /* border: 1px solid #AAA; */
 }
 
 .tabRow li:before,
@@ -198,22 +197,20 @@ nav {
   left: -5.5px;
   border-bottom-right-radius: 6px;
   box-shadow: 2px 2px 0 #ffffff;
-  /* transform: translateY(-3px); */
 }
 .tabRow li:after,
 .menuTabs li:after {
   right: -5.7px;
   border-bottom-left-radius: 6px;
   box-shadow: -2px 2px 0 #ffffff;
-  /* transform: translateY(-3px); */
-}
+} */
 
 .tabRow li:hover,
 .menuTabs li:hover {
   transform: translateY(-3px);
 }
 
-.tabRow li:hover:before,
+/* .tabRow li:hover:before,
 .menuTabs li:hover:before {
   box-shadow: 2px 2px 0;
   transform: translateY(3px);
@@ -223,56 +220,56 @@ nav {
 .menuTabs li:hover:after {
   box-shadow: -2px 2px 0;
   transform: translateY(3px);
-}
+} */
 
 .tabRow li:nth-child(1) {
   background: #afec6a;
 }
 
-.tabRow li:nth-child(1):before {
+/* .tabRow li:nth-child(1):before {
   box-shadow: 2px 2px 0 #afec6a;
 }
 
 .tabRow li:nth-child(1):after {
   box-shadow: -2px 2px 0 #afec6a;
-}
+} */
 
 .tabRow li:nth-child(2) {
   background: #faf557;
 }
 
-.tabRow li:nth-child(2):before {
+/* .tabRow li:nth-child(2):before {
   box-shadow: 2px 2px 0 #faf557;
 }
 
 .tabRow li:nth-child(2):after {
   box-shadow: -2px 2px 0 #faf557;
-}
+} */
 
 .tabRow li:nth-child(3) {
   background: #7fd9cf;
 }
 
-.tabRow li:nth-child(3):before {
+/* .tabRow li:nth-child(3):before {
   box-shadow: 2px 2px 0 #7fd9cf;
 }
 
 .tabRow li:nth-child(3):after {
   box-shadow: -2px 2px 0 #7fd9cf;
-}
+} */
 
 .tabRow li:nth-child(4) {
   background: #fe9bba;
   margin-right: 15px;
 }
 
-.tabRow li:nth-child(4):before {
+/* .tabRow li:nth-child(4):before {
   box-shadow: 2px 2px 0 #fe9bba;
 }
 
 .tabRow li:nth-child(4):after {
   box-shadow: -2px 2px 0 #fe9bba;
-}
+} */
 
 .tabRow a {
   display: block;
@@ -289,11 +286,11 @@ nav {
   margin: 0 2px;
   padding: 20px 20px 10px 20px;
   background: #afec6a;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   z-index: 0;
   cursor: pointer;
-  box-shadow: 5px 10px 10px 0px #000000;
+  box-shadow: 8px 8px 0px 0px #000000;
 }
 
 .menuTabs li:nth-child(1) {
@@ -309,6 +306,7 @@ nav {
 .menuTabs li:nth-child(3) {
   fill: #b500fa;
   transform: translateY(-3px);
+  margin-right: 6px;
 }
 
 /* .menuTabs li:nth-child(1) {
@@ -338,39 +336,39 @@ nav {
   fill: #fff197;
 }
 
-.menuTabs li:nth-child(1):before {
+/* .menuTabs li:nth-child(1):before {
   box-shadow: 2px 2px 0 #afec6a;
 }
 
 .menuTabs li:nth-child(1):after {
   box-shadow: -2px 2px 0 #afec6a;
-}
+} */
 
 .knightIcon:hover,
 .menuTabs li:nth-child(2):hover {
   fill: #a24500;
 }
 
-.menuTabs li:nth-child(2):before {
+/* .menuTabs li:nth-child(2):before {
   box-shadow: 2px 2px 0 #afec6a;
 }
 
 .menuTabs li:nth-child(2):after {
   box-shadow: -2px 2px 0 #afec6a;
-}
+} */
 
 .tetrisSprite:hover,
 .menuTabs li:nth-child(3):hover {
   fill: #b500fa;
 }
 
-.menuTabs li:nth-child(3):before {
+/* .menuTabs li:nth-child(3):before {
   box-shadow: 2px 2px 0 #afec6a;
 }
 
 .menuTabs li:nth-child(3):after {
   box-shadow: -2px 2px 0 #afec6a;
-}
+} */
 
 .fileDivider {
   display: flex;
@@ -378,11 +376,11 @@ nav {
   justify-content: space-between;
   align-items: center;
   background: #afec6a;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0 0 0 0;
   padding: 10px 25px 10px 25px;
   /* min-height: 52px; */
   z-index: 0;
-  box-shadow: 5px 10px 10px 0px #000000;
+  box-shadow: 8px 8px 0px 0px #000000;
 }
 
 .blog__create-options {
@@ -876,7 +874,7 @@ nav {
   /* padding: 5em 5em 0em 5em; */
   padding: 80px 80px 0em 80px;
   /* padding: 2.5em 5vw 0em 5vw; */
-  box-shadow: 5px 10px 10px 0px #000000;
+  box-shadow: 8px 8px 0px 0px #000000;
   font-family: "VT323", monospace;
 }
 
@@ -1566,7 +1564,7 @@ nav {
   width: 100%;
   position: relative;
   background: #fdfdfd;
-  box-shadow: 5px 10px 10px 0px #000000;
+  box-shadow: 8px 8px 0px 0px #000000;
 }
 
 .socialIcons {

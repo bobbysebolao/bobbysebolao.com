@@ -311,6 +311,10 @@ html {
   .menuTabs li:nth-child(1):after {
     transform: translateY(3px);
   }
+
+  .menuTabs li:nth-child(3) {
+    margin-right: 6px;
+  }
   
   /* .menuTabs li:nth-child(1) {
     background: red;

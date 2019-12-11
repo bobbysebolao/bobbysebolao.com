@@ -577,6 +577,10 @@ html {
     transform: translateY(-3px);
   }
 
+  .menuTabs li:nth-child(3) {
+    margin-right: 6px;
+  }
+
   /* .menuTabs li:nth-child(1):before {
     width: 100px;
     height: 100px;

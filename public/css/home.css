@@ -314,6 +314,10 @@ nav {
   padding: 20px 10px 15px 10px;
 } */
 
+.menuTabs li:nth-child(3) {
+  margin-right: 6px;
+}
+
 .menuTabs svg {
   width: 30px;
   height: 30px;
