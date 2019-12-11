@@ -265,7 +265,7 @@ html {
   
   .tabRow li:nth-child(4) {
     background: #707993;
-    margin-right: 15px;
+    margin-right: 11px;
   }
   
   .tabRow li:nth-child(4):before {
@@ -306,6 +306,10 @@ html {
   .menuTabs li:nth-child(2) {
     fill: #a24500;
     transform: translateY(-3px);
+  }
+
+  .menuTabs li:nth-child(3) {
+    margin-right: 6px;
   }
   
   /* .menuTabs li:nth-child(1) {

@@ -578,7 +578,7 @@ html {
   .pageBreak {
     position: relative;
     width: 100%;
-    z-index: 0;
+    /* z-index: 0; */
     text-align: center;
     /* box-shadow: 8px 8px 0px 0px #000000; */
   }

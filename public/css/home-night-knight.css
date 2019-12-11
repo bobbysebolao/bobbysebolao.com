@@ -357,7 +357,7 @@ html {
   
   .tabRow li:nth-child(4) {
     background: #707993;
-    margin-right: 15px;
+    margin-right: 11px;
     outline-color: #707993;
   }
   
@@ -1382,6 +1382,93 @@ html {
     background-blend-mode: multiply;
     z-index: 1;
     border-radius: 5px;
+    position: relative;
+  }
+
+  .portfolio-project__image:before {
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    content: "";
+    width: 25px;
+    height: 100%;
+    background-image: url(/assets/portfolio-edge-side-night-knight.svg);
+    background-size: 100% auto;
+    z-index: 5;
+  }
+
+  .portfolio-project__image:after {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background-image: url(/assets/portfolio-edge-green.svg); */
+    transform: rotate(180deg);
+  }
+
+  .portfolio-project__image div:before {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    content: "";
+    width: 20px;
+    height: calc(100% - 1.5em);
+    background-size: 100% auto;
+    transform: rotate(180deg);
+    z-index: 5;
+  }
+
+  .portfolio-project:nth-of-type(1) .portfolio-project__image div:before {
+    background-image: url(/assets/portfolio-edge-side-dark-blue.svg);
+  }
+
+  .portfolio-project:nth-of-type(1) .portfolio-project__image:after {
+    background-image: url(/assets/portfolio-edge-dark-blue.svg);
+  }
+
+  .portfolio-project:nth-of-type(2) .portfolio-project__image div:before {
+    background-image: url(/assets/portfolio-edge-side-dark-blue.svg);
+  }
+
+  .portfolio-project:nth-of-type(2) .portfolio-project__image:after {
+    background-image: url(/assets/portfolio-edge-dark-blue.svg);
+  }
+
+  .portfolio-project:nth-of-type(3) .portfolio-project__image div:before {
+    background-image: url(/assets/portfolio-edge-side-dark-blue.svg);
+  }
+
+  .portfolio-project:nth-of-type(3) .portfolio-project__image:after {
+    background-image: url(/assets/portfolio-edge-dark-blue.svg);
+  }
+
+  .portfolio-project:nth-of-type(4) .portfolio-project__image div:before {
+    background-image: url(/assets/portfolio-edge-side-dark-blue.svg);
+  }
+
+  .portfolio-project:nth-of-type(4) .portfolio-project__image:after {
+    background-image: url(/assets/portfolio-edge-dark-blue.svg);
+  }
+
+  .portfolio-project__image div:after {
+    /* background-image: #afec6a; */
+    display: inline-block;
+    position: absolute;
+    bottom: -3px;
+    right: 0px;
+    content: "";
+    width: 100%;
+    height: 30px;
+    /* background-color: green; */
+    background-image: url(/assets/portfolio-edge-night-knight.svg);
+    background-size: cover;
+    /* background-size: 100% auto; */
+    transform: rotate(180deg);
   }
   
   .portfolio-project__background {
