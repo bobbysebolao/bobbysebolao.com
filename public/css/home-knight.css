@@ -1367,20 +1367,6 @@ html {
     z-index: 0;
   }
 
-  .portfolio-project:before {
-    display: inline-block;
-    position: absolute;
-    top: -20px;
-    left: 20px;
-    content: "";
-    width: 20px;
-    height: 100%;
-    background-image: url(/assets/parchment-edge-side.svg);
-    background-size: 100% auto;
-    /* transform: rotate(180deg); */
-    z-index: -1;
-  }
-
   .portfolio-project:after {
     display: inline-block;
     position: absolute;
@@ -1521,11 +1507,11 @@ html {
   .portfolio-project__background:after {
     display: inline-block;
     position: absolute;
-    top: -20px;
+    top: 0px;
     left: calc(100% - 20px);
     content: "";
     width: 20px;
-    height: calc(100% + 160px);
+    height: 100%;
     background-image: url(/assets/parchment-edge-side.svg);
     background-size: 100% auto;
     transform: rotate(180deg);

@@ -1371,6 +1371,20 @@ html {
     position: relative;
     z-index: 0;
   }
+
+  .portfolio-project:after {
+    display: inline-block;
+    position: absolute;
+    bottom: 14px;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background: red; */
+    background-image: url(/assets/parchment-edge-night-knight.svg);
+    /* transform: rotate(180deg); */
+    z-index: -1;
+  }
   
   .portfolio-project__image {
     width: 360px;
@@ -1480,6 +1494,35 @@ html {
     z-index: -1;
     border-radius: 5px;
     background: #252d3e;
+  }
+
+  .portfolio-project__background:before {
+    /* background-image: #afec6a; */
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 20px;
+    /* background: red; */
+    background-image: url(/assets/parchment-edge-night-knight.svg);
+    /* background-size: 100% auto; */
+    transform: rotate(180deg);
+  }
+
+  .portfolio-project__background:after {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: calc(100% - 20px);
+    content: "";
+    width: 20px;
+    height: 100%;
+    background-image: url(/assets/parchment-edge-side-night-knight.svg);
+    background-size: 100% auto;
+    transform: rotate(180deg);
+    z-index: 5;
   }
   
   .portfolio-project__description {
@@ -1766,7 +1809,7 @@ html {
     padding: 0;
     border: 1px solid #707993;
     border-radius: 5px;
-    background: #10161d;
+    background: #252d3e;
     color: #fdfdfd;
   }
   
