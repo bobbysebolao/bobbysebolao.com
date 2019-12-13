@@ -90,7 +90,7 @@ html {
   
   h1 {
     margin-top: 0;
-    font-size: 2em;
+    font-size: 3em;
   }
   
   h2 {
@@ -2091,180 +2091,149 @@ html {
     fill: #e1ecf4;
   }
   
-  /* RECENT POSTS SECTION*/
-  
-  .post-container {
-    /* font-family: "Permanent Marker", cursive; */
-    width: 100%;
-    display: grid;
-    grid-template-columns: 210px 210px 210px;
-    grid-template-rows: 210px 210px 210px 210px 210px 210px 210px;
-    grid-row-gap: 5px;
-    grid-column-gap: 5px;
-    justify-content: center;
-    margin-bottom: 40px;
-    /* align-items: center; */
-  }
-  
-  .post-container h2 {
-    font-family: "VT323", monospace;
-    width: 100%;
-    margin: 0;
-  }
-  
-  .post-container a {
-    text-decoration: none;
-  }
-  
-  .post-container div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* font-family: "Permanent Marker", cursive; */
-    box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-    border-radius: 10px;
-  }
-  
-  .latest {
-    background: #252d3e;
-  }
-  
-  .life {
-    background: #252d3e;
-  }
-  
-  .learn {
-    background: #252d3e;
-  }
-  
-  .fun {
-    /* font-family: "Permanent Marker", cursive; */
-    background: #252d3e;
-    box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-    /* border: 3px solid #111; */
-    border-radius: 10px;
-  }
-  
-  .all-posts {
-    background: #252d3e;
-  }
-  
-  /* .blockO h3 {
-    background: #252d3e;
-  }
-  
-  .blockT h3 {
-    background: #707993;
-  }
-  
-  .blockL h3 {
-    background: #252d3e;
-  }
-  
-  .blockS h3 {
-    background: #707993;
-  } */
-  
-  .post {
-    box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
-    border-color: #ffffff;
-    /* border-width: 5px; */
-    background-size: contain;
-    background-color: #707993;
-    background-blend-mode: multiply;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  .post:hover {
-    box-shadow: 0px 10px 20px rgba(17, 17, 17, 1);
-    transition: all 0.25s ease-in-out;
-  }
-  
-  .post h3 {
-    padding-top: 0.2em;
-    height: 92px;
-    width: 100%;
-    margin: 0;
-    border-radius: 0px 0px 10px 10px;
-    position: relative;
-    background: #3d465c;
-  }
-  
-  .block-post {
-    height: 100%;
-    width: 100%;
-    border-right: 15px solid black;
-    border-bottom: 15px solid black;
-    /* background-size: contain; */
-    position: relative;
-  }
-  
-  .block-post:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: white;
-    width: 15px;
-    height: 15px;
-  }
-  
-  .block-post:after {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: transparent;
-    width: 30px;
-    height: 30px;
-    border-top: 15px solid white;
-    border-left: 15px solid white;
-  }
-  
-  /* .shine {
-        position: absolute;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-      }
-  
-      .shine:after {
-        content: "";
-        position: absolute;
-        top: -110%;
-        left: -210%;
-        width: 200%;
-        height: 200%;
-        opacity: 0;
-        transform: rotate(30deg);
-  
-        background: rgba(255, 255, 255, 0.13);
-        background: linear-gradient(to right,
-        rgba(255, 255, 255, 0.13) 0%,
-        rgba(255, 255, 255, 0.13) 77%,
-        rgba(255, 255, 255, 0.5) 92%,
-        rgba(255, 255, 255, 0.0) 100%);
-      }
-  
-      .shine:hover:after {
-        opacity: 1;
-        top: -30%;
-        left: -30%;
-        transition-property: left, top, opacity;
-        transition-duration: 0.7s, 0.7s, 0.15s;
-        transition-timing-function: ease;
-      }
-  
-      .shine:active:after {
-        opacity: 0;
-      } */
+/* RECENT POSTS SECTION*/
+
+.post-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 213px 213px 213px;
+  grid-template-rows: 213px 213px 213px 213px 213px 213px 213px;
+}
+
+.post-container h2 {
+  font-family: "VT323", monospace;
+  font-size: 3em;
+  width: 100%;
+  margin: 0;
+}
+
+.post-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* font-family: "Permanent Marker", cursive; */
+  /* box-shadow: 0px 2px 3px rgba(17, 17, 17, 1); */
+  /* border-radius: 10px; */
+}
+
+.latest {
+  color: #000000;
+  background: #707993;
+}
+
+.life {
+  color: #000000;
+  background: #707993;
+}
+
+.learn {
+  color: #000000;
+  background: #707993;
+}
+
+.fun {
+  color: #000000;
+  background: #707993;
+}
+
+.all-posts {
+  color: #ffffff;
+  background: #707993;
+}
+
+.blockO {
+  background: #252d3e;
+}
+
+.blockT {
+  background: #252d3e;
+}
+
+.blockL {
+  background: #252d3e;
+}
+
+.blockS {
+  background: #252d3e;
+}
+
+.block-post {
+  height: 100%;
+  width: 100%;
+  border-right: 15px solid black;
+  border-bottom: 15px solid black;
+  position: relative;
+}
+
+.block-post:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 15px;
+  height: 15px;
+}
+
+.block-post:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  border-top: 15px solid white;
+  border-left: 15px solid white;
+}
+
+.block-post h3 {
+  color: white;
+  position: absolute;
+  top: calc(50% - 0.7em);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.shine {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.shine:after {
+  content: "";
+  position: absolute;
+  top: -110%;
+  left: -210%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  transform: rotate(30deg);
+
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.13) 0%,
+    rgba(255, 255, 255, 0.13) 77%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.shine:hover:after {
+  opacity: 1;
+  top: -30%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: 0.7s, 0.7s, 0.15s;
+  transition-timing-function: ease;
+}
+
+.shine:active:after {
+  opacity: 0;
+}
   
   .blog-post {
     display: flex;
