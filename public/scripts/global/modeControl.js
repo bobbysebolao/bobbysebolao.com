@@ -1,5 +1,11 @@
 let standardStylesheet = document.querySelector("#standardStylesheet");
-let urlEndpoint = window.location.href.split(".com")[1];
+let urlEndpoint;
+
+if (window.location.href.includes("localhost")) {
+  urlEndpoint = window.location.href.split("9000")[1];
+} else if (window.location.href.includes(".com")) {
+  urlEndpoint = window.location.href.split(".com")[1];
+}
 
 console.log(`Mode control active at ${urlEndpoint}`);
 
@@ -149,16 +155,6 @@ if (sessionStorage.getItem("autosave")) {
   else {
     standardStylesheet.href = `/css/minified/blog/blog.min.css`;
   }
-
-  // else if (window.location.href.match("/about/")) {
-  //   if (sessionStorage.getItem("autosave").match("sprite.min.css")) {
-  //     standardStylesheet.href = `/css/minified/blog/sprite.min.css`;
-  //   } else if (sessionStorage.getItem("autosave").match("knight.min.css")) {
-  //     standardStylesheet.href = `/css/minified/blog/knight.min.css`;
-  //   } else if (sessionStorage.getItem("autosave").match("night.min.css")) {
-  //     standardStylesheet.href = `/css/minified/blog/night.min.css`;
-  //   }
-  // }
 
   if (standardStylesheet.href.match("sprite.min.css")) {
     if (typeof blockO !== "undefined") {
