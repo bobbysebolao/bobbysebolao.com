@@ -757,6 +757,30 @@ html {
     /* z-index: 3; */
     background: #fe9bba;
   }
+
+  .menuTabs li .tabRibbonStylingBottom:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 70px;
+    height: 90px;
+    box-shadow: 5px 10px 10px 0px #000000;
+  }
+
+  .tabRow li .tabRibbonStylingBottom:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100px;
+    height: 90px;
+    box-shadow: 5px 10px 10px 0px #000000;
+  }
    
   .menuTabs svg {
     width: 30px;
@@ -2591,16 +2615,78 @@ html {
   }
   
   .post-container a {
+    position: relative;
     text-decoration: none;
   }
   
   .post-container div {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-family: 'MedievalSharp', cursive;
-    box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+    /* box-shadow: 0px 2px 3px rgba(17, 17, 17, 1); */
     border-radius: 10px;
+    border: 5px solid #5d5d60;
+    /* overflow: hidden; */
+  }
+
+  .latest:before, .life:before, .learn:before , .fun:before, .all-posts:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    /* border-radius: 50%; */
+    width: 25px;
+    height: 25px;
+    background: #f8e098;
+    border: 5px solid #f8e098;
+    border-bottom-right-radius: 100%;
+    box-shadow: 5px 5px 0 #5d5d60;
+    cursor: default;
+  }
+
+  .latest:after, .life:after, .learn:after, .fun:after, .all-posts:after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border: 5px solid #f8e098;
+    background: #f8e098;
+    /* border: 5px solid #fdfdfd; */
+    border-bottom-left-radius: 100%;
+    box-shadow: -5px 5px 0 #5d5d60;
+    cursor: default;
+  }
+
+  .post-container div h2:before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    border: 5px solid #f8e098;
+    background: #f8e098;
+    /* border: 5px solid #fdfdfd; */
+    border-top-right-radius: 100%;
+    box-shadow: 5px -5px 0 #5d5d60;
+  }
+
+  .post-container div h2:after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border: 5px solid #f8e098;
+    background: #f8e098;
+    /* border: 5px solid #fdfdfd; */
+    border-top-left-radius: 100%;
+    box-shadow: -5px -5px 0 #5d5d60;
   }
   
   .latest {
@@ -2640,33 +2726,160 @@ html {
   }
   
   .post {
-    box-shadow: 0px 2px 3px rgba(17, 17, 17, 1);
+    /* box-shadow: 0px 2px 3px rgba(17, 17, 17, 1); */
     height: 100%;
     width: 100%;
-    border-radius: 10px;
-    border-color: #111;
-    /* border-width: 5px; */
+    /* border-radius: 10px; */
+    border: 5px solid #5d5d60;
+    /* border-color: #fdfdfd;
+    border-width: 5px; */
     background-size: contain;
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    /* overflow: hidden; */
+    position: relative;
+  }
+
+  /* .post:before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #f8e098;
+  }
+
+  .post:after {
+    content: "";
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #f8e098;
+  } */
+
+  .post:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    /* border-radius: 50%; */
+    width: 25px;
+    height: 25px;
+    background: #f8e098;
+    border: 5px solid #f8e098;
+    border-bottom-right-radius: 100%;
+    box-shadow: 5px 5px 0 #5d5d60;
+    cursor: default;
+  }
+
+  .post:after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border: 5px solid #f8e098;
+    background: #f8e098;
+    /* border: 5px solid #fdfdfd; */
+    border-bottom-left-radius: 100%;
+    box-shadow: -5px 5px 0 #5d5d60;
+    cursor: default;
+  }
+
+  .post-container a:before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    border: 5px solid #f8e098;
+    background: #f8e098;
+    /* border: 5px solid #fdfdfd; */
+    border-top-right-radius: 100%;
+    box-shadow: 5px -5px 0 #5d5d60;
+    cursor: default;
+    z-index: 1;
+  }
+
+  .post-container a:after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border: 5px solid #f8e098;
+    background: #f8e098;
+    /* border: 5px solid #fdfdfd; */
+    border-top-left-radius: 100%;
+    box-shadow: -5px -5px 0 #5d5d60;
+    cursor: default;
   }
   
   .post:hover {
-    box-shadow: 0px 10px 20px rgba(17, 17, 17, 1);
     transition: all 0.25s ease-in-out;
+    border-color: rgba(0, 0, 0, 0.84);
+  }
+
+  .post:hover:before {
+    transition: all 0.25s ease-in-out;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.84);
+  }
+
+  .post:hover:after {
+    transition: all 0.25s ease-in-out;
+    box-shadow: -5px 5px 0 rgba(0, 0, 0, 0.84);
+  }
+
+  .post-container a:hover:before {
+    transition: all 0.25s ease-in-out;
+    box-shadow: 5px -5px 0 rgba(0, 0, 0, 0.84);
+  }
+  
+  .post-container a:hover:after {
+    transition: all 0.25s ease-in-out;
+    box-shadow: -5px -5px 0 rgba(0, 0, 0, 0.84);
   }
   
   .post h3 {
     padding-top: 0.2em;
     height: 92px;
     width: 100%;
-    margin: 0;
+    margin-bottom: -10px;
     border-radius: 0px 0px 10px 10px;
     position: relative;
   }
+
+  /* .post h3:before {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: -25px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #f8e098;
+  }
+
+  .post h3:after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    right: -25px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #f8e098;
+  } */
   
   .block-post {
     border-right: 15px solid black;
@@ -2697,14 +2910,11 @@ html {
     border-left: 15px solid white;
   }
   
-  /* .shine {
-        position: absolute;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
+  .shine {
+    visibility: hidden;
       }
   
-      .shine:after {
+      /* .shine:after {
         content: "";
         position: absolute;
         top: -110%;

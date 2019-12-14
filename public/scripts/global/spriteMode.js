@@ -70,7 +70,12 @@ spriteMode.addEventListener("click", () => {
   // spriteMode.classList.toggle("mode-active");
   if (typeof blockO !== "undefined") {
     for (let i = 0; i < 4; i++) {
-      if (standardStylesheet.href.match("/css/minified/blog/blog.min.css")) {
+      if (
+        standardStylesheet.href.match("/css/minified/blog/blog.min.css") ||
+        standardStylesheet.href.match("/css/minified/blog/night.min.css") ||
+        standardStylesheet.href.match("/css/minified/blog/knight.min.css") ||
+        standardStylesheet.href.match("/css/minified/blog/night-knight.min.css")
+      ) {
         // spriteMode.classList.add("mode-active");
         blockO[i].classList.remove("post");
         blockO[i].classList.add("block-post");
