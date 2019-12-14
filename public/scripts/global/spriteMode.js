@@ -117,15 +117,19 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href = "/css/minified/blog/sprite.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
-    prevArrow.innerHTML = pixelArrow;
-    nextArrow.innerHTML = pixelArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = pixelArrow;
+      nextArrow.innerHTML = pixelArrow;
+    }
   } else if (
     standardStylesheet.href.match("/css/minified/blog/sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/blog.min.css";
     sessionStorage.removeItem("autosave");
-    prevArrow.innerHTML = permMarkerArrow;
-    nextArrow.innerHTML = permMarkerArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = permMarkerArrow;
+      nextArrow.innerHTML = permMarkerArrow;
+    }
   } else if (standardStylesheet.href.match("/css/minified/home/home.min.css")) {
     homeTitleWordOne.textContent = "Hi";
     homeTitleWordTwo.textContent = "Score";
@@ -307,40 +311,50 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href = "/css/minified/blog/knight-sprite.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
-    prevArrow.innerHTML = pixelArrow;
-    nextArrow.innerHTML = pixelArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = pixelArrow;
+      nextArrow.innerHTML = pixelArrow;
+    }
   } else if (
     standardStylesheet.href.match("/css/minified/blog/knight-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/knight.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
-    prevArrow.innerHTML = permMarkerArrow;
-    nextArrow.innerHTML = permMarkerArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = permMarkerArrow;
+      nextArrow.innerHTML = permMarkerArrow;
+    }
   } else if (
     standardStylesheet.href.match("/css/minified/blog/night.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night-sprite.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
-    prevArrow.innerHTML = pixelArrow;
-    nextArrow.innerHTML = pixelArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = pixelArrow;
+      nextArrow.innerHTML = pixelArrow;
+    }
   } else if (
     standardStylesheet.href.match("/css/minified/blog/night-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
-    prevArrow.innerHTML = permMarkerArrow;
-    nextArrow.innerHTML = permMarkerArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = permMarkerArrow;
+      nextArrow.innerHTML = permMarkerArrow;
+    }
   } else if (
     standardStylesheet.href.match("/css/minified/blog/night-knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night-knight-sprite.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
-    prevArrow.innerHTML = pixelArrow;
-    nextArrow.innerHTML = pixelArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = pixelArrow;
+      nextArrow.innerHTML = pixelArrow;
+    }
   } else if (
     standardStylesheet.href.match(
       "/css/minified/blog/night-knight-sprite.min.css"
@@ -349,7 +363,9 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href = "/css/minified/blog/night-knight.min.css";
     // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
-    prevArrow.innerHTML = permMarkerArrow;
-    nextArrow.innerHTML = permMarkerArrow;
+    if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
+      prevArrow.innerHTML = permMarkerArrow;
+      nextArrow.innerHTML = permMarkerArrow;
+    }
   }
 });

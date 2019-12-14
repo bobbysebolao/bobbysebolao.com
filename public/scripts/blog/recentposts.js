@@ -3,15 +3,15 @@
 
 var postContainer = document.querySelector(".post-container");
 
-let blockO = document.getElementsByClassName("blockO");
-let blockT = document.getElementsByClassName("blockT");
-let blockL = document.getElementsByClassName("blockL");
-let blockS = document.getElementsByClassName("blockS");
+// let blockO = document.getElementsByClassName("blockO");
+// let blockT = document.getElementsByClassName("blockT");
+// let blockL = document.getElementsByClassName("blockL");
+// let blockS = document.getElementsByClassName("blockS");
 let postLinks = document.getElementsByClassName("blogPostLink");
 
 // let spriteMode = document.querySelector(".spriteMode");
 // let nightMode = document.querySelector(".nightMode");
-let standardStylesheet = document.querySelector("#standardStylesheet");
+// let standardStylesheet = document.querySelector("#standardStylesheet");
 
 // const xhr = new XMLHttpRequest();
 
@@ -82,18 +82,21 @@ document.onreadystatechange = function() {
     //   });
 
     let xhr = new XMLHttpRequest();
-    if (
-      sessionStorage.getItem("autosave") &&
-      sessionStorage.getItem("autosave").includes("css/sprite.css")
-    ) {
-      standardStylesheet.href = "../css/sprite.css";
-    }
-
-    else if (sessionStorage.getItem("autosave") &&
-    sessionStorage.getItem("autosave").includes("css/sprite.css")
-  ) {
-    standardStylesheet.href = "../css/night.css";
-  }
+    // if (
+    //   sessionStorage.getItem("autosave") &&
+    //   sessionStorage
+    //     .getItem("autosave")
+    //     .includes("css/minified/blog/sprite.min.css")
+    // )
+    // if (sessionStorage.getItem("autosave")) {
+    //   standardStylesheet.href = sessionStorage.getItem("autosave");
+    // }
+    // else if (
+    //   sessionStorage.getItem("autosave") &&
+    //   sessionStorage.getItem("autosave").includes("css/sprite.css")
+    // ) {
+    //   standardStylesheet.href = "../css/night.css";
+    // }
     // const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -175,34 +178,38 @@ document.onreadystatechange = function() {
         let funCount = 3;
 
         for (let blogPost in posts) {
-          // console.log("yo", data[blogPost]["pub_timestamp"])
-
-          // console.log("HEY HO", latestTimestamps);
-
           var postTitle = document.createElement("h3");
           let shine = document.createElement("div");
           shine.className = "shine";
-          // var postContainer = document.querySelector(".post-container");
-
           postTitle.textContent = posts[blogPost]["title"];
 
           if (latestTimestamps.includes(posts[blogPost]["pub_timestamp"])) {
-            // console.log(data[blogPost]["pub_timestamp"], "hehehe")
-            //SELECTS THE FOUR LATEST POSTS
-            blockO[latestCount].appendChild(postTitle);
-            blockO[latestCount].appendChild(shine);
-            blockO[latestCount].style.backgroundImage = `url("${
-              posts[blogPost]["thumbnail"]["filepath"]
-            }")`;
-            blockO[latestCount].dataset.thumbnail = `url("${
-              posts[blogPost]["thumbnail"]["filepath"]
-            }")`;
-            // blockO[latestCount].style.border = "none";
-            // console.log("DATA ATTR: ", blockO[latestCount].dataset.thumbnail);
-            blockO[latestCount].closest(".blogPostLink").href = `/posts/${
-              posts[blogPost]["filename"]
-            }`;
-            // console.log("AAAAAAA", blockO[latestCount].closest(".blogPostLink"));
+            if (
+              (typeof sessionStorage.getItem("autosave") === "object" &&
+                !sessionStorage.getItem("autosave")) ||
+              !sessionStorage.getItem("autosave").match("sprite.min.css")
+            ) {
+              //SELECTS THE FOUR LATEST POSTS
+              blockO[latestCount].appendChild(postTitle);
+              blockO[latestCount].appendChild(shine);
+              blockO[
+                latestCount
+              ].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+              blockO[
+                latestCount
+              ].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+              blockO[latestCount].closest(
+                ".blogPostLink"
+              ).href = `/posts/${posts[blogPost]["filename"]}`;
+            } else if (
+              sessionStorage.getItem("autosave").match("sprite.min.css")
+            ) {
+              blockO[latestCount].appendChild(postTitle);
+              blockO[latestCount].appendChild(shine);
+              blockO[latestCount].closest(
+                ".blogPostLink"
+              ).href = `/posts/${posts[blogPost]["filename"]}`;
+            }
             latestCount--;
           } else if (
             posts[blogPost]["category"] === "life" &&
@@ -212,19 +219,32 @@ document.onreadystatechange = function() {
             if (
               latestLifeTimestamps.includes(posts[blogPost]["pub_timestamp"])
             ) {
-              // console.log("BOOOBOOOO")
-              blockT[lifeCount].appendChild(postTitle);
-              blockT[lifeCount].appendChild(shine);
-              blockT[lifeCount].style.backgroundImage = `url("${
-                posts[blogPost]["thumbnail"]["filepath"]
-              }")`;
-              blockT[lifeCount].dataset.thumbnail = `url("${
-                posts[blogPost]["thumbnail"]["filepath"]
-              }")`;
-              // blockT[lifeCount].style.border = "none";
-              blockT[lifeCount].closest(".blogPostLink").href =`/posts/${
-              posts[blogPost]["filename"]
-            }`;
+              //THIS IF STATEMENT CHECKS IF THE AUTOSAVE DATA IS 'null'
+              if (
+                (typeof sessionStorage.getItem("autosave") === "object" &&
+                  !sessionStorage.getItem("autosave")) ||
+                !sessionStorage.getItem("autosave").match("sprite.min.css")
+              ) {
+                blockT[lifeCount].appendChild(postTitle);
+                blockT[lifeCount].appendChild(shine);
+                blockT[
+                  lifeCount
+                ].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+                blockT[
+                  lifeCount
+                ].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+                blockT[lifeCount].closest(
+                  ".blogPostLink"
+                ).href = `/posts/${posts[blogPost]["filename"]}`;
+              } else if (
+                sessionStorage.getItem("autosave").match("sprite.min.css")
+              ) {
+                blockT[lifeCount].appendChild(postTitle);
+                blockT[lifeCount].appendChild(shine);
+                blockT[lifeCount].closest(
+                  ".blogPostLink"
+                ).href = `/posts/${posts[blogPost]["filename"]}`;
+              }
               lifeCount--;
             }
           } else if (
@@ -235,45 +255,68 @@ document.onreadystatechange = function() {
             if (
               latestLearnTimestamps.includes(posts[blogPost]["pub_timestamp"])
             ) {
-              // console.log("WOOOWOOOO")
-              blockL[learnCount].appendChild(postTitle);
-              blockL[learnCount].appendChild(shine);
-              blockL[learnCount].style.backgroundImage = `url("${
-                posts[blogPost]["thumbnail"]["filepath"]
-              }")`;
-              blockL[learnCount].dataset.thumbnail = `url("${
-                posts[blogPost]["thumbnail"]["filepath"]
-              }")`;
-              // blockL[learnCount].style.border = "none";
-              blockL[learnCount].closest(".blogPostLink").href = `/posts/${
-                posts[blogPost]["filename"]
-              }`;
+              //THIS IF STATEMENT CHECKS IF THE AUTOSAVE DATA IS 'null'
+              if (
+                (typeof sessionStorage.getItem("autosave") === "object" &&
+                  !sessionStorage.getItem("autosave")) ||
+                !sessionStorage.getItem("autosave").match("sprite.min.css")
+              ) {
+                blockL[learnCount].appendChild(postTitle);
+                blockL[learnCount].appendChild(shine);
+                blockL[
+                  learnCount
+                ].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+                blockL[
+                  learnCount
+                ].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+                // blockL[learnCount].style.border = "none";
+                blockL[learnCount].closest(
+                  ".blogPostLink"
+                ).href = `/posts/${posts[blogPost]["filename"]}`;
+              } else if (
+                sessionStorage.getItem("autosave").match("sprite.min.css")
+              ) {
+                blockL[learnCount].appendChild(postTitle);
+                blockL[learnCount].appendChild(shine);
+                blockL[learnCount].closest(
+                  ".blogPostLink"
+                ).href = `/posts/${posts[blogPost]["filename"]}`;
+              }
               learnCount--;
             }
           } else if (
             posts[blogPost]["category"] === "fun" &&
             !latestTimestamps.includes(posts[blogPost]["pub_timestamp"])
           ) {
-            console.log("GOOOGOOOO", latestFunTimestamps);
-            console.log("timestamp", posts[blogPost]["pub_timestamp"]);
-            // return;
             if (
               latestFunTimestamps.includes(posts[blogPost]["pub_timestamp"])
             ) {
-              console.log("It's working");
-              // return;
-              blockS[funCount].appendChild(postTitle);
-              blockS[funCount].appendChild(shine);
-              blockS[funCount].style.backgroundImage = `url("${
-                posts[blogPost]["thumbnail"]["filepath"]
-              }")`;
-              blockS[funCount].dataset.thumbnail = `url("${
-                posts[blogPost]["thumbnail"]["filepath"]
-              }")`;
-              // blockS[funCount].style.border = "none";
-              blockS[funCount].closest(".blogPostLink").href = `/posts/${
-                posts[blogPost]["filename"]
-              }`;
+              if (
+                (typeof sessionStorage.getItem("autosave") === "object" &&
+                  !sessionStorage.getItem("autosave")) ||
+                !sessionStorage.getItem("autosave").match("sprite.min.css")
+              ) {
+                blockS[funCount].appendChild(postTitle);
+                blockS[funCount].appendChild(shine);
+                blockS[
+                  funCount
+                ].style.backgroundImage = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+                blockS[
+                  funCount
+                ].dataset.thumbnail = `url("${posts[blogPost]["thumbnail"]["filepath"]}")`;
+                // blockS[funCount].style.border = "none";
+                blockS[funCount].closest(
+                  ".blogPostLink"
+                ).href = `/posts/${posts[blogPost]["filename"]}`;
+              } else if (
+                sessionStorage.getItem("autosave").match("sprite.min.css")
+              ) {
+                blockS[funCount].appendChild(postTitle);
+                blockS[funCount].appendChild(shine);
+                blockS[funCount].closest(
+                  ".blogPostLink"
+                ).href = `/posts/${posts[blogPost]["filename"]}`;
+              }
               funCount--;
             }
           }
