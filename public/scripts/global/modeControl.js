@@ -39,8 +39,7 @@ if (sessionStorage.getItem("autosave")) {
       sessionStorage.getItem("autosave").match("night-knight.min.css")
     ) {
       standardStylesheet.href = `/css/minified/home/home-night-knight.min.css`;
-    }
-    if (sessionStorage.getItem("autosave").match("knight.min.css")) {
+    } else if (sessionStorage.getItem("autosave").match("knight.min.css")) {
       standardStylesheet.href = `/css/minified/home/home-knight.min.css`;
     } else if (sessionStorage.getItem("autosave").match("night.min.css")) {
       standardStylesheet.href = `/css/minified/home/home-night.min.css`;
@@ -71,8 +70,7 @@ if (sessionStorage.getItem("autosave")) {
       sessionStorage.getItem("autosave").match("night-knight.min.css")
     ) {
       standardStylesheet.href = `/css/minified/about/about-night-knight.min.css`;
-    }
-    if (sessionStorage.getItem("autosave").match("knight.min.css")) {
+    } else if (sessionStorage.getItem("autosave").match("knight.min.css")) {
       standardStylesheet.href = `/css/minified/about/about-knight.min.css`;
     } else if (sessionStorage.getItem("autosave").match("night.min.css")) {
       standardStylesheet.href = `/css/minified/about/about-night.min.css`;
@@ -103,8 +101,7 @@ if (sessionStorage.getItem("autosave")) {
       sessionStorage.getItem("autosave").match("night-knight.min.css")
     ) {
       standardStylesheet.href = `/css/minified/work/work-night-knight.min.css`;
-    }
-    if (sessionStorage.getItem("autosave").match("knight.min.css")) {
+    } else if (sessionStorage.getItem("autosave").match("knight.min.css")) {
       standardStylesheet.href = `/css/minified/work/work-knight.min.css`;
     } else if (sessionStorage.getItem("autosave").match("night.min.css")) {
       standardStylesheet.href = `/css/minified/work/work-night.min.css`;
@@ -135,8 +132,7 @@ if (sessionStorage.getItem("autosave")) {
       sessionStorage.getItem("autosave").match("night-knight.min.css")
     ) {
       standardStylesheet.href = `/css/minified/blog/night-knight.min.css`;
-    }
-    if (sessionStorage.getItem("autosave").match("knight.min.css")) {
+    } else if (sessionStorage.getItem("autosave").match("knight.min.css")) {
       standardStylesheet.href = `/css/minified/blog/knight.min.css`;
     } else if (sessionStorage.getItem("autosave").match("night.min.css")) {
       standardStylesheet.href = `/css/minified/blog/night.min.css`;
