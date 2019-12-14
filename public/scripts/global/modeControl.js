@@ -153,7 +153,7 @@ if (sessionStorage.getItem("autosave")) {
   }
 
   if (standardStylesheet.href.match("sprite.min.css")) {
-    if (typeof blockO !== "undefined") {
+    if (blockO.length !== 0) {
       for (let i = 0; i < 4; i++) {
         blockO[i].classList.remove("post");
         blockO[i].classList.add("block-post");
