@@ -725,6 +725,30 @@ html {
     /* z-index: 3; */
     background: #fe9bba;
   }
+
+  .menuTabs li .tabRibbonStylingBottom:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 70px;
+    height: 90px;
+    box-shadow: 5px 10px 10px 0px #000000;
+  }
+
+  .tabRow li .tabRibbonStylingBottom:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100px;
+    height: 90px;
+    box-shadow: 5px 10px 10px 0px #000000;
+  }
    
   .menuTabs svg {
     width: 30px;

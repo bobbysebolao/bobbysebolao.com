@@ -15,7 +15,7 @@ width of an element) */
 
 html {
     /* 1. */
-    font-family: "Lato", sans-serif;
+    font-family: 'MedievalSharp', cursive;
     font-size: 1em;
     font-weight: 400;
     /* 2. */
@@ -82,7 +82,7 @@ html {
   h2,
   h3,
   h4 {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
     margin: 1.414em 0 0.5em;
     line-height: 1.35;
     color: #fdfdfd;
@@ -126,9 +126,9 @@ html {
   
   /* =======================MAIN CONTENT STYLING======================= */
   
-  header {
+  /* header {
     z-index: 1;
-  }
+  } */
   
   nav {
     display: flex;
@@ -149,7 +149,7 @@ html {
     padding: 0;
     margin: 0 10px;
     list-style: none;
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
   
   .tabRow:before,
@@ -168,7 +168,7 @@ html {
   }
   
   .tabRow li {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
     display: inline;
     vertical-align: middle;
     position: relative;
@@ -176,11 +176,14 @@ html {
     margin: 0 2px;
     padding: 0 0 0 0;
     background: #ffffff;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     z-index: 0;
-    box-shadow: 5px 10px 10px 0px #000000;
     width: 100px;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 0px 10px white;
+    outline: 5px solid;
+    outline-offset: -5px;
   }
   
   .tabRow li:before,
@@ -192,51 +195,49 @@ html {
     width: 6px;
     height: 6px;
     content: " ";
-    /* border: 1px solid #AAA; */
-  }
-  
-  .tabRow li:before,
-  .menuTabs li:before {
-    left: -5.5px;
-    border-bottom-right-radius: 6px;
-    box-shadow: 2px 2px 0 #ffffff;
-    /* transform: translateY(-3px); */
-  }
-  .tabRow li:after,
-  .menuTabs li:after {
-    right: -5.7px;
-    border-bottom-left-radius: 6px;
-    box-shadow: -2px 2px 0 #ffffff;
-    /* transform: translateY(-3px); */
   }
   
   .tabRow li:hover,
   .menuTabs li:hover {
     transform: translateY(-3px);
+    margin: 0px 2px -30px 2px;
   }
   
-  .tabRow li:hover:before,
-  .menuTabs li:hover:before {
-    box-shadow: 2px 2px 0;
-    transform: translateY(3px);
-  }
-  
-  .tabRow li:hover:after,
-  .menuTabs li:hover:after {
-    box-shadow: -2px 2px 0;
-    transform: translateY(3px);
-  }
-  
-  .tabRow li:nth-child(1) {
+  .tabRow li:nth-child(1), .tabRow li:nth-child(3), .tabRow li:nth-child(4)  {
     background: #707993;
+    outline-color: #707993;
+  }
+
+  .tabRow li:nth-child(2) {
+    background: #252d3e;
+    outline-color: #252d3e;
   }
   
   .tabRow li:nth-child(1):before {
-    box-shadow: 2px 2px 0 #707993;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 50px solid #707993;
   }
   
   .tabRow li:nth-child(1):after {
-    box-shadow: -2px 2px 0 #707993;
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 50px solid #707993;
+    z-index: -10;
   }
   
   .tabRow li:nth-child(2) {
@@ -244,11 +245,32 @@ html {
   }
   
   .tabRow li:nth-child(2):before {
-    box-shadow: 2px 2px 0 #252d3e;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 50px solid #252d3e;
+    /* box-shadow: 5px 10px 10px 0px #000000; */
+    /* z-index: -1; */
   }
-  
+
   .tabRow li:nth-child(2):after {
-    box-shadow: -2px 2px 0 #252d3e;
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 50px solid #252d3e;
+    z-index: -10;
   }
   
   .tabRow li:nth-child(3) {
@@ -256,11 +278,30 @@ html {
   }
   
   .tabRow li:nth-child(3):before {
-    box-shadow: 2px 2px 0 #707993;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 50px solid #707993;
   }
-  
+
   .tabRow li:nth-child(3):after {
-    box-shadow: -2px 2px 0 #707993;
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 50px solid #707993;
+    z-index: -10;
   }
   
   .tabRow li:nth-child(4) {
@@ -269,18 +310,185 @@ html {
   }
   
   .tabRow li:nth-child(4):before {
-    box-shadow: 2px 2px 0 #707993;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 50px solid #707993;
+  }
+
+  .tabRow li:nth-child(4):after {
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 50px solid #707993;
+    z-index: -10;
+  }
+
+  .tabRow li:nth-child(1) a:before, .tabRow li:nth-child(2) a:before, .tabRow li:nth-child(3) a:before, .tabRow li:nth-child(4) a:before {
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid #10161d;
+    border-bottom: 15px solid transparent;
+    border-right: 50px solid transparent;
+    z-index: 5;
+  }
+
+  .tabRow li:nth-child(1) a:after, .tabRow li:nth-child(2) a:after, .tabRow li:nth-child(3) a:after, .tabRow li:nth-child(4) a:after {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid #10161d;
+    border-bottom: 15px solid transparent;
+    border-left: 50px solid transparent;
+    z-index: 5;
+  }
+
+  /* .tabrow li:nth-child(1) > div {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: orange;
+  } */
+
+  .tabRow li:nth-child(1) .tabRibbonStylingOuter:before, .tabRow li:nth-child(2) .tabRibbonStylingOuter:before, .tabRow li:nth-child(3) .tabRibbonStylingOuter:before, .tabRow li:nth-child(4) .tabRibbonStylingOuter:before {
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: -8px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 50px solid white;
+  }
+
+  .tabRow li:nth-child(1) .tabRibbonStylingOuter:after, .tabRow li:nth-child(2) .tabRibbonStylingOuter:after, .tabRow li:nth-child(3) .tabRibbonStylingOuter:after, .tabRow li:nth-child(4) .tabRibbonStylingOuter:after {
+    display: inline-block;
+    position: absolute;
+    left: 45px;
+    top: -8px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 50px solid white;
+    /* z-index: 10; */
+  }
+
+  .tabRow li:nth-child(1) .tabRibbonStylingInner:before, .tabRow li:nth-child(2) .tabRibbonStylingInner:before, .tabRow li:nth-child(3) .tabRibbonStylingInner:before, .tabRow li:nth-child(4) .tabRibbonStylingInner:before {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: -1px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    /* border-left: 50px solid blue; */
+  }
+
+  .tabRow li:nth-child(1) .tabRibbonStylingInner:after, .tabRow li:nth-child(2) .tabRibbonStylingInner:after, .tabRow li:nth-child(3) .tabRibbonStylingInner:after, .tabRow li:nth-child(4) .tabRibbonStylingInner:after {
+    display: inline-block;
+    position: absolute;
+    left: 40px;
+    top: -1px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    /* border-right: 50px solid blue; */
+    /* z-index: 10; */
+  }
+
+  .tabRow li:nth-child(1) .tabRibbonStylingInner:before {
+    border-left: 50px solid #707993;
+  }
+
+  .tabRow li:nth-child(1) .tabRibbonStylingInner:after {
+    border-right: 50px solid #707993;
+  }
+
+  .tabRow li:nth-child(2) .tabRibbonStylingInner:before {
+    border-left: 50px solid #252d3e;
+  }
+
+  .tabRow li:nth-child(2) .tabRibbonStylingInner:after {
+    border-right: 50px solid #252d3e;
+  }
+
+  .tabRow li:nth-child(3) .tabRibbonStylingInner:before {
+    border-left: 50px solid #707993;
+  }
+
+  .tabRow li:nth-child(3) .tabRibbonStylingInner:after {
+    border-right: 50px solid #707993;
+  }
+
+  .tabRow li:nth-child(4) .tabRibbonStylingInner:before {
+    border-left: 50px solid #707993;
+  }
+
+  .tabRow li:nth-child(4) .tabRibbonStylingInner:after {
+    border-right: 50px solid #707993;
   }
   
-  .tabRow li:nth-child(4):after {
-    box-shadow: -2px 2px 0 #707993;
+  .tabRow li:nth-child(1) .tabRibbonStylingBottom:before, .tabRow li:nth-child(2) .tabRibbonStylingBottom:before, .tabRow li:nth-child(3) .tabRibbonStylingBottom:before, .tabRow li:nth-child(4) .tabRibbonStylingBottom:before {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    content: "";
+    width: 80px;
+    height: 20px;
+    /* z-index: -3; */
+  }
+
+  .tabRow li:nth-child(1) .tabRibbonStylingBottom:before {
+    background: #707993;
+  }
+
+  .tabRow li:nth-child(2) .tabRibbonStylingBottom:before {
+    background: #252d3e;
+  }
+
+  .tabRow li:nth-child(3) .tabRibbonStylingBottom:before {
+    background: #707993;
+  }
+
+  .tabRow li:nth-child(4) .tabRibbonStylingBottom:before {
+    background: #707993;
   }
   
   .tabRow a {
     display: block;
     color: #fdfdfd;
     text-decoration: none;
-    padding: 15px 10px 15px 10px;
+    padding: 25px 10px 15px 10px;
     line-height: inherit;
   }
   
@@ -289,13 +497,16 @@ html {
     position: relative;
     top: 3px;
     margin: 0 2px;
-    padding: 20px 20px 10px 20px;
+    padding: 20px 20px 20px 20px;
     background: #252d3e;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     z-index: 0;
     cursor: pointer;
-    box-shadow: 5px 10px 10px 0px #000000;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 0px 10px white;
+    outline: 5px solid #252d3e;
+    outline-offset: -5px;
   }
 
   .menuTabs li:nth-child(1) {
@@ -311,23 +522,151 @@ html {
   .menuTabs li:nth-child(3) {
     margin-right: 6px;
   }
-  
-  /* .menuTabs li:nth-child(1) {
-    background: red;
+
+  .nightMode::before, .knightMode::before, .spriteMode::before {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 35px solid #252d3e;
   }
-  
-  .menuTabs li:nth-child(1):before {
-    box-shadow: 2px 2px 0 red;
+
+  .nightMode::after, .knightMode::after, .spriteMode::after {
+    display: inline-block;
+    position: absolute;
+    left: 35px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 35px solid #252d3e;
   }
-  
-  .menuTabs li:nth-child(1):after {
-    box-shadow: -2px 2px 0 red;
-  } */
-  
-  /* .menuTabs a {
-    text-decoration: none;
-    padding: 20px 10px 15px 10px;
-  } */
+
+  .nightMode a::before, .knightMode a::before, .spriteMode a::before {
+    display: inline-block;
+    position: absolute;
+    left: 25px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 8px solid #7c7c7c;
+    border-bottom: 15px solid transparent;
+    border-right: 25px solid transparent;
+    z-index: 5;
+  }
+
+  .nightMode a::after, .knightMode a::after, .spriteMode a::after {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: -15px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 8px solid #7c7c7c;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid transparent;
+    z-index: 5;
+  }
+
+  .menuTabs li .tabRibbonStylingOuter:before {
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: -8px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 35px solid white;
+  }
+
+  .menuTabs li .tabRibbonStylingOuter:after {
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 35px solid white;
+    z-index: 10;
+  }
+
+  .menuTabs li .tabRibbonStylingInner:before {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: -1px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 35px solid #252d3e;
+    /* background: red; */
+  }
+
+  .menuTabs li .tabRibbonStylingInner:after {
+    display: inline-block;
+    position: absolute;
+    left: 25px;
+    top: -1px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 35px solid #252d3e;
+    z-index: 10;
+  }
+
+  .menuTabs li .tabRibbonStylingBottom:before {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    content: "";
+    width: 50px;
+    height: 20px;
+    /* z-index: 3; */
+    background: #252d3e;
+  }
+
+  .menuTabs li .tabRibbonStylingBottom:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 70px;
+    height: 90px;
+    box-shadow: 5px 10px 10px 0px #000000;
+  }
+
+  .tabRow li .tabRibbonStylingBottom:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100px;
+    height: 90px;
+    box-shadow: 5px 10px 10px 0px #000000;
+  }
   
   .menuTabs svg {
     width: 30px;
@@ -339,39 +678,39 @@ html {
     fill: #fff197;
   }
   
-  .menuTabs li:nth-child(1):before {
+  /* .menuTabs li:nth-child(1):before {
     box-shadow: 2px 2px 0 #252d3e;
   }
   
   .menuTabs li:nth-child(1):after {
     box-shadow: -2px 2px 0 #252d3e;
-  }
+  } */
   
   .knightIcon:hover,
   .menuTabs li:nth-child(2):hover {
     fill: #a24500;
   }
   
-  .menuTabs li:nth-child(2):before {
+  /* .menuTabs li:nth-child(2):before {
     box-shadow: 2px 2px 0 #252d3e;
   }
   
   .menuTabs li:nth-child(2):after {
     box-shadow: -2px 2px 0 #252d3e;
-  }
+  } */
   
   .tetrisSprite:hover,
   .menuTabs li:nth-child(3):hover {
     fill: #b500fa;
   }
   
-  .menuTabs li:nth-child(3):before {
+  /* .menuTabs li:nth-child(3):before {
     box-shadow: 2px 2px 0 #252d3e;
   }
   
   .menuTabs li:nth-child(3):after {
     box-shadow: -2px 2px 0 #252d3e;
-  }
+  } */
   
   .fileDivider {
     position: relative;
@@ -380,8 +719,9 @@ html {
     justify-content: space-between;
     align-items: center;
     background: #41484d;
-    border-radius: 5px 5px 0 0;
+    border-radius: 0;
     padding: 10px 25px 10px 25px;
+    min-height: 20px;
     z-index: 0;
   }
 
@@ -651,7 +991,7 @@ html {
   }
   
   .landing-screen__intro {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
   }
   
   .landing-screen__intro--typed {
@@ -1331,7 +1671,7 @@ html {
   }
   
   .caption {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'MedievalSharp', cursive;
     font-size: 28px;
     font-weight: 400;
     margin-top: -50px;
