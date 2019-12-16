@@ -195,6 +195,7 @@ html {
     width: 6px;
     height: 6px;
     content: " ";
+    z-index: -10;
   }
   
   .tabRow li:hover,

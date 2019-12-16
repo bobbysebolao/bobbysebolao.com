@@ -176,7 +176,7 @@ html {
     margin: 0 2px;
     padding: 0 0 0 0;
     background: #ffffff;
-    z-index: 0;
+    /* z-index: 0; */
     /* box-shadow: 5px 10px 10px 0px #000000; */
     /* box-shadow: 5px 0px 10px 1px #000000; */
     width: 100px;
@@ -196,6 +196,11 @@ html {
     height: 6px;
     content: " ";
   }
+
+  .tabRow li:after, .menuTabs li:after {
+    z-index: -10;
+    box-shadow: 5px 10px 10px 0 #000000;
+  }
   
   /* .tabRow li:before,
   .menuTabs li:before {
@@ -213,7 +218,7 @@ html {
   
   .tabRow li:hover,
   .menuTabs li:hover {
-    transform: translateY(-3px);
+    top: -3px;
     margin: 0px 2px -30px 2px;
   }
   
@@ -574,7 +579,7 @@ html {
 
   .menuTabs li:nth-child(2) {
     fill: #a24500;
-    transform: translateY(-3px);
+    top: -3px;
   }
 
   .menuTabs li:nth-child(3) {
