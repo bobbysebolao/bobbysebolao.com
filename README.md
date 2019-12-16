@@ -6,10 +6,17 @@ My portfolio website.
 
 ## Technologies:
 
-- Vanilla JS, HTML, and CSS
-- PostgreSQL
-- AWS S3
-- Airtable
+### Front end
+
+- Vanilla JS, HTML, CSS, and SVG
+
+### Back end
+
+- Node.js, PostgreSQL, AWS S3, and Airtable
+
+### Design
+
+- Adobe Illustrator, Figma
 
 ## Dependencies
 
