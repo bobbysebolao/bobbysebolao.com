@@ -1597,7 +1597,7 @@ html {
     display: flex;
   }
   
-  .contact-form-checkboxes div {
+  .contact-form-checkboxes > div {
     position: relative;
     height: 100%;
     display: flex;

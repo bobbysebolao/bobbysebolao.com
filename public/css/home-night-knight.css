@@ -1610,6 +1610,56 @@ html {
     transition: all 0.25s ease;
     border-radius: 5px;
   }
+
+  .portfolio-project__read-more:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 0;
+    left: 0px;
+    border-bottom-right-radius: 100%;
+    cursor: default;
+  }
+
+  .portfolio-project__read-more:after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 100%;
+    cursor: default;
+  }
+
+  .portfolio-project .portfolio-project__read-more:before, .portfolio-project .portfolio-project__read-more:after {
+    background: #252d3e;
+  }
+
+  .portfolio-project__read-more div:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 100%;
+    background: #41484d;
+    cursor: default;
+  }
+
+  .portfolio-project__read-more div:after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 100%;
+    background: #41484d;
+    cursor: default;
+  }
   
   .portfolio-project__read-more:hover {
     background: #707993;
@@ -1702,13 +1752,86 @@ html {
     display: flex;
   }
   
-  .contact-form-checkboxes div {
+  .contact-form-checkboxes > div {
     position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     /* padding-top: 50px; */
+  }
+
+  .contact-form-checkboxes > div div:not(:first-of-type):before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0px;
+    border-bottom-right-radius: 100%;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-bottom-color: #cccccc;
+    border-right-color: #cccccc;
+    cursor: default;
+    background: #41484d;
+    z-index: 1;
+  }
+
+  .contact-form-checkboxes > div div:not(:first-of-type):after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    right: 17px;
+    border-bottom-left-radius: 100%;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-color: #cccccc;
+    border-left-color: #cccccc;
+    background: #41484d;
+    cursor: default;
+  }
+
+  .contact-form-checkboxes > div div:first-of-type:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 100%;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-top-color: #cccccc;
+    border-right-color: #cccccc;
+    background: #41484d;
+    cursor: default;
+  }
+
+  .contact-form-checkboxes > div div:first-of-type:after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    bottom: 0;
+    right: 17px;
+    border-top-left-radius: 100%;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-top-color: #cccccc;
+    border-left-color: #cccccc;
+    background: #41484d;
+    cursor: default;
   }
   
   /* visually hide the default radio button */
@@ -1757,6 +1880,10 @@ html {
   
   .contact-form-checkbox + label:hover:before {
     background: #cccccc;
+  }
+
+  .contact-form-checkboxes input:checked ~ div:before, .contact-form-checkboxes input:checked ~ div:after {
+    border-color: #252d3e;
   }
   
   #contact-form-checkbox-one + label:before {
