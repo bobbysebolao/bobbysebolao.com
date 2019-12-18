@@ -108,8 +108,28 @@ html {
   
   hr {
     width: 100%;
-    border: 1px solid #fdfdfd;
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #fdfdfd;
+    color: #fdfdfd;
+    text-align: center;
+    line-height: normal;
   }
+
+hr:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #41484d;
+}
+
+.education > hr:first-of-type, .experience > hr:first-of-type, .skills > hr:first-of-type, .interests > hr:first-of-type, .whyCoding > hr:first-of-type, .whyFAC > hr:first-of-type {
+  margin-top: 1em;
+}
   
   span.italic {
     font-style: italic;

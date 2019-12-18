@@ -104,8 +104,28 @@ html {
   
   hr {
     width: 100%;
-    border: 1px solid #5d5d60;
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #5d5d60;
+    color: #5d5d60;
+    text-align: center;
+    line-height: normal;
   }
+
+hr:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #fdfdfd;
+}
+
+.education > hr:first-of-type, .experience > hr:first-of-type, .skills > hr:first-of-type, .interests > hr:first-of-type, .whyCoding > hr:first-of-type, .whyFAC > hr:first-of-type {
+  margin-top: 1em;
+}
   
   span.italic {
     font-style: italic;
@@ -254,7 +274,7 @@ html {
   
   .tabRow li:nth-child(4) {
     background: #fe9bba;
-    margin-right: 15px;
+    margin-right: 11px;
   }
   
   .tabRow li:nth-child(4):before {
