@@ -1753,9 +1753,9 @@ hr:after {
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #5d5d60;
     transition: all 0.25s ease;
-    background: #fdfdfd;
+    background: #f8e098;
   }
   
   .contact-form input:hover {
@@ -1828,8 +1828,8 @@ hr:after {
     border-right-width: 1px;
     border-bottom-style: solid;
     border-right-style: solid;
-    border-bottom-color: #cccccc;
-    border-right-color: #cccccc;
+    border-bottom-color: #5d5d60;
+    border-right-color: #5d5d60;
     cursor: default;
     background: #f8e098;
     z-index: 1;
@@ -1847,8 +1847,8 @@ hr:after {
     border-left-width: 1px;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-bottom-color: #cccccc;
-    border-left-color: #cccccc;
+    border-bottom-color: #5d5d60;
+    border-left-color: #5d5d60;
     background: #f8e098;
     cursor: default;
   }
@@ -1865,8 +1865,8 @@ hr:after {
     border-right-width: 1px;
     border-top-style: solid;
     border-right-style: solid;
-    border-top-color: #cccccc;
-    border-right-color: #cccccc;
+    border-top-color: #5d5d60;
+    border-right-color: #5d5d60;
     background: #f8e098;
     cursor: default;
   }
@@ -1883,8 +1883,8 @@ hr:after {
     border-left-width: 1px;
     border-top-style: solid;
     border-left-style: solid;
-    border-top-color: #cccccc;
-    border-left-color: #cccccc;
+    border-top-color: #5d5d60;
+    border-left-color: #5d5d60;
     background: #f8e098;
     cursor: default;
   }
@@ -1929,12 +1929,12 @@ hr:after {
       height: 100px;
       /* background: red; */
       z-index: -1;
-      border: 1px solid #cccccc;
+      border: 1px solid #5d5d60;
       transition: all 0.25s ease;
   }
   
   .contact-form-checkbox + label:hover:before {
-    background: #cccccc;
+    background: #5d5d60;
   }
 
   #contact-form-checkbox-one:checked ~ div:before, #contact-form-checkbox-one:checked ~ div:after {
