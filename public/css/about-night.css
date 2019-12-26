@@ -116,6 +116,8 @@ html {
   }
   
   ul {
+    display: inline-block;
+  text-align: left;
     margin-top: 0em;
     margin-bottom: 1.3em;
   }
