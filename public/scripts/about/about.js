@@ -12,6 +12,7 @@ let accFour = document.getElementsByClassName("accordionFour");
 let accFive = document.getElementsByClassName("accordionFive");
 let accSix = document.getElementsByClassName("accordionSix");
 let accSeven = document.getElementsByClassName("accordionSeven");
+let accEight = document.getElementsByClassName("accordionEight");
 
 let rippedPaperBottom = document.getElementsByClassName("rippedPaperBottom");
 let rippedPaperTop = document.getElementsByClassName("rippedPaperTop");
@@ -134,23 +135,23 @@ for (let i = 0; i < accFour.length; i++) {
 
 for (let i = 0; i < accFive.length; i++) {
 
-    accFive[i].addEventListener("click", function() {
-      accFive[0].classList.toggle("active");
-      accFive[1].classList.toggle("active");
+  accFive[i].addEventListener("click", function() {
+    accFive[0].classList.toggle("active");
+    accFive[1].classList.toggle("active");
       rippedPaperBottom[4].classList.toggle("open");
       rippedPaperTop[4].classList.toggle("open");
       tearLine[4].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenInterests");
+        let panel = document.querySelector(".hiddenWhyCoding");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[4].style.display = "block";
             instruction[4].style.display = "block";
-            // instruction[4].innerHTML = "CLICK TO TEAR";
+            // instruction[5].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[4].style.display = "none";
             instruction[4].style.display = "none";
-            // instruction[4].innerHTML = "CLICK TO FIX";
+            // instruction[5].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -165,22 +166,22 @@ for (let i = 0; i < accSix.length; i++) {
     accSix[i].addEventListener("click", function() {
       accSix[0].classList.toggle("active");
       accSix[1].classList.toggle("active");
-      rippedPaperBottom[5].classList.toggle("open");
-      rippedPaperTop[5].classList.toggle("open");
-      tearLine[5].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenWhyCoding");
+        rippedPaperBottom[5].classList.toggle("open");
+        rippedPaperTop[5].classList.toggle("open");
+        tearLine[5].classList.toggle("hidden");
+        let panel = document.querySelector(".hiddenWhyFAC");
         if (panel.style.display === "block") {
             panel.style.display = "none";
             fillGap[5].style.display = "block";
             instruction[5].style.display = "block";
-            // instruction[5].innerHTML = "CLICK TO TEAR";
+            // instruction[0].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[5].style.display = "none";
             instruction[5].style.display = "none";
-            // instruction[5].innerHTML = "CLICK TO FIX";
+            // instruction[0].innerHTML = "CLICK TO FIX";
         }
-        if (panel.style.maxHeight){
+        if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
     } else {
       panel.style.maxHeight = panel.scrollHeight + "px";
@@ -190,30 +191,58 @@ for (let i = 0; i < accSix.length; i++) {
 
 for (let i = 0; i < accSeven.length; i++) {
 
-    accSeven[i].addEventListener("click", function() {
-        accSeven[0].classList.toggle("active");
-        accSeven[1].classList.toggle("active");
-        rippedPaperBottom[6].classList.toggle("open");
-        rippedPaperTop[6].classList.toggle("open");
-        tearLine[6].classList.toggle("hidden");
-        let panel = document.querySelector(".hiddenWhyFAC");
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-            fillGap[6].style.display = "block";
-            instruction[6].style.display = "block";
-            // instruction[0].innerHTML = "CLICK TO TEAR";
-        } else {
-            panel.style.display = "block";
-            fillGap[6].style.display = "none";
-            instruction[6].style.display = "none";
-            // instruction[0].innerHTML = "CLICK TO FIX";
-        }
-        if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-    });
+  accSeven[i].addEventListener("click", function() {
+    accSeven[0].classList.toggle("active");
+    accSeven[1].classList.toggle("active");
+    rippedPaperBottom[6].classList.toggle("open");
+    rippedPaperTop[6].classList.toggle("open");
+    tearLine[6].classList.toggle("hidden");
+      let panel = document.querySelector(".hiddenMentoringFAC");
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+          fillGap[6].style.display = "block";
+          instruction[6].style.display = "block";
+          // instruction[4].innerHTML = "CLICK TO TEAR";
+      } else {
+          panel.style.display = "block";
+          fillGap[6].style.display = "none";
+          instruction[6].style.display = "none";
+          // instruction[4].innerHTML = "CLICK TO FIX";
+      }
+      if (panel.style.maxHeight){
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+  });
+}
+
+for (let i = 0; i < accEight.length; i++) {
+
+  accEight[i].addEventListener("click", function() {
+    accEight[0].classList.toggle("active");
+    accEight[1].classList.toggle("active");
+    rippedPaperBottom[7].classList.toggle("open");
+    rippedPaperTop[7].classList.toggle("open");
+    tearLine[7].classList.toggle("hidden");
+      let panel = document.querySelector(".hiddenInterests");
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+          fillGap[7].style.display = "block";
+          instruction[7].style.display = "block";
+          // instruction[4].innerHTML = "CLICK TO TEAR";
+      } else {
+          panel.style.display = "block";
+          fillGap[7].style.display = "none";
+          instruction[7].style.display = "none";
+          // instruction[4].innerHTML = "CLICK TO FIX";
+      }
+      if (panel.style.maxHeight){
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+  });
 }
 
 //MOBILE RESPONSIVE CHANGES//
