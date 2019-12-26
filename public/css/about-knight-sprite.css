@@ -132,8 +132,6 @@ hr:after {
   }
   
   ul {
-    display: inline-block;
-  text-align: left;
     margin-top: 0em;
     margin-bottom: 1.3em;
   }
@@ -807,6 +805,7 @@ hr:after {
     padding: 80px 80px 0em 80px;
     /* padding: 2.5em 5vw 0em 5vw; */
     box-shadow: 5px 10px 10px 0px #000000;
+    /* text-align: left; */
   }
   
   .hiddenHeader {
@@ -865,6 +864,11 @@ hr:after {
     position: relative;
     margin: 0 auto;
     width: 100%;
+    text-align: left;
+  }
+
+  .introNoteContent h3 {
+    text-align: center;
   }
   
   .introOne {
@@ -1044,6 +1048,7 @@ hr:after {
     position: relative;
     background: #fdfdfd;
     box-shadow: 5px 10px 10px 0px #000000;
+    padding: 0 5em;
   }
   
   .socialIcons {

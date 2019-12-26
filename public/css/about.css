@@ -112,8 +112,6 @@ span.italic {
 }
 
 ul {
-  display: inline-block;
-  text-align: left;
   margin-top: 0em;
   margin-bottom: 1.3em;
 }
@@ -780,6 +778,7 @@ nav {
   padding: 80px 80px 0em 80px;
   /* padding: 2.5em 5vw 0em 5vw; */
   box-shadow: 5px 10px 10px 0px #000000;
+  /* text-align: left; */
 }
 
 .hiddenHeader {
@@ -839,6 +838,10 @@ nav {
   margin: 0 auto;
   width: 100%;
   text-align: left;
+}
+
+.introNoteContent h3 {
+  text-align: center;
 }
 
 .introOne {
@@ -925,6 +928,10 @@ nav {
   width: 100%;
   max-height: 0;
   transition: max-height 0.2s ease-out;
+}
+
+.hiddenSkills .introNoteTitle p {
+  padding-top: 20px;
 }
 
 .webSkillz {
@@ -1018,6 +1025,7 @@ nav {
   position: relative;
   background: #fdfdfd;
   box-shadow: 5px 10px 10px 0px #000000;
+  padding: 0 5em;
 }
 
 .socialIcons {
