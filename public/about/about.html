@@ -19665,8 +19665,8 @@ workshop</li>
 		  <div class="hiddenWhyFAC">
 				<div class="introNote">
 						<div class="introNoteTitle">
-						  <h2>Case Study: LsX Action Planner Web App</h2>
-						  <sub>I was the UX Lead in a four-person dev team on my final project for a London-based charity. We had three weeks to turn our product owner's idea into a Minimum Viable Product (MVP). For the one-week design sprint, we followed a modified version of the <a href="https://www.gv.com/sprint/" target="_blank">Google Ventures Design Sprint</a>. For the two week-long development sprints, we adopted agile ceremonies and methodologies.</sub>
+						  <h2>Case Study: LsX Action Planner</h2>
+						  <sub>I was the UX Lead in a four-person dev team on a web app for a London-based charity. We had three weeks to turn our product owner's idea into a Minimum Viable Product (MVP). For the one-week design sprint, we followed a modified version of the <a href="https://www.gv.com/sprint/" target="_blank">Google Ventures Design Sprint</a>. For the two development sprints, we adopted agile ceremonies and methodologies.</sub>
 						</div>
 						<div class="introNoteContent">
 								<h3>The (Dream) Team</h3>
@@ -19713,7 +19713,7 @@ workshop</li>
 
 					<div class="caseStudyProcess">
 						<h3>Stage 3: Prototyping</h3>
-						<p>We decided to use Figma, a design tool known for its versatility, for wire framing and prototyping. We started by scaffolding low fidelity wireframes of the most important screens in our app. We discussed the merits of different UI configurations, and we iterated rapidly to finish <a href="https://www.figma.com/proto/UooJqSQKCdIf2ojz04U6cJzj/lsx?node-id=25%3A3&scaling=scale-down" target="_blank">a rough working prototype</a> that was ready to test with users.</p>
+						<p>We decided to use <a href="https://www.figma.com/" target="_blank">Figma</a>, a design tool known for its versatility, for wire framing and prototyping. We started by scaffolding low fidelity wireframes of the most important screens in our app. We discussed the merits of different UI configurations, and we iterated rapidly to finish <a href="https://www.figma.com/proto/UooJqSQKCdIf2ojz04U6cJzj/lsx?node-id=25%3A3&scaling=scale-down" target="_blank">a rough working prototype</a> that was ready to test with users.</p>
 						<figure>
 						<img style="width: 100%; margin-top: 20px;" src="../assets/lsx-prototype.png" alt ="Screens from our prototype action planner app for LsX">
 						<figcaption>I’m a big fan of prototyping in black and white - <a href="https://www.bobbysebolao.com/posts/why-build-in-black-and-white.html">here's why</a></figcaption>
@@ -19724,15 +19724,49 @@ workshop</li>
 							<img src="../assets/question_mark.svg" alt="Why make an SVG CV?">
 						  </div>
 						  <div class="introTextTwo">
-							<h3>User Feedback</h3>
-							<p>Our users (mostly kids) loved the cartoony style that we were aiming for. However, we noticed that some users confused parts of background images for clickable UI elements.</p>
+							<h3>User Testing</h3>
+							<p>My favourite piece of feedback came from a user who said the app gave him "back-of-cereal-box vibes".</p>
+							<p>In general, our users knew about other air quality apps, but none that help you to make an action plan. We decided to double down on making this feature our USP.</p>
 						  </div>
 							</div>
 							<div class="caseStudyProcess">
 									<h3>Stage 4: Sprint Planning</h3>
-									<p>We met with Jack a second time to brainstorm different solutions to the problem. We spent a day sketching out different representations of what the final product could look like, adding the most popular ideas to a storyboard as we went along. By the end of the day, we had a solid step-by-step plan for our prototype.</p>
+									<p>After modifying our prototype in response to user feedback, we began sprint planning. We defined our user stories (with acceptance criteria) and raised GitHub issues for each one. We linked each issue to a GitHub Projects board, which we used to track of our progress on different features.</p>
+									<p>We knew that we'd be reusing certain UI components across multiple pages of our app, so <a href="https://reactjs.org/" target="_blank">React</a> with <a href="https://www.styled-components.com/" target="_blank">Styled Components</a> seemed like a great choice for writing reusable, modular front end code.</p>
+									<figure>
+											<img style="width: 100%; margin-top: 20px;" src="https://camo.githubusercontent.com/518fd655a74e4b4f778083135cf8aa8f6119dc23/68747470733a2f2f692e696d6775722e636f6d2f7a4d47357363782e706e67" alt="The tech stack for our LsX Action Planner PWA">
+											<figcaption>Our stack: SVG React components on the front, Node.js and Airtable on the back </figcaption>
+										</figure>
 							  </div>
-				  
+							  <div class="introOne">
+									<div class="introIconOne">
+									  <img src="../assets/question_mark_two.svg" alt="My SVG self">
+									</div>
+									<div class="introTextOne">
+										  <h3>More User Testing</h3>
+										  <p>During the second round of user testing (this time with children), we noticed that some users confused parts of background images for clickable UI elements. We realised we needed to make these elements stand out more.</p>
+									</div>
+									</div>
+									<div class="caseStudyProcess">
+											<h3>Stage 5: Sprint Retrospective + Sprint Planning</h3>
+											<p>After modifying our prototype in response to user feedback, we began sprint planning. We defined our user stories (with acceptance criteria) and raised GitHub issues for each one. We linked each issue to a GitHub Projects board, which we used to track our progress on different features. We also chose our tech stack.</p>
+									  </div>
+									  <div class="introTwo">
+											<div class="introIconTwo">
+											<img src="../assets/question_mark.svg" alt="Why make an SVG CV?">
+										  </div>
+										  <div class="introTextTwo">
+											<h3>The Final Push</h3>
+											<p>Our users (mostly kids) loved the cartoony style that we'd used. However, we noticed that some users confused parts of background images for clickable UI elements.</p>
+										  </div>
+											</div>
+											<div class="caseStudyProcess">
+													<h3>Stage 6: Product Handover</h3>
+													<p>We prepared thorough handover documentation for our product owner, before meeting with him to demo the product and show him how to use Airtable as a content management system. He gave us the following feedback on our work:</p>
+													
+													<p><i>"I was so impressed with the team I worked with. I was expecting strong technical support but was blown away by the quality of joined-up thinking. The team really understood our charity, our needs, and were really creative about how an app would be able to extend our work."</i></p>
+			  <sub>Jack Alexander - Projects Officer at London Sustainability Exchange</sub>
+											  </div>
 					  </div>
 					</div>
 		  </div>
