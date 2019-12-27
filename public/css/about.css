@@ -120,6 +120,11 @@ li {
   line-height: normal;
 }
 
+figcaption {
+  text-align: center;
+  opacity: 0.7;
+}
+
 /* =======================MAIN CONTENT STYLING======================= */
 nav {
   display: flex;
