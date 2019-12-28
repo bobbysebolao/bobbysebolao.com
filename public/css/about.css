@@ -886,6 +886,7 @@ nav {
   /* border: 5px dashed black; */
   background: #cccccc;
   padding: 20px;
+  border-radius: 5px;
 }
 
 .hiddenWhyFAC .introOne,
