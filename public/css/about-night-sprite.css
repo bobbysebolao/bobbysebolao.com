@@ -119,6 +119,10 @@ html {
   li {
     line-height: normal;
   }
+
+  figcaption {
+    text-align: center;
+  }
   
   /* =======================MAIN CONTENT STYLING======================= */
   nav {
@@ -878,6 +882,31 @@ html {
     width: 70%;
     order: 2;
   }
+
+  .caseStudyIconOne {
+    width: 30%;
+  }
+  
+  .caseStudyIconOne img {
+    border-radius: 50%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+  
+  .caseStudyProcess {
+    width: 100%;
+    /* height: 100px; */
+    /* border: 5px dashed black; */
+    background: #cccccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .hiddenWhyFAC .introOne,
+.hiddenWhyFAC .introTwo {
+  padding: 20px 0;
+}
   
   .introTwo {
     display: flex;
@@ -904,7 +933,8 @@ html {
   .skills,
   .interests,
   .whyCoding,
-  .whyFAC {
+  .whyFAC,
+  .mentoringFAC {
     text-align: left;
     line-height: 0.5em;
     position: relative;
@@ -963,8 +993,8 @@ html {
   .hiddenWhyFAC {
     display: none;
     position: relative;
-    margin-top: 30px;
-    /* margin-bottom: 15px; */
+    margin-top: 50px;
+    margin-bottom: 30px;
     width: 100%;
     height: auto;
     max-height: 0;
@@ -978,6 +1008,17 @@ html {
     background: url(/assets/calculator.svg);
     background-repeat: no-repeat;
     background-position: top center;
+  }
+
+  .hiddenMentoringFAC {
+    display: none;
+    position: relative;
+    margin-top: 30px;
+    /* margin-bottom: 15px; */
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
   }
   
   .hiddenWhyCoding {
@@ -2307,7 +2348,8 @@ html {
     .skills,
     .interests,
     .whyCoding,
-    .whyFAC {
+    .whyFAC,
+    .mentoringFAC {
       text-align: left;
       line-height: 0.5em;
       position: relative;
