@@ -986,6 +986,38 @@ hr:after {
     max-height: 0;
     transition: max-height 0.2s ease-out;
   }
+
+  .hiddenSkills .introNoteTitle p {
+    position: relative;
+    padding: 50px 0;
+  }
+  
+  .hiddenSkills .introNoteTitle p:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: url(/assets/quotation-marks.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .hiddenSkills .introNoteTitle p:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: url(/assets/quotation-marks.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transform: rotate(180deg);
+  }
   
   .webSkillz {
     position: relative;
@@ -1174,7 +1206,7 @@ hr:after {
   #sceneOne {
     preserveaspectratio: xMidYMid meet;
     max-width: 390px;
-    max-height: 285px;
+    /* max-height: 285px; */
     border-top: 25px solid white;
     border-left: 15px solid white;
     border-right: 15px solid white;
@@ -1225,7 +1257,7 @@ hr:after {
   #sceneTwo {
     preserveaspectratio: xMidYMid meet;
     max-width: 390px;
-    max-height: 285px;
+    /* max-height: 285px; */
     border-top: 25px solid white;
     border-left: 15px solid white;
     border-right: 15px solid white;
@@ -1321,7 +1353,7 @@ hr:after {
   #sceneFour {
     preserveaspectratio: xMidYMid meet;
     max-width: 380px;
-    max-height: 285px;
+    /* max-height: 285px; */
     border-top: 25px solid white;
     border-left: 15px solid white;
     border-right: 15px solid white;
