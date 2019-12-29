@@ -1257,7 +1257,7 @@ html {
   #sceneThree {
     preserveaspectratio: xMidYMid meet;
     max-width: 390px;
-    max-height: 262px;
+    /* max-height: 262px; */
     border-top: 25px solid white;
     border-left: 15px solid white;
     border-right: 15px solid white;
