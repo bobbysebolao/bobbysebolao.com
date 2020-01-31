@@ -44,4 +44,4 @@ My portfolio website.
 - Tag autocomplete search tool
 - Night/knight/sprite mode
 
-**This website has been optimised for browsing in Google Chrome (Version 71) for desktop and mobile devices. Please note that it hasn't yet been tested in other browsers.**
+**This website has been optimised for browsing in Google Chrome for desktop and mobile devices. Please note that it hasn't yet been tested in other browsers.**
