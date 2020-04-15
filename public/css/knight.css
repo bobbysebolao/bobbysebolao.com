@@ -3033,6 +3033,10 @@ hr:after {
   .blog-post__headers {
     font-family: 'MedievalSharp', cursive;
   }
+
+  .cp_embed_wrapper {
+    width: 100%;
+  }
   
   /* BLOG POST LIKES AND REPOSTS SECTIONS */
   

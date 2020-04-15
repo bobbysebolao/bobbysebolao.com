@@ -2861,6 +2861,10 @@ hr:after {
     margin-top: 0;
   padding-top: 1.414em;
   }
+
+  .cp_embed_wrapper {
+    width: 100%;
+  }
   
   /* BLOG POST LIKES AND REPOSTS SECTIONS */
   

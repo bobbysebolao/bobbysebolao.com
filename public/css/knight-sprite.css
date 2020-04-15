@@ -2873,6 +2873,10 @@ figure img {
   font-family: "MedievalSharp", cursive;
 }
 
+.cp_embed_wrapper {
+  width: 100%;
+}
+
 /* BLOG POST LIKES AND REPOSTS SECTIONS */
 
 .user-likes {

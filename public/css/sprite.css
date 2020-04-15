@@ -607,6 +607,10 @@ nav {
   margin: 0 0 0 10px;
 }
 
+.cp_embed_wrapper {
+  width: 100%;
+}
+
 .main-image-browser {
   display: flex;
   flex-direction: row;

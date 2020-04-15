@@ -2308,6 +2308,10 @@ iframe {
   padding-top: 1.414em;
 }
 
+.cp_embed_wrapper {
+  width: 100%;
+}
+
 /* BLOG POST LIKES AND REPOSTS SECTIONS */
 
 .user-likes {
