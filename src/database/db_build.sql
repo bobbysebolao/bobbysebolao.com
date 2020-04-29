@@ -257,6 +257,9 @@ VALUES ('1569759091219', 'Sun Sep 29 2019 12:11:31 GMT+0000 (Coordinated Univers
 INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
 VALUES ('1570171063887', 'Fri Oct 04 2019 06:37:43 GMT+0000 (Coordinated Universal Time)', 'Dev Jargon Decoded', 'Do you know your grok from your grep?', 4, 'Image © 2019 Bobby Sebolao', 'A wordcloud containing different coding jargon terms', 'dev-jargon-decoded.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/dev-jargon-decoded.html', 'fun', 'jargon', 35, 10, 1);
 
+INSERT INTO posts (pub_timestamp, pub_date, title, subtitle, reading_mins, main_image_caption, main_image_alt_text, filename, filepath, category, tags, main_image_id, thumbnail_id, user_id)
+VALUES ('1586940625706', 'Wed Apr 15 2020 08:50:25 GMT+0000 (Coordinated Universal Time)', 'Subgrid Is Coming', 'Here’s why CSS fans should be excited', 3, 'Image © 2020 Bobby Sebolao', 'Ned Stark surrounded by subgrids with The Wall in the background', 'subgrid-is-coming.html', 'https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/subgrid-is-coming.html', 'learn', 'css css-grid', 40, 11, 1);
+
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('jamstack-2019-640x360px.jpg', 83722, 'https://console-blog.s3.amazonaws.com/blog-images/jamstack-2019-640x360px-main-image.jpg', 'image/jpeg');
 
@@ -362,6 +365,21 @@ VALUES ('travis-codecov-runtime-640x400px.jpg', 36391, 'https://console-blog.s3.
 INSERT INTO main_images (name, size, filepath, type)
 VALUES ('coding-jargon-wordcloud-640x360px.jpg', 36402, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-images/coding-jargon-wordcloud-640x360px-main-image.jpg', 'image/jpeg');
 
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('css-grid-640x360px.jpg', 10110, 'https://console-blog.s3.amazonaws.com/blog-images/css-grid-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('nested-grid-attempt1-640x360px.jpg', 45759, 'https://console-blog.s3.amazonaws.com/blog-images/nested-grid-attempt1-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('nested-grid-attempt2-640x360px.jpg', 39600, 'https://console-blog.s3.amazonaws.com/blog-images/nested-grid-attempt2-640x360px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('xzibit-css-subgrid-meme-640x360-px.jpg', 39834, 'https://console-blog.s3.amazonaws.com/blog-images/xzibit-css-subgrid-meme-640x360-px-main-image.jpg', 'image/jpeg');
+
+INSERT INTO main_images (name, size, filepath, type)
+VALUES ('subgrid-is-coming-640x360px.jpg', 32344, 'https://console-blog.s3.amazonaws.com/blog-images/subgrid-is-coming-640x360px-main-image.jpg', 'image/jpeg');
+
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('jamstack-2019-210x118px.jpg', 6341, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/jamstack-2019-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
@@ -391,6 +409,9 @@ VALUES ('code-coverage-grid-210x118px.jpg', 9788, 'https://console-blog.s3.eu-we
 
 INSERT INTO thumbnails (name, size, filepath, type)
 VALUES ('coding-jargon-wordcloud-210x118px.jpg', 5716, 'https://console-blog.s3.eu-west-2.amazonaws.com/blog-thumbnails/coding-jargon-wordcloud-210x118px-thumbnail-image.jpg', 'image/jpeg');
+
+INSERT INTO thumbnails (name, size, filepath, type)
+VALUES ('subgrid-is-coming-210x118px.jpg', 10778, 'https://console-blog.s3.amazonaws.com/blog-thumbnails/subgrid-is-coming-210x118px-thumbnail-image.jpg', 'image/jpeg');
 
 INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
 VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
