@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1569362504731" clover="3.2.0">
-  <project timestamp="1569362504731" name="All files">
-    <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="4" coveredelements="4" complexity="0" loc="3" ncloc="3" packages="1" files="1" classes="1"/>
-    <file name="readingTimeCalculator.js" path="/Users/bobbysebolao/Documents/github/bobbysebolao.github.io/src/readingTimeCalculator.js">
+<coverage generated="1588204561204" clover="3.2.0">
+  <project timestamp="1588204561205" name="All files">
+    <metrics statements="41" coveredstatements="37" conditionals="14" coveredconditionals="8" methods="7" coveredmethods="6" elements="62" coveredelements="51" complexity="0" loc="41" ncloc="41" packages="3" files="4" classes="4"/>
+    <package name="src">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="1" count="2" type="stmt"/>
-      <line num="2" count="2" type="stmt"/>
-      <line num="5" count="2" type="stmt"/>
-    </file>
+      <file name="readingTimeCalculator.js" path="/Users/bobbysebolao/Documents/github/bobbysebolao.github.io/src/readingTimeCalculator.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.database">
+      <metrics statements="30" coveredstatements="26" conditionals="12" coveredconditionals="7" methods="3" coveredmethods="2"/>
+      <file name="db_build.js" path="/Users/bobbysebolao/Documents/github/bobbysebolao.github.io/src/database/db_build.js">
+        <metrics statements="15" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+      <file name="db_connection.js" path="/Users/bobbysebolao/Documents/github/bobbysebolao.github.io/src/database/db_connection.js">
+        <metrics statements="15" coveredstatements="13" conditionals="8" coveredconditionals="5" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.queries">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="getAllPosts.js" path="/Users/bobbysebolao/Documents/github/bobbysebolao.github.io/src/queries/getAllPosts.js">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

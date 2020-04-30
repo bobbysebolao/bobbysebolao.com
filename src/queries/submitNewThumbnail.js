@@ -1,4 +1,4 @@
-const dbConnection = require("../database/db_connection.js");
+const { dbConnection } = require("../database/db_connection.js");
 
 const submitNewThumbnail = (obj) => {
   return new Promise((resolve, reject) => {

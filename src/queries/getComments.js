@@ -1,4 +1,4 @@
-const dbConnection = require("../database/db_connection.js");
+const { dbConnection } = require("../database/db_connection.js");
 
 const getComments = postName => {
   // console.log("This is the post name: ", postName);

@@ -4,7 +4,7 @@ const url = require("url");
 
 require("env2")("./config.env");
 
-let DB_URL = process.env.DB_URL;
+let DB_URL = process.env.PROD_DB_URL;
 
 if (process.env.NODE_ENV === "local") {
   DB_URL = process.env.LOCAL_DB_URL;
@@ -33,4 +33,7 @@ const options = {
 
 options.ssl = options.host !== "localhost";
 
-module.exports = new Pool(options);
+module.exports = {
+  dbConnection: new Pool(options),
+  options
+};

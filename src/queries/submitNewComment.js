@@ -1,4 +1,4 @@
-const dbConnection = require("../database/db_connection.js");
+const { dbConnection } = require("../database/db_connection.js");
 
 const submitNewComment = (comment, post_id, user_id, timestamp, date, username, avatarName, avatarFilepath) => {
   return new Promise((resolve, reject) => {

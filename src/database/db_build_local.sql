@@ -1,9 +1,3 @@
--- Follow these instructions to build the DB on Heroku:
--- https://stackoverflow.com/questions/48180282/how-to-populate-a-heroku-postgresql-database-with-a-sql-file
-
--- COMMAND 1: heroku pg:info --app rocky-plains-29996
--- COMMAND 2: heroku pg:psql postgresql-adjacent-89548 --app rocky-plains-29996 < src/database/db_build.sql
-
 BEGIN;
 
 DROP TABLE IF EXISTS posts CASCADE;

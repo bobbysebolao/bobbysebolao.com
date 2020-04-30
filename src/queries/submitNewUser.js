@@ -1,4 +1,4 @@
-const dbConnection = require("../database/db_connection.js");
+const { dbConnection } = require("../database/db_connection.js");
 
 const submitNewUser = (obj, hashedPassword) => {
   console.log("THIS IS THE USER :", obj);

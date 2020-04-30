@@ -4,13 +4,15 @@
   "description": "My one-page portfolio website. Includes:",
   "main": "server.js",
   "scripts": {
+    "start": "NODE_ENV=start node server.js",
+    "local": "NODE_ENV=local nodemon server.js",
     "test": "NODE_ENV=test jest",
     "coverage": "NODE_ENV=test jest && codecov --token=7a4ed0f7-6fce-404d-ae1c-b83fa38ba372",
+    "build_db_local": "NODE_ENV=local node src/database/build.js",
+    "build_db_prod": "heroku pg:psql postgresql-adjacent-89548 --app rocky-plains-29996 < src/database/db_build_prod.sql",
+    "prod_db_status": "heroku pg:info --app rocky-plains-29996",
     "tape-test": "NODE_ENV=test tape src/tests/*.test.js | tap-spec",
-    "local": "NODE_ENV=local nodemon server.js",
-    "start": "NODE_ENV=start node server.js",
     "live": "NODE_ENV=start nodemon server.js",
-    "build_db": "NODE_ENV=local node src/database/build.js",
     "minify-css-home": "postcss public/css/home.css > public/css/minified/home/home.min.css && postcss public/css/home-night.css > public/css/minified/home/home-night.min.css && postcss public/css/home-knight.css > public/css/minified/home/home-knight.min.css && postcss public/css/home-sprite.css > public/css/minified/home/home-sprite.min.css && postcss public/css/home-night-knight.css > public/css/minified/home/home-night-knight.min.css && postcss public/css/home-night-knight-sprite.css > public/css/minified/home/home-night-knight-sprite.min.css && postcss public/css/home-night-sprite.css > public/css/minified/home/home-night-sprite.min.css && postcss public/css/home-knight-sprite.css > public/css/minified/home/home-knight-sprite.min.css",
     "minify-css-about": "postcss public/css/about.css > public/css/minified/about/about.min.css && postcss public/css/about-night.css > public/css/minified/about/about-night.min.css && postcss public/css/about-knight.css > public/css/minified/about/about-knight.min.css && postcss public/css/about-sprite.css > public/css/minified/about/about-sprite.min.css && postcss public/css/about-night-knight.css > public/css/minified/about/about-night-knight.min.css && postcss public/css/about-night-knight-sprite.css > public/css/minified/about/about-night-knight-sprite.min.css && postcss public/css/about-night-sprite.css > public/css/minified/about/about-night-sprite.min.css && postcss public/css/about-knight-sprite.css > public/css/minified/about/about-knight-sprite.min.css",
     "minify-css-work": "postcss public/css/work.css > public/css/minified/work/work.min.css && postcss public/css/work-night.css > public/css/minified/work/work-night.min.css && postcss public/css/work-knight.css > public/css/minified/work/work-knight.min.css && postcss public/css/work-sprite.css > public/css/minified/work/work-sprite.min.css && postcss public/css/work-night-knight.css > public/css/minified/work/work-night-knight.min.css && postcss public/css/work-night-knight-sprite.css > public/css/minified/work/work-night-knight-sprite.min.css && postcss public/css/work-night-sprite.css > public/css/minified/work/work-night-sprite.min.css && postcss public/css/work-knight-sprite.css > public/css/minified/work/work-knight-sprite.min.css",
@@ -49,12 +51,14 @@
     "jsonwebtoken": "^8.5.1",
     "nodemailer": "^6.1.1",
     "pg": "^7.9.0",
+    "pg-promise": "^10.5.2",
     "query-string": "^6.4.2",
     "request": "^2.88.0",
     "xmlhttprequest": "^1.8.0"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "verbose": true
   }
 }

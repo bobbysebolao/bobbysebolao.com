@@ -1,4 +1,4 @@
-const dbConnection = require("../database/db_connection.js");
+const { dbConnection } = require("../database/db_connection.js");
 
 const getEmailVerificationTokens = token => {
   console.log("This is the email token: ", token);
