@@ -1,5 +1,7 @@
 const { Pool } = require("pg");
 
+const pgPromise = require('pg-promise')();
+
 const url = require("url");
 
 require("env2")("./config.env");
@@ -34,6 +36,6 @@ const options = {
 options.ssl = options.host !== "localhost";
 
 module.exports = {
-  dbConnection: new Pool(options),
+  dbConnection: pgPromise(options),
   options
 };

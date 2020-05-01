@@ -1,16 +1,12 @@
 const { dbConnection } = require("../database/db_connection.js");
 
-const deleteEmailVerificationToken = token => {
-  console.log("This is the email token: ", token);
-  return new Promise((resolve, reject) => {
-    dbConnection
-      .query("DELETE FROM email_verification_tokens WHERE token = $1", [token], (err, res) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(console.log("Deletion successful!"));
+const deleteEmailVerificationToken = async (token) => {
+    return await dbConnection
+      .none("DELETE FROM email_verification_tokens WHERE token = $1", [token])
+      .then(() => console.log("Deletion successful!"))
+      .catch(err => {
+        throw new Error(`There was an error deleting the email verification token from the db: ${err}`)
       })
-  });
 };
 
 module.exports = deleteEmailVerificationToken;

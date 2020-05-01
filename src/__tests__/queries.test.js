@@ -1,21 +1,28 @@
-const pgPromise = require('pg-promise')();
 const buildDatabase = require("../database/db_build.js");
+const getAllPosts = require("../queries/getAllPosts");
+const getAllThumbnails = require("../queries/getAllThumbnails");
+
+// These imports are here in case I need to write special SQL queries for tests within this file
+const pgPromise = require('pg-promise')();
 const { options } = require("../database/db_connection.js");
 const dbConn = pgPromise(options);
 
-const getAllPosts = require("../queries/getAllPosts");
-
-// this test does not work, needs fixing. asynchronour issues...
-describe("getAllPosts test", () => {
-  beforeEach(async () => {
-    await Promise.resolve(buildDatabase());
+describe("Unit tests for functions that run database queries", () => {
+  beforeAll(async () => {
+    await buildDatabase();
   });
-  describe("when you query the function", () => {
-    it('should return 11 rows', async () => {
-      // const result = await getAllPosts();
-      const result = await dbConn.many("select * from posts");
-      console.log("The number of posts in the test db is: ", result.length);
-      expect(result.length).toBe(10);
+
+  describe("the getAllPosts function", () => {
+    it('should return 11 posts', async () => {
+      const response = await getAllPosts();
+      expect(response.length).toBe(11);
+    })
+  })
+
+  describe("the getAllThumbnails function", () => {
+    it('should return 11 thumbnails', async () => {
+      const response = await getAllThumbnails();
+      expect(response.length).toBe(11);
     })
   })
 })

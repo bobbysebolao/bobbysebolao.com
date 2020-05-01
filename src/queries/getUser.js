@@ -1,16 +1,15 @@
 const { dbConnection } = require("../database/db_connection.js");
 
-const getUser = username => {
-  console.log("This is username", username);
-  return new Promise((resolve, reject) => {
-    dbConnection
-      .query("SELECT * FROM users WHERE username = $1", [username.toLowerCase()])
-      .then(res => {
-        if (!res.rows[0]) reject("Incorrect Username");
-        resolve(res.rows[0]);
+const getUser = async (username) => {
+    return await dbConnection
+      .one("SELECT * FROM users WHERE username = $1", [username.toLowerCase()])
+      // .then(res => {
+      //   if (!res.rows[0]) reject("Incorrect Username");
+      //   resolve(res.rows[0]);
+      // })
+      .catch(err => {
+        throw new Error (`There was an error getting the user data from the db: ${err}`)
       })
-      .catch(err => reject(err));
-  });
 };
 
 module.exports = getUser;
