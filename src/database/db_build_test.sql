@@ -416,4 +416,13 @@ VALUES ('subgrid-is-coming-210x118px.jpg', 10778, 'https://console-blog.s3.amazo
 INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
 VALUES ('Bobby', 'Sebolao', 'mistapepper', 'bobbysebolao@gmail.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'admin', 'bobby-250x250px-user-image.jpg', 22052, 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg', 'image/jpeg', 'True');
 
+INSERT INTO users (first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type, is_verified)
+VALUES ('Testy', 'McTestface', 'testuser', 'test@test.com', '$2a$10$6ASiU.Ue2fmKtzD5QLaNfOH4D6J3sP/EIRF1/UhO/NsDODJQLGp7G', 'commenter', 'test-image.jpg', 15403, 'https://img.huffingtonpost.com/asset/58f7828a1b0000330016c576.jpeg?cache=jwlncqlnql&ops=1778_1000', 'image/jpeg', 'False');
+
+INSERT INTO email_verification_tokens (token, user_id, created_at)
+VALUES ('7c6eebf82ed38040b05f2ee4d4a2a8b3', 1, '1588379816541');
+
+INSERT INTO comments (com_timestamp, com_date, body, post_id, user_id, username, avatar_name, avatar_filepath)
+VALUES ('1588389290243', 'Sat May 02 2020 04:14:50 GMT+0100 (British Summer Time)', 'This is an example comment', 11, 1, 'mistapepper', 'bobby-250x250px-user-image.jpg', 'https://console-blog.s3.amazonaws.com/user-avatars/bobby-250x250px-user-image.jpg');
+
 COMMIT;

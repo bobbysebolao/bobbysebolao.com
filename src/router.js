@@ -37,7 +37,7 @@ const router = (request, response) => {
       // console.log("BOASTY", request.headers.referer)
       handler.loginPageHandler(response);
     } else if (endpoint === "/blog/logout") {
-      handler.logoutHandler(response);
+      handler.logoutHandler(request, response);
     } else if (endpoint === "/create/account") {
       handler.createAccountPageHandler(response);
     } else if (endpoint === "/blog/new") {
@@ -56,9 +56,7 @@ const router = (request, response) => {
       // }
     } else if (endpoint === "/projects") {
       handler.getProjectsHandler(request, response);
-    } else if (endpoint === "/mangos") {
-      handler.getMangosHandler(request, response);
-    }
+    } 
     // else if (endpoint.includes("/scripts")) {
     //   handler.domScriptsHandler(response, endpoint, extension);
     // }

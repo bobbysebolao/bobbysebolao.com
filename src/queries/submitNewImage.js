@@ -1,19 +1,9 @@
 const { dbConnection } = require("../database/db_connection.js");
 
-const submitNewImage = async (obj) => {
-  return await dbConnection.none(
-    "INSERT INTO main_images(name, size, filepath, type) VALUES ($1, $2, $3, $4) ON CONFLICT ON CONSTRAINT unique_image_name DO NOTHING",
-    [
-      obj.mainImage.name,
-      obj.mainImage.size,
-      obj.mainImage.path,
-      obj.mainImage.type
-    ],
+const submitNewImage = async (imageObj) => {
+  return await dbConnection.result(
+    "INSERT INTO main_images(name, size, filepath, type) VALUES (${name}, ${size}, ${path}, ${type}) ON CONFLICT ON CONSTRAINT unique_image_name DO NOTHING", imageObj
   )
-  // .then(res => {
-  //   console.log("Successfully written to DB");
-  //   resolve("Successfully written to DB");
-  // })
   .catch(err => {
     throw new Error (`There was an error inserting the image into the db: ${err}`)
   })

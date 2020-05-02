@@ -1,5 +1,6 @@
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 // const request = require('request');
+const customLog = require("../utils/customLog");
 
 const getSignedAwsRequest = (filename) => {
   console.log("ALL SYSTEMS GO", filename);
@@ -30,22 +31,23 @@ const getSignedAwsRequest = (filename) => {
 }
 
 const uploadFile = (file, signedRequest) => {
-  // console.log(file, "<============== WAKA WAKA AYY AYY");
-  // return;
-  const xhr = new XMLHttpRequest();
-  xhr.open('PUT', signedRequest);
-  xhr.onreadystatechange = () => {
-    console.log("nearly there...", signedRequest);
-    if(xhr.readyState === 4){
-      if(xhr.status === 200){
-          console.log("Blog post successfully uploaded to AWS");
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+            customLog("Blog post successfully uploaded to AWS", 'success');
+        }
+        else {
+          customLog('Could not upload blog post to AWS.', 'error');
+          reject(new Error(`There was a problem uploading the post to AWS. The response code was ${xhr.status}`));
+        }
       }
-      else{
-        console.log('Could not upload blog post to AWS.');
-      }
-    }
-  };
-  xhr.send(file);
+    };
+    xhr.send(file);
+    resolve();
+  })
 }
 
 module.exports = {

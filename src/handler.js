@@ -5,19 +5,18 @@ const querystring = require("query-string");
 const path = require("path");
 const formidable = require("formidable");
 const cookie = require("cookie");
-const request = require("request");
 
 // const mime = require("mime");
 // const util = require('util');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
-const readingTimeCalculator = require("./readingTimeCalculator.js");
+const readingTimeCalculator = require("./helpers/readingTimeCalculator.js");
+const calculateTokenAge = require("./helpers/calculateTokenAge.js");
 
 const submitNewImage = require("./queries/submitNewImage.js");
 const submitNewThumbnail = require("./queries/submitNewThumbnail.js");
 const submitNewPost = require("./queries/submitNewPost.js");
 const validateNewUser = require("./authentication/validateNewUser.js");
-const getUsernameValid = require("./queries/getUsernameValid.js");
-const hash = require("./authentication/hash.js");
+const { hashPassword, comparePassword } = require("./authentication/hash.js");
 const submitNewUser = require("./queries/submitNewUser.js");
 const getUser = require("./queries/getUser.js");
 const generateJSONWebToken = require("./authentication/generateJWT.js");
@@ -39,6 +38,8 @@ const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
 const generateAWSSignature = require("./authentication/generateAWSSignature.js");
 const getSignedAwsRequest = require("./authentication/getSignedAwsRequest.js");
 const getProjects = require("./airtable/getProjects.js");
+
+const customLog = require("./utils/customLog");
 
 //GET REQUEST HANDLERS
 
@@ -133,39 +134,31 @@ const postsJSONHandler = res => {
   });
 };
 
-const recentPostsHandler = res => {
-  console.log("All good");
-  Promise.all([getAllPosts(), getAllThumbnails()])
-    .then(response => {
-      console.log("GGGOOO", response);
-      //FIX THIS HANDLER FUNCTION - causing problems with loading thumbnails for recent posts
-      // return;
-      let posts = response[0];
-      let thumbnails = response[1];
-      // console.log("The blog posts --->", posts);
-      // console.log("The thumbnails --->", thumbnails);
-      // console.log("The post thumbnail ID --->", posts.thumbnail_id);
-      // return;
-      for (let i = 0; i < posts.length; i++) {
-        for (let j = 0; j < thumbnails.length; j++) {
-          if (thumbnails[j].pk_thumbnail_id === posts[i].thumbnail_id) {
-            posts[i]["thumbnail"] = thumbnails[j];
-          }
+const recentPostsHandler = async (res) => {
+  try {
+    let posts = await getAllPosts();
+    let thumbnails = await getAllThumbnails();
+
+    for (let i = 0; i < posts.length; i++) {
+      for (let j = 0; j < thumbnails.length; j++) {
+        if (thumbnails[j].pk_thumbnail_id === posts[i].thumbnail_id) {
+          posts[i]["thumbnail"] = thumbnails[j];
         }
       }
-      // return;
-      res.end(JSON.stringify(posts));
-    })
-    .catch(error => console.log(error));
+    }
+    res.end(JSON.stringify(posts));
+  } catch (e) {
+    customLog(`Error in recentPostsHandler: ${e}`, 'error');
+  }
 };
 
-const mainImagesHandler = res => {
-  console.log("All good");
-  getAllMainImages()
-    .then(images => {
-      res.end(JSON.stringify(images));
-    })
-    .catch(error => console.log(error));
+const mainImagesHandler = async (res) => {
+  try {
+    const images = await getAllMainImages();
+    res.end(JSON.stringify(images));
+  } catch (e) {
+    customLog(`Error in mainImagesHandler: ${e}`, 'error');
+  }
 };
 
 const createAccountPageHandler = res => {
@@ -337,63 +330,35 @@ const loginPageHandler = res => {
   );
 };
 
-const checkLoginStatusHandler = (req, res) => {
-  console.log(req.headers.cookie);
-
+const checkLoginStatusHandler = async (req, res) => {
+  try {
   if (!req.headers.cookie) {
-    console.log(req.headers.hasOwnProperty(cookie));
-    // console.log(!cookie.parse(req.headers.cookie).hasOwnProperty(jwt))
-    console.log("No login cookie in sight...");
-    // return;
-    let user = {};
-    user.loginStatus = false;
-    res.end(JSON.stringify(user));
-    return;
-  } else {
-    // console.log("headers", req.headers)
-    // return;
-    // console.log("at my wits end: ", req.headers.cookie);
-    let jwt = cookie.parse(req.headers.cookie).jwt;
-    if (jwt !== undefined) {
-      console.log("This is my login cookie: ", jwt);
-      // return;
-      // console.log("Biggie");
-      // return;
-      let user = {};
-      // let loginStatus;
-      // let userId;
-      decodeJSONWebToken(jwt)
-        .then(decodedToken => {
-          user.loginStatus = decodedToken.logged_in;
-          user.id = decodedToken.user_id;
-          console.log("This is the decoded login cookie: ", user);
-          // return;
-        })
-        .then(unusedResult => {
-          if (user.loginStatus === true) {
-            console.log("Commenter is logged in, display the gated content");
-            getUsername(user.id)
-              .then(response => {
-                user.username = response.username;
-                user.avatar = response.avatar_filepath;
-                user.role = response.role;
-                console.log("JOKER", user);
-                // return;
-                res.end(JSON.stringify(user));
-              })
-              .catch(error => console.log(error));
-            // res.writeHead(302, { Location: `/blog/${postName}` });
-            // res.end("true");
-          }
-        })
-        .catch(error => console.log(error));
-    } else {
-      let user = {};
-      user.loginStatus = false;
-      res.end(JSON.stringify(user));
-      // res.end("false");
-    }
+    const user = {loginStatus: false};
+    return res.end(JSON.stringify(user));
   }
+
+  let jwt = cookie.parse(req.headers.cookie).jwt;
+  if (!jwt) {
+    const user = {loginStatus: false};
+    return res.end(JSON.stringify(user));
+  }
+
+  const decodedToken = await decodeJSONWebToken(jwt);
+  let user = {
+    loginStatus: decodedToken.logged_in,
+    id: decodedToken.user_id
+  };
+
+  if (user.loginStatus) {
+    const userData = await getUsername(user.id)
+          user.username = userData.username;
+          user.avatar = userData.avatar_filepath;
+          user.role = userData.role;
+          return res.end(JSON.stringify(user));
+  }
+} catch (e) {
+  customLog(`Error in checkLoginStatusHandler: ${e}`, 'error');
+}
 };
 
 const getProjectsHandler = (req, res) => {
@@ -409,58 +374,43 @@ const getProjectsHandler = (req, res) => {
     });
 };
 
-const getMangosHandler = (req, res) => {
-  request(
-    "https://mango-metrics-api.azurewebsites.net/api/mangos",
-    (err, resp, body) => {
-      console.log("Here are the mangos", resp.body);
-    }
-  );
+const getCommentsHandler = async (req, res) => {
+  try {
+    const postName = req.headers.referer.split("/")[4];
+    let comments = await getComments(postName);
+    res.end(JSON.stringify(comments))
+  } catch (e) {
+    customLog(`Error in getCommentsHandler: ${e}`, 'error');
+  }
 };
 
-const getCommentsHandler = (req, res) => {
-  console.log("yo, da comments");
-  console.log(req.headers.referer.split("/")[4]);
-  // return;
-  const postName = req.headers.referer.split("/")[4];
-  let comments;
-  getComments(postName)
-    .then(result => res.end(JSON.stringify(result)))
-    .catch(error => console.log(error));
-};
-
-const getAuthorHandler = (req, res, endpoint) => {
+const getAuthorHandler = async (req, res, endpoint) => {
+  try {
   let postName = req.headers.referer.split("/")[4];
-  console.log("The author", postName);
-  let authorData = {};
-  getPost(postName)
-    .then(postData => {
-      console.log("Googlebot", postData);
-      getUsername(postData.user_id)
-        .then(response => {
-          authorData.username = response.username;
-          authorData.avatar = response.avatar_filepath;
-          authorData.role = response.role;
+  const postData = await getPost(postName);
+  const user = await getUsername(postData.user_id)
+  const authorData = {
+    username: user.username,
+    avatar: user.avatar_filepath,
+    role: user.role
+  };
 
-          res.end(JSON.stringify(authorData));
-        })
-        .catch(err => console.log(err));
-    })
-    .catch(error => console.log(error));
+  return res.end(JSON.stringify(authorData));
+  } catch (e) {
+    customLog(`Error in getAuthorHandler: ${e}`, 'error');
+  }
 };
 
-const getTagsHandler = (req, res) => {
+const getTagsHandler = async (req, res) => {
+  try {
   const query = req.url.split("?q=")[1];
-  console.log(query);
-  getTags(query)
-    .then(result => {
-      console.log("Here are the matching tags: ", result);
-      res.end(JSON.stringify(result));
-    })
-    .catch(error => {
-      console.log(error);
-      res.end(JSON.stringify(""));
-    });
+  const tags = await getTags(query);
+  res.end(JSON.stringify(tags));
+}
+  catch (e) {
+    customLog(`Error in getTagsHandler: ${e}`, 'error');
+    res.end(JSON.stringify(""));
+  }
   return;
 };
 
@@ -499,33 +449,140 @@ const contactFormHandler = (req, res) => {
   });
 };
 
-const createPostHandler = (req, res, encodedJwt) => {
-  console.log("POST request received");
+const createPostHandler = async (req, res, encodedJwt) => {
+  const decodedToken = await decodeJSONWebToken(encodedJwt)
+  if (!decodedToken) {
+    customLog("It was not possible to decode the JWT, suggesting that the user may not be logged in.", 'warning');
+    res.writeHead(302, { Location: "/blog/publish-failure.html" });
+    return res.end();
+  } 
+    const username = decodedToken.username;
+    const form = new formidable.IncomingForm();
 
-  let username;
+    form.uploadDir = __dirname + "/../public/assets/images/blog";
+    form.keepExtensions = true;
+    form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
 
-  decodeJSONWebToken(encodedJwt)
-    .then(decodedToken => {
-      if (decodedToken === undefined) {
-        res.writeHead(302, { Location: "/blog/publish-failure.html" });
-        // res.writeHead(400, { "Content-Type": "text/html" });
+    form.on("fileBegin", function(name, file) {
+      file.path = path.join(
+        __dirname,
+        "../public/assets/images/blog",
+        file.name
+      );
+    });
+
+    const formData = await new Promise((resolve, reject) => {
+      form.parse(req, (error, fields, files) => {
+        if (error) {
+          customLog(`Cannot upload images. Error is ${error}`, 'error');
+          reject(error);
+          return;
+        } 
+  
+          const mainImage = {
+            name: files["main_image"]["name"],
+            size: files["main_image"]["size"],
+            path: fields["main_image_url"],
+            type: files["main_image"]["type"]
+          };
+
+          console.log("Ellie: ", mainImage);
+  
+          const thumbnail = {
+            name: files["thumbnail"]["name"],
+            size: files["thumbnail"]["size"],
+            path: fields["thumbnail_url"],
+            type: files["thumbnail"]["type"]
+          };
+
+          console.log("Joel: ", thumbnail);
+  
+          let timeOfPublication = Date.now();
+          let dateOfPublication = Date(timeOfPublication);
+  
+          fields["main_image"] = mainImage;
+          fields["thumbnail"] = thumbnail;
+          fields["author_name"] = username;
+          fields["pub_timestamp"] = timeOfPublication.toString();
+          fields["pub_date"] = dateOfPublication;
+          fields["reading_mins"] = readingTimeCalculator(fields["post"]);
+          fields["filename"] = `${fields["postUrl"]
+            .toLowerCase()
+            .replace(/\s/g, "-")}.html`;
+          if (process.env.NODE_ENV === "start") {
+            fields[
+              "filepath"
+            ] = `https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/${fields["filename"]}`;
+          } else if (process.env.NODE_ENV === "local") {
+            fields[
+              "filepath"
+            ] = `https://s3.eu-west-2.amazonaws.com/console-blog/local-uploads/practice-posts/${fields["filename"]}`;
+          }
+  
+          customLog("Image upload complete!", 'success');
+          resolve(fields);
+        });
+    })
+
+        await submitNewImage(formData.main_image);
+        await submitNewThumbnail(formData.thumbnail);
+        await submitNewPost(formData);
+
+        formData["url"] = `/posts/${formData["filename"]}`;
+        const newPostContent = await createPostFromTemplate(formData);
+
+        console.log("What is the post content: ", newPostContent);
+
+        const awsAuthData = await generateAWSSignature.generateAWSSignature(`/sign-s3?file-name=${formData["filename"]}&file-type=text/html`);
+
+        await getSignedAwsRequest.uploadFile(
+          newPostContent,
+          awsAuthData.signedRequest
+        );
+
+        // Delete the main image from the local filesystem
+        try {
+          const mainImageLocalFilepath = __dirname + "/../public/assets/images/blog/" + formData["main_image"]["name"]
+          fs.unlinkSync(mainImageLocalFilepath);
+          customLog(`Successfully deleted ${mainImageLocalFilepath} from the local filesystem`, 'success');
+        }
+        catch (e) {
+          customLog(`There was a problem deleting the main image from the local filesystem: ${e}`, 'error');
+        }
+
+        // Delete the thumbnail from the local filesystem
+        try {
+          const thumbnailLocalFilepath = __dirname + "/../public/assets/images/blog/" + formData["thumbnail"]["name"]
+          fs.unlinkSync(thumbnailLocalFilepath);
+          customLog(`Successfully deleted ${thumbnailLocalFilepath} from the local filesystem`, 'success');
+        }
+        catch (e) {
+          customLog(`There was a problem deleting the thumbnail from the local filesystem: ${e}`, 'error');
+        }
+
+        res.writeHead(302, { Location: "/blog/blog.html" });
         res.end();
-        // res.writeHead(400, { "Content-Type": "text/html" });
-        // res.end(
-        //   "You are not logged in. Please login in order to publish a post"
-        // );
-      } else if (decodedToken.logged_in === true) {
-        username = decodedToken.username;
-        console.log(username);
-        console.log("NO 2");
+};
 
-        let form = new formidable.IncomingForm();
+const uploadImageHandler = async (req, res, encodedJwt) => {
 
+  const decodedToken = await decodeJSONWebToken(encodedJwt)
+  if (!decodedToken) {
+    customLog("It was not possible to decode the JWT, suggesting that the user may not be logged in.", 'warning');
+    res.writeHead(302, { Location: "/blog/publish-failure.html" });
+    return res.end();
+  }
+
+  const username = decodedToken.username;
+
+  const form = new formidable.IncomingForm();
+
+  // Formidable module configs (TODO: move these to a config file)
         form.uploadDir = __dirname + "/../public/assets/images/blog";
         form.keepExtensions = true;
         form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
 
-        form.on("fileBegin", function(name, file) {
+        form.on("fileBegin", (name, file) => {
           file.path = path.join(
             __dirname,
             "../public/assets/images/blog",
@@ -533,254 +590,58 @@ const createPostHandler = (req, res, encodedJwt) => {
           );
         });
 
-        let formData;
+  const formData = await new Promise((resolve, reject) => {
+    form.parse(req, (error, fields, files) => {
+      customLog("Form data parsing underway...", 'info');
+      if (error) {
+        customLog(`Cannot upload images. Error is ${error}`, 'error');
+        reject(error);
+        return;
+      } 
 
-        let newPostPath;
-        let newPostContent;
+        const mainImage = {
+          name: files["main_image"]["name"],
+          size: files["main_image"]["size"],
+          path: fields["main_image_url"],
+          type: files["main_image"]["type"]
+        };
 
-        console.log("NO 3");
+        fields["main_image"] = mainImage;
 
-        form.parse(req, (error, fields, files) => {
-          if (error) {
-            console.log(`Cannot upload images. Error is ${error}`);
-            return error;
-          } else {
-            console.log("Form data parsing underway...");
-            // console.log("The image file: ", files);
-            // return;
+        customLog("Uploaded images successfully", 'success');
+        resolve(fields);
+      })
+  })
 
-            let mainImage = {
-              name: files["mainImage"]["name"],
-              size: files["mainImage"]["size"],
-              // path: files["mainImage"]["path"],
-              path: fields["mainImageUrl"],
-              type: files["mainImage"]["type"]
-            };
+  console.log("NORM", formData.main_image);
+  await submitNewImage(formData.main_image);
 
-            let thumbnail = {
-              name: files["thumbnail"]["name"],
-              size: files["thumbnail"]["size"],
-              // path: files["thumbnail"]["path"],
-              path: fields["thumbnailUrl"],
-              type: files["thumbnail"]["type"]
-            };
+  // Delete the main image from the local filesystem
+  try {
+    const imageLocalFilepath = __dirname + "/../public/assets/images/blog/" + formData["main_image"]["name"];
+    fs.unlinkSync(imageLocalFilepath);
+    customLog(`Successfully deleted ${imageLocalFilepath} from the local filesystem`, 'success');
+  }
+  catch (e) {
+    customLog(`There was a problem deleting the image from the local filesystem: ${e}`, 'error');
+  }
 
-            let timeOfPublication = Date.now();
-            let dateOfPublication = Date(timeOfPublication);
-            console.log("TODAY'S DATE", dateOfPublication);
-
-            fields["mainImage"] = mainImage;
-            fields["thumbnail"] = thumbnail;
-            fields["authorName"] = username;
-            fields["timeOfPublication"] = timeOfPublication;
-            fields["date"] = dateOfPublication;
-            fields["readingminutes"] = readingTimeCalculator(fields["post"]);
-            fields["filename"] = `${fields["postUrl"]
-              .toLowerCase()
-              .replace(/\s/g, "-")}.html`;
-            if (process.env.NODE_ENV === "start") {
-              fields[
-                "filepath"
-              ] = `https://s3.eu-west-2.amazonaws.com/console-blog/blog-posts/${fields["filename"]}`;
-            } else if (process.env.NODE_ENV === "local") {
-              fields[
-                "filepath"
-              ] = `https://s3.eu-west-2.amazonaws.com/console-blog/local-uploads/practice-posts/${fields["filename"]}`;
-            }
-
-            // console.log("Form fields: ", fields["filepath"]);
-            // return;
-
-            console.log("Uploaded images successfully");
-            formData = fields;
-            console.log(formData, "LOOK HERE <=====");
-
-            Promise.all([submitNewImage(fields), submitNewThumbnail(fields)])
-              .then(response => {
-                submitNewPost(fields, fields["timeOfPublication"]);
-              })
-              .then(result => {
-                console.log("STILL DRE");
-                newPostPath = `/posts/${fields["filename"]}`;
-
-                newPostContent = createPostFromTemplate(
-                  fields["title"],
-                  fields["subtitle"],
-                  fields["post"],
-                  fields["date"],
-                  fields["readingminutes"],
-                  fields["mainImage"]["name"],
-                  fields["mainImageAltText"],
-                  fields["mainImageCaption"],
-                  fields["metatitle"],
-                  fields["metadescription"],
-                  newPostPath,
-                  fields["authorName"]
-                );
-
-                console.log("HOOOOOOOOOOOHAAAAAAAAAA", newPostPath);
-                // return;
-                generateAWSSignature
-                  .generateAWSSignature(
-                    `/sign-s3?file-name=${fields["filename"]}&file-type=text/html`
-                  )
-                  .then(response => {
-                    // const result = JSON.parse(response);
-                    console.log("DJANGO UNCHAINED");
-                    getSignedAwsRequest.uploadFile(
-                      newPostContent,
-                      response.signedRequest
-                    );
-                  })
-                  .then(result => {
-                    fs.unlink(
-                      __dirname +
-                        "/../public/assets/images/blog/" +
-                        files["mainImage"]["name"],
-                      err => {
-                        if (err) {
-                          console.log(err);
-                          return;
-                        }
-                        console.log(
-                          "Main image successfully deleted from local filesystem"
-                        );
-                      }
-                    );
-
-                    fs.unlink(
-                      __dirname +
-                        "/../public/assets/images/blog/" +
-                        files["thumbnail"]["name"],
-                      err => {
-                        if (err) {
-                          console.log(err);
-                          return;
-                        }
-                        console.log(
-                          "Thumbnail successfully deleted from local filesystem"
-                        );
-                      }
-                    );
-                  })
-                  .catch(error => console.log(error));
-              })
-              .then(response => {
-                res.writeHead(302, { Location: "/blog/blog.html" });
-                res.end();
-              })
-              .catch(error => console.log(error));
-          }
-        });
-      }
-    })
-    .catch(error => console.log(error));
+  res.writeHead(302, { Location: "/blog/image-manager" });
+  res.end();
 };
 
-const uploadImageHandler = (req, res, encodedJwt) => {
-  console.log("IMAGE UPLOAD request received");
-  // return;
-
-  let username;
-
-  decodeJSONWebToken(encodedJwt)
-    .then(decodedToken => {
-      if (decodedToken === undefined) {
-        res.writeHead(302, { Location: "/blog/publish-failure.html" });
-        // res.writeHead(400, { "Content-Type": "text/html" });
-        res.end();
-        // res.writeHead(400, { "Content-Type": "text/html" });
-        // res.end(
-        //   "You are not logged in. Please login in order to publish a post"
-        // );
-      } else if (decodedToken.logged_in === true) {
-        username = decodedToken.username;
-        console.log(username);
-
-        console.log("NO 2");
-
-        let form = new formidable.IncomingForm();
-
-        form.uploadDir = __dirname + "/../public/assets/images/blog";
-        form.keepExtensions = true;
-        form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
-
-        form.on("fileBegin", function(name, file) {
-          file.path = path.join(
-            __dirname,
-            "../public/assets/images/blog",
-            file.name
-          );
-        });
-
-        let formData;
-
-        form.parse(req, (error, fields, files) => {
-          if (error) {
-            console.log(`Cannot upload images. Error is ${error}`);
-            return error;
-          } else {
-            console.log("Form data parsing underway...");
-            // console.log("The image file: ", files);
-            // return;
-
-            let mainImage = {
-              name: files["mainImage"]["name"],
-              size: files["mainImage"]["size"],
-              // path: files["mainImage"]["path"],
-              path: fields["mainImageUrl"],
-              type: files["mainImage"]["type"]
-            };
-
-            console.log("MAIN", mainImage);
-            // return;
-
-            fields["mainImage"] = mainImage;
-
-            console.log("Uploaded images successfully");
-            formData = fields;
-            console.log(formData, "LOOK HERE <=====");
-            // return;
-
-            submitNewImage(fields)
-              .then(result => {
-                fs.unlink(
-                  __dirname +
-                    "/../public/assets/images/blog/" +
-                    files["mainImage"]["name"],
-                  err => {
-                    if (err) {
-                      console.log(err);
-                      return;
-                    }
-                    console.log(
-                      "Main image successfully deleted from local filesystem"
-                    );
-                  }
-                );
-              })
-              .then(response => {
-                res.writeHead(302, { Location: "/blog/image-manager" });
-                res.end();
-              })
-              .catch(error => console.log(error));
-          }
-        });
-      }
-    })
-    .catch(error => console.log(error));
-};
-
-const createAccountSubmitHandler = (req, res) => {
+const createAccountSubmitHandler = async (req, res) => {
+  try {
   let form = new formidable.IncomingForm();
 
   let filename;
 
+  // Formidable module configs (TODO: move these to a config file)
   form.uploadDir = __dirname + "/../public/assets/images/users";
   form.keepExtensions = true;
   form.maxFieldsSize = 10 * 1024 * 1024; // 10MB
 
-  form.on("fileBegin", function(name, file) {
+  form.on("fileBegin", (name, file) => {
     filename = file.name;
     file.path = path.join(
       __dirname,
@@ -789,111 +650,97 @@ const createAccountSubmitHandler = (req, res) => {
     );
   });
 
-  let formData = "";
-
-  form.parse(req, function(error, fields, files) {
-    if (error) {
-      console.log(`Cannot upload images. Error is ${error}`);
-    } else {
-      let userImage = {
+  const formData = await new Promise((resolve, reject) => {
+    form.parse(req, async (error, fields, files) => {
+      if (error) {
+        throw new Error(`Cannot upload images. Error is ${error}`);
+      } 
+      const userImage = {
         name: files["userImage"]["name"],
         size: files["userImage"]["size"],
         path: fields["userUrl"],
         type: files["userImage"]["type"]
       };
-
       fields["userImage"] = userImage;
-      console.log("Uploaded images successfully");
-      formData = fields;
-      // console.log(formData);
+  
+      customLog("Avatar upload complete!", 'success');
+      resolve(fields);
+    });
+  })
 
-      let emailToken;
-
-      Promise.all([
-        validateNewUser(formData),
-        getUsernameValid(formData.username.toLowerCase())
-      ])
-        .then(response => hash.hashPassword(formData.password))
-        .then(hash => submitNewUser(formData, hash))
-        .then(response => {
-          emailToken = generateEmailVerificationToken();
-        })
-        .then(token => {
-          Promise.all([
-            sendEmail(formData, emailToken),
-            submitEmailVerificationToken(emailToken, formData.username)
-          ]).catch(console.error);
-        })
-        .then(response => {
-          fs.unlink(
-            __dirname + "/../public/assets/images/users/" + filename,
-            err => {
-              if (err) {
-                console.log(err);
-                return;
-              }
-              console.log(
-                "User image successfully deleted from local filesystem"
-              );
-              res.writeHead(302, { Location: "/blog/validate-account.html" });
-              res.end();
-            }
-          );
-        })
-        .catch(err => {
-          res.writeHead(400, {
-            "Content-Type": "text/html"
-          });
-          console.log(err);
-          res.writeHead(302, { Location: "/blog/register-failure.html" });
-          // res.writeHead(400, { "Content-Type": "text/html" });
-          res.end();
-        });
+    const isValidUser = await validateNewUser(formData);
+    if (!isValidUser) {
+      // TODO: Figure out the best page to redirect the user to (probably back to the register page)
+      res.writeHead(302, { Location: "/blog/register-failure.html" });
+      return res.end();
     }
-  });
+
+    const usernameIsTaken = await getUser(formData.username.toLowerCase());
+    if (usernameIsTaken) {
+      // TODO: Figure out the best page to redirect the user to (probably back to the register page)
+      res.writeHead(302, { Location: "/blog/register-failure.html" });
+      return res.end();
+    }
+
+    // Hash the password before adding the user to the database
+    const hash = await hashPassword(formData["password"]);
+    formData["password"] = hash;
+
+    await submitNewUser(formData);
+
+    const emailToken = generateEmailVerificationToken();
+    await sendEmail(formData, emailToken);
+
+    const verificationTokenData = {
+      token: emailToken,
+      username: formData.username,
+      timestamp: Date.now()
+    }
+    await submitEmailVerificationToken(verificationTokenData);
+
+    // Delete the user image from the local filesystem
+    try {
+      const localImageFilepath = __dirname + "/../public/assets/images/users/" + filename;
+      fs.unlinkSync(localImageFilepath);
+      customLog(`Successfully deleted ${localImageFilepath} from the local filesystem`, 'success');
+
+      res.writeHead(302, { Location: "/blog/validate-account.html" });
+      return res.end();
+    }
+    catch (e) {
+      customLog(`There was a problem deleting ${localImageFilepath} from the local filesystem: ${err}`, 'error');
+    }
+} 
+catch (e) {
+  customLog(`Error in createAccountSubmitHandler: ${e}`, 'error');
+}
 };
 
-const calculateTokenAge = timeOfCreation => {
-  return Date.now() - timeOfCreation;
-};
-
-const confirmEmailHandler = (req, endpoint, res) => {
+const confirmEmailHandler = async (req, endpoint, res) => {
+  try {
   let token = endpoint.split("?evt=")[1].split("&username")[0];
   let username = endpoint.split("&username=")[1];
-  console.log("The token", token);
-  console.log("The username", username);
-  // return;
-  let tokenAge;
-  console.log("Here it is: ", token);
-  getEmailVerificationToken(token)
-    .then(response => {
-      tokenAge = calculateTokenAge(response.created_at);
-      deleteEmailVerificationToken(token);
-    })
-    .then(response => {
-      console.log(tokenAge);
+
+  const emailVerificationToken = await getEmailVerificationToken(token);
+  const tokenAge = calculateTokenAge(emailVerificationToken.created_at);
+  await deleteEmailVerificationToken(token);
       if (tokenAge < 43200000) {
-        console.log("TOKEN IS VALID");
-        updateVerifiedUser(username);
-        // return;
-        // generateJSONWebToken({username: username, is_verified: true})
-        // .then(evt => {
+        await updateVerifiedUser(username);
         res.writeHead(302, {
           // "Set-Cookie": `evt=${evt}; max-age=9000; path=/; HttpOnly`,
           Location: "/blog/login.html"
         });
-        res.end();
-        // })
-        // .catch(error => console.log(error))
+        return res.end();
       } else {
         console.log("TOKEN HAS EXPIRED");
         res.writeHead(302, {
           Location: "/blog/login.html"
         });
-        res.end();
+        return res.end();
       }
-    })
-    .catch(error => console.log(error));
+    } catch (e) {
+        customLog(`Error in confirmEmailHandler: ${e}`, 'error');
+      }
 };
 
 const awsSignatureHandler = (req, endpoint, res) => {
@@ -902,140 +749,101 @@ const awsSignatureHandler = (req, endpoint, res) => {
     .catch(error => console.log(error));
 };
 
-const loginSubmitHandler = (req, res) => {
-  // console.log("Submitting login...")
-  // return;
+const loginSubmitHandler = async (req, res) => {
+  try {
   let allTheData = "";
   req.on("data", chunk => {
     allTheData += chunk;
   });
 
-  req.on("end", () => {
+  req.on("end", async () => {
     const loginData = querystring.parse(allTheData);
-    let storedUserDetails;
-    console.log("This is my login data", loginData);
 
-    // decodeJSONWebToken(encodedEvt)
-    // .then(evt => {
-    // console.log("This is the evt: ", evt);
-    // if (evt.is_verified === true) {
-    // console.log("The account is verified, proceeding with login...")
-    getUser(loginData.username)
-      .then(user => {
-        console.log("This is meh username: ", user);
-        storedUserDetails = user;
-        if (storedUserDetails.is_verified !== true) {
-          res.writeHead(302, { Location: "/blog/validate-account.html" });
-          res.end();
-        } else {
-          hash
-            .comparePassword(loginData.password, storedUserDetails.password)
-            .then(pass => {
-              if (pass === true) {
-                console.log("The correct password was entered");
-                generateJSONWebToken({
-                  user_id: storedUserDetails.pk_user_id,
-                  username: storedUserDetails.username,
-                  logged_in: true,
-                  role: storedUserDetails.role
-                })
-                  .then(token => {
-                    console.log("Bobby's login has been successful");
-                    res.writeHead(302, {
-                      "Set-Cookie": `jwt=${token}; max-age=9000; path=/; domain=; HttpOnly`,
-                      Location: "/blog/blog.html"
-                    });
-                    res.end();
-                  })
-                  .catch(error => console.log(error));
-              } else {
-                res.writeHead(302, { Location: "/blog/login-failure.html" });
-                // res.writeHead(400, { "content-type": "text/html" });
-                res.end();
-              }
-            })
-            .catch(error => console.log(error));
-        }
+    const user = await getUser(loginData.username)
+
+    if (!user.is_verified) {
+      res.writeHead(302, { Location: "/blog/validate-account.html" });
+      return res.end();
+    }
+
+    const validPassword = await comparePassword(loginData.password, user.password)
+
+    if (!validPassword) {
+      res.writeHead(302, { Location: "/blog/login-failure.html" });
+      return res.end();
+    }
+
+    const jwt = await generateJSONWebToken({
+        user_id: user.pk_user_id,
+        username: user.username,
+        logged_in: true,
+        role: user.role
       })
-      .catch(error => console.log(error));
 
-    // else {
-    //   res.writeHead(400, { "content-type": "text/html" });
-    //   res.end("You haven't verified this email address");
-    // }
-    // })
+    res.writeHead(302, {
+      "Set-Cookie": `jwt=${jwt}; max-age=9000; path=/; domain=; HttpOnly`,
+      Location: "/blog/blog.html"
+    });
+
+    return res.end();
   });
+} catch (e) {
+  customLog(`Error in loginSubmitHandler: ${e}`, 'error');
+}
 };
 
-const logoutHandler = res => {
+const logoutHandler = (req, res) => {
+  const pageName = req.headers.referer.split("/")[4];
+  const cookieReset = cookie.serialize('jwt', "", {
+    maxAge: 0,
+    path: "/"
+  });
   res.writeHead(302, {
-    "Set-Cookie": `jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0`,
-    Location: "/blog/blog.html"
+    "Set-Cookie": cookieReset,
+    Location: `/blog/${pageName}`
   });
-  res.end();
+  return res.end();
 };
 
-const commentSubmitHandler = (req, res, encodedJwt) => {
+const commentSubmitHandler = async (req, res, encodedJwt) => {
+  try {
+    const decodedToken = await decodeJSONWebToken(encodedJwt);
+    if (decodedToken === undefined) {
+      res.writeHead(302, { Location: "/blog/publish-failure.html" });
+      res.end();
+    }
+
   let allTheData = "";
 
   req.on("data", chunk => {
     allTheData += chunk;
   });
 
-  req.on("end", () => {
-    const comment = querystring.parse(allTheData);
-    const postName = req.headers.referer.split("/")[4];
-    console.log(postName);
-    // return;
-    let userId = "";
-    let postId = "";
-    let commentTimestamp;
-    let commentDate;
-    let username;
-    let avatarName;
-    let avatarFilepath;
-    decodeJSONWebToken(encodedJwt)
-      .then(decodedToken => {
-        if (decodedToken === undefined) {
-          res.writeHead(302, { Location: "/blog/publish-failure.html" });
-          // res.writeHead(400, { "Content-Type": "text/html" });
-          res.end();
-        } else {
-          userId = decodedToken.user_id;
-        }
-      })
-      .then(unusedResult => getPost(postName))
-      .then(retrievedPost => {
-        postId = retrievedPost.pk_post_id;
-        commentTimestamp = Date.now();
-        commentDate = Date(commentTimestamp);
-      })
-      .then(unusedResult => {
-        getUsername(userId).then(result => {
-          username = result.username;
-          avatarName = result.avatar_name;
-          avatarFilepath = result.avatar_filepath;
-          submitNewComment(
-            comment.comment,
-            postId,
-            userId,
-            commentTimestamp,
-            commentDate,
-            username,
-            avatarName,
-            avatarFilepath
-          ).then(commentStatus => {
-            console.log("Is it true: ", commentStatus);
-            if (commentStatus === true) {
-              console.log("Yes it is");
-              res.writeHead(302, { Location: `/posts/${postName}` });
-              res.end();
-            }
-          });
-        });
-      })
-      .catch(error => console.log(error));
-  });
+  req.on("end", async () => {
+  const comment = querystring.parse(allTheData);
+  const postName = req.headers.referer.split("/")[4];
+  const post = await getPost(postName);
+  const user = await getUsername(decodedToken.user_id);
+
+  const commentData = {
+    comment: comment.comment,
+    postId: post.pk_post_id,
+    userId: decodedToken.user_id,
+    timestamp: Date.now(),
+    date: Date(Date.now()),
+    username: user.username,
+    avatarName: user.avatar_name,
+    avatarFilepath: user.avatar_filepath
+  }
+
+  await submitNewComment(commentData);
+
+  res.writeHead(302, { Location: `/posts/${postName}` });
+  return res.end();
+  })
+} catch (e) {
+      customLog(`Error in commentSubmitHandler: ${e}`, 'error');
+    }
 };
 
 module.exports = {
@@ -1052,7 +860,6 @@ module.exports = {
   publicHandler,
   loginPageHandler,
   checkLoginStatusHandler,
-  getMangosHandler,
   getProjectsHandler,
   getCommentsHandler,
   getAuthorHandler,

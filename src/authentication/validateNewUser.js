@@ -11,37 +11,42 @@ const validateNewUser = (obj) => {
     const username = obj.username.match(usernameRegex);
     const email = obj.email.match(emailRegex);
     const password = obj.password.match(passwordRegex);
-    const confirmedPassword = obj.confirmed_password;
-    // console.log(password);
 
     if (!firstName) {
-      reject(new Error("Please input a real first name"));
+      console.error("Please input a real first name")
+      reject(false);
     }
 
     if (!lastName) {
-      reject( new Error("Please input a real last name"));
+      console.error("Please input a real last name")
+      reject(false);
     }
 
     if (!username) {
-      reject(new Error("Your username does not meet the requirements"));
+      console.error("Your username does not meet the requirements")
+      reject(false);
     }
 
     if (!email) {
-      reject(new Error("Please input a valid email address"));
+      console.error("Please input a valid email address")
+      reject(false);
     }
 
     if (!password) {
-    if (obj.password.length < 8 || obj.password.length > 20) {
-    reject(new Error("Please ensure your password is between 8-20 characters long"));
-  }
+      if (obj.password.length < 8 || obj.password.length > 20) {
+        console.error("Please ensure your password is between 8-20 characters long")
+        reject(false);
+    }
   }
 
   if (obj.password !== obj.confirmed_password) {
-    reject(new Error("Password fields do not match. Please try again"));
+    console.error("Password fields do not match. Please try again")
+    reject(false);
   }
 
   else {
-    resolve(console.log("New user account details passed the validation checks"));
+    console.log("New user account details passed the validation checks");
+    resolve(true);
   }
 
   })

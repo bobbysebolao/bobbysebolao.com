@@ -1,4 +1,4 @@
-const readingTimeCalculator = require("../readingTimeCalculator.js")
+const readingTimeCalculator = require("../helpers/readingTimeCalculator.js")
 
 // This test fails because 1 !== 2
 it('Testing to see if Jest works', () => {

@@ -507,8 +507,8 @@
             <label for="subtitle">Subtitle:</label>
             <input name="subtitle" id="subtitle" required>
 
-            <label for="contentType">Type:</label>
-            <select name="contentType" id="contentType" required>
+            <label for="category">Type:</label>
+            <select name="category" id="category" required>
               <option value="">Select one</option>
               <option value="life">Life</option>
               <option value="learn">Learn</option>
@@ -520,14 +520,15 @@
             <br>
 
             <label for="mainImage">Upload main image:</label>
-            <input type="file" name="mainImage" accept="image/*" id="mainImage" required>
+            <input type="file" name="main_image" accept="image/*" id="mainImage" required>
 
             <img id="mainImagePreview" src="">
 
             <label for="mainImageCaption">Caption:</label>
-            <input name="mainImageCaption" id="mainImageCaption" required>
+            <input name="main_image_caption" id="mainImageCaption" required>
+
             <label for="mainImageAltText">Alt text:</label>
-            <input name="mainImageAltText" id="mainImageAltText" required>
+            <input name="main_image_alt_text" id="mainImageAltText" required>
 
             <label for="post">Body:</label>
             <textarea name="post" rows="12" id="post" required></textarea>
@@ -555,8 +556,8 @@
           </div>
             <ul class="tags-list" id="tagsList"></ul>
 
-            <input type="hidden" id="mainImageUrl" name="mainImageUrl" value="">
-            <input type="hidden" id="thumbnailUrl" name="thumbnailUrl" value="">
+            <input type="hidden" id="mainImageUrl" name="main_image_url" value="">
+            <input type="hidden" id="thumbnailUrl" name="thumbnail_url" value="">
 
             <button type="submit">Publish</button>
 
