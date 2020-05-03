@@ -32,9 +32,13 @@ const options = {
   password: password
 };
 
-options.ssl = {
-  sslmode: 'require',
-  rejectUnauthorized: false
+console.log(options.host, "<--- jackie chan")
+
+if (options.host !== 'localhost') {
+  options.ssl = {
+    sslmode: 'require',
+    rejectUnauthorized: true
+  }
 }
 
 module.exports = {
