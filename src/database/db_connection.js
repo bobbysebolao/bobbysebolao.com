@@ -32,7 +32,10 @@ const options = {
   password: password
 };
 
-options.ssl = options.host !== "localhost";
+options.ssl = {
+  sslmode: 'require',
+  rejectUnauthorized: false
+}
 
 module.exports = {
   dbConnection: pgPromise(options),
