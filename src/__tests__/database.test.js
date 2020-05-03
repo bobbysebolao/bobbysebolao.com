@@ -27,8 +27,8 @@ describe("Testing database interactions", () => {
     done();
   });
 
-  afterAll((done) => {
-    dbConnection.end();
+  afterAll(async (done) => {
+    await dbConnection.end();
     done();
   });
 
