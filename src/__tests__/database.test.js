@@ -19,6 +19,7 @@ const updateVerifiedUser = require("../queries/updateVerifiedUser");
 
 // These imports are here in case I need to write special SQL queries for tests within this file
 const { dbConnection } = require("../database/db_connection.js");
+const pgPromise = require('pg-promise')();
 
 describe("Testing database interactions", () => {
   beforeAll(async (done) => {
@@ -28,7 +29,7 @@ describe("Testing database interactions", () => {
   });
 
   afterAll(async (done) => {
-    await dbConnection.end();
+    await pgPromise.end();
     done();
   });
 
