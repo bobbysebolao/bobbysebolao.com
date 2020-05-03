@@ -32,8 +32,6 @@ const options = {
   password: password
 };
 
-console.log(options.host, "<--- jackie chan")
-
 if (options.host !== 'localhost') {
   options.ssl = {
     sslmode: 'require',

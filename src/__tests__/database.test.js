@@ -18,9 +18,7 @@ const submitNewUser = require("../queries/submitNewUser");
 const updateVerifiedUser = require("../queries/updateVerifiedUser");
 
 // These imports are here in case I need to write special SQL queries for tests within this file
-const pgPromise = require('pg-promise')();
-const { options } = require("../database/db_connection.js");
-const dbConn = pgPromise(options);
+const { dbConnection } = require("../database/db_connection.js");
 
 describe("Testing database interactions", () => {
   beforeAll(async () => {
@@ -114,7 +112,7 @@ describe("Testing database interactions", () => {
 
     describe("the submitNewComment function", () => {
       afterAll(async () => {
-        await dbConn.none("DELETE FROM comments WHERE pk_comment_id = 2");
+        await dbConnection.none("DELETE FROM comments WHERE pk_comment_id = 2");
       });
 
       it('should insert the user\'s comment into the database', async () => {
@@ -135,7 +133,7 @@ describe("Testing database interactions", () => {
 
     describe("the submitNewImage function", () => {
       afterEach(async () => {
-        await dbConn.none("DELETE FROM main_images WHERE pk_image_id = 41");
+        await dbConnection.none("DELETE FROM main_images WHERE pk_image_id = 41");
       });
 
       it('should insert the image into the database', async () => {
@@ -152,7 +150,7 @@ describe("Testing database interactions", () => {
 
     describe("the submitNewThumbnail function", () => {
       afterEach(async () => {
-        await dbConn.none("DELETE FROM thumbnails WHERE pk_thumbnail_id = 12");
+        await dbConnection.none("DELETE FROM thumbnails WHERE pk_thumbnail_id = 12");
       });
 
       it('should insert the thumbnail into the database', async () => {
@@ -186,7 +184,7 @@ describe("Testing database interactions", () => {
       });
 
       afterEach(async () => {
-        await dbConn.none("DELETE FROM posts WHERE pk_post_id = 12");
+        await dbConnection.none("DELETE FROM posts WHERE pk_post_id = 12");
       });
 
       it('should insert the post into the database', async () => {
@@ -209,7 +207,7 @@ describe("Testing database interactions", () => {
       });
 
       afterAll(async () => {
-        await dbConn.none("DELETE FROM users WHERE username = 'testuser2'");
+        await dbConnection.none("DELETE FROM users WHERE username = 'testuser2'");
       });
 
       it('should insert the user into the database', async () => {
@@ -224,7 +222,7 @@ describe("Testing database interactions", () => {
   describe("Testing 'UPDATE' actions", () => {
     describe("the updateVerifiedUser function", () => {
       afterAll(async () => {
-        await dbConn.none("UPDATE users SET is_verified = False WHERE username = 'testuser'");
+        await dbConnection.none("UPDATE users SET is_verified = False WHERE username = 'testuser'");
       });
 
       it("should set the specified user\'s verified status to 'true'", async () => {
