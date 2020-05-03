@@ -26,8 +26,9 @@ describe("Testing database interactions", () => {
     this.user = await getUser('mistapepper');
   });
 
-  afterAll(async () => {
-    await dbConnection.end();
+  afterAll((done) => {
+    dbConnection.end();
+    done();
   });
 
   // INSERT actions
