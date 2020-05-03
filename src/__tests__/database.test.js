@@ -21,9 +21,10 @@ const updateVerifiedUser = require("../queries/updateVerifiedUser");
 const { dbConnection } = require("../database/db_connection.js");
 
 describe("Testing database interactions", () => {
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await buildDatabase();
     this.user = await getUser('mistapepper');
+    done();
   });
 
   afterAll((done) => {
