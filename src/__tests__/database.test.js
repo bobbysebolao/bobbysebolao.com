@@ -1,3 +1,6 @@
+const pgPromise = require('pg-promise')();
+const { dbConnection } = require("../database/db_connection.js");
+
 const buildDatabase = require("../database/db_build.js");
 const getAllMainImages = require("../queries/getAllMainImages");
 const getAllPosts = require("../queries/getAllPosts");
@@ -17,20 +20,14 @@ const submitNewThumbnail = require("../queries/submitNewThumbnail");
 const submitNewUser = require("../queries/submitNewUser");
 const updateVerifiedUser = require("../queries/updateVerifiedUser");
 
-// These imports are here in case I need to write special SQL queries for tests within this file
-const { dbConnection } = require("../database/db_connection.js");
-const pgPromise = require('pg-promise')();
-
 describe("Testing database interactions", () => {
-  beforeAll(async (done) => {
+  beforeAll(async () => {
     await buildDatabase();
     this.user = await getUser('mistapepper');
-    done();
   });
 
-  afterAll(async (done) => {
+  afterAll(async () => {
     await pgPromise.end();
-    done();
   });
 
   // INSERT actions
