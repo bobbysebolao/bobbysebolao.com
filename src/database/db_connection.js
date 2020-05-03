@@ -35,7 +35,7 @@ const options = {
 if (options.host !== 'localhost') {
   options.ssl = {
     sslmode: 'require',
-    rejectUnauthorized: true
+    rejectUnauthorized: false
   }
 }
 
