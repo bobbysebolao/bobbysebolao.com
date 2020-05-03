@@ -26,6 +26,10 @@ describe("Testing database interactions", () => {
     this.user = await getUser('mistapepper');
   });
 
+  afterAll(async () => {
+    await dbConnection.end();
+  });
+
   // INSERT actions
   describe("Testing 'INSERT' actions", () => {
     describe("the getUser function", () => {
