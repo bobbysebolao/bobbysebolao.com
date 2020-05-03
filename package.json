@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=start node server.js",
     "local": "NODE_ENV=local nodemon server.js",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --detectOpenHandles",
     "coverage": "NODE_ENV=test jest && codecov --token=7a4ed0f7-6fce-404d-ae1c-b83fa38ba372",
     "build-db-local": "NODE_ENV=local node src/database/build.js",
     "build-db-prod": "heroku pg:psql postgresql-adjacent-89548 --app rocky-plains-29996 < src/database/db_build_prod.sql",
