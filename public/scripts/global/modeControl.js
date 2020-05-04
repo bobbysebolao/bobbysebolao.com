@@ -7,8 +7,6 @@ if (window.location.href.includes("localhost")) {
   urlEndpoint = window.location.href.split(".com")[1];
 }
 
-console.log(`Mode control active at ${urlEndpoint}`);
-
 let blockO;
 let blockT;
 let blockL;

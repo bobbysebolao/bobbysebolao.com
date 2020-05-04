@@ -1,4 +1,3 @@
-// window.addEventListener("resize", () => console.log("HAYOOOO", window.innerWidth));
 const desktopWindowWidth = window.matchMedia("(min-width: 801px)");
 const tabletWindowWidth = window.matchMedia("(min-width: 600px) and (max-width: 800px)");
 const mobileWindowWidth = window.matchMedia("(min-width: 320px) and (max-width: 599px)");
@@ -30,8 +29,6 @@ const blockTwentyOne = document.getElementById("blockTwentyOne");
 
 const updateTetrisLayout = (minMaxWidth) => {
     if (minMaxWidth.matches && tabletWindowWidth.matches) {
-        // console.log(minMaxWidth.media)
-        // headertest.style.backgroundColor = "green";
         blocks[3].parentNode.insertBefore(blocks[3], blocks[6]);
         blocks[8].parentNode.insertBefore(blocks[8], blocks[5]);
         blocks[13].parentNode.insertBefore(blocks[13], blocks[10]);
@@ -42,8 +39,6 @@ const updateTetrisLayout = (minMaxWidth) => {
         blocks[20].style.gridColumn = "1 / 3";
     }
     else if (minMaxWidth.matches && desktopWindowWidth.matches) {
-        // console.log(minMaxWidth.media)
-        // headertest.style.backgroundColor = "red";
         postContainer.prepend(blockOne);
         blockOne.parentNode.insertBefore(blockTwo, blockOne.nextSibling);
         blockTwo.parentNode.insertBefore(blockThree, blockTwo.nextSibling);
@@ -69,7 +64,6 @@ const updateTetrisLayout = (minMaxWidth) => {
         blockTwentyOne.style.gridColumn = "3 / 4";
     }
     else if (minMaxWidth.matches && mobileWindowWidth.matches) {
-        // headertest.style.backgroundColor = "yellow";
         postContainer.prepend(blockOne);
         postContainer.appendChild(blockTwo);
         postContainer.appendChild(blockThree);

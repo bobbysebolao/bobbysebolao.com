@@ -1,8 +1,5 @@
-console.log("POSTS HERE")
-
 let currentPostUrl = document.getElementsByName("postUrl")[0].content;
 let currentPostName = currentPostUrl.split("/posts/")[1];
-console.log("BAMBINO", currentPostName)
 let prevPostButton = document.querySelector("#prevPost");
 let nextPostButton = document.querySelector("#nextPost");
 let prevArrow = document.querySelector("#prevArrow");

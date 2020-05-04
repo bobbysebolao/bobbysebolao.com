@@ -1,5 +1,3 @@
-console.log("Hello")
-
 if (document.getElementById("mainImage")) {
 
 (() => {
@@ -7,10 +5,8 @@ if (document.getElementById("mainImage")) {
     const imageType = "mainImage";
     const files = document.getElementById('mainImage').files;
     const file = files[0];
-    console.log(file.name, "<====== LOOK");
     let newImgName = file.name.split(".")[0] + "-main-image." + file.name.split(".")[1];
-    console.log(newImgName, "<====== LOOK AGAIN");
-    // return;
+
     if(file == null){
       console.log('No file selected.');
     }
@@ -27,9 +23,7 @@ if (document.getElementById("thumbnailImage")) {
     const files = document.getElementById('thumbnailImage').files;
     const file = files[0];
 
-    console.log(file.name, "<====== LOOK");
     let newImgName = file.name.split(".")[0] + "-thumbnail-image." + file.name.split(".")[1];
-    console.log(newImgName, "<====== LOOK AGAIN");
 
     if(file == null){
       console.log('No file selected.');
@@ -43,20 +37,15 @@ if (document.getElementById("thumbnailImage")) {
 if (document.getElementById("userImage")) {
 (() => {
   document.getElementById("userImage").onchange = () => {
-    console.log("Hi")
     const imageType = "userImage";
     const files = document.getElementById('userImage').files;
     const file = files[0];
-    console.log(file.name, "<====== LOOK");
     let newImgName = file.name.split(".")[0] + "-user-image." + file.name.split(".")[1];
-    console.log(newImgName, "<====== LOOK AGAIN");
-    // return;
+
     if(file == null){
       console.log('No file selected.');
     }
-    // console.log("This is the image: ", file);
-    // console.log("This is the image type: ", file.type);
-    // console.log(`/sign-s3?file-name=${newImgName}&file-type=${file.type}`)
+
     getSignedRequest(file, imageType, newImgName);
   };
 })();
@@ -83,12 +72,9 @@ function getSignedRequest(file, imageType, newFileName){
 }
 
 function uploadFile(file, signedRequest, url, imageType){
-  console.log("ITS A WRAP", file);
-  console.log(file, "<============== WAKA WAKA AYY AYY");
   const xhr = new XMLHttpRequest();
   xhr.open('PUT', signedRequest);
   xhr.onreadystatechange = () => {
-    console.log("nearly there...", signedRequest);
     if(xhr.readyState === 4){
       if(xhr.status === 200){
         if (imageType === "mainImage") {

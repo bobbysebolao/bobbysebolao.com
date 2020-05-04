@@ -12,7 +12,6 @@ document.onreadystatechange = function() {
     fetch("/blog/main-images")
       .then(res => res.json())
       .then(images => {
-        console.log(images);
         for (let i = 0; i < images.length; i++) {
           var image = document.createElement("img");
           image.className = "main-image";
@@ -26,7 +25,6 @@ document.onreadystatechange = function() {
           imageContainer.appendChild(image);
           imageContainer.appendChild(imageName);
           imageBrowser.appendChild(imageContainer);
-          console.log(images[i].name);
         }
       });
   }

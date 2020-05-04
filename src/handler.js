@@ -69,17 +69,11 @@ const allPostsHandler = (req, res) => {
 };
 
 const specificPostHandler = (req, res, endpoint) => {
-  console.log(endpoint);
-  console.log("BOBO", `${endpoint.split("/")[2].split(".html")[0]}` + ".html");
-  // return;
   let filename = `${endpoint.split("/")[2].split(".html")[0]}` + ".html";
-  console.log("Monsters inc", filename);
-  // return;
 
   generateAWSSignature
     .getAwsFile(filename)
     .then(response => {
-      console.log("Simba", response);
       let fileContents = response["Body"].toString();
       fs.writeFile(
         __dirname + "/../public" + "/posts/" + filename,
@@ -178,13 +172,11 @@ const createAccountPageHandler = res => {
 
 const newPostHandler = (req, res) => {
   let jwt = cookie.parse(req.headers.cookie).jwt;
-  console.log(jwt);
   if (jwt !== undefined) {
     decodeJSONWebToken(jwt)
       .then(decodedToken => {
         if (decodedToken.logged_in === true) {
           if (decodedToken.role === "admin") {
-            console.log("Commenter is logged in, display the gated content");
             fs.readFile(
               __dirname + "/../public/blog/create-post.html",
               "utf8",
@@ -201,7 +193,6 @@ const newPostHandler = (req, res) => {
             res.writeHead(302, {
               Location: "./authorisation-failure.html"
             });
-            // res.writeHead(400, { "Content-Type": "text/html" });
             res.end();
           }
         }
@@ -209,20 +200,17 @@ const newPostHandler = (req, res) => {
       .catch(error => console.log(error));
   } else {
     res.writeHead(302, { Location: "/blog/publish-failure.html" });
-    // res.writeHead(400, { "Content-Type": "text/html" });
     res.end();
   }
 };
 
 const imageManagerPageHandler = (req, res) => {
   let jwt = cookie.parse(req.headers.cookie).jwt;
-  console.log(jwt);
   if (jwt !== undefined) {
     decodeJSONWebToken(jwt)
       .then(decodedToken => {
         if (decodedToken.logged_in === true) {
           if (decodedToken.role === "admin") {
-            console.log("Commenter is logged in, display the gated content");
             fs.readFile(
               __dirname + "/../public/blog/image-manager.html",
               "utf8",
@@ -239,7 +227,6 @@ const imageManagerPageHandler = (req, res) => {
             res.writeHead(302, {
               Location: "./authorisation-failure.html"
             });
-            // res.writeHead(400, { "Content-Type": "text/html" });
             res.end();
           }
         }
@@ -247,15 +234,12 @@ const imageManagerPageHandler = (req, res) => {
       .catch(error => console.log(error));
   } else {
     res.writeHead(302, { Location: "/blog/publish-failure.html" });
-    // res.writeHead(400, { "Content-Type": "text/html" });
     res.end();
   }
 };
 
 const domScriptsHandler = (res, endpoint, extension) => {
   let filename = `${endpoint.split("/")[4]}`;
-  console.log("JS IS HERE", filename);
-  console.log("EXTENSION IS HERE", extension);
   const extensionType = {
     html: "text/html",
     css: "text/css",
@@ -280,8 +264,6 @@ const domScriptsHandler = (res, endpoint, extension) => {
 };
 
 const publicHandler = (res, endpoint, extension) => {
-  console.log("RODNEY", endpoint);
-  console.log("GIGI", __dirname + "/../public" + endpoint);
   let mimeType;
   if (extension === "min") {
     mimeType = "css";
@@ -307,7 +289,6 @@ const publicHandler = (res, endpoint, extension) => {
       console.log(
         "Error: One of the requested files couldn't be found (probably the favicon :P)"
       );
-      console.log(endpoint);
       return;
     }
     res.writeHead(200, { "Content-Type": extensionType[mimeType] });
@@ -362,11 +343,8 @@ const checkLoginStatusHandler = async (req, res) => {
 };
 
 const getProjectsHandler = (req, res) => {
-  // console.log("So far so good");
   getProjects()
     .then(response => {
-      console.log("Boogie woogie", response);
-      // return;
       res.end(JSON.stringify(response));
     })
     .catch(error => {
@@ -417,8 +395,6 @@ const getTagsHandler = async (req, res) => {
 //POST REQUEST HANDLERS
 
 const contactFormHandler = (req, res) => {
-  console.log("YAH");
-
   let form = new formidable.IncomingForm();
 
   form.uploadDir = __dirname + "/../public/assets/images/blog";
@@ -435,16 +411,12 @@ const contactFormHandler = (req, res) => {
       return error;
     } else {
       console.log("Form data parsing underway...");
-      console.log("Check this out:", fields);
       Promise.all([sendEmail(fields)])
         .then(response => {
           res.writeHead(302, { Location: "/index.html" });
-          // res.writeHead(400, { "Content-Type": "text/html" });
           res.end();
         })
         .catch(console.error);
-      // console.log("The image file: ", files);
-      // return;
     }
   });
 };
@@ -485,8 +457,6 @@ const createPostHandler = async (req, res, encodedJwt) => {
             path: fields["main_image_url"],
             type: files["main_image"]["type"]
           };
-
-          console.log("Ellie: ", mainImage);
   
           const thumbnail = {
             name: files["thumbnail"]["name"],
@@ -494,8 +464,6 @@ const createPostHandler = async (req, res, encodedJwt) => {
             path: fields["thumbnail_url"],
             type: files["thumbnail"]["type"]
           };
-
-          console.log("Joel: ", thumbnail);
   
           let timeOfPublication = Date.now();
           let dateOfPublication = Date(timeOfPublication);
@@ -530,8 +498,6 @@ const createPostHandler = async (req, res, encodedJwt) => {
 
         formData["url"] = `/posts/${formData["filename"]}`;
         const newPostContent = await createPostFromTemplate(formData);
-
-        console.log("What is the post content: ", newPostContent);
 
         const awsAuthData = await generateAWSSignature.generateAWSSignature(`/sign-s3?file-name=${formData["filename"]}&file-type=text/html`);
 
@@ -612,8 +578,7 @@ const uploadImageHandler = async (req, res, encodedJwt) => {
         resolve(fields);
       })
   })
-
-  console.log("NORM", formData.main_image);
+  
   await submitNewImage(formData.main_image);
 
   // Delete the main image from the local filesystem
@@ -732,7 +697,6 @@ const confirmEmailHandler = async (req, endpoint, res) => {
         });
         return res.end();
       } else {
-        console.log("TOKEN HAS EXPIRED");
         res.writeHead(302, {
           Location: "/blog/login.html"
         });

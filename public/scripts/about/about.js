@@ -1,5 +1,3 @@
-// alert("Hello")
-
 //ACCORDION FUNCTIONALITY
 
 // RESOURCES THAT HELPED ME
@@ -34,12 +32,10 @@ for (let i = 0; i < accOne.length; i++) {
             panel.style.display = "none";
             fillGap[0].style.display = "block";
             instruction[0].style.display = "block";
-            // instruction[0].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[0].style.display = "none";
             instruction[0].style.display = "none";
-            // instruction[0].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
@@ -62,12 +58,10 @@ for (let i = 0; i < accTwo.length; i++) {
             panel.style.display = "none";
             fillGap[1].style.display = "block";
             instruction[1].style.display = "block";
-            // instruction[1].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[1].style.display = "none";
             instruction[1].style.display = "none";
-            // instruction[1].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -90,12 +84,10 @@ for (let i = 0; i < accThree.length; i++) {
             panel.style.display = "none";
             fillGap[2].style.display = "block";
             instruction[2].style.display = "block";
-            // instruction[2].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[2].style.display = "none";
             instruction[2].style.display = "none";
-            // instruction[2].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -118,12 +110,10 @@ for (let i = 0; i < accFour.length; i++) {
             panel.style.display = "none";
             fillGap[3].style.display = "block";
             instruction[3].style.display = "block";
-            // instruction[3].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[3].style.display = "none";
             instruction[3].style.display = "none";
-            // instruction[3].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -146,12 +136,10 @@ for (let i = 0; i < accFive.length; i++) {
             panel.style.display = "none";
             fillGap[4].style.display = "block";
             instruction[4].style.display = "block";
-            // instruction[5].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[4].style.display = "none";
             instruction[4].style.display = "none";
-            // instruction[5].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight){
       panel.style.maxHeight = null;
@@ -174,12 +162,10 @@ for (let i = 0; i < accSix.length; i++) {
             panel.style.display = "none";
             fillGap[5].style.display = "block";
             instruction[5].style.display = "block";
-            // instruction[0].innerHTML = "CLICK TO TEAR";
         } else {
             panel.style.display = "block";
             fillGap[5].style.display = "none";
             instruction[5].style.display = "none";
-            // instruction[0].innerHTML = "CLICK TO FIX";
         }
         if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
@@ -202,12 +188,10 @@ for (let i = 0; i < accSeven.length; i++) {
           panel.style.display = "none";
           fillGap[6].style.display = "block";
           instruction[6].style.display = "block";
-          // instruction[4].innerHTML = "CLICK TO TEAR";
       } else {
           panel.style.display = "block";
           fillGap[6].style.display = "none";
           instruction[6].style.display = "none";
-          // instruction[4].innerHTML = "CLICK TO FIX";
       }
       if (panel.style.maxHeight){
     panel.style.maxHeight = null;
@@ -230,12 +214,10 @@ for (let i = 0; i < accEight.length; i++) {
           panel.style.display = "none";
           fillGap[7].style.display = "block";
           instruction[7].style.display = "block";
-          // instruction[4].innerHTML = "CLICK TO TEAR";
       } else {
           panel.style.display = "block";
           fillGap[7].style.display = "none";
           instruction[7].style.display = "none";
-          // instruction[4].innerHTML = "CLICK TO FIX";
       }
       if (panel.style.maxHeight){
     panel.style.maxHeight = null;
@@ -265,8 +247,6 @@ let headLeft = document.querySelector('.headLeft');
 let headRight = document.querySelector('.headRight');
 
 let headTurned = document.querySelector('.headTurned');
-
-// headLeft.classList.toggle('headLeftHidden');
 
 function headLeftShow(){
 headLeft.classList.toggle('headLeftHidden');
@@ -415,7 +395,6 @@ function playForwards() {
   img3.classList.add("animateRight3", "positionMinus1Offset");
   img2.classList.remove("position1", "position2", "position3", "position4", "positionMinus1", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animat4", "animateRight", "animateRight2");
   img2.classList.add("animateRight3", "positionMinus1Offset");
-  // img3.classList.remove("position1", "position2", "position3", "positionMinus1", "positionMinus1Offset", "position1Offset", "position1DoubleOffset", "animate", "animate2", "animate3", "animateRight", "animateRight2");
   count = -3;
   }
 
@@ -459,14 +438,12 @@ function startSlideshow() {
   nIntervID = window.setInterval(playForwards, 5000);
   autoplay.setAttribute("value", "checked");
   shuffleButtons.classList.add("active")
-  // console.log(autoplay.value);
 }
 
 function stopSlideshow() {
   window.clearInterval(nIntervID);
   autoplay.setAttribute("value", "unchecked");
   shuffleButtons.classList.remove("active")
-  // console.log(autoplay.value);
 }
 
 function toggleSlideshow() {

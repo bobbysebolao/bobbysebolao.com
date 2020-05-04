@@ -16,8 +16,8 @@ if (process.env.NODE_ENV == "local") {
 const sql = fs.readFileSync(sqlPath).toString();
 
   return await dbConnection.multi(sql)
-  .then(() => console.log('Database created and seeded with data'))
-  .catch(err => console.log(err, "There is an error here!"))
+  .then(() => console.info('Database created and seeded with data'))
+  .catch(err => console.error(err, "There is an error here!"))
 }
 
 module.exports = buildDatabase;

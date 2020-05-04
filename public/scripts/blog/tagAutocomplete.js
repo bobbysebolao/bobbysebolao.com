@@ -9,18 +9,15 @@ let timeout;
 
 const inputHandler = e => {
   const input = e.target.value;
-  // console.log("Here's the input: ", input);
 
   clearTimeout(timeout);
 
   timeout = setTimeout(function() {
     let url = `/blog/tags?q=${input}`;
-    console.log("Here's the URL: ", url);
     if (input.length > 0) {
     fetch(url)
     .then(response => response.json())
     .then(json => {
-      console.log("HERE'S THE DB RESPONSE: ", json);
       appendTags(json);
     })
     .catch(error => console.error('Error:', error));
@@ -31,13 +28,11 @@ const inputHandler = e => {
 }
 
 const appendTags = tags => {
-  console.log("Append these tags: ", tags);
   if (tags !== undefined) {
 
   tagsList.textContent = "";
 
   tags.slice(0, 5).forEach(tag => {
-    console.log(tag);
     const li = document.createElement("li");
     const button = document.createElement("button");
     li.className = "tags__item";
@@ -83,18 +78,12 @@ const selectTag = tagLabel => {
 
   tagsToSubmit[`${tagLabel}`] = tagLabel;
 
-  // console.log("Here are the tags to submit: ", tagsToSubmit);
-
   hiddenTagInput.value += tagLabel + " ";
-  // console.log("DA VALUE", hiddenTagInput.value)
 
   deleteRenderedTag.onclick = () => {
     renderedTag.parentNode.removeChild(renderedTag);
     delete tagsToSubmit[`${tagLabel}`];
-    // console.log("Here are the remaining tags: ", tagsToSubmit);
-    // hiddenTagInput.value.split(" ").splice()
     let hiddenTagInputArray = hiddenTagInput.value.split(" ")
-    // console.log("Boo", hiddenTagInputArray)
 
     let filtered = hiddenTagInputArray.filter((value, index, arr) => {
     return value !== tagLabel;
@@ -105,12 +94,8 @@ if (filtered[filtered.length-1] = "") {
 }
 
 hiddenTagInput.value = filtered.join(" ");
-
-// console.log("YES YES YALL", hiddenTagInput.value)
   }
-
 }
-
 }
 
 tagInput.onkeyup = inputHandler;

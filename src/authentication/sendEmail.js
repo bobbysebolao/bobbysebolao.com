@@ -6,7 +6,6 @@ let GMAIL_ADDRESS = process.env.GMAIL_ADDRESS;
 let GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
 
 async function sendEmail(recipientData, token) {
-  console.log("HOOOHAAA", recipientData.first_name, recipientData.email, token);
 
   let mailConfig;
   let confirmationLink;
@@ -18,7 +17,7 @@ async function sendEmail(recipientData, token) {
     process.env.NODE_ENV !== "live" &&
     process.env.NODE_ENV !== "build_db"
   ) {
-    console.log("Sending real email...");
+    console.info("Sending real email...");
     if (token) {
       confirmationLink = `https://bobbysebolao.com/blog/confirm-email?evt=${token}&username=${
         recipientData.username
@@ -35,7 +34,7 @@ async function sendEmail(recipientData, token) {
       }
     };
   } else {
-    console.log("Sending test email...");
+    console.info("Sending test email...");
     if (token) {
       confirmationLink = `http://localhost:9000/blog/confirm-email?evt=${token}&username=${
         recipientData.username

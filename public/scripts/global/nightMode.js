@@ -1,5 +1,3 @@
-console.log("hey");
-
 let nightMode = document.querySelector(".nightMode");
 
 if (typeof standardStylesheet === "undefined") {
@@ -8,8 +6,6 @@ if (typeof standardStylesheet === "undefined") {
 
 //ACTIVATING NIGHT mode
 nightMode.addEventListener("click", () => {
-  // nightMode.classList.toggle("mode-active");
-  console.log("Tyler", standardStylesheet);
 
   let homeTitleWordOne = document.querySelector(".home-title__wordone");
   let homeTitleWordTwo = document.querySelector(".home-title__wordtwo");
@@ -29,31 +25,26 @@ nightMode.addEventListener("click", () => {
     standardStylesheet.href.match("/css/minified/blog/knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match("/css/minified/blog/night-knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/blog/sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match("/css/minified/blog/night-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/blog/knight-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -61,7 +52,6 @@ nightMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/blog/knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (standardStylesheet.href.match("/css/minified/work/work.min.css")) {
     standardStylesheet.href = "/css/minified/work/work-night.min.css";
@@ -181,7 +171,6 @@ nightMode.addEventListener("click", () => {
     standardStylesheet.href.match("/css/minified/home/home-knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/home/home-night-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -189,13 +178,11 @@ nightMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/home/home-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/home/home-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/home/home-night-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -203,7 +190,6 @@ nightMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/home/home-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match(
@@ -212,7 +198,6 @@ nightMode.addEventListener("click", () => {
   ) {
     standardStylesheet.href =
       "/css/minified/home/home-night-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -220,7 +205,6 @@ nightMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/home/home-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else {
     standardStylesheet.href = "/css/minified/blog/blog.min.css";

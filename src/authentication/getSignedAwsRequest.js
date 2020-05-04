@@ -3,22 +3,13 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const customLog = require("../utils/customLog");
 
 const getSignedAwsRequest = (filename) => {
-  console.log("ALL SYSTEMS GO", filename);
-  // console.log("ALL SYSTEMS GO", fileType);
-  // return;
-  // request(`/sign-s3?file-name=${filename}&file-type=text/html`, function(err, res, body) {
-  //     console.log("HERE BE TREASURE", body);
-  // });
 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', `/sign-s3?file-name=${filename}&file-type=text/html`);
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4){
       if(xhr.status === 200){
-        console.log("ALL SYSTEMS GO");
-        // return;
         const response = JSON.parse(xhr.responseText);
-        console.log(response);
         uploadFile(file, response.signedRequest);
         console.log("Blog post is ready to upload to AWS");
       }

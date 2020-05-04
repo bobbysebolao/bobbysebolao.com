@@ -31,7 +31,6 @@ let projectLinksArr = Array.prototype.slice.call(projectLinksHTMLCollection);
 fetch("/projects")
   .then(res => res.json())
   .then(projectsData => {
-    // console.log("Here are the airtable results: ", projectsData);
     for (let i = 0; i < projectsData.length; i++) {
       projectImageArr[
         i
@@ -44,11 +43,5 @@ fetch("/projects")
       projectLinksArr[i].href = projectsData[i]["Link URL"];
 
       projectLinksArr[i].appendChild(document.createElement("div"));
-
-      console.log("The image URL: ", projectsData[i]["Image"][0]["url"]);
-      console.log("The type: ", projectsData[i]["Type"]);
-      console.log("The title: ", projectsData[i]["Title"]);
-      console.log("The description: ", projectsData[i]["Description"]);
-      console.log("The link: ", projectsData[i]["Link URL"]);
     }
   });

@@ -45,7 +45,7 @@ const validateNewUser = (obj) => {
   }
 
   else {
-    console.log("New user account details passed the validation checks");
+    console.info("New user account details passed the validation checks");
     resolve(true);
   }
 

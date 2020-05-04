@@ -11,7 +11,6 @@ const baseKey = process.env.AIRTABLE_BASE_ID;
 const base = new Airtable({ apiKey }).base(baseKey);
 
 const getProjects = () => {
-  console.log("Projects time!");
   return new Promise((resolve, reject) => {
     let result = [];
     base('Projects')
@@ -22,7 +21,6 @@ const getProjects = () => {
 })
       .eachPage(
         function page(records, fetchNextPage) {
-          // let result = [];
           records.forEach((record) => {
               result.push(record.fields);
           });

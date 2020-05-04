@@ -11,15 +11,10 @@ const s3 = new aws.S3();
 
 const generateAWSSignature = (endpoint, res) => {
   return new Promise((resolve, reject) => {
-    console.log("CHECK OUT DA ENDPOINT", endpoint)
 
   const parsedUrl = url.parse(endpoint);
   const fileName = querystring.parse(parsedUrl.query)['file-name'];
   const fileType = querystring.parse(parsedUrl.query)['file-type'];
-  console.log("a", parsedUrl);
-  console.log("b", fileName);
-  console.log("c", fileType);
-  // return;
 
   let key = "";
 
@@ -70,21 +65,17 @@ const generateAWSSignature = (endpoint, res) => {
       signedRequest: data,
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${key}`
     };
-    console.log("AYOOOOOOO", returnData);
     if (!endpoint.includes("text/html")) {
     res.write(JSON.stringify(returnData));
     res.end();
   } else {
     resolve(returnData);
   }
-    // res.write(JSON.stringify(returnData));
-    // res.end();
   })
     })
 }
 
 const getAwsFile = (filename) => {
-  console.log("Lion King", filename)
   return new Promise((resolve, reject) => {
 
     let key = "";
@@ -103,13 +94,10 @@ const getAwsFile = (filename) => {
 
   s3.getObject(s3Params, function(err, data) {
     if (err) {
-      console.log("boo")
-      console.log(s3Params["Key"])
       console.log(err)
       reject(err)
-    } // an error occurred
+    } 
     else {
-      console.log("WEEEE", data);
       resolve(data)
     };
   })

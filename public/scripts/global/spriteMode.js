@@ -1,5 +1,4 @@
 let spriteMode = document.querySelector(".spriteMode");
-console.log(spriteMode);
 
 const permMarkerArrow = `<path
 d="M69.938,19.352c0.281,0.062,0.445,0.156,0.492,0.281s0.031,0.262-0.047,0.41c-0.078,0.147-0.199,0.301-0.363,0.457
@@ -67,7 +66,6 @@ if (typeof standardStylesheet === "undefined") {
 //ACTIVATING SPRITE MODE
 
 spriteMode.addEventListener("click", () => {
-  // spriteMode.classList.toggle("mode-active");
   if (blockO.length !== 0) {
     for (let i = 0; i < 4; i++) {
       if (
@@ -76,7 +74,6 @@ spriteMode.addEventListener("click", () => {
         standardStylesheet.href.match("/css/minified/blog/knight.min.css") ||
         standardStylesheet.href.match("/css/minified/blog/night-knight.min.css")
       ) {
-        // spriteMode.classList.add("mode-active");
         blockO[i].classList.remove("post");
         blockO[i].classList.add("block-post");
         blockO[i].style.backgroundImage = `url("")`;
@@ -90,7 +87,6 @@ spriteMode.addEventListener("click", () => {
         blockS[i].classList.add("block-post");
         blockS[i].style.backgroundImage = `url("")`;
       } else {
-        // spriteMode.classList.remove("mode-active");
         blockO[i].classList.remove("block-post");
         blockO[i].classList.add("post");
         blockO[i].style.backgroundImage = blockO[i].dataset.thumbnail;
@@ -115,7 +111,6 @@ spriteMode.addEventListener("click", () => {
 
   if (standardStylesheet.href.match("/css/minified/blog/blog.min.css")) {
     standardStylesheet.href = "/css/minified/blog/sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
     if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
       prevArrow.innerHTML = pixelArrow;
@@ -152,7 +147,6 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href.match("/css/minified/home/home-night.min.css")
   ) {
     standardStylesheet.href = "/css/minified/home/home-night-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -160,13 +154,11 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/home/home-night.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/home/home-knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/home/home-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -174,7 +166,6 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/home/home-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match(
@@ -183,7 +174,6 @@ spriteMode.addEventListener("click", () => {
   ) {
     standardStylesheet.href =
       "/css/minified/home/home-night-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -191,25 +181,21 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/home/home-night-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/about/about.min.css")
   ) {
     standardStylesheet.href = "/css/minified/about/about-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match("/css/minified/about/about-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/about/about.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/about/about-night.min.css")
   ) {
     standardStylesheet.href = "/css/minified/about/about-night-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -217,13 +203,11 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/about/about-night.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/about/about-knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/about/about-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -231,7 +215,6 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/about/about-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match(
@@ -240,7 +223,6 @@ spriteMode.addEventListener("click", () => {
   ) {
     standardStylesheet.href =
       "/css/minified/about/about-night-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -248,23 +230,19 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/about/about-night-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (standardStylesheet.href.match("/css/minified/work/work.min.css")) {
     standardStylesheet.href = "/css/minified/work/work-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match("/css/minified/work/work-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/work/work.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/work/work-night.min.css")
   ) {
     standardStylesheet.href = "/css/minified/work/work-night-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -272,13 +250,11 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/work/work-night.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/work/work-knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/work/work-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -286,7 +262,6 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/work/work-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match(
@@ -295,7 +270,6 @@ spriteMode.addEventListener("click", () => {
   ) {
     standardStylesheet.href =
       "/css/minified/work/work-night-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
   } else if (
     standardStylesheet.href.match(
@@ -303,13 +277,11 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/work/work-night-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
   } else if (
     standardStylesheet.href.match("/css/minified/blog/knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
     if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
       prevArrow.innerHTML = pixelArrow;
@@ -319,7 +291,6 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href.match("/css/minified/blog/knight-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
     if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
       prevArrow.innerHTML = permMarkerArrow;
@@ -329,7 +300,6 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href.match("/css/minified/blog/night.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
     if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
       prevArrow.innerHTML = pixelArrow;
@@ -339,7 +309,6 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href.match("/css/minified/blog/night-sprite.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
     if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
       prevArrow.innerHTML = permMarkerArrow;
@@ -349,7 +318,6 @@ spriteMode.addEventListener("click", () => {
     standardStylesheet.href.match("/css/minified/blog/night-knight.min.css")
   ) {
     standardStylesheet.href = "/css/minified/blog/night-knight-sprite.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.setItem("autosave", standardStylesheet.href);
     if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
       prevArrow.innerHTML = pixelArrow;
@@ -361,7 +329,6 @@ spriteMode.addEventListener("click", () => {
     )
   ) {
     standardStylesheet.href = "/css/minified/blog/night-knight.min.css";
-    // console.log("Ocean", standardStylesheet);
     sessionStorage.removeItem("autosave");
     if (typeof prevArrow !== "undefined" && typeof nextArrow !== "undefined") {
       prevArrow.innerHTML = permMarkerArrow;

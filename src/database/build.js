@@ -5,5 +5,5 @@ runDbBuild((err, res) => {
     return process.stdout.write("Build failed");
   }
   process.stdout.write("Build succeeded");
-  console.log("Build succeeded");
+  console.info("Build succeeded");
 });
