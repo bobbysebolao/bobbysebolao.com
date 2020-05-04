@@ -10,7 +10,6 @@ const cookie = require("cookie");
 // const util = require('util');
 const createPostFromTemplate = require("./createPostFromTemplate.js");
 const readingTimeCalculator = require("./helpers/readingTimeCalculator.js");
-const calculateTokenAge = require("./helpers/calculateTokenAge.js");
 
 const submitNewImage = require("./queries/submitNewImage.js");
 const submitNewThumbnail = require("./queries/submitNewThumbnail.js");
@@ -687,7 +686,7 @@ const confirmEmailHandler = async (req, endpoint, res) => {
   let username = endpoint.split("&username=")[1];
 
   const emailVerificationToken = await getEmailVerificationToken(token);
-  const tokenAge = calculateTokenAge(emailVerificationToken.created_at);
+  const tokenAge = Date.now() - emailVerificationToken.created_at;
   await deleteEmailVerificationToken(token);
       if (tokenAge < 43200000) {
         await updateVerifiedUser(username);
