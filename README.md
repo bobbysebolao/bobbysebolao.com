@@ -1,6 +1,6 @@
 # My Portfolio Website
 
-[![Build Status](https://travis-ci.com/bobbysebolao/bobbysebolao.github.io.svg?branch=master)](https://travis-ci.com/bobbysebolao/bobbysebolao.github.io) [![codecov](https://codecov.io/gh/bobbysebolao/bobbysebolao.github.io/branch/master/graph/badge.svg)](https://codecov.io/gh/bobbysebolao/bobbysebolao.github.io)
+[![Build Status](https://travis-ci.com/bobbysebolao/bobbysebolao.com.svg?branch=master)](https://travis-ci.com/bobbysebolao/bobbysebolao.com) [![codecov](https://codecov.io/gh/bobbysebolao/bobbysebolao.github.io/branch/master/graph/badge.svg)](https://codecov.io/gh/bobbysebolao/bobbysebolao.github.io)
 
 My portfolio website.
 
