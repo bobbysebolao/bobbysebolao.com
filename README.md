@@ -36,7 +36,7 @@ My portfolio website.
 ## Special features:
 
 - Email contact form
-- A blog
+- A blog + comments section
 - Stateful and stateless authentication on login
 - New user email authentication
 - Image carousel
