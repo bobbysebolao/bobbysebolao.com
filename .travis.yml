@@ -14,8 +14,7 @@ before_install:
 before_script:
   - psql -c 'create database blog_test;' -U postgres
   - psql -c "CREATE USER bobby WITH PASSWORD 'qwerty';" -U postgres
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
 script:
-  - npm run coverage
-  - codecov
+  - npm test
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -f coverage/coverage-final.json

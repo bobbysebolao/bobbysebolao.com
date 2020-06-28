@@ -28,6 +28,8 @@ const createPostFromTemplate = function(postData) {
     data = data.replace(/\*\*\*\*\*insertpostmetadescriptionhere\*\*\*\*\*/g, postData.metadescription);
     data = data.replace("*****insertposturlhere*****", "www.bobbysebolao.com" + postData.url);
     data = data.replace("*****insertauthorhere*****", postData.author_name);
+
+    return data;
 }
 
 module.exports = createPostFromTemplate;
