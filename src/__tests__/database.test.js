@@ -49,7 +49,7 @@ describe("Testing database interactions", () => {
     describe("the getAllPosts function", () => {
       it('should return 11 posts', async () => {
         const result = await getAllPosts();
-        expect(result.length).toBe(11);
+        expect(result.length).toBe(12);
       })
     })
 
@@ -77,14 +77,14 @@ describe("Testing database interactions", () => {
     describe("the getAllThumbnails function", () => {
       it('should return 11 thumbnails', async () => {
         const result = await getAllThumbnails();
-        expect(result.length).toBe(11);
+        expect(result.length).toBe(12);
       })
     })
 
     describe("the getAllMainImages function", () => {
       it('should return 40 images', async () => {
         const result = await getAllMainImages();
-        expect(result.length).toBe(40);
+        expect(result.length).toBe(43);
       })
     })
 
