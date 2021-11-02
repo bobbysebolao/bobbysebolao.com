@@ -24,7 +24,7 @@ My portfolio website.
 - aws-sdk
 - bcryptjs
 - cookie
-- env2
+- dotenv
 - formidable
 - jsonwebtoken
 - nodemailer

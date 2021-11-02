@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-require("env2")("./config.env");
+require("dotenv").config();
 
 let GMAIL_ADDRESS = process.env.GMAIL_ADDRESS;
 let GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;

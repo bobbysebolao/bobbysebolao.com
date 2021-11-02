@@ -1,4 +1,4 @@
-require("env2")("config.env");
+require("dotenv").config();
 const Airtable = require("airtable");
 
 if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_ID) {

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-require("env2")("./config.env");
+require("dotenv").config();
 
 const decodeJSONWebToken = (token) => {
   return new Promise((resolve, reject) => {

@@ -2,7 +2,7 @@ const fs = require("fs");
 const querystring = require("querystring");
 const path = require("path");
 
-require("env2")("./config.env");
+require("dotenv").config();
 
 let mainImageRoot = "";
 

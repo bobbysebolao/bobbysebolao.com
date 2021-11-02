@@ -4,7 +4,7 @@ const pgPromise = require('pg-promise')();
 
 const url = require("url");
 
-require("env2")("./config.env");
+require("dotenv").config();
 
 let DB_URL = process.env.DB_URL;
 

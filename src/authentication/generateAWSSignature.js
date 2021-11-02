@@ -1,4 +1,4 @@
-require("env2")("./config.env");
+require("dotenv").config();
 
 const querystring = require("query-string");
 const url = require('url');
