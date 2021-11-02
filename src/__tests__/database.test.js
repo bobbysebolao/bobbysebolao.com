@@ -2,23 +2,7 @@ const pgPromise = require('pg-promise')();
 const { dbConnection } = require("../database/db_connection.js");
 
 const buildDatabase = require("../database/db_build.js");
-const getAllMainImages = require("../queries/getAllMainImages");
-const getAllPosts = require("../queries/getAllPosts");
-const getAllThumbnails = require("../queries/getAllThumbnails");
-const getComments = require("../queries/getComments");
-const getPost = require("../queries/getPost");
-const getTags = require("../queries/getTags");
-const getUser = require("../queries/getUser");
-const getUsername = require("../queries/getUsername");
-const deleteEmailVerificationToken = require("../queries/deleteEmailVerificationToken");
-const getEmailVerificationToken = require("../queries/getEmailVerificationToken");
-const submitEmailVerificationToken = require("../queries/submitEmailVerificationToken");
-const submitNewComment = require("../queries/submitNewComment");
-const submitNewImage = require("../queries/submitNewImage");
-const submitNewPost = require("../queries/submitNewPost");
-const submitNewThumbnail = require("../queries/submitNewThumbnail");
-const submitNewUser = require("../queries/submitNewUser");
-const updateVerifiedUser = require("../queries/updateVerifiedUser");
+const { getAllMainImages, getAllPosts, getAllThumbnails, getComments, getPost, getTags, getUser, getUsername, deleteEmailVerificationToken, getEmailVerificationToken, submitEmailVerificationToken, submitNewComment, submitNewImage, submitNewPost, submitNewThumbnail, submitNewUser, updateVerifiedUser } = require("../queries/index");
 
 describe("Testing database interactions", () => {
   beforeAll(async () => {
@@ -37,7 +21,7 @@ describe("Testing database interactions", () => {
         const result = await getUser(this.user.username);
         expect(result.email).toBe('bobbysebolao@gmail.com');
       })
-    })
+    });
 
     describe("the getUsername function", () => {
       it('should return information for the specified user', async () => {
