@@ -21,9 +21,10 @@ import { submitNewUser } from "../queries/submitNewUser.js";
 import { updateVerifiedUser } from "../queries/updateVerifiedUser.js";
 
 describe("Testing database interactions", () => {
+    let user;
   beforeAll(async () => {
     await buildDatabase();
-    this.user = await getUser('mistapepper');
+    user = await getUser('mistapepper');
   });
 
   afterAll(async () => {
@@ -34,14 +35,14 @@ describe("Testing database interactions", () => {
   describe("Testing 'INSERT' actions", () => {
     describe("the getUser function", () => {
       it('should return information for the specified user', async () => {
-        const result = await getUser(this.user.username);
+        const result = await getUser(user.username);
         expect(result.email).toBe('bobbysebolao@gmail.com');
       })
     })
 
     describe("the getUsername function", () => {
       it('should return information for the specified user', async () => {
-        const result = await getUsername(this.user.pk_user_id);
+        const result = await getUsername(user.pk_user_id);
         expect(result.email).toBe('bobbysebolao@gmail.com');
       })
     })
@@ -123,12 +124,12 @@ describe("Testing database interactions", () => {
         const testComment = {
           comment: "I really enjoyed reading this!",
           postId: 11,
-          userId: this.user.pk_user_id,
+          userId: user.pk_user_id,
           timestamp: Date.now(),
           date: Date(Date.now()),
-          username: this.user.username,
-          avatarName: this.user.avatar_name,
-          avatarFilepath: this.user.avatar_filepath
+          username: user.username,
+          avatarName: user.avatar_name,
+          avatarFilepath: user.avatar_filepath
         }
         const result = await submitNewComment(testComment);
         expect(result.rowCount).toBe(1);
@@ -170,21 +171,22 @@ describe("Testing database interactions", () => {
     })
 
     describe("the submitNewPost function", () => {
+        let post;
       beforeAll(async () => {
-        this.post = await getPost('subgrid-is-coming.html');
-        this.post.main_image = {
+        post = await getPost('subgrid-is-coming.html');
+        post.main_image = {
           name: 'test-main-image',
           size: 35693,
           path: 'https://console-blog.s3.amazonaws.com/local-uploads/practice-images/test-main-image.png',
           type: 'image/png'
       }
-        this.post.thumbnail = {
+        post.thumbnail = {
           name: 'test-thumbnail',
           size: 12242,
           path: 'https://console-blog.s3.amazonaws.com/local-uploads/practice-images/test-thumbnail.png',
           type: 'image/jpg'
       }
-        this.post.author_name = 'mistapepper';
+        post.author_name = 'mistapepper';
       });
 
       afterEach(async () => {
@@ -192,17 +194,18 @@ describe("Testing database interactions", () => {
       });
 
       it('should insert the post into the database', async () => {
-        const testPost = this.post;
+        const testPost = post;
         const result = await submitNewPost(testPost);
         expect(result.rowCount).toBe(1);
       })
     })
 
     describe("the submitNewUser function", () => {
+        let testUser;
       beforeAll(async () => {
-        this.testUser = await getUser('testuser');
-        this.testUser.username = "testuser2";
-        this.testUser.userImage = {
+        testUser = await getUser('testuser');
+        testUser.username = "testuser2";
+        testUser.userImage = {
           name: 'test-main-image',
           size: 58161,
           path: 'https://console-blog.s3.amazonaws.com/local-uploads/practice-images/test-main-image.png',
@@ -215,7 +218,6 @@ describe("Testing database interactions", () => {
       });
 
       it('should insert the user into the database', async () => {
-        const testUser = this.testUser;
         const result = await submitNewUser(testUser);
         expect(result.rowCount).toBe(1);
       })
