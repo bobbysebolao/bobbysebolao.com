@@ -247,7 +247,12 @@ describe("Testing database interactions", () => {
       });
 
       afterAll(async () => {
-        await submitEmailVerificationToken(token.token, this.user.username);
+          const opts = {
+              token: token.token,
+              username: user.username,
+              timestamp: Date.now(),
+          }
+        await submitEmailVerificationToken(opts);
       });
 
       it('should delete the specified token from the database', async () => {
