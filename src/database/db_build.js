@@ -1,16 +1,19 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const buildDatabase = async () => {
-const { dbConnection } = require("./db_connection.js");
-let sqlPath = path.join(__dirname, "db_build_prod.sql");
+import { dbConnection } from "./db_connection.js";
+
+const __dirname = path.resolve();
+
+export const buildDatabase = async () => {
+let sqlPath = path.join(__dirname, "/src/database/db_build_prod.sql");
 
 if (process.env.NODE_ENV == "test") {
-  sqlPath = path.join(__dirname, "db_build_test.sql");
+  sqlPath = path.join(__dirname, "/src/database/db_build_test.sql");
 }
 
 if (process.env.NODE_ENV == "local") {
-  sqlPath = path.join(__dirname, "db_build_local.sql");
+  sqlPath = path.join(__dirname, "/src/database/db_build_local.sql");
 }
 
 const sql = fs.readFileSync(sqlPath).toString();
@@ -19,5 +22,3 @@ const sql = fs.readFileSync(sqlPath).toString();
   .then(() => console.info('Database created and seeded with data'))
   .catch(err => console.error(err, "There is an error here!"))
 }
-
-module.exports = buildDatabase;

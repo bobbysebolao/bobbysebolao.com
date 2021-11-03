@@ -1,11 +1,12 @@
-const nodemailer = require("nodemailer");
+import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 
-require("dotenv").config();
+dotenv.config();
 
 let GMAIL_ADDRESS = process.env.GMAIL_ADDRESS;
 let GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
 
-async function sendEmail(recipientData, token) {
+export const sendEmail = async (recipientData, token) => {
 
   let mailConfig;
   let confirmationLink;
@@ -111,5 +112,3 @@ async function sendEmail(recipientData, token) {
   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
-
-module.exports = sendEmail;

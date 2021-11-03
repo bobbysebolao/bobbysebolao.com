@@ -1,10 +1,10 @@
-const fs = require("fs");
-const querystring = require("querystring");
-const path = require("path");
-
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
+import fs from "fs";
+import path from "path";
 
 let mainImageRoot = "";
+const __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "start") {
   mainImageRoot = "https://s3.eu-west-2.amazonaws.com/console-blog/blog-images/";
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "start") {
   mainImageRoot = "https://s3.eu-west-2.amazonaws.com/console-blog/local-uploads/practice-images/";
 }
 
-const createPostFromTemplate = function(postData) {
+export const createPostFromTemplate = postData => {
 
   let data = fs.readFileSync(__dirname + "/../public/blog/post-template.html", "utf8")
 
@@ -31,5 +31,3 @@ const createPostFromTemplate = function(postData) {
 
     return data;
 }
-
-module.exports = createPostFromTemplate;

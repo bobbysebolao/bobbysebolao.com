@@ -1,29 +1,9 @@
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-// const request = require('request');
-const customLog = require("../utils/customLog");
+import XMLHttpRequest from "xmlhttprequest";
+import { customLog } from "../utils/customLog.js";
 
-const getSignedAwsRequest = (filename) => {
-
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', `/sign-s3?file-name=${filename}&file-type=text/html`);
-  xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4){
-      if(xhr.status === 200){
-        const response = JSON.parse(xhr.responseText);
-        uploadFile(file, response.signedRequest);
-        console.log("Blog post is ready to upload to AWS");
-      }
-      else{
-        console.log('Could not get signed URL.');
-      }
-    }
-  };
-  xhr.send();
-}
-
-const uploadFile = (file, signedRequest) => {
+export const uploadFile = (file, signedRequest) => {
   return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest.XMLHttpRequest();
     xhr.open('PUT', signedRequest);
     xhr.onreadystatechange = () => {
       if(xhr.readyState === 4){
@@ -40,8 +20,3 @@ const uploadFile = (file, signedRequest) => {
     resolve();
   })
 }
-
-module.exports = {
-  getSignedAwsRequest,
-  uploadFile
-};

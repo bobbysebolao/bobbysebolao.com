@@ -1,7 +1,9 @@
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
-const decodeJSONWebToken = (token) => {
+dotenv.config();
+
+export const decodeJSONWebToken = (token) => {
   return new Promise((resolve, reject) => {
     if (token === undefined) {
       resolve(undefined);
@@ -13,5 +15,3 @@ const decodeJSONWebToken = (token) => {
   }
   })
 }
-
-module.exports = decodeJSONWebToken;

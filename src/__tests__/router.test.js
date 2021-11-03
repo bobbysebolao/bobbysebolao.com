@@ -1,4 +1,4 @@
-const readingTimeCalculator = require("../helpers/readingTimeCalculator.js");
+import { readingTimeCalculator } from "../helpers/readingTimeCalculator.js";
 
 it('Testing to see if Jest works', () => {
     expect(2).toBe(2)

@@ -1,6 +1,6 @@
-const { dbConnection } = require("../database/db_connection.js");
+import { dbConnection } from "../database/db_connection.js";
 
-const updateVerifiedUser = async (username) => {
+export const updateVerifiedUser = async (username) => {
     return await dbConnection
       .result(
         "UPDATE users SET is_verified = True WHERE username = $1",
@@ -12,5 +12,3 @@ const updateVerifiedUser = async (username) => {
         throw new Error (`There was an error updating the user's details in the db: ${err}`)
       })
 };
-
-module.exports = updateVerifiedUser;

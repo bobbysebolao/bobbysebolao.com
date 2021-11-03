@@ -1,5 +1,7 @@
-require("dotenv").config();
-const Airtable = require("airtable");
+import dotenv from "dotenv";
+import Airtable from "airtable";
+
+dotenv.config();
 
 if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_ID) {
   throw new Error("Error AIRTABLE_API_KEY and AIRTABLE_BASE_KEY should be set");
@@ -10,7 +12,7 @@ const baseKey = process.env.AIRTABLE_BASE_ID;
 
 const base = new Airtable({ apiKey }).base(baseKey);
 
-const getProjects = () => {
+export const getProjects = () => {
   return new Promise((resolve, reject) => {
     let result = [];
     base('Projects')
@@ -35,5 +37,3 @@ const getProjects = () => {
       );
   });
 };
-
-module.exports = getProjects;

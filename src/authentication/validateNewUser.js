@@ -1,4 +1,4 @@
-const validateNewUser = (obj) => {
+export const validateNewUser = (obj) => {
   return new Promise((resolve, reject) => {
 
     const lettersAndApostrophesRegex = /^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/i;
@@ -51,5 +51,3 @@ const validateNewUser = (obj) => {
 
   })
 }
-
-module.exports = validateNewUser;

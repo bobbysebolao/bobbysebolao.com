@@ -52,6 +52,7 @@
     "tape": "^4.10.1",
     "terser": "^4.4.0"
   },
+  "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",

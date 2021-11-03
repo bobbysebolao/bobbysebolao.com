@@ -1,24 +1,24 @@
-const pgPromise = require('pg-promise')();
-const { dbConnection } = require("../database/db_connection.js");
+import pgPromise from "pg-promise";
+import { dbConnection } from "../database/db_connection.js";
 
-const buildDatabase = require("../database/db_build.js");
-const getAllMainImages = require("../queries/getAllMainImages");
-const getAllPosts = require("../queries/getAllPosts");
-const getAllThumbnails = require("../queries/getAllThumbnails");
-const getComments = require("../queries/getComments");
-const getPost = require("../queries/getPost");
-const getTags = require("../queries/getTags");
-const getUser = require("../queries/getUser");
-const getUsername = require("../queries/getUsername");
-const deleteEmailVerificationToken = require("../queries/deleteEmailVerificationToken");
-const getEmailVerificationToken = require("../queries/getEmailVerificationToken");
-const submitEmailVerificationToken = require("../queries/submitEmailVerificationToken");
-const submitNewComment = require("../queries/submitNewComment");
-const submitNewImage = require("../queries/submitNewImage");
-const submitNewPost = require("../queries/submitNewPost");
-const submitNewThumbnail = require("../queries/submitNewThumbnail");
-const submitNewUser = require("../queries/submitNewUser");
-const updateVerifiedUser = require("../queries/updateVerifiedUser");
+import { buildDatabase } from "../database/db_build.js";
+import { getAllMainImages } from "../queries/getAllMainImages.js";
+import { getAllPosts } from "../queries/getAllPosts.js";
+import { getAllThumbnails } from "../queries/getAllThumbnails.js";
+import { getComments } from "../queries/getComments.js";
+import { getPost } from "../queries/getPost.js";
+import { getTags } from "../queries/getTags.js";
+import { getUser } from "../queries/getUser.js";
+import { getUsername } from "../queries/getUsername.js";
+import { deleteEmailVerificationToken } from "../queries/deleteEmailVerificationToken.js";
+import { getEmailVerificationToken } from "../queries/getEmailVerificationToken.js";
+import { submitEmailVerificationToken } from "../queries/submitEmailVerificationToken.js";
+import { submitNewComment } from "../queries/submitNewComment.js";
+import { submitNewImage } from "../queries/submitNewImage.js";
+import { submitNewPost } from "../queries/submitNewPost.js";
+import { submitNewThumbnail } from "../queries/submitNewThumbnail.js";
+import { submitNewUser } from "../queries/submitNewUser.js";
+import { updateVerifiedUser } from "../queries/updateVerifiedUser.js";
 
 describe("Testing database interactions", () => {
   beforeAll(async () => {
@@ -27,7 +27,7 @@ describe("Testing database interactions", () => {
   });
 
   afterAll(async () => {
-    await pgPromise.end();
+    await pgPromise().end();
   });
 
   // INSERT actions

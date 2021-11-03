@@ -1,10 +1,11 @@
-const jwt = require("jsonwebtoken");
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
-require("dotenv").config();
+dotenv.config();
 
 const secret = process.env.SECRET;
 
-var generateJSONWebToken = obj => {
+export const generateJSONWebToken = obj => {
   return new Promise((resolve, reject) => {
     jwt.sign(obj, secret, (err, token) => {
       if (err) reject(err);
@@ -12,5 +13,3 @@ var generateJSONWebToken = obj => {
     });
   });
 };
-
-module.exports = generateJSONWebToken;

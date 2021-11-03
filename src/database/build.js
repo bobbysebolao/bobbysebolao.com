@@ -1,6 +1,6 @@
-const runDbBuild = require("./db_build.js");
+import { buildDatabase } from "./db_build.js";
 
-runDbBuild((err, res) => {
+buildDatabase((err, res) => {
   if (err) {
     return process.stdout.write("Build failed");
   }
