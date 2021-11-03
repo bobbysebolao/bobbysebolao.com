@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=start node server.js",
     "local": "NODE_ENV=local nodemon server.js",
-    "test": "NODE_ENV=test jest --coverage",
+    "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "build-db-local": "NODE_ENV=local node src/database/build.js",
     "build-db-prod": "heroku pg:psql postgresql-adjacent-89548 --app rocky-plains-29996 < src/database/db_build_prod.sql",
     "prod-db-status": "heroku pg:info --app rocky-plains-29996",
@@ -42,7 +42,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
     "istanbul": "^0.4.5",
-    "jest": "^24.9.0",
+    "jest": "^27.3.1",
     "nodemon": "^1.18.10",
     "postcss-cli": "^6.1.3",
     "prettier": "^2.4.1",
