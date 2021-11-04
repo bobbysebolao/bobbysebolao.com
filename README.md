@@ -30,7 +30,6 @@ My portfolio website.
 - nodemailer
 - pg
 - query-string
-- request
 - xmlhttprequest
 
 ## Special features:
