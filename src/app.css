@@ -1,107 +1,87 @@
-@import '@fontsource/fira-mono';
-
 :root {
-	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: 'Fira Mono', monospace;
-	--pure-white: #ffffff;
-	--primary-color: #b9c6d2;
-	--secondary-color: #d0dde9;
-	--tertiary-color: #edf0f8;
-	--accent-color: #ff3e00;
-	--heading-color: rgba(0, 0, 0, 0.7);
-	--text-color: #444444;
-	--background-without-opacity: rgba(255, 255, 255, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
+  font-family: "Lato", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  scroll-behavior: smooth; /* smoothens 'return to top' style scrolling */
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.84);
+
+  /* Global colour variables */
+  --postit-green: #afec6a;
+  --postit-yellow: #faf557;
+  --postit-blue: #7fd9cf;
+  --postit-pink: #fe9bba;
 }
 
 body {
-	min-height: 100vh;
-	margin: 0;
-	background-color: var(--primary-color);
-	background: linear-gradient(
-		180deg,
-		var(--primary-color) 0%,
-		var(--secondary-color) 10.45%,
-		var(--tertiary-color) 41.35%
-	);
+  margin: auto;
+  text-align: center;
+  max-width: 840px;
+  display: flex;
+  flex-direction: column;
+  background-color: #c18e67;
+  background-image: url(/static/desk_background.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  padding: 20px;
 }
 
-body::before {
-	content: '';
-	width: 80vw;
-	height: 100vh;
-	position: absolute;
-	top: 0;
-	left: 10vw;
-	z-index: -1;
-	background: radial-gradient(
-		50% 50% at 50% 50%,
-		var(--pure-white) 0%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	opacity: 0.05;
+p {
+  line-height: 1.5em;
+  margin-bottom: 1em;
 }
 
-#svelte {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+strong {
+  font-weight: 800;
 }
 
-h1,
+em {
+  font-style: italic;
+}
+
 h2,
-p {
-	font-weight: 400;
-	color: var(--heading-color);
-}
-
-p {
-	line-height: 1.5;
-}
-
-a {
-	color: var(--accent-color);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
+h3,
+h4 {
+  margin: 1.414em 0 0.5em;
+  line-height: 1.35;
+  color: #111;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 2.5em;
 }
 
 h1 {
-	font-size: 2rem;
-	text-align: center;
+  margin-top: 0;
+  font-size: 2em;
 }
 
 h2 {
-	font-size: 1rem;
+  font-size: 1.6em;
 }
 
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--text-color);
+h3 {
+  font-size: 1.4em;
 }
 
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
+h4 {
+  font-size: 1.2em;
 }
 
-button:focus:not(:focus-visible) {
-	outline: none;
+hr {
+  width: 100%;
+  border: 1px solid #5d5d60;
 }
 
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
-	}
+span.italic {
+  font-style: italic;
+}
+
+ul {
+  margin-top: 0em;
+  margin-bottom: 1.3em;
+}
+
+li {
+  line-height: normal;
 }

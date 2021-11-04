@@ -1,5 +1,4 @@
 <script>
-  import Icons from "./Icons.svelte";
   import { page } from "$app/stores";
 
   let active_tab = $page.path.split("/")[1].length
@@ -10,8 +9,6 @@
     active_tab = tab_name;
   };
 </script>
-
-<Icons />
 
 <header>
   <nav>
@@ -211,54 +208,54 @@
   }
 
   .home {
-    background: #afec6a;
+    background: var(--postit-green);
     &::before {
-      box-shadow: 2px 2px 0 #afec6a;
+      box-shadow: 2px 2px 0 var(--postit-green);
     }
     &::after {
-      box-shadow: -2px 2px 0 #afec6a;
+      box-shadow: -2px 2px 0 var(--postit-green);
     }
     &:hover {
-      color: #afec6a;
+      color: var(--postit-green);
     }
   }
 
   .about {
-    background: #faf557;
+    background: var(--postit-yellow);
     &::before {
-      box-shadow: 2px 2px 0 #faf557;
+      box-shadow: 2px 2px 0 var(--postit-yellow);
     }
     &::after {
-      box-shadow: -2px 2px 0 #faf557;
+      box-shadow: -2px 2px 0 var(--postit-yellow);
     }
     &:hover {
-      color: #faf557;
+      color: var(--postit-yellow);
     }
   }
 
   .work {
-    background: #7fd9cf;
+    background: var(--postit-blue);
     &::before {
-      box-shadow: 2px 2px 0 #7fd9cf;
+      box-shadow: 2px 2px 0 var(--postit-blue);
     }
     &::after {
-      box-shadow: -2px 2px 0 #7fd9cf;
+      box-shadow: -2px 2px 0 var(--postit-blue);
     }
     &:hover {
-      color: #7fd9cf;
+      color: var(--postit-blue);
     }
   }
 
   .blog {
-    background: #fe9bba;
+    background: var(--postit-pink);
     &::before {
-      box-shadow: 2px 2px 0 #fe9bba;
+      box-shadow: 2px 2px 0 var(--postit-pink);
     }
     &::after {
-      box-shadow: -2px 2px 0 #fe9bba;
+      box-shadow: -2px 2px 0 var(--postit-pink);
     }
     &:hover {
-      color: #fe9bba;
+      color: var(--postit-pink);
     }
   }
 </style>
