@@ -6,11 +6,18 @@
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.84);
 
-  /* Global colour variables */
+  /* Primary colours */
+  /* Normal state */
   --postit-green: #afec6a;
   --postit-yellow: #faf557;
   --postit-blue: #7fd9cf;
   --postit-pink: #fe9bba;
+
+  /* Hover state */
+  --postit-green-hover: hsl(88, 77%, 77%);
+  --postit-yellow-hover: hsl(58, 94%, 76%);
+  --postit-blue-hover: hsl(173, 54%, 77%);
+  --postit-pink-hover: hsl(341, 98%, 90%);
 }
 
 body {
