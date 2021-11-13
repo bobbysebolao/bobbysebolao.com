@@ -1,12 +1,16 @@
 <script>
-  import { setContext, getContext } from "svelte";
+  import { active_display_modes } from "./stores";
   import Head from "$lib/head/Head.svelte";
   import Icons from "$lib/icons/Icons.svelte";
   import Header from "$lib/header/Header.svelte";
   import Footer from "$lib/footer/Footer.svelte";
   import "../app.css";
-  const active_display_modes = "sprite";
-  setContext("active_display_modes", active_display_modes);
+
+  let display_mode_classes = "";
+
+  active_display_modes.subscribe((value) => {
+    display_mode_classes = value.join(" ");
+  });
 </script>
 
 <Head />
@@ -15,7 +19,7 @@
 
 <Header />
 
-<main class={active_display_modes}>
+<main class={display_mode_classes}>
   <slot />
 </main>
 

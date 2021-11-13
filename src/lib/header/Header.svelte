@@ -1,4 +1,5 @@
 <script>
+  import { active_display_modes } from "../../routes/stores";
   import { page } from "$app/stores";
 
   let active_tab = $page.path.split("/")[1].length
@@ -8,6 +9,14 @@
   const setActiveTab = (tab_name) => {
     active_tab = tab_name;
   };
+
+  function toggleMode(mode) {
+    active_display_modes.update((active_modes) => {
+      return active_modes.includes(mode)
+        ? active_modes.filter((d) => d !== mode)
+        : [...active_modes, mode];
+    });
+  }
 </script>
 
 <header>
@@ -57,7 +66,7 @@
         </li>
       </ul>
       <ul class="tabGroup modes">
-        <li class="nightMode {active_tab}">
+        <li class="nightMode {active_tab}" on:click={() => toggleMode("night")}>
           <svg>
             <use xlink:href="#moonIcon" />
           </svg>
@@ -65,7 +74,10 @@
           <div class="tabRibbonStylingInner" />
           <div class="tabRibbonStylingBottom" />
         </li>
-        <li class="knightMode {active_tab}">
+        <li
+          class="knightMode {active_tab}"
+          on:click={() => toggleMode("knight")}
+        >
           <svg>
             <use xlink:href="#knightIcon" />
           </svg>
@@ -73,7 +85,10 @@
           <div class="tabRibbonStylingInner" />
           <div class="tabRibbonStylingBottom" />
         </li>
-        <li class="spriteMode {active_tab}">
+        <li
+          class="spriteMode {active_tab}"
+          on:click={() => toggleMode("sprite")}
+        >
           <svg>
             <use xlink:href="#tetrisSprite" />
           </svg>

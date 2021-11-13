@@ -2,25 +2,25 @@
   export async function load({ fetch }) {
     const res = await fetch("/api/projects.json");
 
-    if (res.ok) {
-      const projects_data = await res.json();
-      return { props: { projects_data } };
-    }
+    if (res.ok) return { props: { projects_data: await res.json() } };
 
-    const { message } = await res.json();
-    return { error: new Error(message) };
+    return { error: new Error(await res.json()) };
   }
 </script>
 
 <script>
-  import { getContext } from "svelte";
+  import { active_display_modes } from "./stores";
   import Aliens from "../lib/home/Aliens.svelte";
   import ContactForm from "../lib/home/ContactForm.svelte";
   import ProjectSummary from "../lib/home/ProjectSummary.svelte";
   export const prerender = true;
-  const active_display_modes = getContext("active_display_modes");
+  let display_mode_classes = "";
 
-  export let projects_data;
+  active_display_modes.subscribe((value) => {
+    display_mode_classes = value.join(" ");
+  });
+
+  export let projects_data = [];
 </script>
 
 <svelte:head>
@@ -52,13 +52,13 @@
   <a href="https://www.bobbysebolao.com/" class="u-url" />
 </div>
 
-<h1 class="intro {active_display_modes}">
+<h1 class="intro {display_mode_classes}">
   <span>Hi </span>-<span> I'm</span><br /><span>Bobby</span>
 </h1>
 
-<p class="intro {active_display_modes}">I tell stories with prose and code</p>
+<p class="intro {display_mode_classes}">I tell stories with prose and code</p>
 
-<Aliens {active_display_modes} alienCount={5} alienType="one" />
+<Aliens {display_mode_classes} alienCount={5} alienType="one" />
 
 <hr class="home-separators" />
 
@@ -66,19 +66,19 @@
 
 <ProjectSummary colour="green" projectData={projects_data[0]} />
 
-<Aliens {active_display_modes} alienCount={5} alienType="two" />
+<Aliens {display_mode_classes} alienCount={5} alienType="two" />
 
 <ProjectSummary colour="yellow" projectData={projects_data[1]} />
 
-<Aliens {active_display_modes} alienCount={5} alienType="three" />
+<Aliens {display_mode_classes} alienCount={5} alienType="three" />
 
 <ProjectSummary colour="blue" projectData={projects_data[2]} />
 
-<Aliens {active_display_modes} alienCount={3} alienType="defense" />
+<Aliens {display_mode_classes} alienCount={3} alienType="defense" />
 
 <ProjectSummary colour="pink" projectData={projects_data[3]} />
 
-<Aliens {active_display_modes} alienCount={3} alienType="player" />
+<Aliens {display_mode_classes} alienCount={3} alienType="player" />
 
 <hr class="home-separators" />
 

@@ -1,10 +1,11 @@
 <script>
-  export let active_display_modes = "";
+  export let display_mode_classes = "";
+
   export let alienCount = 0;
   export let alienType = "one";
 </script>
 
-<div class="aliens {active_display_modes}">
+<div class="aliens {display_mode_classes}">
   {#each Array(alienCount) as _}
     <div class="aliens__{alienType}" />
   {/each}
