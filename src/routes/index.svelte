@@ -1,3 +1,17 @@
+<script context="module">
+  export async function load({ fetch }) {
+    const res = await fetch("/api/projects.json");
+
+    if (res.ok) {
+      const projects_data = await res.json();
+      return { props: { projects_data } };
+    }
+
+    const { message } = await res.json();
+    return { error: new Error(message) };
+  }
+</script>
+
 <script>
   import { getContext } from "svelte";
   import Aliens from "../lib/home/Aliens.svelte";
@@ -5,6 +19,8 @@
   import ProjectSummary from "../lib/home/ProjectSummary.svelte";
   export const prerender = true;
   const active_display_modes = getContext("active_display_modes");
+
+  export let projects_data;
 </script>
 
 <svelte:head>
@@ -48,59 +64,19 @@
 
 <h2>Web Projects</h2>
 
-<ProjectSummary
-  colour="green"
-  projectType="Distributed Cloud Platform"
-  projectName="Rate My Barber"
-  projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-  blanditiis quisquam odit laborum minus, veniam aliquid, laboriosam atque
-  a corrupti odio architecto."
-  projectTech="Built with Node.js, React, and SQL."
-  ctaUrl="https://github.com/bobbysebolao"
-  ctaText="GitHub"
-/>
+<ProjectSummary colour="green" projectData={projects_data[0]} />
 
 <Aliens {active_display_modes} alienCount={5} alienType="two" />
 
-<ProjectSummary
-  colour="yellow"
-  projectType="Distributed Cloud Platform"
-  projectName="Rate My Barber"
-  projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-  blanditiis quisquam odit laborum minus, veniam aliquid, laboriosam atque
-  a corrupti odio architecto."
-  projectTech="Built with Node.js, React, and SQL."
-  ctaUrl="https://github.com/bobbysebolao"
-  ctaText="GitHub"
-/>
+<ProjectSummary colour="yellow" projectData={projects_data[1]} />
 
 <Aliens {active_display_modes} alienCount={5} alienType="three" />
 
-<ProjectSummary
-  colour="blue"
-  projectType="Distributed Cloud Platform"
-  projectName="Rate My Barber"
-  projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-  blanditiis quisquam odit laborum minus, veniam aliquid, laboriosam atque
-  a corrupti odio architecto."
-  projectTech="Built with Node.js, React, and SQL."
-  ctaUrl="https://github.com/bobbysebolao"
-  ctaText="GitHub"
-/>
+<ProjectSummary colour="blue" projectData={projects_data[2]} />
 
 <Aliens {active_display_modes} alienCount={3} alienType="defense" />
 
-<ProjectSummary
-  colour="pink"
-  projectType="Distributed Cloud Platform"
-  projectName="Rate My Barber"
-  projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-  blanditiis quisquam odit laborum minus, veniam aliquid, laboriosam atque
-  a corrupti odio architecto."
-  projectTech="Built with Node.js, React, and SQL."
-  ctaUrl="https://github.com/bobbysebolao"
-  ctaText="GitHub"
-/>
+<ProjectSummary colour="pink" projectData={projects_data[3]} />
 
 <Aliens {active_display_modes} alienCount={3} alienType="player" />
 

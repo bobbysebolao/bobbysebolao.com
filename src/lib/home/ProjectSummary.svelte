@@ -1,27 +1,42 @@
 <script>
   export let colour = "#cccccc";
-  export let projectType = "Distributed Cloud Platform";
-  export let projectName = "Rate My Barber";
-  export let projectDescription = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
+  export let projectData = {
+    Type: "Distributed Cloud Platform",
+    Title: "Rate My Barber",
+    Description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
         blanditiis quisquam odit laborum minus, veniam aliquid, laboriosam atque
-        a corrupti odio architecto.`;
-  export let projectTech = "Built with Node.js, React, and SQL.";
-  export let ctaUrl = "https://github.com/bobbysebolao";
-  export let ctaText = "GitHub";
+        a corrupti odio architecto.`,
+    "Tech Stack": "Built with Node.js, React, and SQL.",
+    "Link URL": "https://github.com/bobbysebolao",
+    "Link Text": "GitHub",
+    Image:
+      "https://files.worldwildlife.org/wwfcmsprod/images/Baby_Sloth_Hanging_iStock_3_12_2014/portrait_overview/4zhzw2pmf0_iStock_000016816803XLarge_mini.jpg",
+  };
+  const {
+    ["Type"]: type,
+    ["Title"]: title,
+    ["Description"]: description,
+    ["Tech Stack"]: tech_stack,
+    ["Link URL"]: cta_url,
+    ["Link Text"]: cta_text,
+    ["Image"]: [image],
+  } = projectData;
+
+  const img_url = image.url;
 </script>
 
 <section class="portfolio-project">
-  <div class="project-image"><div /></div>
+  <div class="project-image" style="background-image: url({img_url})" />
   <div class="project-bg {colour}">
     <div class="project-description">
-      <p class="project-type">{projectType}</p>
-      <h2 class="project-title">{projectName}</h2>
-      <p class="project-summary">{projectDescription}</p>
-      <p class="project-tech">{projectTech}</p>
+      <p class="project-type">{type}</p>
+      <h2 class="project-title">{title}</h2>
+      <p class="project-summary">{description}</p>
+      <p class="project-tech">{tech_stack}</p>
     </div>
   </div>
 
-  <a href={ctaUrl} target="_blank" class="read-more-cta {colour}">{ctaText}</a>
+  <a href={cta_url} target="_blank" class="project-cta {colour}">{cta_text}</a>
 </section>
 
 <style lang="scss">
@@ -101,7 +116,7 @@
       }
     }
 
-    .read-more-cta {
+    .project-cta {
       position: absolute;
       bottom: 0px;
       right: 20px;
