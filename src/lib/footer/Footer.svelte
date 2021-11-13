@@ -1,5 +1,5 @@
 <footer>
-  <div class="socialIcons">
+  <div class="social-icons">
     <a href="https://github.com/bobbysebolao" rel="me" target="_blank">
       <svg class="icon"><use xlink:href="#github" /></svg>
     </a>
@@ -29,15 +29,15 @@
     background: #fdfdfd;
     box-shadow: 5px 10px 10px 0px #000000;
 
-    .socialIcons {
+    .social-icons {
       width: 300px;
-      margin: auto;
-      margin-top: 2em;
+      margin: 0 auto;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      padding-top: 2em;
 
       a {
         width: calc(20% - 1em);
@@ -68,6 +68,7 @@
 
     .credit {
       padding-bottom: 1em;
+      margin-bottom: 0;
     }
   }
 
