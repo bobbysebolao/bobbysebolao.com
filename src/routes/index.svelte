@@ -108,10 +108,6 @@
 
 <h2>Wanna Work Together?</h2>
 
-<p class="contact-form-intro">
-  I'm always happy to chat over ☕ - drop me a ✉️!
-</p>
-
 <ContactForm />
 
 <hr />
