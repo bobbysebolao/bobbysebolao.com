@@ -18,6 +18,11 @@
   --postit-yellow-hover: hsl(58, 94%, 76%);
   --postit-blue-hover: hsl(173, 54%, 77%);
   --postit-pink-hover: hsl(341, 98%, 90%);
+
+  /* Night mode */
+  --night-light: #707993;
+  --night-medium: #252d3e;
+  --night-dark: #10161d;
 }
 
 body {

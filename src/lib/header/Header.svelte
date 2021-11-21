@@ -1,17 +1,23 @@
 <script>
-  import { active_display_modes } from "../../routes/stores";
+  import { active_display_modes as _active_display_modes } from "../../routes/stores";
   import { page } from "$app/stores";
 
   let active_tab = $page.path.split("/")[1].length
     ? $page.path.split("/")[1]
     : "home";
 
-  const setActiveTab = (tab_name) => {
+  let active_display_modes = [];
+
+  function setActiveTab(tab_name) {
     active_tab = tab_name;
-  };
+  }
+
+  _active_display_modes.subscribe((value) => {
+    active_display_modes = value;
+  });
 
   function toggleMode(mode) {
-    active_display_modes.update((active_modes) => {
+    _active_display_modes.update((active_modes) => {
       return active_modes.includes(mode)
         ? active_modes.filter((d) => d !== mode)
         : [...active_modes, mode];
@@ -23,7 +29,10 @@
   <nav>
     <div class="tabs">
       <ul class="tabGroup pages">
-        <li class="home">
+        <li
+          class="home {active_display_modes.join(' ')}"
+          class:active={active_tab === "home"}
+        >
           <a sveltekit:prefetch href="/" on:click={() => setActiveTab("home")}
             >HOME
             <div class="tabRibbonStylingBottom" />
@@ -31,7 +40,10 @@
           <div class="tabRibbonStylingOuter" />
           <div class="tabRibbonStylingInner" />
         </li>
-        <li class="about">
+        <li
+          class="about {active_display_modes.join(' ')}"
+          class:active={active_tab === "about"}
+        >
           <a
             sveltekit:prefetch
             href="/about"
@@ -42,7 +54,10 @@
           <div class="tabRibbonStylingOuter" />
           <div class="tabRibbonStylingInner" />
         </li>
-        <li class="work">
+        <li
+          class="work {active_display_modes.join(' ')}"
+          class:active={active_tab === "work"}
+        >
           <a
             sveltekit:prefetch
             href="/work"
@@ -53,7 +68,11 @@
           <div class="tabRibbonStylingOuter" />
           <div class="tabRibbonStylingInner" />
         </li>
-        <li class="blog" style="margin-right: 11px;">
+        <li
+          class="blog {active_display_modes.join(' ')}"
+          class:active={active_tab === "blog"}
+          style="margin-right: 11px;"
+        >
           <a
             sveltekit:prefetch
             href="/blog"
@@ -65,8 +84,12 @@
           <div class="tabRibbonStylingInner" />
         </li>
       </ul>
-      <ul class="tabGroup modes">
-        <li class="nightMode {active_tab}" on:click={() => toggleMode("night")}>
+      <ul class="tabGroup displayModes">
+        <li
+          class="nightModeControl {active_tab} {active_display_modes.join(' ')}"
+          class:active={active_display_modes.includes("night")}
+          on:click={() => toggleMode("night")}
+        >
           <svg>
             <use xlink:href="#moonIcon" />
           </svg>
@@ -75,7 +98,10 @@
           <div class="tabRibbonStylingBottom" />
         </li>
         <li
-          class="knightMode {active_tab}"
+          class="knightModeControl {active_tab} {active_display_modes.join(
+            ' '
+          )}"
+          class:active={active_display_modes.includes("knight")}
           on:click={() => toggleMode("knight")}
         >
           <svg>
@@ -86,7 +112,10 @@
           <div class="tabRibbonStylingBottom" />
         </li>
         <li
-          class="spriteMode {active_tab}"
+          class="spriteModeControl {active_tab} {active_display_modes.join(
+            ' '
+          )}"
+          class:active={active_display_modes.includes("sprite")}
           on:click={() => toggleMode("sprite")}
         >
           <svg>
@@ -98,7 +127,7 @@
         </li>
       </ul>
     </div>
-    <div class="fileDivider {active_tab}" />
+    <div class="fileDivider {active_tab} {active_display_modes.join(' ')}" />
   </nav>
 </header>
 
@@ -135,36 +164,49 @@
       box-shadow: 5px 10px 10px 0px #000000;
       border-top-left-radius: 6px;
       border-top-right-radius: 6px;
+      color: #111;
       margin: 0 2px;
       position: relative;
       top: 3px;
       z-index: 0;
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         position: absolute;
         bottom: 2px;
         width: 6px;
         height: 6px;
         content: " ";
       }
-      &:before {
+      &::before {
         left: -5.5px;
         border-bottom-right-radius: 6px;
       }
-      &:after {
+      &::after {
         right: -5.7px;
         border-bottom-left-radius: 6px;
       }
-      &:hover {
+      &:hover,
+      &.active {
         transform: translateY(-3px);
       }
-      &:hover::before {
-        box-shadow: 2px 2px 0;
+      &:hover::before,
+      &:hover::after,
+      &.active::before,
+      &.active::after {
         transform: translateY(3px);
       }
-      &:hover::after {
-        box-shadow: -2px 2px 0;
-        transform: translateY(3px);
+      &.night {
+        background-color: var(--night-light);
+        color: #fdfdfd;
+        &.active {
+          background-color: var(--night-medium);
+        }
+        &::before {
+          box-shadow: 2px 2px 0 var(--night-light);
+        }
+        &::after {
+          box-shadow: -2px 2px 0 var(--night-light);
+        }
       }
     }
     &.pages {
@@ -174,13 +216,32 @@
         vertical-align: middle;
         padding: 0 0 0 0;
         width: 100px;
+        &.night {
+          &.active {
+            &::before {
+              box-shadow: 2px 2px 0 var(--night-medium);
+            }
+            &::after {
+              box-shadow: -2px 2px 0 var(--night-medium);
+            }
+          }
+        }
       }
     }
-    &.modes {
+    &.displayModes {
       li {
         display: block;
         padding: 20px 20px 10px 20px;
         cursor: pointer;
+        &.night {
+          background-color: var(--night-medium);
+          &::before {
+            box-shadow: 2px 2px 0 var(--night-medium);
+          }
+          &::after {
+            box-shadow: -2px 2px 0 var(--night-medium);
+          }
+        }
       }
       li:nth-child(3) {
         margin-right: 6px;
@@ -188,7 +249,7 @@
     }
     a {
       display: block;
-      color: #111;
+      color: inherit;
       text-decoration: none;
       padding: 15px 10px 15px 10px;
       line-height: inherit;
@@ -199,16 +260,25 @@
     }
   }
 
-  .nightMode:hover {
-    fill: #fff197;
+  .nightModeControl {
+    &.active,
+    &:hover {
+      fill: #fff197;
+    }
   }
 
-  .knightMode:hover {
-    fill: #a24500;
+  .knightModeControl {
+    &.active,
+    &:hover {
+      fill: #a24500;
+    }
   }
 
-  .spriteMode:hover {
-    fill: #b500fa;
+  .spriteModeControl {
+    &.active,
+    &:hover {
+      fill: #b500fa;
+    }
   }
 
   .fileDivider {
@@ -220,57 +290,49 @@
     padding: 10px 25px 10px 25px;
     z-index: 0;
     box-shadow: 5px 10px 10px 0px #000000;
+    &.night {
+      background-color: var(--night-medium);
+    }
   }
 
   .home {
-    background: var(--postit-green);
+    background-color: var(--postit-green);
+    color: var(--postit-green);
     &::before {
       box-shadow: 2px 2px 0 var(--postit-green);
     }
     &::after {
       box-shadow: -2px 2px 0 var(--postit-green);
     }
-    &:hover {
-      color: var(--postit-green);
-    }
   }
 
   .about {
-    background: var(--postit-yellow);
+    background-color: var(--postit-yellow);
     &::before {
       box-shadow: 2px 2px 0 var(--postit-yellow);
     }
     &::after {
       box-shadow: -2px 2px 0 var(--postit-yellow);
     }
-    &:hover {
-      color: var(--postit-yellow);
-    }
   }
 
   .work {
-    background: var(--postit-blue);
+    background-color: var(--postit-blue);
     &::before {
       box-shadow: 2px 2px 0 var(--postit-blue);
     }
     &::after {
       box-shadow: -2px 2px 0 var(--postit-blue);
     }
-    &:hover {
-      color: var(--postit-blue);
-    }
   }
 
   .blog {
-    background: var(--postit-pink);
+    background-color: var(--postit-pink);
     &::before {
       box-shadow: 2px 2px 0 var(--postit-pink);
     }
     &::after {
       box-shadow: -2px 2px 0 var(--postit-pink);
-    }
-    &:hover {
-      color: var(--postit-pink);
     }
   }
 </style>
