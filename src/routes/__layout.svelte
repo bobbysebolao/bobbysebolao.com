@@ -36,7 +36,7 @@
   <slot />
 </main>
 
-<Footer />
+<Footer {active_display_modes} />
 
 <style global lang="scss">
   body {
@@ -68,6 +68,10 @@
     max-width: 840px;
     z-index: 0;
     position: relative;
+    &.night {
+      background-color: var(--night-light);
+      color: var(--neutral-white);
+    }
     &.sprite {
       font-family: "VT323", monospace;
     }

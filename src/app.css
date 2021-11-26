@@ -7,22 +7,30 @@
   color: rgba(0, 0, 0, 0.84);
 
   /* Primary colours */
-  /* Normal state */
+  /* Normal theme */
+  --neutral-black: #000000;
+  --neutral-grey: #cccccc;
+  --neutral-white: #fdfdfd;
+
   --postit-green: #afec6a;
   --postit-yellow: #faf557;
   --postit-blue: #7fd9cf;
   --postit-pink: #fe9bba;
 
-  /* Hover state */
+  /* Normal theme hover states */
   --postit-green-hover: hsl(88, 77%, 77%);
   --postit-yellow-hover: hsl(58, 94%, 76%);
   --postit-blue-hover: hsl(173, 54%, 77%);
   --postit-pink-hover: hsl(341, 98%, 90%);
 
-  /* Night mode */
-  --night-light: #707993;
+  /* Night theme */
+  --night-light: #3d465c;
   --night-medium: #252d3e;
   --night-dark: #10161d;
+
+  /* Night theme hover states */
+  --night-hover-light: #707993;
+  --night-hover-dark: #10161d;
 }
 
 body {
@@ -55,7 +63,6 @@ h3,
 h4 {
   margin: 1.414em 0 0.5em;
   line-height: 1.35;
-  color: #111;
   font-weight: 400;
   text-align: left;
   margin-bottom: 2.5em;

@@ -1,4 +1,8 @@
-<footer>
+<script>
+  export let active_display_modes = [];
+</script>
+
+<footer class={active_display_modes.join(" ")}>
   <div class="social-icons">
     <a href="https://github.com/bobbysebolao" rel="me" target="_blank">
       <svg class="icon"><use xlink:href="#github" /></svg>
@@ -18,7 +22,7 @@
     </a>
   </div>
   <p class="credit">
-    <sub style="opacity: 0.5;">Powered by SvelteKit</sub>
+    <sub style="opacity: 0.5;">Powered by Svelte</sub>
   </p>
 </footer>
 
@@ -28,6 +32,10 @@
     position: relative;
     background: #fdfdfd;
     box-shadow: 5px 10px 10px 0px #000000;
+    &.night {
+      background: var(--night-light);
+      color: var(--neutral-white);
+    }
 
     .social-icons {
       width: 300px;

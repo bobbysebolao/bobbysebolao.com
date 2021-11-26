@@ -2,12 +2,12 @@
   export let display_mode_classes = "";
 
   export let alienCount = 0;
-  export let alienType = "one";
+  export let alienType = "default";
 </script>
 
 <div class="aliens {display_mode_classes}">
   {#each Array(alienCount) as _}
-    <div class="aliens__{alienType}" />
+    <div class={alienType} />
   {/each}
 </div>
 
@@ -27,23 +27,23 @@
         animation: alienAnim 2s steps(2) infinite;
       }
 
-      .aliens__one {
+      .default {
         background-image: url(/static/alien_1.svg);
       }
 
-      .aliens__two {
+      .alien0 {
         background-image: url(/static/alien_2.svg);
       }
 
-      .aliens__three {
+      .alien1 {
         background-image: url(/static/alien_3.svg);
       }
 
-      .aliens__defense {
+      .alien2 {
         background-image: url(/static/defense.svg);
       }
 
-      .aliens__player {
+      .alien3 {
         background-image: url(/static/player.svg);
       }
 

@@ -1,5 +1,6 @@
 <script>
-  export let colour = "#cccccc";
+  export let active_display_modes = [];
+  export let colour = "grey";
   export let projectData = {
     Type: "Distributed Cloud Platform",
     Title: "Rate My Barber",
@@ -26,8 +27,15 @@
 </script>
 
 <section class="portfolio-project">
-  <div class="project-image" style="background-image: url({img_url})" />
-  <div class="project-bg {colour}">
+  <div
+    class="project-image {active_display_modes.join(' ')}"
+    style="background-image: url({img_url})"
+  />
+  <div
+    class="project-bg {active_display_modes.includes('night')
+      ? 'night'
+      : colour}"
+  >
     <div class="project-description">
       <p class="project-type">{type}</p>
       <h2 class="project-title">{title}</h2>
@@ -36,12 +44,18 @@
     </div>
   </div>
 
-  <a href={cta_url} target="_blank" class="project-cta {colour}">{cta_text}</a>
+  <a
+    href={cta_url}
+    target="_blank"
+    class="project-cta {active_display_modes.includes('night')
+      ? 'night'
+      : colour}">{cta_text}</a
+  >
 </section>
 
 <style lang="scss">
   .portfolio-project {
-    margin-bottom: 10em;
+    margin-top: 6.5em;
     position: relative;
     z-index: 0;
 
@@ -54,6 +68,10 @@
       background-position: center center;
       z-index: 1;
       border-radius: 5px;
+      &.night {
+        background-color: var(--night-hover-light);
+        background-blend-mode: multiply;
+      }
     }
 
     .project-bg {
@@ -64,6 +82,14 @@
       height: 448px;
       z-index: -1;
       border-radius: 5px;
+
+      &.night {
+        background: var(--night-medium);
+      }
+
+      &.grey {
+        background: var(--neutral-grey);
+      }
 
       &.green {
         background: var(--postit-green);
@@ -83,6 +109,7 @@
     }
 
     .project-description {
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       position: absolute;
@@ -123,12 +150,16 @@
       font-size: 1.25em;
       padding: 12px 12px;
       text-transform: uppercase;
-      background: black;
+      background: var(--night-dark);
       text-decoration: none;
       color: white;
       transition: all 0.25s ease;
       border-radius: 5px;
 
+      &.night:hover {
+        background: var(--night-hover-light);
+        color: var(--night-hover-dark);
+      }
       &.green:hover {
         background: var(--postit-green-hover);
         color: black;

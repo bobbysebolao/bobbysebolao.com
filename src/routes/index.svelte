@@ -9,15 +9,16 @@
 </script>
 
 <script>
-  import { active_display_modes } from "./stores";
+  import { active_display_modes as _active_display_modes } from "./stores";
   import Aliens from "../lib/home/Aliens.svelte";
   import ContactForm from "../lib/home/ContactForm.svelte";
   import ProjectSummary from "../lib/home/ProjectSummary.svelte";
   export const prerender = true;
-  let display_mode_classes = "";
+  let active_display_modes = [];
+  const COLOURS = ["green", "yellow", "blue", "pink"];
 
-  active_display_modes.subscribe((value) => {
-    display_mode_classes = value.join(" ");
+  _active_display_modes.subscribe((value) => {
+    active_display_modes = value;
   });
 
   export let projects_data = [];
@@ -52,41 +53,36 @@
   <a href="https://www.bobbysebolao.com/" class="u-url" />
 </div>
 
-<h1 class="intro {display_mode_classes}">
+<h1 class="intro {active_display_modes.join(' ')}">
   <span>Hi </span>-<span> I'm</span><br /><span>Bobby</span>
 </h1>
 
-<p class="intro {display_mode_classes}">I tell stories with prose and code</p>
+<p class="intro {active_display_modes.join(' ')}">
+  I tell stories with prose and code
+</p>
 
-<Aliens {display_mode_classes} alienCount={5} alienType="one" />
+<Aliens
+  display_mode_classes={active_display_modes.join(" ")}
+  alienCount={3}
+  alienType="default"
+/>
 
-<hr class="home-separators" />
+<hr class="home-separators {active_display_modes.join(' ')}" />
 
-<h2>Web Projects</h2>
+{#each projects_data as d, i}
+  <ProjectSummary colour={COLOURS[i]} projectData={d} {active_display_modes} />
+  <Aliens
+    display_mode_classes={active_display_modes.join(" ")}
+    alienCount={3}
+    alienType="alien{i}"
+  />
+{/each}
 
-<ProjectSummary colour="green" projectData={projects_data[0]} />
-
-<Aliens {display_mode_classes} alienCount={5} alienType="two" />
-
-<ProjectSummary colour="yellow" projectData={projects_data[1]} />
-
-<Aliens {display_mode_classes} alienCount={5} alienType="three" />
-
-<ProjectSummary colour="blue" projectData={projects_data[2]} />
-
-<Aliens {display_mode_classes} alienCount={3} alienType="defense" />
-
-<ProjectSummary colour="pink" projectData={projects_data[3]} />
-
-<Aliens {display_mode_classes} alienCount={3} alienType="player" />
-
-<hr class="home-separators" />
+<hr class="home-separators {active_display_modes.join(' ')}" />
 
 <h2>Wanna Work Together?</h2>
 
-<ContactForm />
-
-<hr />
+<ContactForm {active_display_modes} />
 
 <style lang="scss">
   .sprite {
@@ -109,10 +105,13 @@
 
   p.intro {
     font-size: 2em;
+    margin-bottom: 0;
   }
 
   .home-separators {
-    display: block;
     margin-top: 5em;
+    &.night {
+      border: 1px solid var(--neutral-white);
+    }
   }
 </style>

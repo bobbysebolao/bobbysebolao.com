@@ -1,9 +1,13 @@
+<script>
+  export let active_display_modes = [];
+</script>
+
 <p class="contact-form-intro">
   I'm always happy to chat over ☕ - drop me a ✉️!
 </p>
 
 <form
-  class="contact-form"
+  class="contact-form {active_display_modes.join(' ')}"
   action="/contact/send"
   method="post"
   enctype="multipart/form-data"
@@ -25,9 +29,12 @@
           type="checkbox"
           name="websiteCheckbox"
           id="contact-form-checkbox-one"
-          class="green"
+          class="green {active_display_modes.join(' ')}"
         />
-        <label for="contact-form-checkbox-one">Website</label>
+        <label
+          for="contact-form-checkbox-one"
+          class={active_display_modes.join(" ")}>Website</label
+        >
         <div />
         <div />
       </div>
@@ -36,9 +43,12 @@
           type="checkbox"
           name="contentCheckbox"
           id="contact-form-checkbox-two"
-          class="yellow"
+          class="yellow {active_display_modes.join(' ')}"
         />
-        <label for="contact-form-checkbox-two">Content</label>
+        <label
+          for="contact-form-checkbox-two"
+          class={active_display_modes.join(" ")}>Content</label
+        >
         <div />
         <div />
       </div>
@@ -47,9 +57,12 @@
           type="checkbox"
           name="seoCheckbox"
           id="contact-form-checkbox-three"
-          class="blue"
+          class="blue {active_display_modes.join(' ')}"
         />
-        <label for="contact-form-checkbox-three">SEO</label>
+        <label
+          for="contact-form-checkbox-three"
+          class={active_display_modes.join(" ")}>SEO</label
+        >
         <div />
         <div />
       </div>
@@ -58,9 +71,12 @@
           type="checkbox"
           name="otherCheckbox"
           id="contact-form-checkbox-four"
-          class="pink"
+          class="pink {active_display_modes.join(' ')}"
         />
-        <label for="contact-form-checkbox-four">Other</label>
+        <label
+          for="contact-form-checkbox-four"
+          class={active_display_modes.join(" ")}>Other</label
+        >
         <div />
         <div />
       </div>
@@ -68,9 +84,18 @@
   </fieldset>
   <label for="contact-form-message" class="contact-form-message">
     <span>Message</span>
-    <textarea id="contact-form-message" name="message" rows="8" required />
+    <textarea
+      id="contact-form-message"
+      class={active_display_modes.join(" ")}
+      name="message"
+      rows="8"
+      required
+    />
   </label>
-  <button type="submit" class="contact-form-button">Send</button>
+  <button
+    type="submit"
+    class="contact-form-button {active_display_modes.join(' ')}">Send</button
+  >
 </form>
 
 <style lang="scss">
@@ -103,11 +128,24 @@
       border-top: 0;
       border-left: 0;
       border-right: 0;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid var(--neutral-grey);
       transition: all 0.25s ease;
-      background: #fdfdfd;
+      background: var(--neutral-white);
       &:hover {
-        border-color: black;
+        border-color: var(--neutral-black);
+      }
+    }
+
+    &.night {
+      input {
+        background: var(--night-light);
+        border-color: var(--night-hover-light);
+        &:hover {
+          border-color: var(--night-hover-dark);
+        }
+        &::placeholder {
+          color: var(--night-hover-light);
+        }
       }
     }
 
@@ -181,6 +219,16 @@
                 background-position: center;
                 border: 1px solid var(--postit-green);
               }
+              &.night {
+                + label:before {
+                  background-image: url(/static/desktop-icon-night.svg);
+                }
+                &:checked + label:before {
+                  background-color: var(--night-medium);
+                  background-image: url(/static/desktop-icon-night.svg);
+                  border: 1px solid var(--night-medium);
+                }
+              }
             }
             &.yellow {
               + label:before {
@@ -196,6 +244,16 @@
                 background-size: contain;
                 background-position: center;
                 border: 1px solid var(--postit-yellow);
+              }
+              &.night {
+                + label:before {
+                  background-image: url(/static/file-icon-night.svg);
+                }
+                &:checked + label:before {
+                  background-color: var(--night-medium);
+                  background-image: url(/static/file-icon-night.svg);
+                  border: 1px solid var(--night-medium);
+                }
               }
             }
             &.blue {
@@ -213,6 +271,16 @@
                 background-position: center;
                 border: 1px solid var(--postit-blue);
               }
+              &.night {
+                + label:before {
+                  background-image: url(/static/globe-icon-night.svg);
+                }
+                &:checked + label:before {
+                  background-color: var(--night-medium);
+                  background-image: url(/static/globe-icon-night.svg);
+                  border: 1px solid var(--night-medium);
+                }
+              }
             }
             &.pink {
               + label:before {
@@ -228,6 +296,16 @@
                 background-size: contain;
                 background-position: center;
                 border: 1px solid var(--postit-pink);
+              }
+              &.night {
+                + label:before {
+                  background-image: url(/static/cup-icon-night.svg);
+                }
+                &:checked + label:before {
+                  background-color: var(--night-medium);
+                  background-image: url(/static/cup-icon-night.svg);
+                  border: 1px solid var(--night-medium);
+                }
               }
             }
           }
@@ -258,6 +336,14 @@
             &:hover:before {
               background: #cccccc;
             }
+            &.night {
+              &:before {
+                border: 1px solid var(--night-hover-light);
+              }
+              &:hover:before {
+                background-color: var(--night-hover-light);
+              }
+            }
           }
         }
       }
@@ -273,6 +359,11 @@
         padding: 0;
         border: 1px solid #cccccc;
         border-radius: 5px;
+        &.night {
+          background: var(--night-medium);
+          border: 1px solid var(--night-hover-light);
+          color: var(--neutral-white);
+        }
       }
     }
 
@@ -283,17 +374,26 @@
       font-size: 1.25em;
       padding: 12px 12px;
       border-radius: 5px;
-      border-color: black;
+      border-color: var(--neutral-black);
       text-transform: uppercase;
       font-family: "Permanent Marker", cursive;
-      background: black;
-      color: white;
+      background: var(--neutral-black);
+      color: var(--neutral-white);
       transition: all 0.25s ease;
       &:hover {
-        background: white;
-        color: black;
-        border-color: #cccccc;
+        background: var(--neutral-white);
+        color: var(--neutral-black);
+        border-color: var(--neutral-grey);
         cursor: pointer;
+      }
+      &.night {
+        background: var(--night-dark);
+        border-color: var(--night-dark);
+        &:hover {
+          background: var(--night-hover-light);
+          border-color: var(--night-hover-light);
+          color: var(--night-dark);
+        }
       }
     }
   }
