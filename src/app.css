@@ -31,8 +31,6 @@ body {
   max-width: 840px;
   display: flex;
   flex-direction: column;
-  background-color: #c18e67;
-  background-image: url(/static/desk_background.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;

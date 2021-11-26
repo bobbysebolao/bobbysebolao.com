@@ -1,15 +1,28 @@
 <script>
-  import { active_display_modes } from "./stores";
+  import { onMount, beforeUpdate } from "svelte";
+  import { active_display_modes as _active_display_modes } from "./stores";
   import Head from "$lib/head/Head.svelte";
   import Icons from "$lib/icons/Icons.svelte";
   import Header from "$lib/header/Header.svelte";
   import Footer from "$lib/footer/Footer.svelte";
   import "../app.css";
 
-  let display_mode_classes = "";
+  let active_display_modes = [];
 
-  active_display_modes.subscribe((value) => {
-    display_mode_classes = value.join(" ");
+  _active_display_modes.subscribe((value) => {
+    active_display_modes = value;
+  });
+
+  let root;
+
+  onMount(() => {
+    root = document.body;
+  });
+
+  beforeUpdate(() => {
+    if (root) {
+      root.className = active_display_modes.join(" ");
+    }
   });
 </script>
 
@@ -19,13 +32,30 @@
 
 <Header />
 
-<main class={display_mode_classes}>
+<main class={active_display_modes.join(" ")}>
   <slot />
 </main>
 
 <Footer />
 
-<style lang="scss">
+<style global lang="scss">
+  body {
+    background-color: #c18e67;
+    background-image: url(/static/desk_background.svg);
+    &.night {
+      background-color: #10161d;
+      background-image: url(/static/desk_background_night.svg);
+      &.knight {
+        background-image: url(/static/desk_background_night_knight.svg);
+      }
+    }
+    &.knight {
+      background-image: url(/static/desk_background_knight.svg);
+    }
+    &.sprite {
+      background-image: url(/static/desk_background_pixellated.jpg);
+    }
+  }
   main {
     background: #fdfdfd;
     padding: 80px 80px 0em 80px;
