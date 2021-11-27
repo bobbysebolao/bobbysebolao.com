@@ -50,6 +50,7 @@
       }
     }
     &.knight {
+      background-color: #7c7c7c;
       background-image: url(/static/desk_background_knight.svg);
     }
     &.sprite {
@@ -71,6 +72,32 @@
     &.night {
       background-color: var(--night-light);
       color: var(--neutral-white);
+    }
+    &.knight {
+      background: var(--knight-off-white);
+      box-shadow: none;
+      font-family: MedievalSharp, cursive;
+      &:before,
+      &:after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 20px;
+        height: calc(100% + 160px);
+        background-image: url(/static/parchment-edge-side.svg);
+        background-size: 100% auto;
+      }
+      &:before {
+        top: -22px;
+        left: 100%;
+        z-index: 10;
+      }
+      &:after {
+        top: -20px;
+        left: -20px;
+        transform: rotate(180deg);
+        z-index: 5;
+      }
     }
     &.sprite {
       font-family: "VT323", monospace;

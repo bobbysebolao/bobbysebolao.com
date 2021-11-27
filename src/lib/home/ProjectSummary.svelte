@@ -26,38 +26,53 @@
   const img_url = image.url;
 </script>
 
-<section class="portfolio-project">
+<section class="portfolio-project {active_display_modes.join(' ')}">
   <div
-    class="project-image {active_display_modes.join(' ')}"
+    class="project-image {active_display_modes.join(' ')} {colour}"
     style="background-image: url({img_url})"
-  />
-  <div
-    class="project-bg {active_display_modes.includes('night')
-      ? 'night'
-      : colour}"
   >
-    <div class="project-description">
-      <p class="project-type">{type}</p>
-      <h2 class="project-title">{title}</h2>
-      <p class="project-summary">{description}</p>
-      <p class="project-tech">{tech_stack}</p>
+    <div
+      class="project-image-pseudo {active_display_modes.join(' ')} {colour}"
+    />
+  </div>
+  <div class="project-bg {active_display_modes.join(' ')} {colour}">
+    <div class="project-description {active_display_modes.join(' ')}">
+      <p class="project-type {active_display_modes.join(' ')}">{type}</p>
+      <h2 class="project-title {active_display_modes.join(' ')}">{title}</h2>
+      <p class="project-summary {active_display_modes.join(' ')}">
+        {description}
+      </p>
+      <p class="project-tech {active_display_modes.join(' ')}">{tech_stack}</p>
     </div>
   </div>
 
   <a
     href={cta_url}
     target="_blank"
-    class="project-cta {active_display_modes.includes('night')
-      ? 'night'
-      : colour}">{cta_text}</a
+    class="project-cta {active_display_modes.join(' ')} {colour}">{cta_text}</a
   >
 </section>
 
 <style lang="scss">
   .portfolio-project {
+    font-family: "Lato", sans-serif;
     margin-top: 6.5em;
     position: relative;
     z-index: 0;
+
+    &.knight {
+      &::after {
+        display: inline-block;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 20px;
+        background-image: url(/static/parchment-edge.svg);
+        z-index: -1;
+      }
+    }
 
     .project-image {
       width: 360px;
@@ -72,6 +87,80 @@
         background-color: var(--night-hover-light);
         background-blend-mode: multiply;
       }
+      &.knight {
+        &::before {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          content: "";
+          width: 25px;
+          height: 100%;
+          background-image: url(/static/portfolio-edge-side.svg);
+          background-size: 100% auto;
+          z-index: 5;
+        }
+        &::after {
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: "";
+          transform: rotate(180deg);
+          width: 360px;
+          height: 20px;
+        }
+        &.green::after {
+          background-image: url(/static/portfolio-edge-green.svg);
+        }
+        &.yellow::after {
+          background-image: url(/static/portfolio-edge-yellow.svg);
+        }
+        &.blue::after {
+          background-image: url(/static/portfolio-edge-blue.svg);
+        }
+        &.pink::after {
+          background-image: url(/static/portfolio-edge-pink.svg);
+        }
+        .project-image-pseudo {
+          position: relative;
+          height: 100%;
+          &::before,
+          &::after {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            content: "";
+            transform: rotate(180deg);
+          }
+          &::before {
+            top: 0;
+            width: 20px;
+            height: calc(100% - 1.7em);
+            background-size: 100% auto;
+            z-index: 5;
+          }
+          &.green::before {
+            background-image: url(/static/portfolio-edge-side-green.svg);
+          }
+          &.yellow::before {
+            background-image: url(/static/portfolio-edge-side-yellow.svg);
+          }
+          &.blue::before {
+            background-image: url(/static/portfolio-edge-side-blue.svg);
+          }
+          &.pink::before {
+            background-image: url(/static/portfolio-edge-side-pink.svg);
+          }
+          &::after {
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            background-image: url(/static/portfolio-edge.svg);
+            background-size: cover;
+          }
+        }
+      }
     }
 
     .project-bg {
@@ -82,10 +171,6 @@
       height: 448px;
       z-index: -1;
       border-radius: 5px;
-
-      &.night {
-        background: var(--night-medium);
-      }
 
       &.grey {
         background: var(--neutral-grey);
@@ -106,6 +191,33 @@
       &.pink {
         background: var(--postit-pink);
       }
+      &.night {
+        background: var(--night-medium);
+      }
+      &.knight {
+        &::before,
+        &::after {
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          content: "";
+          transform: rotate(180deg);
+        }
+        &::before {
+          left: 0;
+          width: 100%;
+          height: 20px;
+          background-image: url(/static/parchment-edge.svg);
+        }
+        &::after {
+          left: calc(100% - 20px);
+          width: 20px;
+          height: 100%;
+          background-image: url(/static/parchment-edge-side.svg);
+          background-size: 100% auto;
+          z-index: 5;
+        }
+      }
     }
 
     .project-description {
@@ -120,26 +232,38 @@
       padding: 2em 1.25em 0em 1.25em;
 
       .project-type {
+        font-family: "Permanent Marker", cursive;
         align-self: flex-end;
         text-align: right;
         width: 70%;
         margin: 0 0 0 0;
+        &.knight {
+          font-family: MedievalSharp, cursive;
+        }
       }
 
       .project-title {
+        font-family: "Permanent Marker", cursive;
         margin-top: 24px;
         margin-bottom: 8px;
         text-align: left;
+        &.knight {
+          font-family: MedievalSharp, cursive;
+        }
       }
 
       .project-summary {
-        font-family: "Lato", sans-serif;
         text-align: left;
+        &.knight {
+          font-family: MedievalSharp, cursive;
+        }
       }
 
       .project-tech {
-        font-family: "Lato", sans-serif;
         text-align: left;
+        &.knight {
+          font-family: MedievalSharp, cursive;
+        }
       }
     }
 
@@ -147,6 +271,7 @@
       position: absolute;
       bottom: 0px;
       right: 20px;
+      font-family: "Permanent Marker", cursive;
       font-size: 1.25em;
       padding: 12px 12px;
       text-transform: uppercase;
@@ -177,6 +302,9 @@
       &.pink:hover {
         background: var(--postit-pink-hover);
         color: black;
+      }
+      &.knight {
+        font-family: MedievalSharp, cursive;
       }
     }
   }

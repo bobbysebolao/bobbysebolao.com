@@ -113,5 +113,21 @@
     &.night {
       border: 1px solid var(--neutral-white);
     }
+    &.knight {
+      overflow: visible;
+      border: none;
+      border-top: double #5d5d60;
+      color: #5d5d60;
+      text-align: center;
+      &::after {
+        content: "§";
+        display: inline-block;
+        position: relative;
+        top: -0.7em;
+        font-size: 1.5em;
+        padding: 0 0.25em;
+        background: var(--knight-off-white);
+      }
+    }
   }
 </style>

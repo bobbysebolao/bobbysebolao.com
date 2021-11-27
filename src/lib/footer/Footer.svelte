@@ -36,6 +36,21 @@
       background: var(--night-light);
       color: var(--neutral-white);
     }
+    &.knight {
+      background: var(--knight-off-white);
+      box-shadow: none;
+      &::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 100%;
+        left: 0px;
+        width: 100%;
+        height: 20px;
+        background-image: url(/static/parchment-edge.svg);
+        transform: rotate(180deg);
+      }
+    }
 
     .social-icons {
       width: 300px;

@@ -31,6 +31,9 @@
   /* Night theme hover states */
   --night-hover-light: #707993;
   --night-hover-dark: #10161d;
+
+  /* Knight theme */
+  --knight-off-white: #f8e098;
 }
 
 body {
@@ -43,6 +46,7 @@ body {
   background-attachment: fixed;
   background-position: center center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 p {
