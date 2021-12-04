@@ -1,0 +1,46 @@
+<svelte:head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-100955415-3">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-100955415-3");
+  </script>
+
+  <title>Home | Bobby Sebolao</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/assets/favicon.png" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Lato:400"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Permanent+Marker"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Indie+Flower"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=MedievalSharp&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="webmention"
+    href="https://webmention.io/www.bobbysebolao.com/webmention"
+  />
+  <link
+    rel="pingback"
+    href="https://webmention.io/www.bobbysebolao.com/xmlrpc"
+  />
+</svelte:head>

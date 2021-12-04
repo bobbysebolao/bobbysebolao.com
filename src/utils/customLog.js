@@ -1,4 +1,4 @@
-function customLog(message, color='black') {
+export const customLog = (message, color='black') => {
     switch (color) {
         case 'success':  
              color = 'Green'
@@ -18,5 +18,3 @@ function customLog(message, color='black') {
 
     console.log(`%c${message}`, `color:${color}`)
 }
-
-module.exports = customLog;

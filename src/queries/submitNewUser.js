@@ -1,6 +1,6 @@
-const { dbConnection } = require("../database/db_connection.js");
+import { dbConnection } from "../database/db_connection.js";
 
-const submitNewUser = async (userObj) => {
+export const submitNewUser = async (userObj) => {
     return await dbConnection
       .result(
         "INSERT INTO users(first_name, last_name, username, email, password, role, avatar_name, avatar_size, avatar_filepath, avatar_type) VALUES (${first_name}, ${last_name}, ${username}, ${email}, ${password}, ${role}, ${avatar_name}, ${avatar_size}, ${avatar_filepath}, ${avatar_type})",
@@ -21,5 +21,3 @@ const submitNewUser = async (userObj) => {
         throw new Error (`There was an error inserting the new user into the db: ${err}`)
       })
 };
-
-module.exports = submitNewUser;

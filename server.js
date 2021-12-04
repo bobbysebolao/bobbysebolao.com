@@ -1,5 +1,5 @@
-const http = require("http");
-const router = require("./src/router.js");
+import http from "http";
+import { router } from "./src/router.js";
 const server = http.createServer(router);
 const port = process.env.PORT || 9000;
 

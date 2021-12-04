@@ -1,15 +1,16 @@
-require("env2")("./config.env");
+import dotenv from "dotenv";
+dotenv.config();
 
-const querystring = require("query-string");
-const url = require('url');
-const aws = require('aws-sdk');
+import querystring from "query-string";
+import url from "url";
+import aws from "aws-sdk";
 
 aws.config.region = 'eu-west-2';
 const S3_BUCKET = process.env.S3_BUCKET;
 
 const s3 = new aws.S3();
 
-const generateAWSSignature = (endpoint, res) => {
+export const generateAWSSignature = (endpoint, res) => {
   return new Promise((resolve, reject) => {
 
   const parsedUrl = url.parse(endpoint);
@@ -75,7 +76,7 @@ const generateAWSSignature = (endpoint, res) => {
     })
 }
 
-const getAwsFile = (filename) => {
+export const getAwsFile = (filename) => {
   return new Promise((resolve, reject) => {
 
     let key = "";
@@ -103,8 +104,3 @@ const getAwsFile = (filename) => {
   })
 })
 }
-
-module.exports = {
-  generateAWSSignature,
-  getAwsFile
-};

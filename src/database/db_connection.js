@@ -1,10 +1,9 @@
-const { Pool } = require("pg");
+import dotenv from "dotenv";
+dotenv.config();
 
-const pgPromise = require('pg-promise')();
+import pgPromise from "pg-promise";
 
-const url = require("url");
-
-require("env2")("./config.env");
+import url from "url";
 
 let DB_URL = process.env.DB_URL;
 
@@ -39,7 +38,4 @@ if (options.host !== 'localhost') {
   }
 }
 
-module.exports = {
-  dbConnection: pgPromise(options),
-  options
-};
+export const dbConnection = pgPromise()(options);

@@ -1,49 +1,50 @@
-require("env2")("./config.env");
+import dotenv from "dotenv"
+import fs from "fs";
+import querystring from "query-string";
+import path from "path";
+import formidable from "formidable";
+import cookie from "cookie";
 
-const fs = require("fs");
-const querystring = require("query-string");
-const path = require("path");
-const formidable = require("formidable");
-const cookie = require("cookie");
+import { createPostFromTemplate } from "./createPostFromTemplate.js";
+import { readingTimeCalculator } from "./helpers/readingTimeCalculator.js";
 
-// const mime = require("mime");
-// const util = require('util');
-const createPostFromTemplate = require("./createPostFromTemplate.js");
-const readingTimeCalculator = require("./helpers/readingTimeCalculator.js");
+import { submitNewImage } from "./queries/submitNewImage.js";
+import { submitNewThumbnail } from "./queries/submitNewThumbnail.js";
+import { submitNewPost } from "./queries/submitNewPost.js";
+import { validateNewUser } from "./authentication/validateNewUser.js";
+import { hashPassword, comparePassword } from "./authentication/hash.js";
+import { submitNewUser } from "./queries/submitNewUser.js";
+import { getUser } from "./queries/getUser.js";
+import { generateJSONWebToken } from "./authentication/generateJWT.js";
+import { submitNewComment } from "./queries/submitNewComment.js";
+import { decodeJSONWebToken } from "./authentication/decodeJWT.js";
+import { getPost } from "./queries/getPost.js";
+import { getComments } from "./queries/getComments.js";
+import { getUsername } from "./queries/getUsername.js";
+import { getTags } from "./queries/getTags.js";
+import { getAllPosts } from "./queries/getAllPosts.js";
+import { getAllThumbnails } from "./queries/getAllThumbnails.js";
+import { getAllMainImages } from "./queries/getAllMainImages.js";
+import { sendEmail } from "./authentication/sendEmail.js";
+import { generateEmailVerificationToken } from "./authentication/generateEmailVerificationToken.js";
+import { submitEmailVerificationToken } from "./queries/submitEmailVerificationToken.js";
+import { getEmailVerificationToken } from "./queries/getEmailVerificationToken.js";
+import { deleteEmailVerificationToken } from "./queries/deleteEmailVerificationToken.js";
+import { updateVerifiedUser } from "./queries/updateVerifiedUser.js";
+import { generateAWSSignature, getAwsFile } from "./authentication/generateAWSSignature.js";
+import { uploadFile } from "./authentication/getSignedAwsRequest.js";
+import { getProjects } from "./airtable/getProjects.js";
 
-const submitNewImage = require("./queries/submitNewImage.js");
-const submitNewThumbnail = require("./queries/submitNewThumbnail.js");
-const submitNewPost = require("./queries/submitNewPost.js");
-const validateNewUser = require("./authentication/validateNewUser.js");
-const { hashPassword, comparePassword } = require("./authentication/hash.js");
-const submitNewUser = require("./queries/submitNewUser.js");
-const getUser = require("./queries/getUser.js");
-const generateJSONWebToken = require("./authentication/generateJWT.js");
-const submitNewComment = require("./queries/submitNewComment.js");
-const decodeJSONWebToken = require("./authentication/decodeJWT.js");
-const getPost = require("./queries/getPost.js");
-const getComments = require("./queries/getComments.js");
-const getUsername = require("./queries/getUsername.js");
-const getTags = require("./queries/getTags.js");
-const getAllPosts = require("./queries/getAllPosts.js");
-const getAllThumbnails = require("./queries/getAllThumbnails.js");
-const getAllMainImages = require("./queries/getAllMainImages.js");
-const sendEmail = require("./authentication/sendEmail.js");
-const generateEmailVerificationToken = require("./authentication/generateEmailVerificationToken.js");
-const submitEmailVerificationToken = require("./queries/submitEmailVerificationToken.js");
-const getEmailVerificationToken = require("./queries/getEmailVerificationToken.js");
-const deleteEmailVerificationToken = require("./queries/deleteEmailVerificationToken.js");
-const updateVerifiedUser = require("./queries/updateVerifiedUser.js");
-const generateAWSSignature = require("./authentication/generateAWSSignature.js");
-const getSignedAwsRequest = require("./authentication/getSignedAwsRequest.js");
-const getProjects = require("./airtable/getProjects.js");
+import { customLog } from "./utils/customLog.js";
 
-const customLog = require("./utils/customLog");
+dotenv.config();
+
+const __dirname = path.resolve();
 
 //GET REQUEST HANDLERS
 
 const homeHandler = res => {
-  fs.readFile(__dirname + "/../index.html", function(error, file) {
+  fs.readFile(__dirname + "/index.html", function(error, file) {
     if (error) {
       console.log("error");
       return;
@@ -54,7 +55,7 @@ const homeHandler = res => {
 };
 
 const allPostsHandler = (req, res) => {
-  fs.readFile(__dirname + "/../public/blog/all-posts.html", function(
+  fs.readFile(__dirname + "/public/blog/all-posts.html", function(
     error,
     file
   ) {
@@ -70,12 +71,11 @@ const allPostsHandler = (req, res) => {
 const specificPostHandler = (req, res, endpoint) => {
   let filename = `${endpoint.split("/")[2].split(".html")[0]}` + ".html";
 
-  generateAWSSignature
-    .getAwsFile(filename)
+  getAwsFile(filename)
     .then(response => {
       let fileContents = response["Body"].toString();
       fs.writeFile(
-        __dirname + "/../public" + "/posts/" + filename,
+        __dirname + "/public/posts/" + filename,
         fileContents,
         (err, file) => {
           if (err) console.log(err);
@@ -84,7 +84,7 @@ const specificPostHandler = (req, res, endpoint) => {
           );
 
           fs.readFile(
-            __dirname + "/../public" + "/posts/" + filename,
+            __dirname + "/public/posts/" + filename,
             "utf8",
             (error, file) => {
               if (error) {
@@ -92,7 +92,7 @@ const specificPostHandler = (req, res, endpoint) => {
                 return;
               }
               fs.unlink(
-                __dirname + "/../public" + "/posts/" + filename,
+                __dirname + "/public" + "/posts/" + filename,
                 err => {
                   if (err) {
                     console.log(err);
@@ -116,7 +116,7 @@ const specificPostHandler = (req, res, endpoint) => {
 };
 
 const postsJSONHandler = res => {
-  fs.readFile(__dirname + "/posts.json", "utf8", (error, file) => {
+  fs.readFile(__dirname + "/src/posts.json", "utf8", (error, file) => {
     if (error) {
       console.log(error);
       return;
@@ -156,7 +156,7 @@ const mainImagesHandler = async (res) => {
 
 const createAccountPageHandler = res => {
   fs.readFile(
-    __dirname + "/../public/blog/create-account.html",
+    __dirname + "/public/blog/create-account.html",
     "utf8",
     (error, file) => {
       if (error) {
@@ -177,7 +177,7 @@ const newPostHandler = (req, res) => {
         if (decodedToken.logged_in === true) {
           if (decodedToken.role === "admin") {
             fs.readFile(
-              __dirname + "/../public/blog/create-post.html",
+              __dirname + "/public/blog/create-post.html",
               "utf8",
               (error, file) => {
                 if (error) {
@@ -211,7 +211,7 @@ const imageManagerPageHandler = (req, res) => {
         if (decodedToken.logged_in === true) {
           if (decodedToken.role === "admin") {
             fs.readFile(
-              __dirname + "/../public/blog/image-manager.html",
+              __dirname + "/public/blog/image-manager.html",
               "utf8",
               (error, file) => {
                 if (error) {
@@ -252,7 +252,7 @@ const domScriptsHandler = (res, endpoint, extension) => {
     json: "application/json"
   };
 
-  fs.readFile(__dirname + "/../public/" + filename, (error, file) => {
+  fs.readFile(__dirname + "/public/" + filename, (error, file) => {
     if (error) {
       console.log(error);
       return;
@@ -283,7 +283,7 @@ const publicHandler = (res, endpoint, extension) => {
     ttf: "application/octet-stream"
   };
 
-  fs.readFile(__dirname + "/../public" + endpoint, function(error, file) {
+  fs.readFile(__dirname + "/public" + endpoint, function(error, file) {
     if (error) {
       console.log(
         "Error: One of the requested files couldn't be found (probably the favicon :P)"
@@ -297,7 +297,7 @@ const publicHandler = (res, endpoint, extension) => {
 
 const loginPageHandler = res => {
   fs.readFile(
-    __dirname + "/../public/blog/login.html",
+    __dirname + "/public/blog/login.html",
     "utf8",
     (error, file) => {
       if (error) {
@@ -500,7 +500,7 @@ const createPostHandler = async (req, res, encodedJwt) => {
 
         const awsAuthData = await generateAWSSignature.generateAWSSignature(`/sign-s3?file-name=${formData["filename"]}&file-type=text/html`);
 
-        await getSignedAwsRequest.uploadFile(
+        await uploadFile(
           newPostContent,
           awsAuthData.signedRequest
         );
@@ -809,31 +809,31 @@ const commentSubmitHandler = async (req, res, encodedJwt) => {
     }
 };
 
-module.exports = {
-  homeHandler,
-  allPostsHandler,
-  specificPostHandler,
-  postsJSONHandler,
-  recentPostsHandler,
-  mainImagesHandler,
-  createAccountPageHandler,
-  newPostHandler,
-  imageManagerPageHandler,
-  domScriptsHandler,
-  publicHandler,
-  loginPageHandler,
-  checkLoginStatusHandler,
-  getProjectsHandler,
-  getCommentsHandler,
-  getAuthorHandler,
-  getTagsHandler,
-  contactFormHandler,
-  createPostHandler,
-  uploadImageHandler,
-  createAccountSubmitHandler,
-  confirmEmailHandler,
-  awsSignatureHandler,
-  loginSubmitHandler,
-  logoutHandler,
-  commentSubmitHandler
-};
+export default {
+    homeHandler,
+    allPostsHandler,
+    specificPostHandler,
+    postsJSONHandler,
+    recentPostsHandler,
+    mainImagesHandler,
+    createAccountPageHandler,
+    newPostHandler,
+    imageManagerPageHandler,
+    domScriptsHandler,
+    publicHandler,
+    loginPageHandler,
+    checkLoginStatusHandler,
+    getProjectsHandler,
+    getCommentsHandler,
+    getAuthorHandler,
+    getTagsHandler,
+    contactFormHandler,
+    createPostHandler,
+    uploadImageHandler,
+    createAccountSubmitHandler,
+    confirmEmailHandler,
+    awsSignatureHandler,
+    loginSubmitHandler,
+    logoutHandler,
+    commentSubmitHandler
+  };

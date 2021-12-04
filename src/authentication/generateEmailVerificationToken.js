@@ -1,8 +1,6 @@
-const crypto = require('crypto');
+import crypto from "crypto";
 
-let generateEmailVerificationToken = () => {
+export const generateEmailVerificationToken = () => {
   let token = crypto.randomBytes(16).toString('hex');
   return token;
 };
-
-module.exports = generateEmailVerificationToken;

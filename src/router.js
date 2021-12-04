@@ -1,7 +1,7 @@
-const handler = require("./handler");
-const cookie = require("cookie");
+import handler from "./handler.js";
+import cookie from "cookie";
 
-const router = (request, response) => {
+export const router = (request, response) => {
   const endpoint = request.url;
   let extension = endpoint.split(".")[1];
 
@@ -76,5 +76,3 @@ const router = (request, response) => {
     }
   }
 };
-
-module.exports = router;
